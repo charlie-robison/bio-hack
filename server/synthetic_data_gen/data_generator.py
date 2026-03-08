@@ -69,13 +69,13 @@ Return ONLY the JSON array, no other text.\
 
 class DataGenerator:
     """
-    Generates synthetic data rows in bulk using GPT-4.1-mini.
+    Generates synthetic data rows in bulk using GPT-5.2.
     """
 
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "gpt-4.1-mini",
+        model: str = "gpt-5.2",
         batch_size: int = 50,
         max_concurrent: int = 10,
     ):
@@ -170,7 +170,7 @@ class DataGenerator:
 
         response = self.client.chat.completions.create(
             model=self.model,
-            max_tokens=8192,
+            max_completion_tokens=8192,
             messages=[
                 {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
                 {"role": "user", "content": prompt},

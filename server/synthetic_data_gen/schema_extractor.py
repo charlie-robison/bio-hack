@@ -183,13 +183,13 @@ RESEARCH PAPER:
 class SchemaExtractor:
     """
     Extracts a structured ExperimentSchema from research paper text
-    using GPT-4.1.
+    using GPT-5.2.
     """
 
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "gpt-4.1",
+        model: str = "gpt-5.2",
         models_dir: Path | None = None,
     ):
         self.client = OpenAI(api_key=api_key)
@@ -219,7 +219,7 @@ class SchemaExtractor:
 
         response = self.client.chat.completions.create(
             model=self.model,
-            max_tokens=4096,
+            max_completion_tokens=4096,
             messages=messages,
         )
 
