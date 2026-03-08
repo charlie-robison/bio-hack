@@ -1,0 +1,71 @@
+{
+  "pipeline_id": "kras_g12d_mrtx1133_validation",
+  "paper_run_id": "e5bdfc28-d583-4219-8037-de1904143413",
+  "paper_title": "Anti-tumor efficacy of a potent and selective non-covalent KRAS G12D inhibitor",
+  "paper_journal": "Nature Medicine",
+  "target_protein": "KRAS G12D (P01116_G12D)",
+  "target_drug": "MRTX1133",
+  "drug_smiles": "CC1=C(C=C(C=C1)C2=CC(=NC=C2C(F)(F)F)NC3=NC=C(C(=N3)NC4CC4)C(=O)NC5(CC5)C(=O)N6CCC(C6)O)F",
+  "stages": [
+    {
+      "stage": 1,
+      "name": "Structure Prediction",
+      "objective": "Validate KRAS G12D protein fold and identify flexible regions",
+      "models": ["alphafold", "esmfold", "boltz-2"],
+      "claim_types_validated": ["structure", "fold"],
+      "paper_claims": [
+        "KRAS G12D adopts canonical G-domain fold",
+        "Switch I (30-40) and Switch II (58-75) are conformationally flexible",
+        "P-loop (10-17) contains well-defined G12D mutation site"
+      ]
+    },
+    {
+      "stage": 2,
+      "name": "Drug Binding Pose",
+      "objective": "Determine if MRTX1133 binds the Switch II pocket as claimed",
+      "models": ["diffdock", "gnina", "autodock-vina"],
+      "claim_types_validated": ["binding", "binding_site"],
+      "paper_claims": [
+        "MRTX1133 binds in the Switch II pocket",
+        "Binding induces conformational changes in Switch I and Switch II",
+        "Drug contacts residues in the Switch II region (58-75)"
+      ]
+    },
+    {
+      "stage": 3,
+      "name": "Binding Affinity & Complex Structure",
+      "objective": "Estimate binding affinity and validate protein-ligand complex",
+      "models": ["boltz-2", "chai-1", "autodock-vina"],
+      "claim_types_validated": ["binding_affinity", "selectivity"],
+      "paper_claims": [
+        "MRTX1133 has IC50 < 2 nM against KRAS G12D",
+        "SPR KD ~0.2 pM for GDP-bound KRAS G12D",
+        "~700-fold selectivity over wild-type KRAS"
+      ]
+    },
+    {
+      "stage": 4,
+      "name": "Conformational Dynamics",
+      "objective": "Simulate KRAS G12D with and without MRTX1133 to validate conformational trapping",
+      "models": ["openmm-md"],
+      "claim_types_validated": ["mechanism", "dynamics"],
+      "paper_claims": [
+        "MRTX1133 traps Switch I/II in effector-incompatible conformation",
+        "Conformational trapping occurs in both GDP and GTP-bound states",
+        "Drug binding blocks RAF/SOS effector interaction surfaces"
+      ]
+    },
+    {
+      "stage": 5,
+      "name": "Effector Disruption",
+      "objective": "Test if MRTX1133-bound KRAS G12D blocks RAF RBD binding",
+      "models": ["prodigy", "boltz-2"],
+      "claim_types_validated": ["mechanism", "effector_disruption"],
+      "paper_claims": [
+        "MRTX1133 blocks RAF RBD interaction with IC50 of 9 nM",
+        "Drug-bound conformation is incompatible with effector binding"
+      ]
+    }
+  ],
+  "expected_outcome": "If the paper's claims are valid, we expect: (1) AF/ESMFold confirm the G-domain fold, (2) DiffDock/GNINA place MRTX1133 in the Switch II pocket matching PDB 7T47, (3) Boltz-2/Vina estimate binding affinity in the low-nM range for G12D and much weaker for WT, (4) OpenMM shows Switch II rigidification upon drug binding, (5) PRODIGY shows reduced KRAS-RAF binding energy in the drug-bound state."
+}

@@ -1,0 +1,17 @@
+{
+  "version": "alphafold3",
+  "api_target": "alphafold_server",
+  "request": {
+    "name": "Lysozyme monomer prediction",
+    "modelSeeds": [1, 2],
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL",
+          "count": 1
+        }
+      }
+    ]
+  },
+  "notes": "AlphaFold 3 Server API format. Supports protein, DNA, RNA, ligands, and ions in the sequences array. Each entry specifies chain type and count for stoichiometry."
+}

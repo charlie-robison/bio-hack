@@ -1,0 +1,12 @@
+{
+  "model_slug": "esmfold",
+  "api_type": "esmfold",
+  "job_id": "td-esmfold-kras-001",
+  "api_settings": {
+    "sequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSSNGDIPAIRISKK"
+  },
+  "metadata": {
+    "protein_name": "KRAS G12D",
+    "protein_id": "P01116_G12D"
+  }
+}

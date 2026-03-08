@@ -1,0 +1,28 @@
+{
+  "protein_id": "P00698",
+  "name": "Lysozyme C",
+  "organism": "Gallus gallus",
+  "gene_name": "LYZ",
+  "uniprot_id": "P00698",
+  "pdb_ids": ["1LYZ", "1HEL", "2LYZ", "193L"],
+  "sequence": "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL",
+  "sequence_length": 129,
+  "chains": [
+    {
+      "chain_id": "A",
+      "name": "Single chain",
+      "sequence": "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL",
+      "start_residue": 1,
+      "end_residue": 129
+    }
+  ],
+  "description": "Hen egg-white lysozyme. Classic benchmark protein for structural biology. Catalyzes hydrolysis of bacterial cell wall peptidoglycan.",
+  "molecular_weight_da": 14313,
+  "known_structures": {
+    "experimental_method": "X-ray crystallography",
+    "best_resolution_angstrom": 0.65,
+    "fold_type": "alpha+beta"
+  },
+  "tags": ["enzyme", "antimicrobial", "benchmark", "well-characterized"],
+  "fasta": ">sp|P00698|LYSC_CHICK Lysozyme C OS=Gallus gallus OX=9031 GN=LYZ PE=1 SV=1\nKVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL"
+}

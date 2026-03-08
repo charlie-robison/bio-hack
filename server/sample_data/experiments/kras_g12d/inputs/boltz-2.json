@@ -1,0 +1,26 @@
+{
+  "model_slug": "boltz-2",
+  "api_type": "boltz-2",
+  "job_id": "td-boltz2-kras-001",
+  "api_settings": {
+    "sequences": [
+      {
+        "entityType": "protein",
+        "sequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSSNGDIPAIRISKK"
+      },
+      {
+        "entityType": "ligand",
+        "smiles": "CC1=C(C=C(C=C1)C2=CC(=NC=C2C(F)(F)F)NC3=NC=C(C(=N3)NC4CC4)C(=O)NC5(CC5)C(=O)N6CCC(C6)O)F"
+      }
+    ],
+    "predict_affinity": true
+  },
+  "metadata": {
+    "protein_name": "KRAS G12D",
+    "ligand_name": "MRTX1133"
+  },
+  "wt_comparison": {
+    "job_id": "td-boltz2-kras-wt-001",
+    "note": "Position 12: D→G (revert to wild-type glycine for selectivity comparison)"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "version": "alphafold2",
+  "prediction_type": "monomer",
+  "input": {
+    "sequence": "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL",
+    "protein_name": "Lysozyme",
+    "protein_id": "P00698"
+  },
+  "model_params": {
+    "model_preset": "monomer",
+    "num_models": 5,
+    "num_recycles": 3,
+    "use_templates": true,
+    "max_template_date": "2024-01-01",
+    "relax_prediction": true,
+    "use_amber_relaxation": true
+  },
+  "msa_params": {
+    "msa_mode": "mmseqs2",
+    "num_msa_sequences": 512,
+    "max_extra_msa": 1024,
+    "databases": ["uniref90", "mgnify", "bfd", "uniclust30"],
+    "pairing_strategy": null
+  },
+  "hardware": {
+    "gpu_memory_gb": 16,
+    "estimated_runtime_minutes": 15,
+    "recommended_gpu": "NVIDIA A100 or V100"
+  },
+  "output_options": {
+    "save_pdb": true,
+    "save_pae": true,
+    "save_msa": false,
+    "save_confidence_json": true
+  }
+}

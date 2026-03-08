@@ -1,0 +1,43 @@
+{
+  "description": "Reference guide for interpreting AlphaFold confidence metrics.",
+  "metrics": {
+    "plddt": {
+      "full_name": "predicted Local Distance Difference Test",
+      "range": [0, 100],
+      "interpretation": {
+        "very_high": {"range": [90, 100], "meaning": "High backbone accuracy, reliable side-chain placement"},
+        "confident": {"range": [70, 90], "meaning": "Good backbone prediction, side-chains less certain"},
+        "low": {"range": [50, 70], "meaning": "Caution, treat as a rough guide only"},
+        "very_low": {"range": [0, 50], "meaning": "Likely disordered or unstructured region"}
+      }
+    },
+    "pae": {
+      "full_name": "Predicted Aligned Error",
+      "unit": "Angstroms",
+      "range": [0, 31.75],
+      "interpretation": "Lower is better. PAE[i][j] is the expected error in position of residue j when aligned on residue i. Low PAE between two regions means their relative orientation is well-predicted."
+    },
+    "ptm": {
+      "full_name": "predicted Template Modeling score",
+      "range": [0, 1],
+      "interpretation": "Global fold confidence. >0.8 indicates a confident overall fold prediction."
+    },
+    "iptm": {
+      "full_name": "interface predicted TM-score",
+      "range": [0, 1],
+      "interpretation": "Confidence in predicted inter-chain interfaces (multimer only). >0.8 indicates confident interface prediction."
+    },
+    "ranking_confidence": {
+      "formula": "0.8 * ipTM + 0.2 * pTM (multimer) or pTM (monomer)",
+      "range": [0, 1],
+      "interpretation": "Used to rank models. Higher is better."
+    }
+  },
+  "sample_benchmarks": [
+    {"protein": "Lysozyme (129 aa)", "expected_plddt": ">95", "expected_ptm": ">0.9"},
+    {"protein": "Insulin (51 aa)", "expected_plddt": ">90", "expected_ptm": ">0.85"},
+    {"protein": "Hemoglobin alpha (142 aa)", "expected_plddt": ">90", "expected_ptm": ">0.88"},
+    {"protein": "GFP (238 aa)", "expected_plddt": ">90", "expected_ptm": ">0.9"},
+    {"protein": "Spike RBD (209 aa)", "expected_plddt": "85-95", "expected_ptm": ">0.85"}
+  ]
+}

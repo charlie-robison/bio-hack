@@ -11,3 +11,4 @@ rdkit
 pydantic
 PyPDF2
 beautifulsoup4
+openai

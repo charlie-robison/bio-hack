@@ -1,0 +1,20 @@
+{
+  "model_slug": "autodock-vina",
+  "job_id": "td-vina-kras-001",
+  "status": "completed",
+  "runtime_seconds": 1243,
+  "poses": [
+    {"rank": 1, "binding_energy_kcal_mol": -11.8, "estimated_ki_nm": 2.2, "binding_site": "Switch II pocket", "key_contacts": ["ASP12", "GLN61", "GLU63", "ASP69", "MET72", "HIS95", "TYR96"]},
+    {"rank": 2, "binding_energy_kcal_mol": -11.2, "estimated_ki_nm": 5.9, "binding_site": "Switch II pocket", "key_contacts": ["ASP12", "GLN61", "ASP69", "MET72", "HIS95"]},
+    {"rank": 3, "binding_energy_kcal_mol": -10.5, "estimated_ki_nm": 19.8, "binding_site": "allosteric site (off-target)", "key_contacts": ["LYS16", "ASP119", "SER17"]}
+  ],
+  "wt_comparison": {
+    "wt_best_binding_energy_kcal_mol": -8.3, "wt_estimated_ki_nm": 820,
+    "g12d_best_binding_energy_kcal_mol": -11.8, "g12d_estimated_ki_nm": 2.2,
+    "selectivity_ratio": 373
+  },
+  "summary": {
+    "best_binding_energy": -11.8, "best_ki_estimate_nm": 2.2, "paper_ic50_nm": 2.0,
+    "verdict": "Vina binding energy of -11.8 kcal/mol corresponds to Ki ~2.2 nM, closely matching the paper's IC50 < 2 nM. Selectivity ratio (370x) is within 2-fold of the paper's claim (700x)."
+  }
+}

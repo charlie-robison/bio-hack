@@ -1,0 +1,40 @@
+{
+  "model_slug": "openmm-md",
+  "api_type": "openmm-md",
+  "job_id": "td-openmm-kras-001",
+  "simulations": [
+    {
+      "label": "apo_gdp",
+      "description": "KRAS G12D with GDP, no MRTX1133 — baseline dynamics",
+      "api_settings": {
+        "pdb": "kras_g12d_model_1_relaxed.pdb",
+        "simulation_time_ns": 100,
+        "temperature_k": 310,
+        "forcefield": "amber14-all"
+      }
+    },
+    {
+      "label": "holo_gdp",
+      "description": "KRAS G12D with GDP + MRTX1133 — drug-bound inactive state",
+      "api_settings": {
+        "pdb": "kras_g12d_model_1_relaxed.pdb",
+        "ligand_sdf": "mrtx1133.sdf",
+        "simulation_time_ns": 100,
+        "temperature_k": 310,
+        "forcefield": "amber14-all"
+      }
+    },
+    {
+      "label": "holo_gtp",
+      "description": "KRAS G12D with GMPPCP + MRTX1133 — drug-bound active state",
+      "api_settings": {
+        "pdb": "kras_g12d_model_1_relaxed.pdb",
+        "ligand_sdf": "mrtx1133.sdf",
+        "simulation_time_ns": 100,
+        "temperature_k": 310,
+        "forcefield": "amber14-all"
+      }
+    }
+  ],
+  "analysis_requested": ["rmsd_backbone", "rmsf_per_residue", "radius_of_gyration", "hydrogen_bonds"]
+}

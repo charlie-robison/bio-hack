@@ -1,0 +1,28 @@
+{
+  "protein_id": "P0DTC2_RBD",
+  "name": "SARS-CoV-2 Spike Receptor-Binding Domain",
+  "organism": "Severe acute respiratory syndrome coronavirus 2",
+  "gene_name": "S",
+  "uniprot_id": "P0DTC2",
+  "pdb_ids": ["6M0J", "7BZ5", "6VW1"],
+  "sequence": "NITNLCPFGEVFNATRFASVYAWNRKRISNCVADYSVLYNSASFSTFKCYGVSPTKLNDLCFTNVYADSFVIRGDEVRQIAPGQTGKIADYNYKLPDDFTGCVIAWNSNNLDSKVGGNYNYLYRLFRKSNLKPFERDISTEIYQAGSTPCNGVEGFNCYFPLQSYGFQPTNGVGYQPYRVVVLSFELLHAPATVCGPKKSTNLVKNKCVNF",
+  "sequence_length": 209,
+  "chains": [
+    {
+      "chain_id": "A",
+      "name": "RBD domain (residues 319-541 of full spike)",
+      "sequence": "NITNLCPFGEVFNATRFASVYAWNRKRISNCVADYSVLYNSASFSTFKCYGVSPTKLNDLCFTNVYADSFVIRGDEVRQIAPGQTGKIADYNYKLPDDFTGCVIAWNSNNLDSKVGGNYNYLYRLFRKSNLKPFERDISTEIYQAGSTPCNGVEGFNCYFPLQSYGFQPTNGVGYQPYRVVVLSFELLHAPATVCGPKKSTNLVKNKCVNF",
+      "start_residue": 319,
+      "end_residue": 541
+    }
+  ],
+  "description": "Receptor-binding domain of SARS-CoV-2 spike glycoprotein. Binds human ACE2 receptor to mediate viral entry. Key target for vaccines and therapeutics.",
+  "molecular_weight_da": 23500,
+  "known_structures": {
+    "experimental_method": "X-ray crystallography",
+    "best_resolution_angstrom": 2.45,
+    "fold_type": "mixed alpha/beta"
+  },
+  "tags": ["viral", "vaccine-target", "ACE2-binding", "COVID-19", "therapeutic-target"],
+  "fasta": ">SARS-CoV-2 Spike RBD (residues 319-541)\nNITNLCPFGEVFNATRFASVYAWNRKRISNCVADYSVLYNSASFSTFKCYGVSPTKLNDLCFTNVYADSFVIRGDEVRQIAPGQTGKIADYNYKLPDDFTGCVIAWNSNNLDSKVGGNYNYLYRLFRKSNLKPFERDISTEIYQAGSTPCNGVEGFNCYFPLQSYGFQPTNGVGYQPYRVVVLSFELLHAPATVCGPKKSTNLVKNKCVNF"
+}

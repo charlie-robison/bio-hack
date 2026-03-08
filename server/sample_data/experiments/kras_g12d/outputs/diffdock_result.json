@@ -1,0 +1,28 @@
+{
+  "model_slug": "diffdock",
+  "job_id": "td-diffdock-kras-001",
+  "status": "completed",
+  "runtime_seconds": 847,
+  "poses": [
+    {
+      "rank": 1, "confidence_score": 0.87, "binding_site": "Switch II pocket",
+      "key_contacts": ["ASP12", "HIS95", "ASP69", "MET72", "GLN61", "GLU63", "TYR96", "ARG68"],
+      "switch_ii_contacts": 12, "p_loop_contacts": 4, "rmsd_to_pdb_7t47": 1.8
+    },
+    {
+      "rank": 2, "confidence_score": 0.72, "binding_site": "Switch II pocket",
+      "key_contacts": ["ASP12", "ASP69", "MET72", "GLN61"],
+      "switch_ii_contacts": 9, "p_loop_contacts": 3, "rmsd_to_pdb_7t47": 2.4
+    },
+    {
+      "rank": 3, "confidence_score": 0.58, "binding_site": "Switch II pocket (partial)",
+      "key_contacts": ["MET72", "GLU63", "ARG68"],
+      "switch_ii_contacts": 7, "p_loop_contacts": 0, "rmsd_to_pdb_7t47": 4.1
+    }
+  ],
+  "summary": {
+    "top_pose_in_switch_ii": true, "consensus_binding_site": "Switch II pocket (residues 58-75)",
+    "top_pose_rmsd_to_crystal": 1.8,
+    "verdict": "DiffDock places MRTX1133 in the Switch II pocket with high confidence (0.87). Top pose RMSD of 1.8 A to PDB 7T47 crystal structure indicates good agreement with the paper's binding mode."
+  }
+}

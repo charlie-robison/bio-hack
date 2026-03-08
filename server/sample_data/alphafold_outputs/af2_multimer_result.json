@@ -1,0 +1,78 @@
+{
+  "version": "alphafold2",
+  "prediction_type": "multimer",
+  "protein": {
+    "name": "Spike RBD - ACE2 complex",
+    "protein_ids": ["P0DTC2_RBD", "Q9BYF1"],
+    "total_residues": 814
+  },
+  "models": [
+    {
+      "model_index": 0,
+      "model_name": "model_1_multimer_v3",
+      "ranking_score": 0.82,
+      "ptm_score": 0.78,
+      "iptm_score": 0.85,
+      "mean_plddt": 82.6,
+      "chain_plddt": {
+        "A_spike_rbd": 85.3,
+        "B_ace2": 80.1
+      },
+      "pae_matrix_summary": {
+        "shape": [814, 814],
+        "mean_pae": 4.8,
+        "max_pae": 25.3,
+        "interface_pae_mean": 6.2
+      },
+      "pdb_file": "spike_ace2_model_1_relaxed.pdb",
+      "structure_summary": {
+        "num_chains": 2,
+        "interface_contacts": 47,
+        "interface_area_angstrom2": 1680.5,
+        "chain_A_residues": 209,
+        "chain_B_residues": 605
+      }
+    },
+    {
+      "model_index": 1,
+      "model_name": "model_2_multimer_v3",
+      "ranking_score": 0.80,
+      "ptm_score": 0.76,
+      "iptm_score": 0.83,
+      "mean_plddt": 81.2,
+      "chain_plddt": {
+        "A_spike_rbd": 84.1,
+        "B_ace2": 78.9
+      },
+      "pae_matrix_summary": {
+        "shape": [814, 814],
+        "mean_pae": 5.2,
+        "max_pae": 26.1,
+        "interface_pae_mean": 6.8
+      },
+      "pdb_file": "spike_ace2_model_2_relaxed.pdb",
+      "structure_summary": {
+        "num_chains": 2,
+        "interface_contacts": 44,
+        "interface_area_angstrom2": 1620.3,
+        "chain_A_residues": 209,
+        "chain_B_residues": 605
+      }
+    }
+  ],
+  "confidence_metrics": {
+    "plddt_bands": {
+      "very_high_90_100": 0.35,
+      "confident_70_90": 0.45,
+      "low_50_70": 0.15,
+      "very_low_0_50": 0.05
+    }
+  },
+  "timings": {
+    "msa_search_seconds": 480,
+    "feature_processing_seconds": 120,
+    "model_inference_seconds": 1800,
+    "relaxation_seconds": 300,
+    "total_seconds": 2700
+  }
+}

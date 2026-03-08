@@ -1,0 +1,36 @@
+{
+  "model_slug": "boltz-2",
+  "job_id": "td-boltz2-kras-001",
+  "status": "completed",
+  "runtime_seconds": 3421,
+  "complex_prediction": {
+    "confidence_score": 0.84, "protein_plddt_mean": 88.3, "ligand_plddt_mean": 72.6,
+    "interface_pae_mean": 4.2, "predicted_ki_nm": 1.9, "predicted_delta_g_kcal_mol": -11.9,
+    "ligand_rmsd_to_pdb_7t47": 1.6,
+    "contact_residues": [10, 11, 12, 13, 14, 58, 59, 60, 61, 62, 63, 64, 67, 68, 69, 72, 95, 96, 99],
+    "hydrogen_bonds": [
+      {"protein_residue": "ASP12", "ligand_atom": "N3", "distance": 2.7},
+      {"protein_residue": "HIS95", "ligand_atom": "O1", "distance": 2.9},
+      {"protein_residue": "GLN61", "ligand_atom": "N5", "distance": 3.0},
+      {"protein_residue": "GLU63", "ligand_atom": "N7", "distance": 2.8},
+      {"protein_residue": "ASP69", "ligand_atom": "NH", "distance": 3.1}
+    ],
+    "switch_ii_buried_surface_area_A2": 485
+  },
+  "wt_comparison": {
+    "wt_confidence_score": 0.51, "wt_predicted_ki_nm": 890, "wt_ligand_plddt_mean": 38.2,
+    "selectivity_ratio": 468
+  },
+  "seeds_summary": [
+    {"seed": 1, "ki_nm": 1.9, "ligand_rmsd": 1.6, "confidence": 0.84},
+    {"seed": 2, "ki_nm": 2.3, "ligand_rmsd": 1.8, "confidence": 0.82},
+    {"seed": 3, "ki_nm": 1.7, "ligand_rmsd": 1.5, "confidence": 0.85},
+    {"seed": 4, "ki_nm": 2.8, "ligand_rmsd": 2.1, "confidence": 0.79},
+    {"seed": 5, "ki_nm": 2.1, "ligand_rmsd": 1.7, "confidence": 0.83}
+  ],
+  "summary": {
+    "mean_ki_nm": 2.16, "paper_ic50_nm": 2.0, "mean_rmsd_to_crystal": 1.74,
+    "selectivity_predicted": 468, "selectivity_paper": 700,
+    "verdict": "Boltz-2 predicts MRTX1133 binding with Ki ~2.2 nM (mean across 5 seeds), closely matching IC50 < 2 nM. Selectivity ~470x is within range of 700x. Complex shows 5 hydrogen bonds and 485 A2 buried surface area."
+  }
+}

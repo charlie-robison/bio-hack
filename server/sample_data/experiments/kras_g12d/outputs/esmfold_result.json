@@ -1,0 +1,14 @@
+{
+  "model_slug": "esmfold",
+  "job_id": "td-esmfold-kras-001",
+  "status": "completed",
+  "runtime_seconds": 12,
+  "prediction": {
+    "mean_plddt": 85.2, "ptm_score": 0.84,
+    "plddt_key_regions": {"p_loop_10_17": 86.1, "switch_i_30_40": 71.3, "switch_ii_58_75": 63.8, "g_domain_core": 91.2, "c_terminal_150_169": 32.5},
+    "backbone_rmsd_to_alphafold": 1.1
+  },
+  "summary": {
+    "verdict": "ESMFold independently confirms the KRAS G12D fold in 12 seconds. 1.1 A backbone RMSD to AlphaFold validates structural consistency across prediction methods."
+  }
+}

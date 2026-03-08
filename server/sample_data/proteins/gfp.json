@@ -1,0 +1,28 @@
+{
+  "protein_id": "P42212",
+  "name": "Green Fluorescent Protein",
+  "organism": "Aequorea victoria",
+  "gene_name": "GFP",
+  "uniprot_id": "P42212",
+  "pdb_ids": ["1EMA", "1GFL", "2WUR"],
+  "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+  "sequence_length": 238,
+  "chains": [
+    {
+      "chain_id": "A",
+      "name": "Single chain",
+      "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+      "start_residue": 1,
+      "end_residue": 238
+    }
+  ],
+  "description": "Green fluorescent protein from jellyfish. Beta-barrel structure with internal chromophore formed autocatalytically. Widely used as a reporter in molecular biology.",
+  "molecular_weight_da": 26870,
+  "known_structures": {
+    "experimental_method": "X-ray crystallography",
+    "best_resolution_angstrom": 1.1,
+    "fold_type": "beta-barrel"
+  },
+  "tags": ["fluorescent", "reporter", "beta-barrel", "biotech-tool"],
+  "fasta": ">sp|P42212|GFP_AEQVI Green fluorescent protein OS=Aequorea victoria OX=6100 GN=GFP PE=1 SV=1\nMSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+}

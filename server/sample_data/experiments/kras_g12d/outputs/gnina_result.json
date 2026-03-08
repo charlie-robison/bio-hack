@@ -1,0 +1,15 @@
+{
+  "model_slug": "gnina",
+  "job_id": "td-gnina-kras-001",
+  "status": "completed",
+  "runtime_seconds": 2156,
+  "poses": [
+    {"rank": 1, "cnn_score": 0.92, "cnn_affinity": 8.45, "vina_score_kcal_mol": -10.9, "binding_site": "Switch II pocket", "rmsd_to_pdb_7t47": 1.5, "key_contacts": ["ASP12", "GLN61", "GLU63", "HIS64", "ASP69", "MET72", "ARG68", "HIS95", "TYR96"]},
+    {"rank": 2, "cnn_score": 0.85, "cnn_affinity": 7.92, "vina_score_kcal_mol": -10.4, "binding_site": "Switch II pocket", "rmsd_to_pdb_7t47": 2.1},
+    {"rank": 3, "cnn_score": 0.61, "cnn_affinity": 6.78, "vina_score_kcal_mol": -9.1, "binding_site": "Switch II pocket (shifted)", "rmsd_to_pdb_7t47": 3.8}
+  ],
+  "summary": {
+    "top_cnn_score": 0.92, "estimated_ki_nm": 3.5, "top_pose_rmsd": 1.5,
+    "verdict": "GNINA CNN scoring strongly favors the Switch II binding pose (score 0.92). Top pose RMSD of 1.5 A to PDB 7T47 is the best among docking methods. CNN affinity (pKi 8.45, Ki ~3.5 nM) is consistent with the paper's IC50 < 2 nM."
+  }
+}

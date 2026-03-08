@@ -1,0 +1,35 @@
+{
+  "protein_id": "P01308",
+  "name": "Insulin",
+  "organism": "Homo sapiens",
+  "gene_name": "INS",
+  "uniprot_id": "P01308",
+  "pdb_ids": ["1ZNI", "4INS", "1MSO"],
+  "sequence": "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN",
+  "sequence_length": 110,
+  "chains": [
+    {
+      "chain_id": "B",
+      "name": "B chain",
+      "sequence": "FVNQHLCGSHLVEALYLVCGERGFFYTPKT",
+      "start_residue": 25,
+      "end_residue": 54
+    },
+    {
+      "chain_id": "A",
+      "name": "A chain",
+      "sequence": "GIVEQCCTSICSLYQLENYCN",
+      "start_residue": 90,
+      "end_residue": 110
+    }
+  ],
+  "description": "Preproinsulin precursor. Mature insulin consists of two disulfide-linked chains (A and B) cleaved from the precursor. Regulates glucose metabolism.",
+  "molecular_weight_da": 11981,
+  "known_structures": {
+    "experimental_method": "X-ray crystallography",
+    "best_resolution_angstrom": 1.0,
+    "fold_type": "alpha-helical"
+  },
+  "tags": ["hormone", "diabetes", "small-protein", "disulfide-bonded"],
+  "fasta": ">sp|P01308|INS_HUMAN Insulin OS=Homo sapiens OX=9606 GN=INS PE=1 SV=1\nMALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN"
+}

@@ -1,0 +1,28 @@
+{
+  "protein_id": "P69905",
+  "name": "Hemoglobin subunit alpha",
+  "organism": "Homo sapiens",
+  "gene_name": "HBA1",
+  "uniprot_id": "P69905",
+  "pdb_ids": ["1HHO", "2HHB", "1A3N"],
+  "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR",
+  "sequence_length": 142,
+  "chains": [
+    {
+      "chain_id": "A",
+      "name": "Alpha subunit",
+      "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR",
+      "start_residue": 1,
+      "end_residue": 142
+    }
+  ],
+  "description": "Hemoglobin alpha subunit. Oxygen transport protein forming a tetramer (alpha2-beta2) with hemoglobin beta. Each subunit binds one heme group.",
+  "molecular_weight_da": 15258,
+  "known_structures": {
+    "experimental_method": "X-ray crystallography",
+    "best_resolution_angstrom": 1.25,
+    "fold_type": "all-alpha (globin fold)"
+  },
+  "tags": ["oxygen-transport", "heme-binding", "globin", "blood"],
+  "fasta": ">sp|P69905|HBA_HUMAN Hemoglobin subunit alpha OS=Homo sapiens OX=9606 GN=HBA1 PE=1 SV=2\nMVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR"
+}

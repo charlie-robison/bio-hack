@@ -1,0 +1,21 @@
+{
+  "model_slug": "chai-1",
+  "job_id": "td-chai1-kras-001",
+  "status": "completed",
+  "runtime_seconds": 4210,
+  "complex_prediction": {
+    "aggregate_confidence": 0.81, "protein_plddt_mean": 87.5, "ligand_plddt_mean": 68.3,
+    "pae_mean": 4.8, "ligand_rmsd_to_pdb_7t47": 2.0, "binding_site": "Switch II pocket",
+    "contact_residues": [10, 11, 12, 13, 58, 59, 60, 61, 62, 63, 67, 68, 69, 72, 95, 96],
+    "hydrogen_bonds": [
+      {"protein_residue": "ASP12", "ligand_atom": "N3", "distance": 2.9},
+      {"protein_residue": "GLN61", "ligand_atom": "N5", "distance": 3.1},
+      {"protein_residue": "GLU63", "ligand_atom": "N7", "distance": 2.8},
+      {"protein_residue": "HIS95", "ligand_atom": "O1", "distance": 3.0}
+    ],
+    "loop_conformations": {"switch_i": "partially_closed", "switch_ii": "closed_drug_bound", "p_loop": "canonical"}
+  },
+  "summary": {
+    "verdict": "Chai-1 independently predicts MRTX1133 in the Switch II pocket (RMSD 2.0 A to PDB 7T47). 4 key hydrogen bonds match crystallographic contacts. Cross-validates Boltz-2 and DiffDock findings."
+  }
+}
