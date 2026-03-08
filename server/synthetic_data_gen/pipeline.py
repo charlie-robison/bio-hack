@@ -62,7 +62,7 @@ class SyntheticDataPipeline:
         self,
         api_key: str | None = None,
         extractor_model: str = "claude-opus-4-20250514",
-        generator_model: str = "claude-sonnet-4-5-20250514",
+        generator_model: str = "claude-sonnet-4-20250514",
         batch_size: int = 20,
         max_concurrent: int = 5,
     ):

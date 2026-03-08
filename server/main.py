@@ -39,9 +39,8 @@ class GenerateFromSchemaRequest(BaseModel):
     num_rows: int = Field(default=100, ge=1, le=5000)
 
 
-def _flatten_and_save(result: GenerationResult) -> dict:
+def _flatten_and_save(result: GenerationResult, run_folder_path: str | None = None) -> list:
     """Flatten GenerationResult, save to JSON file, and return response."""
-    columns = [col.name for col in result.experiment_schema.columns]
     data = []
     for row in result.rows:
         flat = {"row_index": row.row_index}
@@ -50,10 +49,13 @@ def _flatten_and_save(result: GenerationResult) -> dict:
         flat.update(row.data)
         data.append(flat)
 
-    # Save the raw data array to a JSON file
-    title_slug = result.experiment_schema.title[:50].replace(" ", "_").lower()
-    title_slug = "".join(c for c in title_slug if c.isalnum() or c == "_")
-    output_file = OUTPUT_DIR / f"{title_slug}.json"
+    # Save to the run folder if provided
+    if run_folder_path:
+        output_file = Path(run_folder_path) / "synthetic_data.json"
+    else:
+        title_slug = result.experiment_schema.title[:50].replace(" ", "_").lower()
+        title_slug = "".join(c for c in title_slug if c.isalnum() or c == "_")
+        output_file = OUTPUT_DIR / f"{title_slug}.json"
 
     with open(output_file, "w") as f:
         json.dump(data, f, indent=2, default=str)
@@ -61,18 +63,13 @@ def _flatten_and_save(result: GenerationResult) -> dict:
     logger = logging.getLogger(__name__)
     logger.info(f"Saved {len(data)} rows to {output_file}")
 
-    return {
-        "title": result.experiment_schema.title,
-        "total_rows": result.total_rows,
-        "columns": columns,
-        "output_file": str(output_file),
-        "data": data,
-    }
+    return data
 
 
 @app.get("/")
 def root():
     return {"message": "BioFact API", "endpoints": ["/api/upload", "/api/runs", "/synthetic/from-pdf", "/synthetic/extract-schema", "/synthetic/from-schema"]}
+
 
 
 @app.get("/health")
@@ -158,45 +155,35 @@ async def api_get_run_file(run_id: str, file_path: str):
 
 # ── Synthetic Data Generation endpoints (from branch) ──
 
+class GenerateFromRunRequest(BaseModel):
+    run_id: str
+    num_rows: int = Field(default=100, ge=1, le=5000)
+
+
 @app.post("/synthetic/from-pdf")
-async def generate_from_pdf(
-    file: UploadFile = File(...),
-    num_rows: int = Form(default=100),
-    run_id: str = Form(default=None),
-):
+def generate_from_pdf(request: GenerateFromRunRequest):
     """
-    Upload a research paper PDF and generate synthetic experimental data.
+    Generate synthetic experimental data from a previously uploaded PDF.
 
+    Reads original.pdf from the run folder identified by run_id.
     Step 1: Opus parses the PDF and extracts the experiment schema.
-    Step 2: Sonnet generates synthetic data rows from the schema.
+    Step 2: Sonnet generates synthetic data rows from the schema (concurrently).
 
-    Optionally pass a run_id from a previous /api/upload to give the
-    schema extractor access to the parsed run folder (content.md, images, etc.).
+    Saves synthetic_data.json into the run folder.
     """
-    if not file.filename.lower().endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="File must be a PDF")
+    run_folder = Path(__file__).parent / "fs" / "runs" / request.run_id
+    if not run_folder.exists():
+        raise HTTPException(status_code=404, detail=f"Run '{request.run_id}' not found")
 
-    # Resolve the run folder path if a run_id was provided
-    run_folder_path = None
-    if run_id:
-        candidate = Path(__file__).parent / "fs" / "runs" / run_id
-        if candidate.exists():
-            run_folder_path = str(candidate)
-        else:
-            raise HTTPException(status_code=404, detail=f"Run '{run_id}' not found")
-
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
-        content = await file.read()
-        tmp.write(content)
-        tmp_path = tmp.name
+    pdf_path = run_folder / "original.pdf"
+    if not pdf_path.exists():
+        raise HTTPException(status_code=404, detail=f"No original.pdf in run '{request.run_id}'")
 
     try:
-        result = pipeline.run(tmp_path, num_rows=num_rows, run_folder_path=run_folder_path)
-        return _flatten_and_save(result)
+        result = pipeline.run(str(pdf_path), num_rows=request.num_rows, run_folder_path=str(run_folder))
+        return _flatten_and_save(result, run_folder_path=str(run_folder))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    finally:
-        os.unlink(tmp_path)
 
 
 @app.post("/synthetic/extract-schema")
