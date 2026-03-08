@@ -11,10 +11,17 @@
       "WebFetch(domain:support.levitate.bio)",
       "Bash(python:*)",
       "Bash(/Users/jasonhenkel/Desktop/bio-hackathon/bio-hack/rdkit-mcp-server/venv/bin/python:*)",
-      "Bash(lsof:*)"
+      "Bash(lsof:*)",
+      "Bash(git pull:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(uv pip install:*)",
+      "Bash(./claudex-compete:*)"
     ],
     "additionalDirectories": [
-      "/Users/jasonhenkel/.claude"
+      "/Users/jasonhenkel/.claude",
+      "/Users/jasonhenkel/Desktop/bio-hackathon/bio-hack/claudex-compete"
     ]
   }
 }
