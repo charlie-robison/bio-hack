@@ -109,7 +109,7 @@ class SchemaExtractor:
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "claude-opus-4-6-20250219",
+        model: str = "claude-opus-4-20250514",
     ):
         """
         Initialize the schema extractor.

@@ -97,7 +97,7 @@ class DataGenerator:
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "claude-sonnet-4-6-20250514",
+        model: str = "claude-sonnet-4-5-20250514",
         batch_size: int = 20,
         max_concurrent: int = 5,
     ):
