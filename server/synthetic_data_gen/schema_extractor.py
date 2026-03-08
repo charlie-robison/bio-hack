@@ -2,17 +2,9 @@
 Schema Extractor (Step 1b)
 ==========================
 
-Uses Claude Opus 4.6 to deeply analyze a research paper and extract
-a structured experiment schema. This is the "brains" of Step 1 —
-it understands experimental design, identifies variables, infers
-distributions, and maps out relationships between variables.
-
-Why Opus? This step requires deep reasoning about:
-    - What the experiment is actually testing
-    - Which variables are independent vs dependent vs controlled
-    - Plausible statistical distributions for each variable
-    - Correlations and relationships between variables
-    - Experimental group definitions
+Uses GPT-4.1 to analyze a research paper and extract a structured
+experiment schema. Identifies variables, infers distributions, and
+maps out relationships between variables.
 """
 
 from __future__ import annotations
@@ -22,7 +14,7 @@ import logging
 import mimetypes
 import os
 from pathlib import Path
-from anthropic import Anthropic
+from openai import OpenAI
 from synthetic_data_gen.models import ExperimentSchema
 from synthetic_data_gen.model_catalog import (
     load_model_index,
@@ -191,70 +183,22 @@ RESEARCH PAPER:
 class SchemaExtractor:
     """
     Extracts a structured ExperimentSchema from research paper text
-    using Claude Opus 4.6.
-
-    This is the most critical step — the quality of the extracted schema
-    directly determines the quality of the generated synthetic data.
-    Opus is used here for its superior reasoning about experimental
-    design, statistical distributions, and variable relationships.
-
-    Attributes:
-        client: Anthropic API client.
-        model: Model ID to use (defaults to Claude Opus 4.6).
-
-    Example:
-        extractor = SchemaExtractor(api_key="sk-ant-...")
-        schema = await extractor.extract("full text of the paper...")
+    using GPT-4.1.
     """
 
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "claude-opus-4-20250514",
+        model: str = "gpt-4.1",
         models_dir: Path | None = None,
     ):
-        """
-        Initialize the schema extractor.
-
-        Args:
-            api_key: Anthropic API key. If None, reads from
-                ANTHROPIC_API_KEY environment variable.
-            model: Model ID to use. Defaults to Claude Opus 4.6
-                for maximum reasoning capability.
-            models_dir: Path to the tamarin models directory.
-                If None, uses the default server/models/ directory.
-        """
-        self.client = Anthropic(api_key=api_key)
+        self.client = OpenAI(api_key=api_key)
         self.model = model
         self._models_dir = models_dir
         self._model_index = load_model_index(models_dir)
         self._model_index_text = format_index_for_prompt(self._model_index)
 
     def extract(self, paper_text: str, run_folder_path: str | None = None) -> ExperimentSchema:
-        """
-        Extract an experiment schema from research paper text.
-
-        Sends the full paper to Claude Opus with a detailed system prompt
-        instructing it to identify all experimental variables, their
-        distributions, relationships, and constraints.
-
-        When a model catalog is available, Opus also selects the best
-        matching tamarin model. After selection, the full model.json
-        is loaded and merged into the schema's selected_model field.
-
-        Args:
-            paper_text: The full text of the research paper.
-            run_folder_path: Optional path to a run folder (fs/runs/{run_id})
-                whose contents will be included as additional context.
-
-        Returns:
-            A validated ExperimentSchema containing all extracted
-            experimental design information.
-
-        Raises:
-            ValueError: If the model response cannot be parsed into
-                a valid ExperimentSchema.
-        """
         logger.info(f"Extracting schema using {self.model}")
         logger.info(f"Paper length: {len(paper_text)} characters")
 
@@ -268,19 +212,18 @@ class SchemaExtractor:
         user_content = self._build_user_content(paper_text, run_folder_path, with_models=has_models)
         system_prompt = EXTRACTION_SYSTEM_PROMPT_WITH_MODELS if has_models else EXTRACTION_SYSTEM_PROMPT
 
-        response = self.client.messages.create(
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_content},
+        ]
+
+        response = self.client.chat.completions.create(
             model=self.model,
-            max_tokens=8192,
-            system=system_prompt,
-            messages=[
-                {
-                    "role": "user",
-                    "content": user_content,
-                }
-            ],
+            max_tokens=4096,
+            messages=messages,
         )
 
-        raw_text = response.content[0].text
+        raw_text = response.choices[0].message.content
         logger.info(f"Received response: {len(raw_text)} characters")
 
         schema = self._parse_response(raw_text)
@@ -305,17 +248,6 @@ class SchemaExtractor:
     def _build_user_content(
         self, paper_text: str, run_folder_path: str | None, with_models: bool = False
     ) -> str | list[dict]:
-        """
-        Build the user message content for the extraction call.
-
-        If no run folder is provided, returns a plain text prompt.
-        If a run folder exists, returns a multi-part content list that
-        includes all markdown files as text and all images as vision
-        blocks so the model can inspect diagrams and figures.
-
-        If with_models is True, uses the model-aware prompt template
-        that includes the tamarin model catalog.
-        """
         if with_models:
             base_prompt = EXTRACTION_USER_PROMPT_WITH_MODELS.format(
                 paper_text=paper_text,
@@ -331,12 +263,11 @@ class SchemaExtractor:
         if not run_dir.exists():
             return base_prompt
 
-        # Start building multi-part content
+        # Build multi-part content (OpenAI vision format)
         content_blocks: list[dict] = [
             {"type": "text", "text": base_prompt},
         ]
 
-        # Collect markdown files and images from the run folder
         md_parts: list[str] = []
         image_paths: list[Path] = []
 
@@ -351,7 +282,6 @@ class SchemaExtractor:
                 elif suffix in self.IMAGE_EXTENSIONS:
                     image_paths.append(fpath)
 
-        # Add markdown context as a single text block
         if md_parts:
             run_text = (
                 "\n\nADDITIONAL EXPERIMENT CONTEXT FROM RUN FOLDER:\n\n"
@@ -359,17 +289,15 @@ class SchemaExtractor:
             )
             content_blocks.append({"type": "text", "text": run_text})
 
-        # Add images as vision blocks
+        # OpenAI vision format for images
         for img_path in image_paths:
             media_type = mimetypes.guess_type(str(img_path))[0] or "image/png"
             img_data = base64.standard_b64encode(img_path.read_bytes()).decode()
             content_blocks.append({"type": "text", "text": f"[Diagram/Figure: {img_path.name}]"})
             content_blocks.append({
-                "type": "image",
-                "source": {
-                    "type": "base64",
-                    "media_type": media_type,
-                    "data": img_data,
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:{media_type};base64,{img_data}",
                 },
             })
 
@@ -381,22 +309,6 @@ class SchemaExtractor:
         return content_blocks
 
     def _parse_response(self, raw_text: str) -> ExperimentSchema:
-        """
-        Parse the raw LLM response into a validated ExperimentSchema.
-
-        Handles cases where the model wraps JSON in markdown code blocks
-        or includes extra text around the JSON.
-
-        Args:
-            raw_text: Raw text response from Claude.
-
-        Returns:
-            Validated ExperimentSchema.
-
-        Raises:
-            ValueError: If the response doesn't contain valid JSON
-                or doesn't match the ExperimentSchema structure.
-        """
         json_str = self._extract_json(raw_text)
 
         try:
@@ -416,17 +328,6 @@ class SchemaExtractor:
             )
 
     def _extract_json(self, text: str) -> str:
-        """
-        Extract JSON from text that may contain markdown code blocks
-        or surrounding prose.
-
-        Args:
-            text: Raw text potentially containing JSON.
-
-        Returns:
-            Extracted JSON string.
-        """
-        # Try to find JSON in markdown code block
         if "```json" in text:
             start = text.index("```json") + 7
             end = text.index("```", start)
@@ -437,7 +338,6 @@ class SchemaExtractor:
             end = text.index("```", start)
             return text[start:end].strip()
 
-        # Try to find raw JSON object
         first_brace = text.find("{")
         last_brace = text.rfind("}")
         if first_brace != -1 and last_brace != -1:

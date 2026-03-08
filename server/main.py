@@ -20,10 +20,8 @@ from synthetic_data_gen.sample_data_loader import SampleDataLoader
 logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(title="BioFact API")
+pipeline = SyntheticDataPipeline(api_key=os.environ["OPENAI_API_KEY"])
 sample_loader = SampleDataLoader()
-
-api_key = os.environ.get("ANTHROPIC_API_KEY")
-pipeline = SyntheticDataPipeline(api_key=api_key) if api_key else None
 
 OUTPUT_DIR = Path(__file__).parent / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)

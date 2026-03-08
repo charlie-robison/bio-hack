@@ -61,10 +61,10 @@ class SyntheticDataPipeline:
     def __init__(
         self,
         api_key: str | None = None,
-        extractor_model: str = "claude-opus-4-20250514",
-        generator_model: str = "claude-sonnet-4-20250514",
-        batch_size: int = 20,
-        max_concurrent: int = 5,
+        extractor_model: str = "gpt-4.1",
+        generator_model: str = "gpt-4.1-mini",
+        batch_size: int = 50,
+        max_concurrent: int = 10,
     ):
         """
         Initialize the full pipeline.
