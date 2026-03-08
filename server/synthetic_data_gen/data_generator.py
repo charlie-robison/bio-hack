@@ -20,6 +20,8 @@ from __future__ import annotations
 import json
 import logging
 import math
+import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from anthropic import Anthropic
 from synthetic_data_gen.models import (
     DataColumn,
@@ -96,7 +98,7 @@ class DataGenerator:
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "claude-sonnet-4-5-20250514",
+        model: str = "claude-sonnet-4-20250514",
         batch_size: int = 20,
         max_concurrent: int = 5,
     ):
@@ -144,15 +146,34 @@ class DataGenerator:
         num_batches = math.ceil(num_rows / self.batch_size)
         all_rows: list[SyntheticRow] = []
 
+        # Build batch specs
+        batches = []
         for i in range(num_batches):
             start_index = i * self.batch_size
             actual_batch_size = min(self.batch_size, num_rows - start_index)
-            logger.info(f"Generating batch {i + 1}/{num_batches}")
-            try:
-                rows = self._generate_batch(schema, actual_batch_size, start_index)
-                all_rows.extend(rows)
-            except Exception as e:
-                logger.error(f"Batch {i + 1} failed: {e}")
+            batches.append((i, actual_batch_size, start_index))
+
+        # Run batches concurrently
+        def _run_batch(spec):
+            idx, bs, si = spec
+            logger.info(f"Generating batch {idx + 1}/{num_batches}")
+            return idx, self._generate_batch(schema, bs, si)
+
+        with ThreadPoolExecutor(max_workers=self.max_concurrent) as executor:
+            futures = {executor.submit(_run_batch, b): b for b in batches}
+            results = {}
+            for future in as_completed(futures):
+                batch_spec = futures[future]
+                try:
+                    idx, rows = future.result()
+                    results[idx] = rows
+                except Exception as e:
+                    logger.error(f"Batch {batch_spec[0] + 1} failed: {e}")
+
+        # Reassemble in order
+        for i in range(num_batches):
+            if i in results:
+                all_rows.extend(results[i])
 
         logger.info(f"Generated {len(all_rows)}/{num_rows} rows successfully")
 
@@ -212,7 +233,7 @@ class DataGenerator:
 
         response = self.client.messages.create(
             model=self.model,
-            max_tokens=4096,
+            max_tokens=8192,
             system=GENERATION_SYSTEM_PROMPT,
             messages=[{"role": "user", "content": prompt}],
         )
@@ -309,16 +330,12 @@ class DataGenerator:
         Returns:
             Extracted JSON array string.
         """
-        if "```json" in text:
-            start = text.index("```json") + 7
-            end = text.index("```", start)
-            return text[start:end].strip()
+        # Try to extract from ```json ... ``` or ``` ... ``` blocks
+        fence_match = re.search(r"```(?:json)?\s*\n?(.*?)```", text, re.DOTALL)
+        if fence_match:
+            return fence_match.group(1).strip()
 
-        if "```" in text:
-            start = text.index("```") + 3
-            end = text.index("```", start)
-            return text[start:end].strip()
-
+        # Fall back to bracket matching
         first_bracket = text.find("[")
         last_bracket = text.rfind("]")
         if first_bracket != -1 and last_bracket != -1:

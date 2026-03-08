@@ -13,7 +13,7 @@ well-structured enough to drive reliable synthetic data creation.
 from __future__ import annotations
 from enum import Enum
 from typing import Any
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class ColumnType(str, Enum):
@@ -67,6 +67,13 @@ class DataColumn(BaseModel):
     mean: float | None = None
     std_dev: float | None = None
     categories: list[str] | None = None
+
+    @field_validator("categories", mode="before")
+    @classmethod
+    def coerce_categories_to_str(cls, v):
+        if isinstance(v, list):
+            return [str(item) for item in v]
+        return v
     constraints: list[str] = Field(default_factory=list)
 
 

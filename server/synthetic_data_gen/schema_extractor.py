@@ -16,8 +16,12 @@ Why Opus? This step requires deep reasoning about:
 """
 
 from __future__ import annotations
+import base64
 import json
 import logging
+import mimetypes
+import os
+from pathlib import Path
 from anthropic import Anthropic
 from synthetic_data_gen.models import ExperimentSchema
 
@@ -123,7 +127,7 @@ class SchemaExtractor:
         self.client = Anthropic(api_key=api_key)
         self.model = model
 
-    def extract(self, paper_text: str) -> ExperimentSchema:
+    def extract(self, paper_text: str, run_folder_path: str | None = None) -> ExperimentSchema:
         """
         Extract an experiment schema from research paper text.
 
@@ -133,6 +137,8 @@ class SchemaExtractor:
 
         Args:
             paper_text: The full text of the research paper.
+            run_folder_path: Optional path to a run folder (fs/runs/{run_id})
+                whose contents will be included as additional context.
 
         Returns:
             A validated ExperimentSchema containing all extracted
@@ -145,6 +151,8 @@ class SchemaExtractor:
         logger.info(f"Extracting schema using {self.model}")
         logger.info(f"Paper length: {len(paper_text)} characters")
 
+        user_content = self._build_user_content(paper_text, run_folder_path)
+
         response = self.client.messages.create(
             model=self.model,
             max_tokens=8192,
@@ -152,9 +160,7 @@ class SchemaExtractor:
             messages=[
                 {
                     "role": "user",
-                    "content": EXTRACTION_USER_PROMPT.format(
-                        paper_text=paper_text
-                    ),
+                    "content": user_content,
                 }
             ],
         )
@@ -163,6 +169,77 @@ class SchemaExtractor:
         logger.info(f"Received response: {len(raw_text)} characters")
 
         return self._parse_response(raw_text)
+
+    IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp"}
+
+    def _build_user_content(
+        self, paper_text: str, run_folder_path: str | None
+    ) -> str | list[dict]:
+        """
+        Build the user message content for the extraction call.
+
+        If no run folder is provided, returns a plain text prompt.
+        If a run folder exists, returns a multi-part content list that
+        includes all markdown files as text and all images as vision
+        blocks so the model can inspect diagrams and figures.
+        """
+        base_prompt = EXTRACTION_USER_PROMPT.format(paper_text=paper_text)
+
+        if not run_folder_path:
+            return base_prompt
+
+        run_dir = Path(run_folder_path)
+        if not run_dir.exists():
+            return base_prompt
+
+        # Start building multi-part content
+        content_blocks: list[dict] = [
+            {"type": "text", "text": base_prompt},
+        ]
+
+        # Collect markdown files and images from the run folder
+        md_parts: list[str] = []
+        image_paths: list[Path] = []
+
+        for root, _dirs, files in os.walk(run_dir):
+            for fname in sorted(files):
+                fpath = Path(root) / fname
+                suffix = fpath.suffix.lower()
+                if suffix == ".md":
+                    md_parts.append(
+                        f"--- {fpath.name} ---\n{fpath.read_text()}"
+                    )
+                elif suffix in self.IMAGE_EXTENSIONS:
+                    image_paths.append(fpath)
+
+        # Add markdown context as a single text block
+        if md_parts:
+            run_text = (
+                "\n\nADDITIONAL EXPERIMENT CONTEXT FROM RUN FOLDER:\n\n"
+                + "\n\n".join(md_parts)
+            )
+            content_blocks.append({"type": "text", "text": run_text})
+
+        # Add images as vision blocks
+        for img_path in image_paths:
+            media_type = mimetypes.guess_type(str(img_path))[0] or "image/png"
+            img_data = base64.standard_b64encode(img_path.read_bytes()).decode()
+            content_blocks.append({"type": "text", "text": f"[Diagram/Figure: {img_path.name}]"})
+            content_blocks.append({
+                "type": "image",
+                "source": {
+                    "type": "base64",
+                    "media_type": media_type,
+                    "data": img_data,
+                },
+            })
+
+        logger.info(
+            f"Built multi-part content: {len(md_parts)} markdown files, "
+            f"{len(image_paths)} images from run {run_dir.name}"
+        )
+
+        return content_blocks
 
     def _parse_response(self, raw_text: str) -> ExperimentSchema:
         """
