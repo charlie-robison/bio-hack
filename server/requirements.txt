@@ -3,6 +3,7 @@ uvicorn
 mcp[cli]
 httpx
 anthropic
+openai
 python-multipart
 pdf2image
 aiofiles

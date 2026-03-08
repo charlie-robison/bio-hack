@@ -2,18 +2,8 @@
 Data Generator (Step 2)
 =======================
 
-Uses Claude Sonnet 4.6 to generate synthetic data rows in bulk from
-an ExperimentSchema. This is the high-volume workhorse of the pipeline.
-
-Why Sonnet? This step requires:
-    - Reliable structured JSON output on every call
-    - Fast inference (hundreds/thousands of calls)
-    - Precise adherence to prompt templates
-    - Good enough reasoning to maintain realistic correlations
-
-The generator works by batching rows (e.g., 10-25 per API call) to
-balance throughput with output quality. Each batch includes the full
-schema context so the model maintains coherent variable relationships.
+Uses GPT-4.1-mini to generate synthetic data rows in bulk from
+an ExperimentSchema. Fast and cheap for high-volume structured output.
 """
 
 from __future__ import annotations
@@ -22,7 +12,7 @@ import logging
 import math
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from anthropic import Anthropic
+from openai import OpenAI
 from synthetic_data_gen.models import (
     DataColumn,
     ExperimentSchema,
@@ -79,45 +69,17 @@ Return ONLY the JSON array, no other text.\
 
 class DataGenerator:
     """
-    Generates synthetic data rows in bulk using Claude Sonnet 4.6.
-
-    Takes an ExperimentSchema (output from Step 1) and generates
-    the requested number of rows by making batched API calls.
-    Rows are generated in configurable batch sizes to balance
-    throughput with quality.
-
-    Attributes:
-        client: Anthropic API client.
-        model: Model ID to use (defaults to Claude Sonnet 4.6).
-        batch_size: Number of rows to generate per API call.
-        max_concurrent: Maximum concurrent API calls.
-
-    Example:
-        generator = DataGenerator(api_key="sk-ant-...")
-        result = generator.generate(schema, num_rows=500)
+    Generates synthetic data rows in bulk using GPT-4.1-mini.
     """
 
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "claude-sonnet-4-20250514",
-        batch_size: int = 20,
-        max_concurrent: int = 5,
+        model: str = "gpt-4.1-mini",
+        batch_size: int = 50,
+        max_concurrent: int = 10,
     ):
-        """
-        Initialize the data generator.
-
-        Args:
-            api_key: Anthropic API key. If None, reads from
-                ANTHROPIC_API_KEY environment variable.
-            model: Model ID for generation. Defaults to Claude Sonnet 4.6,
-                which offers the best speed/quality ratio for structured output.
-            batch_size: Number of rows per API call. Higher = fewer calls
-                but longer responses. 20 is a good default.
-            max_concurrent: Maximum parallel API calls. Respects rate limits
-                while maximizing throughput.
-        """
-        self.client = Anthropic(api_key=api_key)
+        self.client = OpenAI(api_key=api_key)
         self.model = model
         self.batch_size = batch_size
         self.max_concurrent = max_concurrent
@@ -127,19 +89,6 @@ class DataGenerator:
         schema: ExperimentSchema,
         num_rows: int = 100,
     ) -> GenerationResult:
-        """
-        Generate synthetic data rows from an experiment schema.
-
-        Splits the requested rows into batches and processes them
-        sequentially.
-
-        Args:
-            schema: The experiment schema from Step 1.
-            num_rows: Total number of rows to generate.
-
-        Returns:
-            GenerationResult containing all generated rows and metadata.
-        """
         logger.info(
             f"Generating {num_rows} rows using {self.model} "
             f"(batch_size={self.batch_size})"
@@ -148,14 +97,12 @@ class DataGenerator:
         num_batches = math.ceil(num_rows / self.batch_size)
         all_rows: list[SyntheticRow] = []
 
-        # Build batch specs
         batches = []
         for i in range(num_batches):
             start_index = i * self.batch_size
             actual_batch_size = min(self.batch_size, num_rows - start_index)
             batches.append((i, actual_batch_size, start_index))
 
-        # Run batches concurrently
         def _run_batch(spec):
             idx, bs, si = spec
             logger.info(f"Generating batch {idx + 1}/{num_batches}")
@@ -172,7 +119,6 @@ class DataGenerator:
                 except Exception as e:
                     logger.error(f"Batch {batch_spec[0] + 1} failed: {e}")
 
-        # Reassemble in order
         for i in range(num_batches):
             if i in results:
                 all_rows.extend(results[i])
@@ -196,20 +142,6 @@ class DataGenerator:
         batch_size: int,
         start_index: int,
     ) -> list[SyntheticRow]:
-        """
-        Generate a single batch of synthetic data rows.
-
-        Constructs the prompt from the schema and makes one API call
-        to generate batch_size rows.
-
-        Args:
-            schema: Experiment schema.
-            batch_size: Number of rows in this batch.
-            start_index: Starting row index for this batch.
-
-        Returns:
-            List of SyntheticRow objects parsed from the model response.
-        """
         columns_desc = self._format_columns(schema.columns)
         relationships = "\n".join(
             f"- {r}" for r in schema.relationships
@@ -236,26 +168,19 @@ class DataGenerator:
             start_index=start_index,
         )
 
-        response = self.client.messages.create(
+        response = self.client.chat.completions.create(
             model=self.model,
             max_tokens=8192,
-            system=GENERATION_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": prompt}],
+            messages=[
+                {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
+                {"role": "user", "content": prompt},
+            ],
         )
 
-        raw_text = response.content[0].text
+        raw_text = response.choices[0].message.content
         return self._parse_batch_response(raw_text, start_index, batch_size)
 
     def _format_columns(self, columns: list[DataColumn]) -> str:
-        """
-        Format column definitions into a readable prompt section.
-
-        Args:
-            columns: List of DataColumn definitions.
-
-        Returns:
-            Formatted string describing each column for the prompt.
-        """
         parts = []
         for col in columns:
             desc = f"- {col.name} ({col.column_type.value}): {col.description}"
@@ -277,10 +202,6 @@ class DataGenerator:
         return "\n".join(parts)
 
     def _format_model_instructions(self, schema: ExperimentSchema) -> str:
-        """
-        Build instructions telling the generator to format data for the
-        selected tamarin model's expected inputs.
-        """
         if not schema.selected_model:
             return ""
 
@@ -312,23 +233,6 @@ class DataGenerator:
         start_index: int,
         expected_count: int,
     ) -> list[SyntheticRow]:
-        """
-        Parse model response into a list of SyntheticRow objects.
-
-        Handles JSON extraction from potentially wrapped responses
-        and validates each row.
-
-        Args:
-            raw_text: Raw model response text.
-            start_index: Expected starting row index.
-            expected_count: Expected number of rows.
-
-        Returns:
-            List of validated SyntheticRow objects.
-
-        Raises:
-            ValueError: If the response cannot be parsed as valid JSON.
-        """
         json_str = self._extract_json_array(raw_text)
 
         try:
@@ -355,22 +259,10 @@ class DataGenerator:
         return rows
 
     def _extract_json_array(self, text: str) -> str:
-        """
-        Extract a JSON array from text that may contain markdown
-        or surrounding prose.
-
-        Args:
-            text: Raw text potentially containing a JSON array.
-
-        Returns:
-            Extracted JSON array string.
-        """
-        # Try to extract from ```json ... ``` or ``` ... ``` blocks
         fence_match = re.search(r"```(?:json)?\s*\n?(.*?)```", text, re.DOTALL)
         if fence_match:
             return fence_match.group(1).strip()
 
-        # Fall back to bracket matching
         first_bracket = text.find("[")
         last_bracket = text.rfind("]")
         if first_bracket != -1 and last_bracket != -1:

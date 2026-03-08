@@ -19,7 +19,7 @@ from synthetic_data_gen.pipeline import SyntheticDataPipeline
 logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(title="BioFact API")
-pipeline = SyntheticDataPipeline(api_key=os.environ["ANTHROPIC_API_KEY"])
+pipeline = SyntheticDataPipeline(api_key=os.environ["OPENAI_API_KEY"])
 
 OUTPUT_DIR = Path(__file__).parent / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
