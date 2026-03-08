@@ -1,2 +1,8 @@
 fastapi
 uvicorn
+anthropic
+pydantic
+PyPDF2
+python-multipart
+httpx
+beautifulsoup4
