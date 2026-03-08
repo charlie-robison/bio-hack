@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "WebFetch(domain:docs.tamarind.bio)",
+      "WebFetch(domain:api.docs.gretel.ai)",
+      "WebFetch(domain:docs.gretel.ai)",
+      "WebFetch(domain:app.tamarind.bio)",
+      "WebFetch(domain:python.docs.gretel.ai)",
+      "WebFetch(domain:www.tamarind.bio)",
+      "WebFetch(domain:support.levitate.bio)",
+      "Bash(python:*)",
+      "Bash(/Users/jasonhenkel/Desktop/bio-hackathon/bio-hack/rdkit-mcp-server/venv/bin/python:*)",
+      "Bash(lsof:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/jasonhenkel/.claude"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+mcp[cli]
+httpx
+anthropic
+python-multipart
+pdf2image
+aiofiles
+python-dotenv
+rdkit

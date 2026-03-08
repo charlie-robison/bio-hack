@@ -1,0 +1,3 @@
+# Ignore all run data (generated at runtime)
+runs/*
+!runs/.gitkeep
