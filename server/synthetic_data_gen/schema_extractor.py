@@ -8,10 +8,8 @@ maps out relationships between variables.
 """
 
 from __future__ import annotations
-import base64
 import json
 import logging
-import mimetypes
 import os
 from pathlib import Path
 from openai import OpenAI
@@ -183,13 +181,13 @@ RESEARCH PAPER:
 class SchemaExtractor:
     """
     Extracts a structured ExperimentSchema from research paper text
-    using GPT-5.2.
+    using GPT-5.4.
     """
 
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "gpt-5.2",
+        model: str = "gpt-5.4",
         models_dir: Path | None = None,
     ):
         self.client = OpenAI(api_key=api_key)
@@ -219,12 +217,25 @@ class SchemaExtractor:
 
         response = self.client.chat.completions.create(
             model=self.model,
-            max_completion_tokens=4096,
+            max_completion_tokens=16384,
             messages=messages,
         )
 
-        raw_text = response.choices[0].message.content
-        logger.info(f"Received response: {len(raw_text)} characters")
+        choice = response.choices[0]
+        raw_text = choice.message.content or ""
+        finish_reason = choice.finish_reason
+        refusal = getattr(choice.message, "refusal", None)
+
+        logger.info(f"Response finish_reason={finish_reason}, length={len(raw_text)}")
+
+        if not raw_text.strip():
+            details = (
+                f"finish_reason={finish_reason}, "
+                f"refusal={refusal}, "
+                f"usage={response.usage}, "
+                f"model={response.model}"
+            )
+            raise ValueError(f"Model returned empty response. {details}")
 
         schema = self._parse_response(raw_text)
 
@@ -243,11 +254,15 @@ class SchemaExtractor:
 
         return schema
 
-    IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp"}
-
     def _build_user_content(
         self, paper_text: str, run_folder_path: str | None, with_models: bool = False
     ) -> str | list[dict]:
+        # Truncate paper text to ~50k chars (~12k tokens) to keep prompt reasonable
+        max_paper_chars = 50000
+        if len(paper_text) > max_paper_chars:
+            logger.info(f"Truncating paper text from {len(paper_text)} to {max_paper_chars} chars")
+            paper_text = paper_text[:max_paper_chars]
+
         if with_models:
             base_prompt = EXTRACTION_USER_PROMPT_WITH_MODELS.format(
                 paper_text=paper_text,
@@ -263,50 +278,41 @@ class SchemaExtractor:
         if not run_dir.exists():
             return base_prompt
 
-        # Build multi-part content (OpenAI vision format)
-        content_blocks: list[dict] = [
-            {"type": "text", "text": base_prompt},
-        ]
-
+        # Use only the markdown content from the run folder (skip images —
+        # they bloat the prompt massively with base64 encoding and the text
+        # content from the paper + markdown files is sufficient for schema extraction).
         md_parts: list[str] = []
-        image_paths: list[Path] = []
 
         for root, _dirs, files in os.walk(run_dir):
             for fname in sorted(files):
                 fpath = Path(root) / fname
-                suffix = fpath.suffix.lower()
-                if suffix == ".md":
+                if fpath.suffix.lower() == ".md":
                     md_parts.append(
                         f"--- {fpath.name} ---\n{fpath.read_text()}"
                     )
-                elif suffix in self.IMAGE_EXTENSIONS:
-                    image_paths.append(fpath)
 
-        if md_parts:
-            run_text = (
-                "\n\nADDITIONAL EXPERIMENT CONTEXT FROM RUN FOLDER:\n\n"
-                + "\n\n".join(md_parts)
-            )
-            content_blocks.append({"type": "text", "text": run_text})
+        if not md_parts:
+            return base_prompt
 
-        # OpenAI vision format for images
-        for img_path in image_paths:
-            media_type = mimetypes.guess_type(str(img_path))[0] or "image/png"
-            img_data = base64.standard_b64encode(img_path.read_bytes()).decode()
-            content_blocks.append({"type": "text", "text": f"[Diagram/Figure: {img_path.name}]"})
-            content_blocks.append({
-                "type": "image_url",
-                "image_url": {
-                    "url": f"data:{media_type};base64,{img_data}",
-                },
-            })
+        md_text = "\n\n".join(md_parts)
+        # Cap markdown context too
+        max_md_chars = 30000
+        if len(md_text) > max_md_chars:
+            logger.info(f"Truncating markdown context from {len(md_text)} to {max_md_chars} chars")
+            md_text = md_text[:max_md_chars]
 
-        logger.info(
-            f"Built multi-part content: {len(md_parts)} markdown files, "
-            f"{len(image_paths)} images from run {run_dir.name}"
+        full_prompt = (
+            base_prompt
+            + "\n\nADDITIONAL EXPERIMENT CONTEXT FROM RUN FOLDER:\n\n"
+            + md_text
         )
 
-        return content_blocks
+        logger.info(
+            f"Built prompt: {len(md_parts)} markdown files from run {run_dir.name}, "
+            f"total prompt length: {len(full_prompt)} chars"
+        )
+
+        return full_prompt
 
     def _parse_response(self, raw_text: str) -> ExperimentSchema:
         json_str = self._extract_json(raw_text)

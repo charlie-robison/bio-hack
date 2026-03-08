@@ -69,13 +69,13 @@ Return ONLY the JSON array, no other text.\
 
 class DataGenerator:
     """
-    Generates synthetic data rows in bulk using GPT-5.2.
+    Generates synthetic data rows in bulk using GPT-5.4.
     """
 
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "gpt-5.2",
+        model: str = "gpt-5.4",
         batch_size: int = 50,
         max_concurrent: int = 10,
     ):
@@ -168,16 +168,33 @@ class DataGenerator:
             start_index=start_index,
         )
 
+        messages = [
+            {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ]
+
         response = self.client.chat.completions.create(
             model=self.model,
             max_completion_tokens=8192,
-            messages=[
-                {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
-                {"role": "user", "content": prompt},
-            ],
+            messages=messages,
         )
 
-        raw_text = response.choices[0].message.content
+        choice = response.choices[0]
+        raw_text = choice.message.content or ""
+        finish_reason = choice.finish_reason
+        refusal = getattr(choice.message, "refusal", None)
+
+        logger.info(f"Batch response finish_reason={finish_reason}, length={len(raw_text)}")
+
+        if not raw_text.strip():
+            details = (
+                f"finish_reason={finish_reason}, "
+                f"refusal={refusal}, "
+                f"usage={response.usage}, "
+                f"model={response.model}"
+            )
+            raise ValueError(f"Model returned empty batch response. {details}")
+
         return self._parse_batch_response(raw_text, start_index, batch_size)
 
     def _format_columns(self, columns: list[DataColumn]) -> str:

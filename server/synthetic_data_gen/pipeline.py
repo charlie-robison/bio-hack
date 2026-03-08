@@ -61,8 +61,8 @@ class SyntheticDataPipeline:
     def __init__(
         self,
         api_key: str | None = None,
-        extractor_model: str = "gpt-5.2",
-        generator_model: str = "gpt-5.2",
+        extractor_model: str = "gpt-5.4",
+        generator_model: str = "gpt-5.4",
         batch_size: int = 50,
         max_concurrent: int = 10,
     ):
