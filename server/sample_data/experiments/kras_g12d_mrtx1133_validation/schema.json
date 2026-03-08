@@ -1,0 +1,306 @@
+{
+  "title": "Anti-tumor efficacy of a potent and selective non-covalent KRASG12D inhibitor",
+  "experiment_summary": "Evaluation of MRTX1133, a non-covalent small molecule inhibitor targeting KRASG12D mutant protein, tested for binding affinity, selectivity, and anti-tumor efficacy in cell lines and xenograft models",
+  "hypothesis": "A high-affinity, non-covalent small molecule can selectively inhibit KRASG12D mutant protein and demonstrate anti-tumor activity in KRASG12D-driven cancers",
+  "methodology": "Biochemical binding assays, cell viability assays, western blotting, RNA-seq, and mouse xenograft tumor studies to evaluate MRTX1133 efficacy",
+  "sample_size": 25,
+  "independent_variables": [
+    "drug_concentration",
+    "cell_line",
+    "treatment_duration"
+  ],
+  "dependent_variables": [
+    "binding_affinity",
+    "cell_viability",
+    "pERK_levels",
+    "tumor_volume"
+  ],
+  "control_variables": [
+    "temperature",
+    "culture_conditions",
+    "vehicle_control"
+  ],
+  "columns": [
+    {
+      "name": "pdb_file",
+      "description": "PDB file path or content for the target protein structure (KRASG12D or KRASWT)",
+      "column_type": "text",
+      "unit": null,
+      "distribution": "custom",
+      "min_value": null,
+      "max_value": null,
+      "mean": null,
+      "std_dev": null,
+      "categories": [
+        "data/kras_g12d_gdp.pdb",
+        "data/kras_g12d_gtp.pdb",
+        "data/kras_wt_gdp.pdb",
+        "data/kras_wt_gtp.pdb"
+      ],
+      "constraints": [
+        "Must be valid PDB file path",
+        "Must contain KRAS protein structure"
+      ]
+    },
+    {
+      "name": "ligand_smiles",
+      "description": "SMILES string representation of the small molecule ligand being tested",
+      "column_type": "text",
+      "unit": null,
+      "distribution": "custom",
+      "min_value": null,
+      "max_value": null,
+      "mean": null,
+      "std_dev": null,
+      "categories": [
+        "C1CC1NC2=NC(=NC=C2F)NC3=CC=C(C=C3F)C#C",
+        "DMSO"
+      ],
+      "constraints": [
+        "Must be valid SMILES string",
+        "MRTX1133 or control compound"
+      ]
+    },
+    {
+      "name": "sequence",
+      "description": "Amino acid sequence of the KRAS protein variant",
+      "column_type": "text",
+      "unit": null,
+      "distribution": "custom",
+      "min_value": null,
+      "max_value": null,
+      "mean": null,
+      "std_dev": null,
+      "categories": [
+        "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQGVDDAFYTLVREIRKHKEKMSKDGKKKKKKSKTKCVIM",
+        "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQGVDDAFYTLVREIRKHKEKMSKDGKKKKKKSKTKCVIM"
+      ],
+      "constraints": [
+        "Must be valid amino acid sequence",
+        "Position 12 determines G12D mutation"
+      ]
+    },
+    {
+      "name": "kras_mutation",
+      "description": "KRAS mutation status",
+      "column_type": "categorical",
+      "unit": null,
+      "distribution": "custom",
+      "min_value": null,
+      "max_value": null,
+      "mean": null,
+      "std_dev": null,
+      "categories": [
+        "G12D",
+        "WT",
+        "G12C",
+        "G12V",
+        "G13D"
+      ],
+      "constraints": [
+        "Must be valid KRAS mutation"
+      ]
+    },
+    {
+      "name": "cell_line",
+      "description": "Cancer cell line used in the experiment",
+      "column_type": "categorical",
+      "unit": null,
+      "distribution": "custom",
+      "min_value": null,
+      "max_value": null,
+      "mean": null,
+      "std_dev": null,
+      "categories": [
+        "HPAC",
+        "GP2D",
+        "AsPC-1",
+        "LS180",
+        "A427",
+        "SNU-1033",
+        "SW1990",
+        "AGS",
+        "Panc04.03",
+        "HCT116"
+      ],
+      "constraints": [
+        "Must be established cancer cell line"
+      ]
+    },
+    {
+      "name": "drug_concentration",
+      "description": "Concentration of MRTX1133 used in the assay",
+      "column_type": "numeric",
+      "unit": "nM",
+      "distribution": "log_normal",
+      "min_value": 0.1,
+      "max_value": 10000.0,
+      "mean": 100.0,
+      "std_dev": 2.0,
+      "categories": null,
+      "constraints": [
+        "Must be positive value"
+      ]
+    },
+    {
+      "name": "treatment_duration",
+      "description": "Duration of drug treatment",
+      "column_type": "numeric",
+      "unit": "hours",
+      "distribution": "uniform",
+      "min_value": 1.0,
+      "max_value": 72.0,
+      "mean": null,
+      "std_dev": null,
+      "categories": null,
+      "constraints": [
+        "Must be between 1 and 72 hours"
+      ]
+    },
+    {
+      "name": "binding_affinity_kd",
+      "description": "Dissociation constant measuring binding affinity",
+      "column_type": "numeric",
+      "unit": "pM",
+      "distribution": "log_normal",
+      "min_value": 0.1,
+      "max_value": 1000000.0,
+      "mean": 1000.0,
+      "std_dev": 3.0,
+      "categories": null,
+      "constraints": [
+        "Must be positive value",
+        "Lower values indicate stronger binding"
+      ]
+    },
+    {
+      "name": "ic50_binding",
+      "description": "Half maximal inhibitory concentration in binding assays",
+      "column_type": "numeric",
+      "unit": "nM",
+      "distribution": "log_normal",
+      "min_value": 0.1,
+      "max_value": 10000.0,
+      "mean": 50.0,
+      "std_dev": 2.0,
+      "categories": null,
+      "constraints": [
+        "Must be positive value"
+      ]
+    },
+    {
+      "name": "cell_viability_percent",
+      "description": "Percentage of viable cells after treatment relative to control",
+      "column_type": "numeric",
+      "unit": "percent",
+      "distribution": "normal",
+      "min_value": 0.0,
+      "max_value": 120.0,
+      "mean": 50.0,
+      "std_dev": 20.0,
+      "categories": null,
+      "constraints": [
+        "Must be between 0 and 120"
+      ]
+    },
+    {
+      "name": "pERK_inhibition_percent",
+      "description": "Percentage inhibition of ERK phosphorylation",
+      "column_type": "numeric",
+      "unit": "percent",
+      "distribution": "normal",
+      "min_value": 0.0,
+      "max_value": 100.0,
+      "mean": 70.0,
+      "std_dev": 15.0,
+      "categories": null,
+      "constraints": [
+        "Must be between 0 and 100"
+      ]
+    },
+    {
+      "name": "tumor_volume",
+      "description": "Tumor volume in xenograft models",
+      "column_type": "numeric",
+      "unit": "mm3",
+      "distribution": "log_normal",
+      "min_value": 50.0,
+      "max_value": 2500.0,
+      "mean": 500.0,
+      "std_dev": 1.5,
+      "categories": null,
+      "constraints": [
+        "Must be positive value"
+      ]
+    }
+  ],
+  "relationships": [
+    "KRASG12D mutations show higher binding affinity (lower KD) to MRTX1133 compared to KRASWT",
+    "Drug concentration inversely correlates with cell viability in KRASG12D cell lines",
+    "pERK inhibition correlates with reduced cell viability and tumor regression",
+    "Treatment duration affects the degree of pathway inhibition and cell death"
+  ],
+  "group_definitions": {
+    "treatment_group": "Cells or animals treated with MRTX1133 at various concentrations",
+    "control_group": "Cells or animals treated with vehicle control (DMSO)",
+    "mutation_positive": "Cell lines harboring KRASG12D mutation",
+    "mutation_negative": "Cell lines with wild-type KRAS or other mutations"
+  },
+  "notes": [
+    "MRTX1133 shows ~700-fold selectivity for KRASG12D over KRASWT",
+    "The drug binds to both GDP-bound and GTP-bound states of KRASG12D",
+    "Pancreatic cancer models show higher response rates (73%) than colorectal cancer models (25%)",
+    "The all-atom-protein-design model can evaluate binding poses and affinities for this protein-ligand system"
+  ],
+  "selected_model": {
+    "slug": "all-atom-protein-design",
+    "reason": "This model is specifically designed for protein-drug design tasks including structure-based drug design and evaluating small molecule binding to proteins. It can analyze the KRASG12D-MRTX1133 interaction at atomic detail, predict binding affinities, and potentially suggest modifications to improve selectivity or potency.",
+    "name": "All Atom Protein Design",
+    "category": "protein_design",
+    "inputs": {
+      "pdbFile": {
+        "type": "file",
+        "format": "pdb_file",
+        "required": true,
+        "description": "Input structure containing target protein and/or ligand in PDB format"
+      },
+      "task": {
+        "type": "string",
+        "required": true,
+        "description": "Design task type",
+        "enum": [
+          "binder_design",
+          "motif_scaffolding",
+          "diversify"
+        ],
+        "example": "binder_design"
+      },
+      "targetChains": {
+        "type": "string",
+        "required": false,
+        "description": "Chain IDs of the target molecule",
+        "example": "A"
+      },
+      "binderLength": {
+        "type": "string",
+        "required": false,
+        "description": "Length or length range of the designed binder",
+        "example": "70-100"
+      },
+      "hotspots": {
+        "type": "string",
+        "format": "residue_positions",
+        "required": false,
+        "description": "Target residues to focus binder design on",
+        "example": "A10,A15,A20"
+      },
+      "numDesigns": {
+        "type": "integer",
+        "required": false,
+        "default": 1,
+        "description": "Number of designs to generate"
+      }
+    },
+    "api_type": "rfdiffusion-all-atom"
+  }
+}

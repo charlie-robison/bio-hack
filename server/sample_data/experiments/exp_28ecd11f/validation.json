@@ -1,0 +1,24 @@
+{
+  "validation_id": "exp-28ecd11f_validation",
+  "paper_title": "Anti-tumor efficacy of a potent and selective non-covalent KRASG12D inhibitor",
+  "models_used": [
+    "esmfold",
+    "alphafold"
+  ],
+  "overall_reliability_score": 0.0,
+  "claims_validated": [],
+  "aggregate_results": {
+    "total_claims": 0,
+    "validated": 0,
+    "partially_validated": 0,
+    "not_testable": 0,
+    "invalidated": 0,
+    "validation_rate": 0.0,
+    "validation_summary": "0 of 0 claims supported"
+  },
+  "final_verdict": {
+    "paper_validity": "not_testable",
+    "reliability_score": 0.0,
+    "summary": "No claims were provided from the paper to validate against the computational results. The computational models (ESMFold and AlphaFold) were run on vehicle control experiments with KRASG12D sequences, but without specific claims to test, no validation assessment can be performed."
+  }
+}

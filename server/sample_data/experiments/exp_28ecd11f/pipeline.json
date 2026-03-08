@@ -1,0 +1,81 @@
+{
+  "experiment_id": "exp_28ecd11f",
+  "paper_title": "Anti-tumor efficacy of a potent and selective non-covalent KRASG12D inhibitor",
+  "hypothesis": "A non-covalent, high-affinity small molecule inhibitor can selectively target KRASG12D mutations and demonstrate anti-tumor activity by inhibiting KRAS-mediated signaling pathways",
+  "total_jobs": 4,
+  "tools_used": [
+    "boltz",
+    "chai",
+    "esmfold",
+    "alphafold"
+  ],
+  "stages": [
+    {
+      "stage_number": 1,
+      "stage_name": "Structure Prediction & Analysis",
+      "description": "Direct submission of synthetic data to Tamarind models",
+      "jobs": [
+        {
+          "jobName": "exp-28ecd11f-alphafold-vehicle-control",
+          "type": "alphafold",
+          "description": "alphafold prediction for vehicle_control",
+          "settings": {
+            "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLPARTVETRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS"
+          },
+          "source_row_index": 0,
+          "source_group": "vehicle_control",
+          "submission_status": "submitted",
+          "submission_response": "exp-28ecd11f-alphafold-vehicle-control submitted to queue.",
+          "final_status": "Complete",
+          "result_files": [
+            "/Users/samuelcho/bio-hack1/bio-hack/server/sample_data/experiments/exp_28ecd11f/outputs/exp-28ecd11f-alphafold-vehicle-control_result.json"
+          ]
+        },
+        {
+          "jobName": "exp-28ecd11f-esmfold-vehicle-control",
+          "type": "esmfold",
+          "description": "esmfold prediction for vehicle_control",
+          "settings": {
+            "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLPARTVETRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS"
+          },
+          "source_row_index": 0,
+          "source_group": "vehicle_control",
+          "submission_status": "submitted",
+          "submission_response": "exp-28ecd11f-esmfold-vehicle-control submitted to queue.",
+          "final_status": "Complete",
+          "result_files": [
+            "/Users/samuelcho/bio-hack1/bio-hack/server/sample_data/experiments/exp_28ecd11f/outputs/exp-28ecd11f-esmfold-vehicle-control_result.json"
+          ]
+        },
+        {
+          "jobName": "exp-28ecd11f-boltz-vehicle-control",
+          "type": "boltz",
+          "description": "boltz prediction for vehicle_control",
+          "settings": {
+            "inputFormat": "sequence",
+            "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLPARTVETRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS",
+            "ligands": "CC(C)NC1=CC=C(C=C1)C2=CC(=NC=C2)NC3=NC=CC(=N3)NC4=CC=C(C=C4)CN5CCN(CC5)C"
+          },
+          "source_row_index": 0,
+          "source_group": "vehicle_control",
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        },
+        {
+          "jobName": "exp-28ecd11f-chai-vehicle-control",
+          "type": "chai",
+          "description": "chai prediction for vehicle_control",
+          "settings": {
+            "inputFormat": "sequence",
+            "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLPARTVETRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS",
+            "ligands": "CC(C)NC1=CC=C(C=C1)C2=CC(=NC=C2)NC3=NC=CC(=N3)NC4=CC=C(C=C4)CN5CCN(CC5)C"
+          },
+          "source_row_index": 0,
+          "source_group": "vehicle_control",
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        }
+      ]
+    }
+  ]
+}

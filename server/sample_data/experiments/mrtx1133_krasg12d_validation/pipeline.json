@@ -1,106 +1,81 @@
 {
   "experiment_id": "mrtx1133_krasg12d_validation",
   "paper_title": "Anti-tumor efficacy of a potent and selective non-covalent KRASG12D inhibitor",
-  "paper_journal": "Nature Medicine",
-  "hypothesis": "MRTX1133 is a potent, selective, non-covalent inhibitor of KRASG12D that demonstrates anti-tumor efficacy through direct binding to both GDP and GTP-bound states",
+  "hypothesis": "MRTX1133 is a high-affinity, non-covalent small molecule that selectively inhibits KRASG12D over wild-type KRAS and demonstrates therapeutic efficacy in KRASG12D-mutant cancers",
   "stages": [
     {
       "stage_number": 1,
-      "stage_name": "Structure Prediction and Validation",
-      "description": "Predict KRASG12D structure and validate against known crystal structures",
+      "stage_name": "Protein Structure Prediction",
+      "description": "Generate 3D structures of KRASG12D mutant and wild-type KRAS proteins for binding analysis",
       "jobs": [
         {
-          "jobName": "predict_krasg12d_structure",
+          "jobName": "kras-g12d-structure",
           "type": "alphafold",
-          "description": "Predict structure of KRASG12D to validate mutant conformation",
+          "description": "Predict structure of KRASG12D mutant protein",
           "settings": {
-            "sequence": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLKTVKDSLWQTPKYQKLHMEHIRETVEGEVKDLIEKQKRKLEEIVNKEKQKLLNKMESEELFSSLENYIPNYNTSDDKIYPFL",
-            "numModels": "5",
-            "numRecycles": "3",
-            "useMSA": true,
-            "templateMode": "none",
-            "chooseBest": true
+            "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLAARTVESRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS",
+            "numModels": "3"
           },
           "validates_claims": [
-            "KRASG12D has specific structural features that enable MRTX1133 binding"
+            "KRASG12D protein structure enables selective inhibitor binding"
           ],
           "depends_on": [],
           "submission_status": "submitted",
-          "submission_response": "predict_krasg12d_structure submitted to queue."
+          "submission_response": "kras-g12d-structure submitted to queue."
+        },
+        {
+          "jobName": "kras-wt-structure",
+          "type": "esmfold",
+          "description": "Predict structure of wild-type KRAS protein for selectivity comparison",
+          "settings": {
+            "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLPARTVESWQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS"
+          },
+          "validates_claims": [
+            "Structural differences between KRASG12D and KRASWT enable selectivity"
+          ],
+          "depends_on": [],
+          "submission_status": "submitted",
+          "submission_response": "kras-wt-structure submitted to queue."
         }
       ]
     },
     {
       "stage_number": 2,
       "stage_name": "Molecular Docking Analysis",
-      "description": "Validate MRTX1133 binding to KRASG12D switch II pocket using multiple docking approaches",
+      "description": "Evaluate binding affinity and selectivity of MRTX1133 to KRASG12D vs wild-type KRAS",
       "jobs": [
         {
-          "jobName": "diffdock_mrtx1133_krasg12d",
+          "jobName": "mrtx1133-g12d-docking",
           "type": "diffdock",
-          "description": "Test MRTX1133 binding to KRASG12D using DiffDock",
+          "description": "Dock MRTX1133 to KRASG12D to validate high-affinity binding",
           "settings": {
-            "proteinFile": "FROM_PREVIOUS_STAGE:predict_krasg12d_structure",
+            "proteinFile": "FROM_PREVIOUS_STAGE:kras-g12d-structure",
             "ligandFormat": "SMILES",
-            "ligandSmiles": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl"
+            "ligandSmiles": "CC1(C)CC(C)(C)Nc2c1ccc(F)c2Nc3ncc(C#N)c(Oc4ccccc4F)n3"
           },
           "validates_claims": [
-            "MRTX1133 binds to the switch II pocket of KRASG12D",
-            "MRTX1133 demonstrates high-affinity binding with KD ~0.2 pM"
+            "MRTX1133 binds with high affinity to KRASG12D (KD ~0.2 pM)"
           ],
           "depends_on": [
-            "predict_krasg12d_structure"
+            "kras-g12d-structure"
           ],
           "submission_status": "failed",
           "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
         },
         {
-          "jobName": "autodock_mrtx1133_krasg12d",
-          "type": "autodock-vina",
-          "description": "Validate MRTX1133 binding using AutoDock Vina for comparison",
+          "jobName": "mrtx1133-wt-docking",
+          "type": "diffdock",
+          "description": "Dock MRTX1133 to wild-type KRAS to validate selectivity",
           "settings": {
-            "receptorFile": "FROM_PREVIOUS_STAGE:predict_krasg12d_structure",
-            "ligandFile": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
-            "boxX": 35,
-            "boxY": 27,
-            "boxZ": 35,
-            "width": 20,
-            "height": 20,
-            "depth": 20,
-            "exhaustiveness": 32
+            "proteinFile": "FROM_PREVIOUS_STAGE:kras-wt-structure",
+            "ligandFormat": "SMILES",
+            "ligandSmiles": "CC1(C)CC(C)(C)Nc2c1ccc(F)c2Nc3ncc(C#N)c(Oc4ccccc4F)n3"
           },
           "validates_claims": [
-            "MRTX1133 binds to the switch II pocket of KRASG12D",
-            "MRTX1133 binding induces conformational changes in switch I and II regions"
+            "MRTX1133 shows ~700-fold selectivity for KRASG12D over KRASWT"
           ],
           "depends_on": [
-            "predict_krasg12d_structure"
-          ],
-          "submission_status": "failed",
-          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
-        },
-        {
-          "jobName": "gnina_mrtx1133_krasg12d",
-          "type": "gnina",
-          "description": "Use GNINA deep learning scoring to validate binding affinity",
-          "settings": {
-            "proteinFile": "FROM_PREVIOUS_STAGE:predict_krasg12d_structure",
-            "ligandFile": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
-            "boxX": 35,
-            "boxY": 27,
-            "boxZ": 35,
-            "width": 20,
-            "height": 20,
-            "depth": 20,
-            "cnnScoring": "refinement",
-            "exhaustiveness": 32
-          },
-          "validates_claims": [
-            "MRTX1133 demonstrates high-affinity binding with KD ~0.2 pM",
-            "MRTX1133 has ~700-fold selectivity for KRASG12D over KRASWT"
-          ],
-          "depends_on": [
-            "predict_krasg12d_structure"
+            "kras-wt-structure"
           ],
           "submission_status": "failed",
           "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
@@ -109,125 +84,29 @@
     },
     {
       "stage_number": 3,
-      "stage_name": "Complex Structure Prediction",
-      "description": "Predict KRASG12D-MRTX1133 complex structure and validate binding mode",
-      "jobs": [
-        {
-          "jobName": "boltz_krasg12d_mrtx1133_complex",
-          "type": "boltz",
-          "description": "Predict KRASG12D-MRTX1133 complex structure using Boltz-2",
-          "settings": {
-            "inputFormat": "list",
-            "proteins": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLKTVKDSLWQTPKYQKLHMEHIRETVEGEVKDLIEKQKRKLEEIVNKEKQKLLNKMESEELFSSLENYIPNYNTSDDKIYPFL",
-            "addLigands": true,
-            "ligands": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
-            "numSamples": 5,
-            "numRecycles": 3,
-            "predictAffinity": true,
-            "binderChain": "B",
-            "chooseBest": true
-          },
-          "validates_claims": [
-            "MRTX1133 binds to both GDP and GTP-bound states of KRASG12D",
-            "MRTX1133 binding eliminates KRASG12D surface competency for effector binding"
-          ],
-          "depends_on": [],
-          "submission_status": "failed",
-          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
-        },
-        {
-          "jobName": "chai_krasg12d_mrtx1133_complex",
-          "type": "chai",
-          "description": "Alternative complex prediction using Chai-1 for validation",
-          "settings": {
-            "inputFormat": "list",
-            "proteins": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLKTVKDSLWQTPKYQKLHMEHIRETVEGEVKDLIEKQKRKLEEIVNKEKQKLLNKMESEELFSSLENYIPNYNTSDDKIYPFL",
-            "ligands": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
-            "numSamples": 5,
-            "numRecycles": 3,
-            "useMSA": true
-          },
-          "validates_claims": [
-            "MRTX1133 binds to the switch II pocket of KRASG12D",
-            "MRTX1133 binding induces conformational changes in switch I and II regions"
-          ],
-          "depends_on": [],
-          "submission_status": "failed",
-          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
-        }
-      ]
-    },
-    {
-      "stage_number": 4,
       "stage_name": "Molecular Dynamics Validation",
-      "description": "Validate stability of MRTX1133-KRASG12D complex and conformational changes",
+      "description": "Simulate protein-ligand complex stability to validate binding mechanism",
       "jobs": [
         {
-          "jobName": "openmm_complex_dynamics",
+          "jobName": "g12d-complex-dynamics",
           "type": "openmm",
-          "description": "Run MD simulation to validate complex stability and conformational changes",
+          "description": "MD simulation of MRTX1133-KRASG12D complex to validate stable binding",
           "settings": {
             "systemType": "protein-ligand",
-            "pdbFile": "FROM_PREVIOUS_STAGE:boltz_krasg12d_mrtx1133_complex",
-            "ligandFile": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
+            "pdbFile": "FROM_PREVIOUS_STAGE:mrtx1133-g12d-docking",
+            "ligandFile": "FROM_PREVIOUS_STAGE:mrtx1133-g12d-docking",
             "ligandCharge": 0,
-            "minimizationSteps": "20000",
-            "equilibrationTime": 0.5,
+            "minimizationSteps": "10000",
+            "equilibrationTime": 100,
             "productionTime": 5,
-            "forceField": "ff19SB",
-            "timestep": "2",
-            "temperature": "298",
-            "pressure": "1"
+            "temperature": "310"
           },
           "validates_claims": [
             "MRTX1133 binding induces conformational changes in switch I and II regions",
-            "MRTX1133 binding eliminates KRASG12D surface competency for effector binding"
+            "MRTX1133 maintains stable binding to both active and inactive KRASG12D states"
           ],
           "depends_on": [
-            "boltz_krasg12d_mrtx1133_complex"
-          ],
-          "submission_status": "failed",
-          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
-        }
-      ]
-    },
-    {
-      "stage_number": 5,
-      "stage_name": "Selectivity Analysis",
-      "description": "Validate selectivity of MRTX1133 for KRASG12D over KRASWT",
-      "jobs": [
-        {
-          "jobName": "predict_kraswt_structure",
-          "type": "alphafold",
-          "description": "Predict KRASWT structure for selectivity comparison",
-          "settings": {
-            "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLKTVKDSLWQTPKYQKLHMEHIRETVEGEVKDLIEKQKRKLEEIVNKEKQKLLNKMESEELFSSLENYIPNYNTSDDKIYPFL",
-            "numModels": "1",
-            "numRecycles": "3",
-            "useMSA": true,
-            "chooseBest": true
-          },
-          "validates_claims": [
-            "MRTX1133 has ~700-fold selectivity for KRASG12D over KRASWT"
-          ],
-          "depends_on": [],
-          "submission_status": "submitted",
-          "submission_response": "predict_kraswt_structure submitted to queue."
-        },
-        {
-          "jobName": "diffdock_mrtx1133_kraswt",
-          "type": "diffdock",
-          "description": "Test MRTX1133 binding to KRASWT to validate selectivity",
-          "settings": {
-            "proteinFile": "FROM_PREVIOUS_STAGE:predict_kraswt_structure",
-            "ligandFormat": "SMILES",
-            "ligandSmiles": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl"
-          },
-          "validates_claims": [
-            "MRTX1133 has ~700-fold selectivity for KRASG12D over KRASWT"
-          ],
-          "depends_on": [
-            "predict_kraswt_structure"
+            "mrtx1133-g12d-docking"
           ],
           "submission_status": "failed",
           "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
@@ -237,78 +116,54 @@
   ],
   "claims": [
     {
-      "claim": "MRTX1133 binds to the switch II pocket of KRASG12D",
-      "category": "binding",
-      "testable": true,
-      "models": [
-        "diffdock",
-        "autodock-vina",
-        "gnina",
-        "boltz",
-        "chai"
-      ]
-    },
-    {
-      "claim": "MRTX1133 demonstrates high-affinity binding with KD ~0.2 pM",
+      "claim": "MRTX1133 binds with high affinity to KRASG12D (KD ~0.2 pM)",
       "category": "affinity",
       "testable": true,
       "models": [
         "diffdock",
-        "gnina",
-        "boltz"
+        "openmm"
       ]
     },
     {
-      "claim": "MRTX1133 has ~700-fold selectivity for KRASG12D over KRASWT",
+      "claim": "MRTX1133 shows ~700-fold selectivity for KRASG12D over KRASWT",
       "category": "selectivity",
       "testable": true,
       "models": [
-        "alphafold",
-        "diffdock",
-        "gnina"
-      ]
-    },
-    {
-      "claim": "MRTX1133 binds to both GDP and GTP-bound states of KRASG12D",
-      "category": "mechanism",
-      "testable": true,
-      "models": [
-        "boltz",
-        "chai"
+        "diffdock"
       ]
     },
     {
       "claim": "MRTX1133 binding induces conformational changes in switch I and II regions",
-      "category": "structure",
-      "testable": true,
-      "models": [
-        "autodock-vina",
-        "chai",
-        "openmm"
-      ]
-    },
-    {
-      "claim": "MRTX1133 binding eliminates KRASG12D surface competency for effector binding",
       "category": "mechanism",
       "testable": true,
       "models": [
-        "boltz",
         "openmm"
       ]
     },
     {
-      "claim": "KRASG12D has specific structural features that enable MRTX1133 binding",
+      "claim": "MRTX1133 maintains stable binding to both active and inactive KRASG12D states",
+      "category": "binding",
+      "testable": true,
+      "models": [
+        "openmm"
+      ]
+    },
+    {
+      "claim": "Structural differences between KRASG12D and KRASWT enable selectivity",
+      "category": "structure",
+      "testable": true,
+      "models": [
+        "alphafold",
+        "esmfold"
+      ]
+    },
+    {
+      "claim": "KRASG12D protein structure enables selective inhibitor binding",
       "category": "structure",
       "testable": true,
       "models": [
         "alphafold"
       ]
-    },
-    {
-      "claim": "MRTX1133 demonstrates tumor regression in KRASG12D-mutant models",
-      "category": "efficacy",
-      "testable": false,
-      "models": []
     }
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "jobName": "openmm_kras_g12d_complex",
+  "type": "openmm",
+  "settings": {
+    "systemType": "protein-ligand",
+    "pdbFile": "boltz_kras_g12d_mrtx1133/best_model.pdb",
+    "ligandFile": "diffdock_mrtx1133_g12d/best_model.pdb",
+    "ligandCharge": 0,
+    "minimizationSteps": "10000",
+    "equilibrationTime": 0.5,
+    "productionTime": 5,
+    "forceField": "ff19SB",
+    "temperature": "310"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "jobName": "mrtx1133_krasg12d_md",
+  "type": "openmm",
+  "settings": {
+    "systemType": "protein-ligand",
+    "pdbFile": "mrtx1133_gnina/best_model.pdb",
+    "ligandFile": "mrtx1133_diffdock/best_model.pdb",
+    "ligandCharge": 0,
+    "minimizationSteps": "20000",
+    "equilibrationTime": 0.5,
+    "productionTime": 10,
+    "forceField": "ff19SB"
+  }
+}

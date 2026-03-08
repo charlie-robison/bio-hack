@@ -47,7 +47,7 @@ class GenerateFromSchemaRequest(BaseModel):
 
 
 def _flatten_and_save(result: GenerationResult, run_folder_path: str | None = None) -> list:
-    """Flatten GenerationResult, save to JSON file, and return response."""
+    """Flatten GenerationResult, save to fs/runs/{run_id}/data/, and return response."""
     data = []
     for row in result.rows:
         flat = {"row_index": row.row_index}
@@ -57,7 +57,25 @@ def _flatten_and_save(result: GenerationResult, run_folder_path: str | None = No
         data.append(flat)
 
     if run_folder_path:
-        output_file = Path(run_folder_path) / "synthetic_data.json"
+        data_dir = Path(run_folder_path) / "data"
+        data_dir.mkdir(parents=True, exist_ok=True)
+        output_file = data_dir / "synthetic_data.json"
+
+        # Also save schema and CSV
+        schema_file = data_dir / "schema.json"
+        schema_file.write_text(json.dumps(result.experiment_schema.model_dump(), indent=2, default=str))
+
+        csv_file = data_dir / "synthetic_data.csv"
+        import csv as csv_mod
+        col_names = [col.name for col in result.experiment_schema.columns]
+        fieldnames = ["row_index", "group"] + col_names
+        with open(csv_file, "w", newline="") as cf:
+            writer = csv_mod.DictWriter(cf, fieldnames=fieldnames, extrasaction="ignore")
+            writer.writeheader()
+            for row in result.rows:
+                flat_row = {"row_index": row.row_index, "group": row.group or ""}
+                flat_row.update(row.data)
+                writer.writerow(flat_row)
     else:
         title_slug = result.experiment_schema.title[:50].replace(" ", "_").lower()
         title_slug = "".join(c for c in title_slug if c.isalnum() or c == "_")
@@ -538,33 +556,41 @@ def _run_experiment_bg(run_id: str):
         _running_experiments[run_id]["stage"] = "parsing"
         paper_text = runner.parse_paper(str(pdf_path))
 
-        # Step 2: Plan
+        # Step 2: Generate synthetic data (saves to fs/runs/{run_id}/data/)
+        _running_experiments[run_id]["stage"] = "generating"
+        gen_result = pipeline.run(str(pdf_path), num_rows=10, run_folder_path=str(run_folder))
+        _flatten_and_save(gen_result, run_folder_path=str(run_folder))
+
+        # Step 3: Build jobs from synthetic data (direct column-to-tool mapping)
         _running_experiments[run_id]["stage"] = "planning"
-        plan = runner.plan_experiment(paper_text)
-        experiment_id = plan.get("experiment_id", run_id)
+        synthetic_result = runner.load_synthetic_data(run_id)
+        experiment_id = f"exp_{run_id[:8]}"
+        plan = runner.build_jobs_from_data(synthetic_result, experiment_id)
 
         experiment_dir = EXPERIMENTS_DIR / experiment_id
         experiment_dir.mkdir(parents=True, exist_ok=True)
         (experiment_dir / "paper_text.txt").write_text(paper_text[:50000])
+        (experiment_dir / "run_id.txt").write_text(run_id)
 
         _running_experiments[run_id]["experiment_id"] = experiment_id
         _running_experiments[run_id]["plan"] = plan
 
-        # Step 3: Submit
+        # Step 4: Submit
         _running_experiments[run_id]["stage"] = "submitting"
         plan = runner.submit_experiment(plan, experiment_dir)
 
-        # Step 4: Poll
+        # Step 5: Poll
         _running_experiments[run_id]["stage"] = "running_models"
         plan = runner.poll_experiment(plan)
 
-        # Step 5: Download
+        # Step 6: Download
         _running_experiments[run_id]["stage"] = "downloading"
         plan = runner.download_results(plan, experiment_dir)
 
-        # Step 6: Validate
+        # Step 7: Validate
         _running_experiments[run_id]["stage"] = "validating"
-        validation = runner.validate_results(plan, paper_text, experiment_dir)
+        synthetic_data_str = json.dumps(synthetic_result.get("data", []), indent=2)
+        validation = runner.validate_results(plan, paper_text, experiment_dir, synthetic_data_str)
 
         _running_experiments[run_id] = {
             "status": "complete",
@@ -630,25 +656,31 @@ def get_experiment_status(run_id: str):
 @app.post("/experiments/plan")
 async def plan_experiment_only(file: UploadFile = File(...)):
     """
-    Upload a PDF and get just the experiment plan (no Tamarind submission).
-    Useful for previewing what models will be run before committing.
+    Upload a PDF, process it, generate synthetic data, and return
+    the experiment plan (no Tamarind submission).
     """
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="File must be a PDF")
 
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
-        content = await file.read()
-        tmp.write(content)
-        tmp_path = tmp.name
+    # Process PDF through the standard upload pipeline (saves to fs/runs/{run_id}/)
+    content = await file.read()
+    result = await process_pdf(file.filename, content)
+    run_id = result["run_id"]
+    run_folder = Path(__file__).parent / "fs" / "runs" / run_id
+    pdf_path = run_folder / "original.pdf"
 
     try:
+        # Generate synthetic data (saves to fs/runs/{run_id}/data/)
+        gen_result = pipeline.run(str(pdf_path), num_rows=5, run_folder_path=str(run_folder))
+        _flatten_and_save(gen_result, run_folder_path=str(run_folder))
+
+        # Plan experiment (reads from fs/runs/{run_id}/data/)
         runner = _get_runner()
-        plan = runner.plan_only(tmp_path)
+        plan = runner.plan_only(run_id)
+        plan["run_id"] = run_id
         return plan
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    finally:
-        os.unlink(tmp_path)
 
 
 @app.post("/experiments/run-from-pdf")

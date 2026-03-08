@@ -1,0 +1,7 @@
+{
+  "jobName": "aev_plig_g12c_intermediate",
+  "type": "aev_plig",
+  "settings": {
+    "complex_structure": "diffdock_mrtx1133_g12c/best_model.pdb"
+  }
+}

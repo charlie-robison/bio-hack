@@ -1,0 +1,599 @@
+--- Page 1 ---
+COMMUNICATION
+Crystal Structure of Dengue Virus NS3 Protease in
+Complex with a Bowman-Birk Inhibitor: Implicationsfor Flaviviral Polyprotein Processing and Drug Design
+H.M.Krishn aMurth y1*,K.Judge1,L.DeLucas1andR.Padmanabha n2
+1Center for Macromolecular
+Crystallography, University of
+Alabama at Birmingham, 1918
+University Boulevard, 79 THTMCLM 244, Birmingham
+AL 35294-0005, USA
+2Department of Biochemistry
+and Molecular Biology, Kansas
+University Medical Center3901 Rainbow Boulevard
+Kansas City, KS 66160-
+7421, USADengue viruses are members of the Flaviviridae and cause dengue fever
+and the more severe dengue hemorrhagic fever. Although nearly 40 % of
+the world
+0s population is at risk of dengue infection, there is currently no
+effective vaccine or chemotherapy for the disease. Processing of the den-
+gue polyprotein into structural and non-structural proteins in a host,
+which is essential for assembly of infective virions, is carried out by the
+combined action of host proteases and the trypsin-like, two-componentviral NS2B/NS3 serine protease. Although NS2B strongly stimulates the
+catalytic NS3 protease domain, the latter is fully active against small sub-
+strates and possesses detectable activity against larger substrates, makingboth forms of the enzyme possible targets for drug design. In the crystal
+structure of a complex of the protease with a Bowman-Birk inhibitor
+reported here, an Arg residue at the P1 position of the inhibitor is boundin a manner distinctly different from that in other serine proteases ofcomparable speciﬁcity. However, because the regulatory component,
+NS2B, is not present in the complex, the physiological implications of
+this observations are currently unclear. The redundant nature of inter-action of P1 Arg and Lys residues with Asp129, Tyr150 and Ser163 of the
+enzyme provides an explanation for the observed behavior of several
+site-speciﬁc mutants of Asp129 in the protease. The strong level of con-servation of residues in the protease that interact with the P1 Arg, along
+with conservation of Arg at P1 of most cleavage sites in other ﬂavi-
+viruses, suggests that observations from this structure are likely to beapplicable to many ﬂaviviruses. The structure provides a starting pointfor design of site-speciﬁc mutations to probe the mechanism of catalysis
+by the catalytic domain, its activation by the regulatory domain and for
+design of speciﬁc inhibitors of enzymatic activity.
+#2000 Academic Press
+Keywords: Bowman-Birk inhibitor; conformational change; dengue virus;
+drug-design; substrate recognition *Corresponding author
+Dengue fever and dengue hemorrhagic fever are
+caused by four serotypes of the dengue virus,
+members of the Flaviviridae . The virus is principally
+endemic to tropical regions, placing at risk
+approximately 2.4 billion people. There is noknown therapy at this time nor is there an effective
+vacc ine(Gubler,1995 ;Monat h,1994) .Anintensive
+study of the replication of the virus in host cells,
+with a view to deﬁne and characterize chemothera-
+peutic targets, has identiﬁed a viral serine protease
+as a potential target that plays a critical role in
+viralreplica tion(Falgo utetal.,1991 ;Ramacha ndra
+etal.,1996 ;Zhangetal.,1992).Theproteasehas
+trypsin-like speciﬁcity, with a catalytic triad com-
+posed of His51, Asp75 and Ser135, and is the pro-duct of the viral NS3 gene. It cleaves the viral
+polyprotein at four junctions (residues spanning
+the scissile bond in parentheses); NS2A-NS2B
+E-mail address of the corresponding author:
+murthy@onyx.cmc.uab.eduAbbreviations used: MbBBI, mung bean Bowman-Birk
+inhibitor; NS3-pro, protease domain of dengue NS3
+protein; NS2B(H), hydrophilic domain (40 residues) ofthe dengue NS2B protein; HCV, hepatitis C virus;
+BAPNA, benzoyl arginine para-nitro anilide.doi:10.1006/jmbi.2000.392 4availabl eonlineathttp://www.idealibrary.co mon
+J. Mol. Biol. (2000) 301, 759–767
+0022-2836/00/040759–9 $35.00/0 #2000 Academic Press
+
+--- Page 2 ---
+(Arg-Ser), NS2B-NS3 (Arg-Ala), NS3-NS4A (Lys-
+Ser), and NS4B-NS5 (Arg-Gly). Proteolytic activity
+is carried within the amino-terminal 180 residues
+oftheNS3polyp eptide(Zhan getal.,1992).
+Although the protease domain (residues 1-185 of
+theNS3gene ,NS3-p ro,(Krish naMurth yetal.,
+1999a)hydrolyze smode lsubstra tessuchasben-
+zoyl L-arginine p-nitro anilide (BAPNA) in vitro
+(Yusof,etal.,2000) ,invivoitfunct ionsasahetero-
+dimeric complex in association with the product of
+the viral NS2B gene; the function of NS2B can be
+mimicked by a 40-residue hydrophilic domain(NS2B(H) )derivedfromNS2B(Falgo utetal.,
+1993).Inthisrespect ,NS3-proissimila rtoseveral
+other two-component viral proteases such as
+human adenovirus-2 L3 protease (AVP, Ding,
+1996) and the more closely related hepatitis C virusNS3protea se(HCV ,Kimetal.,1996 ;Loveetal.,
+1996;Yan,1998) .Althou ghtherearesigniﬁcant
+differences, the overall folding of dengue NS3-pro
+resemble sthatoftheHCVNS3proteas e(Krish na
+Murthyetal.,1999a) .Werepor tthestructureofa
+2:1 complex of NS3-pro with a Bowman-Birk
+inhibitor extracted from mung beans (MbBBI),which provides structural explanations for conse-
+quences of several site-speciﬁc mutations in
+NS3-pro on the catalytic activity of the enzyme.
+Bowman-Birk inhibitors are of leguminous plant
+origin(Ikenaka ,1986) ,shownrecentlytopossess
+anti-cance rprop erties(Kenned y,1998) .Theyare
+double-headed, capable of inhibiting two mol-ecules of a protease simultaneously. They are small
+(usually <100 residues), compactly folded into two
+bsheets related by approximate 2-fold symmetry,
+and are very stable, being held together by sevendisulﬁde bridges and a substantial hydrophobiccore. They inhibit serine proteases by the standard
+mechanism; they are hydrolyzed as are natural
+substrates, but the reaction is completely reversible
+withnosigniﬁc antprod uctrelea se(Lasko wski&
+Kato,1980) .Thei rspeciﬁc ity(eitherfortrypsin -like
+or chymotrypsin-like enzymes) is determined bythe sequences of their exposed active-site loops
+(Bode&Huber,1992 ;Lasko wski&Kato ,1980).
+Both NS3-pro and the NS2B/NS3-pro complex areinhibited to comparable extents by MbBBI, usingBAPNA as the substrate, with IC
+50values of
+1.8mM for both enzyme species (data not
+shown). The sequences around the two inhibitory
+headsfortheinhibito risolated(Chi,1982)from
+commercial mung beans (MbBBI) are, using stan-dardnomencl ature(Schec hter&Berg er,1967),
+P3Cys-Thr-Lys-Ser-Ile-ProP30(Lys-head) andP3Cys-
+Thr-Arg-Ser-Met-ProP30(Arg-head), respectively
+(Lin,1993) .Altho ughtheovera llstructuralfeatures
+of the NS3-pro/MbBBI complex are in agreementwith many other serine protease-inhibitor com-
+plexes(Peron a&Craik ,1995) ,therearesomeintri-
+guing differences. These differences include
+variations in interactions made by Arg and Lys
+residues at P1 with residues in the S1 pocket, the
+presence of the Arg at P1 in two different confor-
+mations and large conformational changes in someof the residues that interact with the Arg residue at
+P1. While interpretation of these differences mustbe stringently restrained by the fact that that the
+regulatory domain of the dengue NS3 protease,
+NS2B, is not part of the complex, the structurenevertheless permits some general statements ofrelevanc etocatalysi sandthedesignofspeciﬁc
+inhibitors of the enzyme to be made.
+Comparison with unliganded forms of protease
+and inhibitor
+Table1presentsthestatistica ldataonstructure
+solution and reﬁnement. A stereo view of the elec-tron density map in the vicinity of the disordered
+ArgP1side-cha inisshow ninFigure1(a).Thetwo
+protease molecules are nearly identical in an over-
+all sense, as mandated by the local 2-fold axis and
+evidenced by rms deviations of 0.7 A ˚for equival-
+ent C
+aatoms, and 1.6 A ˚for all atoms. However,
+regions that interact with inhibitor residues show
+signiﬁcant differences. Differences are particularly
+pronounced for the stretch of residues 127-136,
+which have an rms deviation of 1.48 A ˚for Ca
+atoms and 2.69 A ˚for all atoms between the two
+molecules. Below, the protease molecule interactingwith the Lys-head (residues 12-38, based on con-servation of cysteine residues in disulﬁde bridges)
+of the inhibitor will be designated molecule 1 and
+that interacting with the Arg-head (residues 39-65)of the inhibitor as molecule 2. When compared tothestructu reoftheunligande dproteas e(Krish na
+Murthyetal.,1999a),thetwoproteas emolecul es
+are very close to that structure overall, with rmsdfor C
+aatoms being 0.3 and 0.5 A ˚, respectively for
+molecule s1and2(Figur e1(b)).How ever,
+although residues 127-136 in molecule 1 are identi-cal in conformation to that of the unliganded form
+(rmsd C
+a0.2 A˚), they are signiﬁcantly different
+inmolec ule2(rms dCa1.7A˚),asshownin
+Figure1(b).Thisstretchofresidues,partofthe
+loop between strands C2 and D2 carrying the cata-
+lytic Ser135 residue, is stretched out from the tan-dembturn conformation to coil. The resultant
+difference in orientation of Asp129 that electrostati-
+cally interacts with one of the two conformations
+of P1 Arg47, a side-chain movement of 5.8 A ˚,i s
+showninFigur e1(b).Theonlyothe rregionwhere
+the two protease molecules have relatively signiﬁ-cant (rmsd0.8 A˚) differences from the unli-
+ganded enzyme is in the region of residues 32-36
+in the N-terminal bbarrel. The 2-fold local sym-
+metry of equivalent MbBBI domains is more
+approximate than that of the protease molecules,
+with a C
+armsd of 2.0 A ˚between equivalent atoms.
+Folding of the inhibitor is very similar to other
+BBIs, as indicated by an Carmsd of 0.8 A ˚between
+MbBBIandthesoyb eaninhibito r(Che netal.,
+1992) .Becaus eoftherigidi tyofBowman -Birk
+inhibitors, they are expected to remain practicallyunchanged in conformation, with adjustments, if
+any,beingmadebytargetproteas es(Bod e&
+Huber,1992) .TherearetwootherBowman -Birk760 Dengue Virus Protease-Inhibitor Complex
+
+--- Page 3 ---
+inhibitor-protease complexes reported; a 1:2 com-
+plex of porcine trypsin with MbBBI (Lin, 1993) and
+a 1:1 complex of adzuki bean inhibitor with bovinetrypsin(Tsunoga eetal.,1986) .Althou ghthefor-
+mer structure is globally disordered, the inhibitor
+in both structures differs little from its native con-
+formation. That is also the case in the structure ofthis complex, except for the P1 Arg47 residue on
+the Arg-head of MbBBI, which is present in two
+conformations with equal occupancy.
+Protease inhibitor interactions and
+conformational changes in the enzyme
+Interaction of the main chain of the inhibitor
+with the two protease active sites is nearly identi-cal and corresponds closely to that seen in many
+other serine protease inhibitor complexes. The car-bonyl oxygen atoms of the two P1 residues areensconced within the oxy-anion holes of the
+respective protease molecules formed by residues
+Gly133, Ser135 and Gly151. There is a sub-van derWaals contact between the P1 carbonyl oxygen
+atom and Ser135 O
+gatoms (2.3 and 2.2 A ˚respect-
+ively for the Lys and Arg-heads), with resultingdistortion of the carbon atom to near-tetrahedral
+geometry, in both cases. This feature is similar to
+thatseeninotheranalogou scompl exes(Bod e&
+Huber,1992 ;Perona&Craik,1995),indicatin gthat
+the complex approximates the expected tetrahedral
+transition state of the standard model for serine
+protease catalysis.
+It has been proposed, from an examination of
+sequence similarity to other viral and cellular pro-
+teases, that Asp129 in NS3-pro would provide the
+primary charge interaction in the S1 pocket with a
+P1LysorArgside-cha ininthesubstra te(Baza n&
+Fletterick ,1989;Gorbaleny aetal.,1989) .How ever,
+amutation alanalysis(Vall e&Falgo ut,1998 )of
+several residues expected to be involved in sub-
+strate recognition demonstrated that Asp129 could
+be freely substituted without a signiﬁcant effect on
+catalytic activity, implying a more complicated
+mode of recognition. In this structure, interactions
+between side-chains of MbBBI and protease,
+although formally involving P5 to P50of the inhibi-
+tor, are not extensive beyond P2 before the scissilebondandP2
+0afterthebond(Table2).Inter actions
+between P2 (Thr on both heads), P20(Ile and Met,
+respectively) and P30(Pro in both cases) and theTable 1. Structure determination and reﬁnement
+Res (A ˚) Fom(MAD) Fom(DM) Rcryst Rfree
+4.00 0.54 0.79 0.191 0.223
+3.17 0.55 0.68 0.192 0.2312.77 0.56 0.70 0.184 0.2192.52 0.52 0.65 0.190 0.2472.34 0.48 0.68 0.196 0.250
+2.20 0.53 0.59 0.218 0.268
+2.09 0.57 0.62 0.222 0.281All 0.53 0.66 0.199 0.246
+Puriﬁcatio noftheNS3proteas edomai nhasbeenreporte d(Krishn aMurth yetal.,1999a) .Puriﬁcat ionoftheinhibito r,crystalliza-
+tionofthecomple xandmeasure mentofMADdataonaHo
+3derivativ ehavealsobeenreporte d(Krishn aMurth yetal.,1999b).
+The asymmetric unit consists, as expected from the bivalent nature of the inhibitor, of two protease molecules and a single MbBBImolecule .Inhibi tionassay swerecarrie doutusingastandar dprocedur e(Sardan a,1994 )modiﬁe dforthedengu eenzym e(Yusof,
+etal.,2000) .TheNS2B /NS3-pr oprepara tionusedforassay sisasdescribe d(Yuso fetal.,2000) .Thetwoproteas emolecule sare
+related by an approximate 2-fold rotation as are the two halves of MbBBI. The structure of an Ho derivative, with two Ho
+3per
+monome roftheenzyme ,wasdetermin edbyMADphasin g(Hendricks on,1994 )usingSOLV E(Terwillig eretal.,1987) ;initia lﬁgures
+ofmeri taregivenintheTable .Interna lconsisten cyofthesolutio nwasveriﬁe dusingMADSY S(Hendric kson,1994 )anddirect
+methods (CCP4, 1994) as well as by the expected 2-fold symmetry between pairs of Ho3bound to each protease molecule. The
+heavy-ato msiteswerereﬁne dagains tamaxim umlikelihoo dtarge tusingMLPH ARE(Otwinowski ,1991) .Apreliminar yelectron
+densit ymapcalcul atedusingMADphase swassymmetr yaverage dandsolven tﬂattene dusingdm(Cowtan ,1994) .Amolecular
+model for one of the protease monomers was built into this map as also was most of the main chain and a signiﬁcant fraction of theside-chain softheinhibito rusingO(Jone setal.,1991) .Amode lforthesecon dproteas emonome rwasgenerate dbyapplyin gthe2-
+foldsymm etrytransform ation.Themode lwassubjecte dtosevera lcycle sofpositiona lcoordi natereﬁnemen tinXPLO R(Bru¨nger,
+1990 )agains tdatameasure datthel
+remot ewavelengt h(1.529 74A˚)usedforMADphasin g(Krishn aMurth yetal.,1999b) .This
+model, with Ho3removed, was then reﬁned against native data, measured at the same wavelength, ﬁrst as a rigid body and then
+usingastandar dslow-cooli ngprotoc olinXPLOR .Cross-valid ationwasdoneusingfreeR-value s(Bru¨nger ,1992 )through outthe
+course of the reﬁnement. All data with F> 1.5sF, between 8 and 2.1 A ˚, were eventually included in the reﬁnement. Initially non-
+crystallographic symmetry (NCS) restraints were used for both the protease monomers, but not for the inhibitor. When it becameclear that the monomers were not completely symmetric, only those atoms that were at least 7 A ˚from any inhibitor atoms were so
+restrained. A few cycles of reﬁnement without NCS restraints at the end of reﬁnement showed no signiﬁcant differences from therestraine dcoordinate s.Asitwasexpecte d(Kraut ,1977 )thatthegeometr yaroun dtheP1C
+aatom swoul dbetetrahedr al,geometric
+restraints for positions of atoms around the scissile bonds on both loops of MbBBI were relaxed for a few cycles and their positionsallowed to be determined by X-ray data alone. Several rounds of model building improved the model signiﬁcantly, as evidenced byanalysis using PROCHECK without introducing excessive bias, as indicated by a steady drop in the free R-value concomitant with
+the crystallographic R-value. Discrete disorder in the side-chain conformation of Arg47 of the inhibitor was detected at this stage
+and the two conformations were reﬁned with separate positional coordinates with equal occupancies of 0.5. Tightly restrained B-fac-
+tors were then reﬁned. Convergence of B-factors to similar values for the two conformations indicated that the occupancies were
+adequately estimated. A search for ordered solvent molecules was then carried out, followed by reﬁnement of the model including
+ordered solvent.Dengue Virus Protease-Inhibitor Complex 761
+
+--- Page 4 ---
+enzyme are nearly identical for both protease mol-
+ecules. There are more extensive interactionsbetween P1
+0Ser48 on the Arg-head than with P10
+Ser21ontheLys- head(Table2).Mostextensive
+interactions, however, occur at the P1 sites. The P1-Lysisinasingl econformatio n(Figur e2(a))andits
+side-chain makes two hydrogen bond interactions
+with the OH atom of Tyr150 (3.2 A ˚) and with O
+g
+of Ser163 (3.1 A ˚). In addition, there is a water-med iatedinteractio nbetwee nOgofSer13 1(2.8A˚)
+and the peptide nitrogen atom (2.9 A ˚) of Lys20.
+P1-Arg, on the other hand, is present in two dis-
+tinct conformations with equal occupancy, with the
+splitoccurrin gaftertheCbatom(Figur e2(b)).
+Interactions in the A conformation are very similar
+tothatobserv edwithP1Lys(Table2),withboth
+NZ1and NZ2atoms making hydrogen bonding
+interactions (2.7 and 2.8 A ˚, respectively) with
+Figure 1. (a) Electron density around disordered Arg47 (stereo view). A 2 FoÿFcmap computed with phases calcu-
+lated without Arg47 is shown with the ﬁnal model superimposed. Data to 2.1 A ˚were used to calculate the map,
+which is contoured at 1 s. (b) Differences between unliganded and inhibited protease (stereo view). A section of the
+C-terminal bbarrel is show as an acarbon trace. Unliganded protease (magenta) molecule 1 (cyan) and molecule 2
+(yellow) in this complex, all transformed to the unliganded protease reference frame, are shown. Conformation of
+Asp129 in the unliganded form is shown in magenta and that in molecule 2 of the complex in yellow. Both confor-mations of Arg47 are also shown for reference. Hydrogen bonds between side-chains of Arg47B and Asp129 areshow nasbroke nlines .TheFigur ewasmad ewith :(a)O(Jone setal.,1991) ;(b)RIBBON S(Carson ,1987).762 Dengue Virus Protease-Inhibitor Complex
+
+--- Page 5 ---
+Ser163 Ogof molecule 2 of the protease. However,
+no hydrogen bonding to Tyr150 OH occurs (closest
+approach, 4.6 A ˚, being made by NZ2). The primary
+interaction with the latter residue appears to be
+with the pelectron cloud, with the NZ1and NZ2
+atoms being at 4.0 A ˚and the Neatom being 3.2 A ˚
+from the centroid of the Tyr150 phenyl ring atoms
+(Figure2(b)) .Suchamino-ar omati cinteractions,
+classed as weakly polar, have been observed to
+stabilize alternative conformations of Arg residues(Burley&Petsko,1988 )andhavebeensugg ested
+in interactions of other proteases with their sub-strates(Kimetal.,Loveetal.,1996 ;Yan,1998).
+Electrostatic interaction with the P1-Arg in the B
+conformation, however, is made by Asp129, with
+N
+eand NZ2atoms of the Arg side-chains hydrogen
+bonding (2.9 and 3.4 A ˚respectively) to the Og2
+atomoftheAspresidu e(Figur e2(b)) .Asp129 ,the
+side-chain carboxylate group of which is involved
+in a hydrogen bond with the side-chain hydroxyl
+group of Ser127 in the unliganded NS3-pro struc-
+ture, swings around to make this interaction with
+Arg47B. Distinction between an Arg and a Lysresidue at P1 sites is also made by other proteases.For example, in trypsin, although both Arg and
+Lys at P1 hydrogen bond to Ser190, Arg forms an
+ion pair with Asp189, while Lys interacts with thelatter residue solely through a water molecule
+(Ruhlma netal.,1973).Thepauc ityofcurrent ly
+available kinetic and structural data on ﬂaviviral
+proteases, and the fact that NS2B is not a part of
+this complex, makes the dual conformation of the
+P1 Arg and the large conformational change evi-dent in NS3-pro of ambiguous physiological rel-
+evance. At this time there is no information that
+deﬁnes the interaction footprint of NS2B onNS3-pro; nor are details of any conformational
+changes that might accompany such an interaction
+known. Thus, the conformational change that is
+observed might reﬂect an adjustment in NS3-prothat is mandated by crystal-packing interactions.
+However, on the other hand, substantial changes
+of conformation in binding pockets in engineeredserineproteas eshasbeendocument ed(Bon eetal.,
+1989 ;Peron a&Craik ,1995) .Inaddit ion,appr oxi-
+mately 80 % of P1 residues in cleavage sites in sev-eralﬂaviviruse sareArg(KrishnaMurthyetal.,
+1999 a).Thes elatte robservati onsmightimpl ya
+possible role for the conformational change duringpolyprote inproce ssing.Figure2(c)provide sa
+summary view of the spatial relationships that are
+observed in the interaction of both P1 Lys and P1
+Arg residues in the S1 pocket.
+Correlation with mutational observations
+Kinetic data on both NS3-pro and NS2B(H)/
+NS3-pro(Yuso fetal.,2000 )showthatalthough
+hydrolysis of longer substrates is strongly
+(10,000) stimulated by NS2B(H), hydrolysis of
+substrates that carry only a P1 side-chain, such as
+BAPNA, is practically unaffected (<5 )b y
+NS2B(H). This result strongly hints that NS2B(H)
+probably does not signiﬁcantly affect the binding
+of the P1 side-chain. Thus, although this structuredoes not provide an appropriate platform foraddressingthestructu ralbase sofreported(Valle
+&Falgo ut,1998 )mutationa leffectsatsitesbeyond
+P1, structural explanations for effects altering
+enzyme residues that interact with the P1 side-
+chain are more readily offered. It is clear from the
+structure that mutation of Asp129 by itself will notTable 2. Residues in protease molecules that make interactions with MbBBI
+Lys-head Arg-head
+Site Residue Binding pocket Residue Binding pocket
+P5 Cys16 R157 Cys43 R157
+P4 Asp17 No Contacts Ile44 G153, V155P3 Cys19 No Contacts Cys45 G153, V155P2 Thr19 H51, N152 Thr46 H51, G151, N152
+P1 Lys20 L115, S131 , P132 Arg47 S131 , P132,
+G133, S135 ,Y150 G133 , T134,
+G151 ,S163 S135, G151
+Arg47A L115, Y150
+N152, A160S163 , I165
+Arg47
+B S127, L128,D129 , A160
+P1
+0Ser21 I36, H51, S135 Ser48 I36, H51, V52,
+V52 P132, G133,
+S135
+P20Ile22 S34, Q35, I36, Met49 S34, Q35, I36
+P132, G133 P132, G133
+P30Pro23 S34, Q35 Pro50 S34
+P40Pro24 No contacts Gly51 No contacts
+P50Glu25 H51 Lys52 H51
+Residues in the enzyme making van der Waals interactions appear in normal type. The residues that make electrostatic interac-
+tions with main-chain atoms of the various subsites of the inhibitor appear in italics, while the residues that constitute the oxyanion
+hole are underlined in addition. Enzyme residues that interact electrostatically with side-chain atoms of inhibitor subsites appear in
+bold-face.Dengue Virus Protease-Inhibitor Complex 763
+
+--- Page 6 ---
+Figure 2 (legend opposite )764 Dengue Virus Protease-Inhibitor Complex
+
+--- Page 7 ---
+completely inactivate the protease. The Lys at P1
+has no interaction with Asp129 but has chargeinteractions with Tyr150 and Ser163. The Arg at
+P1, although it does interact with Asp129 in the B
+conformation, also interacts with Tyr150 and
+Ser163 in its Aconformation. Thus, a double
+mutation of Tyr150 and Ser163, in the absence of
+other structural consequences, would be expected
+to diminish seriously protease activity towardssubstrates. If Arg 47B interaction with Asp129 does
+exist in the presence of NS2B, then rendering the
+enzyme inactive towards substrates with Arg at P1appears to require the triple mutation of Asp129,
+Tyr150andSer163 .Inthemutat ionalstudy(Valle
+&Falgout ,1998),itwasobserv edthatTyr150
+could tolerate only a conservative change to Phe.
+Thus it is likely that replacement of Tyr150 by a
+residue with a signiﬁcantly different side-chain
+size might cause other structural alterationsbesides the inability of the P1 residue to interact
+with an aromatic ring. Changes to Ser163 were not
+attempted in the mutational study, as it was notexpected, from sequence comparisons, to interact
+withsubstrate s(Vall e&Falgout ,1998).BothP1
+Lys and P1 Arg make redundant electrostatic inter-
+actions in the S1 pocket; a situation hinted at by
+the pattern of responses to mutations of speciﬁc
+residues(Vall e&Falgo ut,1998) .Thus,theS1pock-
+et seems to be fault-tolerant to mutations, as mul-tiple mutations will be required to disable
+recognition of a substrate P1 side-chain by the S1
+pocket, whether the side-chain is a Lys or an Arg.
+Relevance to design of specific inhibitors
+The structure of this complex delineates inter-
+actions of MbBBI with NS3-pro in the absence of
+NS2B, a heterodimeric complex with which is the
+biolo gicallyactiv eformoftheprotea se(Falg out
+etal.,1991) .Ithas,howev er,beendemonst rated
+that NS3-pro alone is able to bind and hydrolyze
+model substrates containing Arg and Lys residues
+(Yusof et al., 2000), albeit at as low rate. MbBBI is a
+potent inhibitor of NS3-pro as well as NS3-pro-
+NS2B(H) with IC
+50values of 1.8 mM for both formsof the protease (data not shown). Contacts made
+by the inhibitor with protease molecules in the
+structure imply that the enzyme has been inhibitedby the standard mechanism that has been postu-latedforothe rserin eproteas es(Laskow ski&Kato,
+1980) .Compar isonwithothe rsimilarproteases
+suchasHCVNS3protea se(Kimetal.,1996 ;Love
+etal.,1996 ;Yan,1998 )andadenov irusprotease
+(Din g,1996) ,andthecurrentlyextantdataonboth
+forms of the dengue protease, indicate that thestimulatory effect of NS2B(H) is several orders ofmagnitude higher only for substrates with side-chains that go beyond P1, suggesting that NS2B(H)does not signiﬁcantly affect interactions of the P1
+side-chain with the enzyme. The structure of this
+complex, therefore, provides a reasonable basis for
+structure-assisted design of speciﬁc inhibitors. Forexample, the residues that interact with the P1
+Arg/Lys residue in the complex, Asp129, Tyr150
+andSer16 3areabsolu telyconserve d(Ryanetal.,
+1998 )amon galmos tallofthemorethan70ﬂavi-
+viruses characterized, including all four serotypes
+of the dengue virus. The sequences around the
+polyprotein cleavage sites, likewise, invariably pos-ses either an Arg or a Lys residue at the P1 pos-ition in these viruses. The structure of this complex
+isthereforeproto typica lofallsuchﬂavivira lNS3-
+protease interactions with analogous inhibitors.
+Thus, an inhibitor designed to emulate interactionsof the P1 residue with Tyr150 and Ser163 is likelyto be effective against all such ﬂaviviruses. Impli-
+cations of the aberrant mode, with respect to other
+serine proteases of comparable speciﬁcity, of Argbinding in the pocket are less clear at this time, pri-marily because of uncertainty about the physiologi-
+cal relevance of the Arg47B-Asp129 interaction. If
+subsequent studies show that this mode of Argbinding is an intrinsic property of NS2B(H)/NS3-pro, then this binding mode could potentially be
+exploited for the design of speciﬁc inhibitors that
+would preferentially target the dengue enzyme,while leaving other pharmacologically competitiveserineproteases,suchasthrom bin(Mar tinetal.,
+1997) ,pancreati ctrypsin(DiMarco&Priestle,
+1997) ,kallikrei n(Mitt letal.,1997) ,tissueplasmi no-
+Figure 2. Interactions of P1 sites with respective S1 pockets. Catrace of the protease is gray and that of the inhibi-
+tor is orange. (a) Interaction of Lys20 with the S1 pocket on molecule 1 of the enzyme (stereo view). Residues that
+make van der Waals contacts (cyan) and those that make electrostatic interactions (yellow) with Lys20 (carbon,
+magenta; nitrogen, blue; oxygen, red) of the inhibitor are shown. (b) Interactions of Arg47 with the S1 pocket on mol-
+ecule 2 (stereo view). Protease residues that make van der Waals contacts with Arg47 are cyan. Residues Tyr150 and
+Ser163, which make electrostatic contacts with conformation Aare yellow, and Asp129 which makes two hydrogen
+bonds with Arg47B is red. The two conformations of the Arg residue are labeled A and B, and shown in the same
+color scheme used for (a). (c) Spaceﬁlling representation of the S1 pocket (stereo view). Calculated molecular surface
+foralltheresidue s(liste dinTabl e2)intheS1pocke tofmolecul e2oftheproteas eisrepresente dbycyandots .Both
+conformations of Arg47 are shown using the color scheme of (a). Position of Lys20, with its carbon atoms color-
+coded magenta, relative to that of Arg47 is also shown. The position was derived by superposition of Caatoms of
+residues 18-23, the loop carrying Lys20, of MbBBI over residues 45-50, the loop carrying Arg47. The two loops super-
+pose with an rms deviation of 0.27 A ˚. Tyr150 and Ser163 are yellow and Asp129 is red. Electrostatic interactions and
+hydrogen bonds are shown by broken lines. Note that the hydrogen bond between Lys20 and Tyr150 is not included
+forclarity .TheFigur ewasmad ewith :(a)and(b)RIBBON S(Carson ,1987) ;(c)GRAS P(Nicholl setal.,1991).Dengue Virus Protease-Inhibitor Complex 765
+
+--- Page 8 ---
+genactivat or(Renatu setal.,1997 )andfacto rVIIa
+(Banne retal.,1996)lessaffecte d.
+Acknowledgements
+We thank Dr Sudhakar Babu of Biocryst Inc. for a
+review of this manuscript. We are grateful to Drs K.
+Gunasekaran and V. Ganesh for help with making someof the Figures. H.M.K.M. is grateful to Johnson &
+Johnson for Focused Giving grant in support of this
+research.
+References
+Banner, D. W., D’Arcy, A., Chene, C., Winkler, F. K.,
+Guha, A., Konigsberg, W. H., Nemerson, Y. &Kirchhofer, D. (1996). The crystal structure of thecomplex of blood coagulation factor VIIa with sol-
+uble tissue factor. Nature, 380, 41-46.
+Bazan, J. F. & Fletterick, R. (1989). Detection of a tryp-
+sin-like serine protease domain in ﬂaviviruses and
+pestiviruses. Virology, 171, 637-639.
+Bode, W. & Huber, R. (1992). Natural proteinase inhibi-
+tors and their interactions with proteinases. Eur. J.
+Biochem. 91, 433-451.
+Bone, R., Silen, J. L. & Agard, D. A. (1989). Structural
+plasticity broadens the speciﬁcity of an engineeredprotease. Nature, 341, 462-464.
+Bru¨nger, A. T. (1990). XPLOR Manual , Yale University,
+New Haven, CT.
+Bru¨nger, A. T. (1992). Free Rvalue: a novel statistical
+quantity for assessing the accuracy of crystal struc-tures. Nature, 355, 472-474.
+Burley, S. K. & Petsko, G. A. (1988). Weakly polar inter-
+actions. Advan. Protein Chem. 39, 125-189.
+Carson, M. J. (1987). Ribbon models of macromolecules.
+J. Mol. Graph. 5, 103-106.
+Collaborative Computation Project No. 4. (1994). CCP4
+suite of programs for protein crystallography. Acta.
+Crystallog. sect. D, 50, 760-763.
+Chen, P., Rose, J., Love, R., Wei, C. H. & Wang, B. C.
+(1992). Reactive sites of a anticarcinogenic Bowman-Birk proteinase inhibitor are similar to other trypsin
+inhibitors. J. Biol. Chem. 267, 1990-1994.
+Chi, C. W., Lo, S. S., Tan, F. L., Zhamg, Y. S. & Chu,
+H. M. (1982). Studied on the mung bean trypsin
+inhibitor. In Proteins in Biology and Medicine
+(Bradshaw, R. A., Liamg, C. C., Hill, R. L., Tsao,
+T. C., Tang, J. & Tsou, C. L., eds), pp. 427-456,
+Academic Press, New York.
+Cowtan, K. (1994). ‘dm’: an automated procedure for
+phase improvement by density modiﬁcation. InJoint CCP4 and ESF-EACBM Newsletter on ProteinCrystallography (Bailey, S., ed.), vol. 31, pp. 34-38,
+Daresbury Laboratory, Warrington..
+DiMarco, S. & Priestle, J. P. (1997). Complex of leech-
+derived tryptase inhibitor (Ldti) with trypsin andmodeling of the Ldti-tryptase system. Structure, 5,
+1465-1474.
+Ding, J., McGrath, W. J., Sweet, R. M. & Mangel, W. F.
+(1996). Crystal structure of the human adenovirusproteinase with its 11 amino acid cofactor. EMBO J.
+15, 1778-1783.
+Falgout, B., Miller, R. H. & Lai, C.-J. (1993). Deletion
+analysis of dengue virus type 4 nonstructural pro-tein NS2B: identiﬁcation of a domain required for
+NS2B-NS3 protease activity, J. Virol. 67, 2034-2042.
+Falgout, B., Pethel, M., Zhang, Y. M. & Lai, C. J. (1991).
+Both non-structural proteins NS2B and NS3 arerequired for the proteolytic processing of denguevirus non-structural proteins. J. Virol. 65, 2467-2475.
+Gorbalenya, A. E., Donchenko, A. P., Koonin, E. V. &
+Blinov, V. M. (1989). N-terminal domains of puta-tive helicases of ﬂavi- and pestiviruses may beserine proteases. Nucl. Acids Res. 17, 3889-3897.
+Gubler, D. J. & Clark, G. G. (1995). Dengue/dengue
+hemorrhagic fever: the emergence of a global health
+problem. Emerg. Infect. Dis. 1, 55-57.
+Hendrickson, W. A. (1994). MAD phasing in crystallo-
+graphy. Science, 254, 51-59.
+Ikenaka, T. & Norioka, S. (1986). Bowman-Birk family
+serine proteinase inhibitors. In The Proteases (Barrett,
+A. J. S. & Salvesan, R., ed.), Academic Press, New
+York.
+Jones, T. A., Zou, J. Y., Cowans, S. W. & Kjeldgaard, M.
+(1991). Improved methods for building proteinmodels in electron density and location of errors in
+these models. Acta Crystallog. sect. A, 47, 110-119.
+Kennedy, A. R. (1998). The Bowman-Birk inhibitor from
+soybeans as an anticarciniogenic agent. Am. J. Clin.
+Nutr. 68, 1406-1412.
+Kim, J. L., Morgenstern, K. A., Lin, C., Fox, T., Dwyer,
+M. D., Landro, J. A., Chambers, S. P., Markland,
+W., Lepre, C. A., O’Malley, E. T., Harbeson, S. L.,
+Rice, C. M., Murcko, M. A., Caron, P. R. &Thomson, J. A. (1996). Crystal structure of the hepa-titis C virus NS3 protease domain complexed with
+a synthetic NS4A cofactor peptide. Cell, 87, 343-355.
+Kraut, J. (1977). Serine proteases: structure and mechan-
+ism of catalysis. Annu. Rev. Biochem. 46, 331-358.
+Krishna Murthy, H. M., Clum, S. & Padmanabhan, R.
+(1999a). Dengue virus NS3 serine protease: crystal
+structure and insights into interaction of the activesite with substrates by molecular modeling andstructural analysis of mutational effects. J. Biol.
+Chem. 274, 5573-5580.
+Krishna Murthy, H. M., Judge, K., DeLucas, L., Clum, S.
+& Padmanabhan, R. (1999b). Crystallization, charac-terization and measurement of MAD data on crys-
+tals of dengue virus serine protease complexed with
+mung bean Bowman-Birk inhibitor. Acta. Crystallog.
+sect. A, 58, 1370-1372.
+Laskowski, M. J. & Kato, I. (1980). Protein inhibitors of
+proteinases. Annu. Rev. Biochem. 49, 593-626.
+Lin, G., Bode, W., Huber, R., Chu, C. W. & Engh, R. A.
+(1993). The 0.25 nm X-ray structure of the Bowman-Birk type inhibitor from mung bean in ternarycomplex with porcine trypsin. Eur. J. Biochem. 212,
+549-555.
+Love, R. A., Parge, H. E., Wickersham, J. A.,
+Hostomsky, Z., Habuka, N., Moomaw, E. W.,Adachi, T. & Hostomska, Z. (1996). The crystal
+structure of hepatitis C virus NS3 proteinase reveals
+a trypsin-like fold and a structural zinc-binding site.Cell, 87, 331-342.
+Martin, P. D., Malkowski, M. G., Box, J., Esmon, C. T. &
+Edwards, B. F. P. (1997). New insights into theregulation of the blood clotting cascade derivedfrom the X-ray crystal structure of meizothrombinDes F1 in complex with PPACK. Structure, 5, 1681-
+1693.
+Mittl, P. R., Di Marco, S., Fendrich, G., Pohlig, G., Heim,
+J., Sommerhoff, C., Fritz, H., Priestle, J. P. &Grutter, M. G. (1997). A new structural class of ser-766 Dengue Virus Protease-Inhibitor Complex
+
+--- Page 9 ---
+ine protease inhibitors revealed by the structure of
+the Hirustasin-Kallikrein complex. Structure, 5, 253-
+261.
+Monath, T. P. (1994). Dengue: the risk to developed and
+developing countries. Proc. Natl Acad. Sci. USA, 91,
+2395-2400.
+Nicholls, A., Sharp, K. A. & Honig, B. (1991). Protein
+folding and association insights from the interfacial
+and thermodynamic properties of hydrocarbons.
+Proteins: Struct. Funct. Genet. 11, 281-289.
+Otwinowski, Z. (1991). Isomorphous Replacement and
+Anomalous Scattering (Wolf, W., Evans, P. R. &
+Leslie, A. G. W., eds), pp. 101-107, Daresbury
+Laboratory, Warrington.
+Perona, J. & Craik, C. S. (1995). Structural basis of sub-
+strate speciﬁcity in the serine proteases. Protein Sci.
+4, 337-360.
+Ramachandran, M., Sasaguri, Y., Nakano, R. &
+Padmanabhan, R. (1996). Heterologous expression,puriﬁcation, and characterization of adenovirusDNA polymerase and preterminal protein. Methods
+Enzymol. 275, 168-194.
+Renatus, M., Bode, W., Huber, R., Struzebecher, J.,
+Prasa, D., Fischer, S., Kohnert, U. & Stubbs, M. T.(1997). Structural mapping of the active site speci-ﬁcity determinants of human tissue-type plasmino-gen activator. Implications for the design of low
+molecular weight substrates and inhibitors. J. Biol.
+Chem. 272, 21713-21722.
+Ruhlman, A., Kukla, D., Schwager, P., Bartels, K. &
+Huber, R. (1973). Structure of the complex formed
+by bovine trypsin and bovine pancreatic trypsininhibitor. J. Mol. Biol. 77, 417-436.Ryan, M. D., Monaghan, S. & Flint, M. (1998). Virus-
+encoded proteinases of Flaviviridae .J. Gen. Virol. 79,
+947-959.
+Sardana, V. V. J. A., Wolfgang, C. A., Veloski, W. J.,
+Long, K., LeGrow, B., Wolanski, E., Emini, A. &
+LaFemina, R. L. (1994). Peptide substrate cleavage
+speciﬁcity of the human cytomegalovirus protease.
+J. Biol. Chem. 269, 14337-14340.
+Schechter, I. & Berger, A. (1967). On the size of the
+active site in proteases. I. Papain. Biochem. Biophys.
+Res. Commun. 27, 157-162.
+Terwilliger, T. C., Kim, S. H. & Eisenberg, D. (1987).
+Generalized method for determining heavy-atomposition using the difference Patterson function.
+Acta. Crystallog. sect. A, 43, 1-5.
+Tsunogae, Y., Tanaka, I., Yamane, T., Kikkawa, J.-I.,
+Ashida, T., Ishikawa, C., Watanabe, K., Nakamura,S. & Takahashi, K. (1986). Structure of trypsin-bind-
+ing domain of Bowman-Birk type protease inhibitorand its interaction with trypsin. J. Biochem. 100,
+1637-1646.
+Valle, R. P. & Falgout, B. (1998). Mutagenesis of the NS3
+protease of dengue virus type 2. J. Virol. 72, 624-
+632.
+Yan, Y., Li, Y., Munshi, S., Sardana, V., Cole, J. L.,
+Steinkuhier, C., Tomei, L., DeFrancesco, R., Kuo,L. C. & Chen, Z. (1998). Complex of NS3 proteaseand NS4A peptide of BK strain hepatitis C virus: a
+2.2 A˚resolution structure in a hexagonal crystal
+form. Protein Sci. 7, 837-847.
+Zhang, L., Mohan, P. M. & Padmanabhan, R. (1992).
+Processing and localization of dengue virus type 2
+polyprotein precursor NS3-NS4A-NS4B-NS5. J. Virol.
+66, 7549-7554.
+Edited by I. Wilson
+(Received 11 January 2000; received in revised form 23 May 2000; accepted 1 June 2000)Dengue Virus Protease-Inhibitor Complex 767

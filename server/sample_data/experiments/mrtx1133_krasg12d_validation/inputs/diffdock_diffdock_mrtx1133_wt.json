@@ -1,0 +1,9 @@
+{
+  "jobName": "diffdock_mrtx1133_wt",
+  "type": "diffdock",
+  "settings": {
+    "proteinFile": "alphafold_kras_wt/best_model.pdb",
+    "ligandFormat": "SMILES",
+    "ligandSmiles": "CC1=CC(=CC(=C1NC2=NC=C(C(=N2)OC3=CC(=CC=C3)N4CCC(CC4)N5CCOCC5)F)C)C(=O)N"
+  }
+}

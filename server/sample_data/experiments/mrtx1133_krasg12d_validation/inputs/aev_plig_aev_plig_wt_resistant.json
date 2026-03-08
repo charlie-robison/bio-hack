@@ -1,0 +1,7 @@
+{
+  "jobName": "aev_plig_wt_resistant",
+  "type": "aev_plig",
+  "settings": {
+    "complex_structure": "diffdock_mrtx1133_wt/best_model.pdb"
+  }
+}

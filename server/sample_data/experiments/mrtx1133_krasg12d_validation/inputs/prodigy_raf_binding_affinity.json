@@ -1,0 +1,7 @@
+{
+  "jobName": "raf_binding_affinity",
+  "type": "prodigy",
+  "settings": {
+    "proteinFile": "krasg12d_raf_complex/best_model.pdb"
+  }
+}

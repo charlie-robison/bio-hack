@@ -1,0 +1,9 @@
+{
+  "jobName": "mrtx1133-g12d-docking",
+  "type": "diffdock",
+  "settings": {
+    "proteinFile": "kras-g12d-structure/best_model.pdb",
+    "ligandFormat": "SMILES",
+    "ligandSmiles": "CC1(C)CC(C)(C)Nc2c1ccc(F)c2Nc3ncc(C#N)c(Oc4ccccc4F)n3"
+  }
+}

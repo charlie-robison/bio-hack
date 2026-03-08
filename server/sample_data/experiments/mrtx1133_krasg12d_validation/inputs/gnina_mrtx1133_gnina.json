@@ -1,0 +1,16 @@
+{
+  "jobName": "mrtx1133_gnina",
+  "type": "gnina",
+  "settings": {
+    "proteinFile": "krasg12d_alphafold/best_model.pdb",
+    "ligandFile": "mrtx1133_diffdock/best_model.pdb",
+    "boxX": 35,
+    "boxY": 27,
+    "boxZ": 35,
+    "width": 20,
+    "height": 20,
+    "depth": 20,
+    "cnnScoring": "rescore",
+    "exhaustiveness": 32
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "experiment_id": "exp_74f56daa",
+  "paper_title": "Crystal Structure of Dengue Virus NS3 Protease in Complex with a Bowman-Birk Inhibitor: Implications for Flaviviral Polyprotein Processing and Drug Design",
+  "hypothesis": "The crystal structure of dengue virus NS3 protease complexed with a Bowman-Birk inhibitor would provide structural explanations for site-specific mutations affecting catalytic activity and reveal unique binding modes that could inform specific inhibitor design for flaviviral proteases.",
+  "total_jobs": 4,
+  "tools_used": [
+    "boltz",
+    "chai",
+    "esmfold",
+    "alphafold"
+  ],
+  "stages": [
+    {
+      "stage_number": 1,
+      "stage_name": "Structure Prediction & Analysis",
+      "description": "Direct submission of synthetic data to Tamarind models",
+      "jobs": [
+        {
+          "jobName": "exp-74f56daa-alphafold-wild-type",
+          "type": "alphafold",
+          "description": "alphafold prediction for wild_type",
+          "settings": {
+            "sequence": "SGVLWDVPSPPPVGKAELEDGAYRIKQKGILGYSQIGAGVYKEGTFHTMWHVTRGAVLMHKGKRIEPSWADVKKDLISYGGGWKLEGEWKEGEEVQVLALEPGKNPRAVQTKPGLFKTLTGEALGAVYRIGLGKIFLVGKKCEKWVQRGDIVAICATQGSEGEATLEGGAFRSIFWVQVESGTLLHLVSEGREMLRRGNSTITTQKRALAKEVLERLQRRMEELEKDAIKDANKAMRALREMEEAAEKRSAAIKAIKREREAALRKEVAERKKKGKKLERLAKKTIEERSIAAREARKRKRAARLEKAMAAEVKAKDGKPVTKASRLKEVKREIDERLGSAIKEQKTAKREELKANAKADTRARKGMR"
+          },
+          "source_row_index": 0,
+          "source_group": "wild_type",
+          "submission_status": "submitted",
+          "submission_response": "exp-74f56daa-alphafold-wild-type submitted to queue."
+        },
+        {
+          "jobName": "exp-74f56daa-esmfold-wild-type",
+          "type": "esmfold",
+          "description": "esmfold prediction for wild_type",
+          "settings": {
+            "sequence": "SGVLWDVPSPPPVGKAELEDGAYRIKQKGILGYSQIGAGVYKEGTFHTMWHVTRGAVLMHKGKRIEPSWADVKKDLISYGGGWKLEGEWKEGEEVQVLALEPGKNPRAVQTKPGLFKTLTGEALGAVYRIGLGKIFLVGKKCEKWVQRGDIVAICATQGSEGEATLEGGAFRSIFWVQVESGTLLHLVSEGREMLRRGNSTITTQKRALAKEVLERLQRRMEELEKDAIKDANKAMRALREMEEAAEKRSAAIKAIKREREAALRKEVAERKKKGKKLERLAKKTIEERSIAAREARKRKRAARLEKAMAAEVKAKDGKPVTKASRLKEVKREIDERLGSAIKEQKTAKREELKANAKADTRARKGMR"
+          },
+          "source_row_index": 0,
+          "source_group": "wild_type",
+          "submission_status": "submitted",
+          "submission_response": "exp-74f56daa-esmfold-wild-type submitted to queue."
+        },
+        {
+          "jobName": "exp-74f56daa-boltz-wild-type",
+          "type": "boltz",
+          "description": "boltz prediction for wild_type",
+          "settings": {
+            "inputFormat": "sequence",
+            "sequence": "SGVLWDVPSPPPVGKAELEDGAYRIKQKGILGYSQIGAGVYKEGTFHTMWHVTRGAVLMHKGKRIEPSWADVKKDLISYGGGWKLEGEWKEGEEVQVLALEPGKNPRAVQTKPGLFKTLTGEALGAVYRIGLGKIFLVGKKCEKWVQRGDIVAICATQGSEGEATLEGGAFRSIFWVQVESGTLLHLVSEGREMLRRGNSTITTQKRALAKEVLERLQRRMEELEKDAIKDANKAMRALREMEEAAEKRSAAIKAIKREREAALRKEVAERKKKGKKLERLAKKTIEERSIAAREARKRKRAARLEKAMAAEVKAKDGKPVTKASRLKEVKREIDERLGSAIKEQKTAKREELKANAKADTRARKGMR"
+          },
+          "source_row_index": 0,
+          "source_group": "wild_type",
+          "submission_status": "submitted",
+          "submission_response": "exp-74f56daa-boltz-wild-type submitted to queue."
+        },
+        {
+          "jobName": "exp-74f56daa-chai-wild-type",
+          "type": "chai",
+          "description": "chai prediction for wild_type",
+          "settings": {
+            "inputFormat": "sequence",
+            "sequence": "SGVLWDVPSPPPVGKAELEDGAYRIKQKGILGYSQIGAGVYKEGTFHTMWHVTRGAVLMHKGKRIEPSWADVKKDLISYGGGWKLEGEWKEGEEVQVLALEPGKNPRAVQTKPGLFKTLTGEALGAVYRIGLGKIFLVGKKCEKWVQRGDIVAICATQGSEGEATLEGGAFRSIFWVQVESGTLLHLVSEGREMLRRGNSTITTQKRALAKEVLERLQRRMEELEKDAIKDANKAMRALREMEEAAEKRSAAIKAIKREREAALRKEVAERKKKGKKLERLAKKTIEERSIAAREARKRKRAARLEKAMAAEVKAKDGKPVTKASRLKEVKREIDERLGSAIKEQKTAKREELKANAKADTRARKGMR"
+          },
+          "source_row_index": 0,
+          "source_group": "wild_type",
+          "submission_status": "submitted",
+          "submission_response": "exp-74f56daa-chai-wild-type submitted to queue."
+        }
+      ]
+    }
+  ]
+}

@@ -13,6 +13,7 @@ type Phase =
   | "plan_ready"
   | "starting"
   | "parsing"
+  | "generating"
   | "planning_models"
   | "submitting"
   | "running_models"
@@ -68,6 +69,7 @@ interface ExperimentStatus {
 
 const PIPELINE_STAGES: { key: string; label: string; icon: string }[] = [
   { key: "parsing", label: "Parse Paper", icon: "\u25A1" },
+  { key: "generating", label: "Synth Data", icon: "\u25C6" },
   { key: "planning", label: "Plan Models", icon: "\u25C7" },
   { key: "submitting", label: "Submit Jobs", icon: "\u25B3" },
   { key: "running_models", label: "Run Models", icon: "\u2B21" },
@@ -468,6 +470,7 @@ export default function ExperimentsPage() {
 
         const stageToPhase: Record<string, Phase> = {
           parsing: "parsing",
+          generating: "generating",
           planning: "planning_models",
           submitting: "submitting",
           running_models: "running_models",

@@ -1,0 +1,14 @@
+{
+  "jobName": "g12d-complex-dynamics",
+  "type": "openmm",
+  "settings": {
+    "systemType": "protein-ligand",
+    "pdbFile": "mrtx1133-g12d-docking/best_model.pdb",
+    "ligandFile": "mrtx1133-g12d-docking/best_model.pdb",
+    "ligandCharge": 0,
+    "minimizationSteps": "10000",
+    "equilibrationTime": 100,
+    "productionTime": 5,
+    "temperature": "310"
+  }
+}

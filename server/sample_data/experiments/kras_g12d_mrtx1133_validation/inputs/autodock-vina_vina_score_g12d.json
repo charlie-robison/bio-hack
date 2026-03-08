@@ -1,0 +1,15 @@
+{
+  "jobName": "vina_score_g12d",
+  "type": "autodock-vina",
+  "settings": {
+    "receptorFile": "alphafold_kras_g12d/best_model.pdb",
+    "ligandFile": "diffdock_mrtx1133_g12d/best_model.pdb",
+    "boxX": 0,
+    "boxY": 0,
+    "boxZ": 0,
+    "width": 25,
+    "height": 25,
+    "depth": 25,
+    "exhaustiveness": 32
+  }
+}

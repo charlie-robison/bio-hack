@@ -1,0 +1,311 @@
+{
+  "experiment_id": "kras_g12d_mrtx1133_validation",
+  "paper_title": "Anti-tumor efficacy of a potent and selective non-covalent KRASG12D inhibitor",
+  "paper_journal": "Nature Medicine",
+  "hypothesis": "MRTX1133, a high-affinity non-covalent small molecule, can selectively inhibit KRASG12D mutant protein and demonstrate anti-tumor activity in KRASG12D-driven cancers",
+  "synthetic_data_used": true,
+  "num_input_rows": 10,
+  "stages": [
+    {
+      "stage_number": 1,
+      "stage_name": "Structure Prediction",
+      "description": "Predict 3D structures of KRAS variants (WT and G12D mutant) to validate structural differences",
+      "jobs": [
+        {
+          "jobName": "alphafold_kras_g12d",
+          "type": "alphafold",
+          "description": "Predict structure of KRAS G12D mutant protein",
+          "settings": {
+            "sequence": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQGVDDAFYTLVREIRKHKEKMSKDGKKKKKKSKTKCVIM",
+            "numModels": "5",
+            "chooseBest": true
+          },
+          "synthetic_row_index": 0,
+          "validates_claims": [
+            "KRASG12D mutations show structural differences enabling selective targeting"
+          ],
+          "depends_on": [],
+          "submission_status": "submitted",
+          "submission_response": "alphafold_kras_g12d submitted to queue."
+        },
+        {
+          "jobName": "alphafold_kras_wt",
+          "type": "alphafold",
+          "description": "Predict structure of KRAS wild-type protein",
+          "settings": {
+            "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQGVDDAFYTLVREIRKHKEKMSKDGKKKKKKSKTKCVIM",
+            "numModels": "5",
+            "chooseBest": true
+          },
+          "synthetic_row_index": 1,
+          "validates_claims": [
+            "KRASG12D mutations show structural differences enabling selective targeting"
+          ],
+          "depends_on": [],
+          "submission_status": "submitted",
+          "submission_response": "alphafold_kras_wt submitted to queue."
+        }
+      ]
+    },
+    {
+      "stage_number": 2,
+      "stage_name": "Ligand Docking",
+      "description": "Dock MRTX1133 to both KRAS G12D and WT structures to validate selectivity",
+      "jobs": [
+        {
+          "jobName": "diffdock_mrtx1133_g12d",
+          "type": "diffdock",
+          "description": "Dock MRTX1133 to KRAS G12D structure",
+          "settings": {
+            "proteinFile": "FROM_PREVIOUS_STAGE:alphafold_kras_g12d",
+            "ligandFormat": "SMILES",
+            "ligandSmiles": "C1CC1NC2=NC(=NC=C2F)NC3=CC=C(C=C3F)C#C"
+          },
+          "synthetic_row_index": 0,
+          "validates_claims": [
+            "MRTX1133 demonstrates high-affinity binding to KRASG12D",
+            "KRASG12D mutations show higher binding affinity to MRTX1133 compared to KRASWT"
+          ],
+          "depends_on": [
+            "alphafold_kras_g12d"
+          ],
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        },
+        {
+          "jobName": "diffdock_mrtx1133_wt",
+          "type": "diffdock",
+          "description": "Dock MRTX1133 to KRAS WT structure to test selectivity",
+          "settings": {
+            "proteinFile": "FROM_PREVIOUS_STAGE:alphafold_kras_wt",
+            "ligandFormat": "SMILES",
+            "ligandSmiles": "C1CC1NC2=NC(=NC=C2F)NC3=CC=C(C=C3F)C#C"
+          },
+          "synthetic_row_index": 3,
+          "validates_claims": [
+            "~700-fold selectivity for KRASG12D over KRASWT",
+            "KRASG12D mutations show higher binding affinity to MRTX1133 compared to KRASWT"
+          ],
+          "depends_on": [
+            "alphafold_kras_wt"
+          ],
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        }
+      ]
+    },
+    {
+      "stage_number": 3,
+      "stage_name": "Complex Structure Prediction",
+      "description": "Predict KRAS-ligand complexes using Boltz to validate binding modes and conformational changes",
+      "jobs": [
+        {
+          "jobName": "boltz_kras_g12d_mrtx1133",
+          "type": "boltz",
+          "description": "Predict KRAS G12D-MRTX1133 complex structure",
+          "settings": {
+            "inputFormat": "list",
+            "proteins": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQGVDDAFYTLVREIRKHKEKMSKDGKKKKKKSKTKCVIM",
+            "ligands": "C1CC1NC2=NC(=NC=C2F)NC3=CC=C(C=C3F)C#C",
+            "numSamples": 5,
+            "chooseBest": true
+          },
+          "synthetic_row_index": 2,
+          "validates_claims": [
+            "MRTX1133 binding results in conformational change of switch I and switch II",
+            "MRTX1133 potently binds both active and inactive forms of KRASG12D"
+          ],
+          "depends_on": [],
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        },
+        {
+          "jobName": "chai_kras_g12d_mrtx1133",
+          "type": "chai",
+          "description": "Alternative complex prediction using Chai-1",
+          "settings": {
+            "inputFormat": "list",
+            "proteins": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQGVDDAFYTLVREIRKHKEKMSKDGKKKKKKSKTKCVIM",
+            "ligands": "C1CC1NC2=NC(=NC=C2F)NC3=CC=C(C=C3F)C#C",
+            "numSamples": 5
+          },
+          "synthetic_row_index": 4,
+          "validates_claims": [
+            "MRTX1133 binding results in conformational change of switch I and switch II",
+            "MRTX1133 demonstrates a high-affinity interaction with GDP-loaded KRASG12D"
+          ],
+          "depends_on": [],
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        }
+      ]
+    },
+    {
+      "stage_number": 4,
+      "stage_name": "Binding Affinity Scoring",
+      "description": "Score binding affinity using multiple methods to validate KD and IC50 values",
+      "jobs": [
+        {
+          "jobName": "gnina_score_g12d",
+          "type": "gnina",
+          "description": "Score MRTX1133 binding to KRAS G12D using GNINA CNN scoring",
+          "settings": {
+            "proteinFile": "FROM_PREVIOUS_STAGE:boltz_kras_g12d_mrtx1133",
+            "ligandFile": "FROM_PREVIOUS_STAGE:diffdock_mrtx1133_g12d",
+            "boxX": 0,
+            "boxY": 0,
+            "boxZ": 0,
+            "width": 20,
+            "height": 20,
+            "depth": 20,
+            "cnnScoring": "rescore",
+            "wholeProtein": true
+          },
+          "synthetic_row_index": 0,
+          "validates_claims": [
+            "KD value of ~0.2 pM for GDP-loaded KRASG12D",
+            "IC50 values of <2 nM for KRASG12D"
+          ],
+          "depends_on": [
+            "boltz_kras_g12d_mrtx1133",
+            "diffdock_mrtx1133_g12d"
+          ],
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        },
+        {
+          "jobName": "vina_score_g12d",
+          "type": "autodock-vina",
+          "description": "Alternative scoring using AutoDock Vina",
+          "settings": {
+            "receptorFile": "FROM_PREVIOUS_STAGE:alphafold_kras_g12d",
+            "ligandFile": "FROM_PREVIOUS_STAGE:diffdock_mrtx1133_g12d",
+            "boxX": 0,
+            "boxY": 0,
+            "boxZ": 0,
+            "width": 25,
+            "height": 25,
+            "depth": 25,
+            "exhaustiveness": 32
+          },
+          "synthetic_row_index": 6,
+          "validates_claims": [
+            "MRTX1133 demonstrates high-affinity binding to KRASG12D",
+            "Binding affinity correlates with anti-tumor efficacy"
+          ],
+          "depends_on": [
+            "alphafold_kras_g12d",
+            "diffdock_mrtx1133_g12d"
+          ],
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        }
+      ]
+    },
+    {
+      "stage_number": 5,
+      "stage_name": "Molecular Dynamics",
+      "description": "Simulate protein-ligand dynamics to validate stability and mechanism",
+      "jobs": [
+        {
+          "jobName": "openmm_kras_g12d_complex",
+          "type": "openmm",
+          "description": "MD simulation of KRAS G12D-MRTX1133 complex",
+          "settings": {
+            "systemType": "protein-ligand",
+            "pdbFile": "FROM_PREVIOUS_STAGE:boltz_kras_g12d_mrtx1133",
+            "ligandFile": "FROM_PREVIOUS_STAGE:diffdock_mrtx1133_g12d",
+            "ligandCharge": 0,
+            "minimizationSteps": "10000",
+            "equilibrationTime": 0.5,
+            "productionTime": 5,
+            "forceField": "ff19SB",
+            "temperature": "310"
+          },
+          "synthetic_row_index": 8,
+          "validates_claims": [
+            "MRTX1133 binding eliminates KRASG12D protein surface competency for effector binding",
+            "Persistent inhibition of pERK and pS6 through 72 hours"
+          ],
+          "depends_on": [
+            "boltz_kras_g12d_mrtx1133",
+            "diffdock_mrtx1133_g12d"
+          ],
+          "submission_status": "failed",
+          "submission_error": "400 Client Error: Bad Request for url: https://app.tamarind.bio/api/submit-job"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim": "MRTX1133 demonstrates high-affinity binding to KRASG12D with KD value of ~0.2 pM for GDP-loaded KRASG12D",
+      "category": "affinity",
+      "testable": true,
+      "models": [
+        "diffdock",
+        "gnina",
+        "autodock-vina",
+        "boltz"
+      ]
+    },
+    {
+      "claim": "MRTX1133 shows ~700-fold selectivity for KRASG12D over KRASWT",
+      "category": "selectivity",
+      "testable": true,
+      "models": [
+        "diffdock",
+        "gnina",
+        "autodock-vina"
+      ]
+    },
+    {
+      "claim": "MRTX1133 binding results in conformational change of switch I and switch II loops",
+      "category": "structure",
+      "testable": true,
+      "models": [
+        "boltz",
+        "chai",
+        "openmm"
+      ]
+    },
+    {
+      "claim": "MRTX1133 potently binds both active and inactive forms of KRASG12D",
+      "category": "mechanism",
+      "testable": true,
+      "models": [
+        "boltz",
+        "chai",
+        "openmm"
+      ]
+    },
+    {
+      "claim": "MRTX1133 inhibits ERK1/2 phosphorylation with median IC50 values of ~5 nM in KRASG12D cell lines",
+      "category": "efficacy",
+      "testable": false,
+      "models": []
+    },
+    {
+      "claim": "MRTX1133 demonstrates >1,000-fold selectivity in cell viability assays comparing KRASG12D vs KRASWT cell lines",
+      "category": "selectivity",
+      "testable": false,
+      "models": []
+    },
+    {
+      "claim": "MRTX1133 achieves tumor regression (\u226530%) in 73% of pancreatic ductal adenocarcinoma models",
+      "category": "efficacy",
+      "testable": false,
+      "models": []
+    },
+    {
+      "claim": "MRTX1133 binding eliminates KRASG12D protein surface competency for binding effector proteins",
+      "category": "mechanism",
+      "testable": true,
+      "models": [
+        "openmm",
+        "boltz",
+        "chai"
+      ]
+    }
+  ]
+}

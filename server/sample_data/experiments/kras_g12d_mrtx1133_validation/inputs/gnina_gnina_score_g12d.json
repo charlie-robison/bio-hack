@@ -1,0 +1,16 @@
+{
+  "jobName": "gnina_score_g12d",
+  "type": "gnina",
+  "settings": {
+    "proteinFile": "boltz_kras_g12d_mrtx1133/best_model.pdb",
+    "ligandFile": "diffdock_mrtx1133_g12d/best_model.pdb",
+    "boxX": 0,
+    "boxY": 0,
+    "boxZ": 0,
+    "width": 20,
+    "height": 20,
+    "depth": 20,
+    "cnnScoring": "rescore",
+    "wholeProtein": true
+  }
+}

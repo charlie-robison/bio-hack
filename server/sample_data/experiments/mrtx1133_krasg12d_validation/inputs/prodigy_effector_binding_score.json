@@ -1,0 +1,7 @@
+{
+  "jobName": "effector_binding_score",
+  "type": "prodigy",
+  "settings": {
+    "proteinFile": "raf_rbd_docking/best_model.pdb"
+  }
+}

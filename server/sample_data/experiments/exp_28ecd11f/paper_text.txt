@@ -1,0 +1,919 @@
+--- Page 1 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2171
+nature medicinehttps://doi.org/10.1038/s41591-022-02007-7
+Article
+Anti-tumor efficacy of a potent and selective
+non-covalent KRASG12D inhibitor
+Jill Hallin    1, Vickie Bowcut1, Andrew Calinisan1, David M. Briere1,
+Lauren Hargis1, Lars D. Engstrom    1, Jade Laguer1, James Medwid1,
+Darin Vanderpool1, Ella Lifset1, David Trinh1, Natalie Hoffman1, Xiaolun Wang1,
+J. David Lawson    1, Robin J. Gunn1, Christopher R. Smith    1, Nicole C. Thomas1,
+Matthew Martinson2, Alex Bergstrom2, Francis Sullivan2, Karyn Bouhana2,
+Shannon Winski2, Leo He3, Julio Fernandez-Banet3, Adam Pavlicek3,
+Jacob R. Haling1, Lisa Rahbaek1, Matthew A. Marx    1, Peter Olson1 and
+James G. Christensen    1
+Recent progress in targeting KRASG12C has provided both insight and
+inspiration for targeting alternative KRAS mutants. In this study, we
+evaluated the mechanism of action and anti-tumor efficacy of MRTX1133, a potent, selective and non-covalent KRAS
+G12D inhibitor. MRTX1133
+demonstrated a high-affinity interaction with GDP-loaded KRASG12D with
+KD and IC50 values of ~0.2 pM and <2 nM, respectively, and ~700-fold
+selectivity for binding to KRASG12D as compared to KRASWT. MRTX1133
+also demonstrated potent inhibition of activated KRASG12D based on
+biochemical and co-crystal structural analyses. MRTX1133 inhibited ERK1/2 phosphorylation and cell viability in KRAS
+G12D-mutant cell lines, with median
+IC50 values of ~5 nM, and demonstrated >1,000-fold selectivity compared
+to KRASWT cell lines. MRTX1133 exhibited dose-dependent inhibition of
+KRAS-mediated signal transduction and marked tumor regression (≥30%) in a subset of KRAS
+G12D-mutant cell-line-derived and patient-derived xenograft
+models, including eight of 11 (73%) pancreatic ductal adenocarcinoma (PDAC) models. Pharmacological and CRISPR-based screens demonstrated that co-targeting KRAS
+G12D with putative feedback or bypass pathways,
+including EGFR or PI3Kα, led to enhanced anti-tumor activity. Together, these data indicate the feasibility of selectively targeting KRAS mutants with non-covalent, high-affinity small molecules and illustrate the therapeutic susceptibility and broad dependence of KRAS
+G12D mutation-positive tumors
+on mutant KRAS for tumor cell growth and survival.
+KRAS is one of the most frequently mutated oncogenes in cancer, yet
+efforts to directly target KRAS have been mostly unsuccessful because
+initial analyses of KRAS proteins indicated that they lack a clear pocket
+to which small molecules can bind with high affinity1,2. However, covalent inhibitors targeting the mutated cysteine residue in KRASG12C
+exploited a binding pocket in the switch II domain that enabled the
+development of clinically active small-molecule inhibitors for patients
+with this mutation3–5. The switch II binding pocket present in all KRAS Received: 27 December 2021
+Accepted: 9 August 2022
+Published online: 10 October 2022
+Check for updates
+1Mirati Therapeutics, Inc., San Diego, CA, USA. 2Array BioPharma, Inc. (acquired by Pfizer), Boulder, CO, USA. 3Monoceros Biosystems, LLC, San Diego, CA,
+USA.  e-mail: christensenj@mirati.com
+
+--- Page 2 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2172
+Article https://doi.org/10.1038/s41591-022-02007-7and Extended Data Fig. 1a), support the observed inhibitor potency in
+both active and inactive states of KRASG12D. Furthermore, binding of
+MRTX1133 to KRASG12D resulted in a conformational change of switch
+I and switch II, loops that are involved in protein–protein interactions
+with downstream effector molecules. The resulting conformation
+is observed in both the GDP and GMPPCP co-complexed structures,
+suggesting that MRTX1133 binding, independent of nucleotide state,
+eliminates KRASG12D protein surface competency for binding effector
+proteins (Extended Data Fig. 1a). Combined, these data demonstrate
+that MRTX1133 potently and selectively binds both the active and inac -
+tive forms of KRASG12D. Although MRTX1133 appears to more potently
+inhibit the inactive form of KRASG12D, it is possible that MRTX1133 bind -
+ing to the active form may contribute to its mechanism of inhibition
+of KRASG12D in cells harboring this mutation.
+Given the potency and selectivity for KRASG12D protein in the
+biochemical assays, MRTX1133 was evaluated in cellular assays
+designed to evaluate its effect on KRAS signaling and cell viability.
+After a 3-hour treatment in the KRASG12D-mutant, HPAC (pancreatic)
+and GP2D (colorectal) cancer cell lines, MRTX1133 demonstrated
+concentration-dependent inhibition of key KRAS pathway signaling
+molecules, including phosphorylated extracellular signal-regulated
+kinase 1/2 (pERK), phosphorylated S6 (pS6), phosphorylated 4EBP1
+(p4EBP1) and dual-specificity phosphatase 4 or 6 (DUSP4/6) expres -
+sion (Fig. 1d,e and Extended Data Fig. 1b,c). The IC50 value for pERK
+and pS6 inhibition was <3 nM in both cell lines. MRTX1133 was evalu-ated at selected concentrations (0 nM, 1 nM, 10 nM and 100 nM) over
+a time course in the HPAC cell line. MRTX1133 demonstrated similar
+IC50 values and persistent inhibition of pERK and pS6 as early as 3 hours
+through 72 hours of treatment, with DUSP4 inhibition kinetics gener-
+ally tracking with inhibition of pERK and pS6 (Fig. 1f,g). In contrast,
+inhibition of p4EBP1 and DUSP6 expression was delayed compared
+to pERK and pS6, which may indicate that these pathway nodes are
+differentially regulated. Of note, total ERK and S6 protein levels were
+also decreased at the 48-hour and 72-hour timepoints, suggesting
+that MRTX1133 impacts expression of selected proteins and/or cell
+viability at later timepoints. In GP2D cells, inhibition of pERK and pS6 is
+evident from 1 hour to 24 hours; however, partial reactivation of these
+proteins was apparent at later timepoints, suggesting involvement of
+time-dependent feedback pathways in this cell line (Extended Data
+Fig. 1d,e). This conclusion is also suggested by the lack of inhibition of
+DUSP4, DUSP6 and p4EBP1 in GP2D cells.
+MRTX1133 was evaluated for its ability to inhibit KRAS-dependent
+signaling using a pERK in-cell western assay across a panel of 25 KRASG12D
+and 11 non-KRASG12D-mutant cancer cell lines (Extended Data Fig. 2).
+MRTX1133 potently inhibited pERK in 24 of 25 KRASG12D-mutant cell
+lines, with IC50 values ranging from 0.6 nM to 13.7 nM (median IC50:
+6.1 nM). In contrast, IC50 values ranged from 151 nM to >3,000 nM
+(median IC50: >3,000 nM) in the non-KRASG12D-mutant cell lines
+evaluated. Using a CellTiter-Glo (CTG) assay, MRTX1133 inhib -
+ited the viability of KRASG12D-mutant lines with IC50 values ranging
+from 1.4 nM to 42.3 nM (median IC50: 5.3 nM) for all but one of the
+cell lines in the three-dimensional (3D) assay format and between proteins may represent a feasible binding surface for the development
+of additional KRAS inhibitors, including mutant-selective inhibitors.
+KRASG12D is the most common KRAS mutation and is present in
+approximately 34% of pancreatic cancer, 10–12% of colorectal cancer (CRC), 4% of lung adenocarcinoma, 11% of bile duct carcinoma, 5% of
+endometrial cancer and several other cancer types6. KRASG12D is clearly a
+compelling cancer target; however, there are a series of challenges that
+need to be overcome to effectively target other KRAS mutant variants.
+Unlike KRASG12C, KRASG12D lacks a reactive residue proximal to the switch
+II binding pocket to enable covalent modification of the protein; there -
+fore, novel approaches are required to develop selective inhibitors with
+high affinity and drug-like potency. Moreover, the appreciable degree
+of nucleotide cycling observed in KRASG12C-mutant protein proved
+critical for the development of clinically active KRASG12C-selective
+inhibitors that bind the GDP-bound conformation and lock KRAS in the
+inactive state7–9. KRASG12D reportedly has the second-highest intrinsic
+GTP hydrolysis rate among KRAS mutants as well as the highest rate of
+GTPase-activating protein (GAP)-mediated GTP hydrolysis, albeit much
+lower than KRASWT (ref. 7). KRASG12D nucleotide cycling may, therefore,
+influence the importance of targeting the inactive versus active states.
+Finally, the level of oncogene addiction in KRASG12D-mutated cancers is
+not fully understood and will pose a critical question to enable effective
+development of inhibitors and therapeutic regimens directed at this
+particular mutation. In this study, we identified and characterized a
+selective and non-covalent high-affinity KRASG12D inhibitor, illustrat -
+ing the feasibility of targeting this key mutant variant and facilitating
+a deeper understanding of the role of these mutations in cancer patho -
+genesis and progression.
+Results
+MRTX1133 is a potent and selective KRASG12D inhibitor
+A structure-based drug design strategy was used to identify MRTX1133, a
+potent and selective KRASG12D inhibitor10 (Fig. 1a ). In a biochemical HTRF
+assay designed to measure displacement of a labeled probe molecule
+from the switch II pocket of KRAS, MRTX1133 demonstrated binding to
+the GDP-bound, inactive form of KRASG12D with a half maximal inhibitory
+concentration (IC50) < 2 nM, which was the lower limit of detection of
+the assay (Fig. 1b ). Additional experiments were, therefore, performed
+to understand the potency differences between KRASG12D and wild-type
+(WT) KRAS. Using surface plasmon resonance (SPR) to directly measure
+binding, MRTX1133 demonstrated ~700-fold selectivity for binding
+to GDP-bound KRASG12D compared to KRASWT (GDP-bound KRASG12D
+KD = ~0.2 pM versus GDP-bound KRASWT KD = 140 nM) (Fig. 1b ). In a bio -
+chemical HTRF assay designed to measure displacement of a labeled
+probe molecule from the switch II pocket of KRAS, MRTX1133 demon -
+strated binding to the GDP-bound, inactive form of KRASG12D with an
+IC50 < 2 nM, which was the lower limit of detection of the assay (Fig. 1b ).
+Using an HTRF assay pre-loaded with a non-hydrolysable GTP analog,
+MRTX1133 also inhibited the binding of a RAF-RAS binding domain
+(RBD) peptide to the active form of KRASG12D with an IC50 of 9 nM (Fig.
+1b). X-ray crystal structures of KRASG12D/MRTX1133 co-complexed with
+GDP (ref. 10) and with GMPPCP, a non-hydrolysable GTP analog (Fig. 1c
+Fig. 1 | MRTX1133 is a potent, non-covalent KRASG12D inhibitor in vitro. a,
+Chemical structure of MRTX1133. b , IC50 and KD values for MRTX1133 for KRASG12D
+and KRASWT were determined using inactive KRAS (GDP-loaded) biochemical
+binding assays, active KRAS (GMP-PNP-loaded) RBD binding assays and SPR
+assays, as indicated. *2 nM represents the bottom of the assay. c , Crystal structure
+of KRASG12D co-complexed with MRTX1133 and GTP analog, GMPPCP (PDB
+ID: 7T47 ). Inset on the right shows electron density maps for MRTX1133 and
+Mg•GMPPCP. d, Immunoblot protein western analyses of KRAS pathway targets
+in HPAC cells treated for 3 hours with MRTX1133 over a nine-point dose response.
+Data are representative of two independent experiments. e , Concentration-
+dependent effects of MRTX1133 on ERK 1/2 phosphorylation (Thr202/Tyr204)
+in HPAC cells assessed by band density quantitation. Data are shown as percent of DMSO-treated control normalized to 1.0 by dividing all average values by the vehicle value. Calculated percent inhibition values are shown above each dose
+level. f, Immunoblot protein western analyses of KRAS pathway targets in HPAC
+cells treated from 1 hour to 72 hours with MRTX1133 at 1 nM, 10 nM and 100 nM.
+Data are representative of two independent experiments. g , Time-course-
+dependent effects of MRTX1133 on ERK 1/2 phosphorylation (Thr202/Tyr204) in HPAC cells assessed by band density quantitation. Data are shown as percent of DMSO-treated control normalized to 1.0 by dividing all average values by the vehicle value. Calculated percent inhibition values are shown below each dose
+level and timepoint.
+
+--- Page 3 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2173
+Article https://doi.org/10.1038/s41591-022-02007-71.5 nM and 299 nM (median IC50: 26 nM) in 23 of 25 cell lines in the
+two-dimensional (2D) assay format. The effect of MRTX1133 on the
+viability of non-KRASG12D-mutant cell lines was observed only at higher concentrations, with IC50 values ranging from 211 nM to >1,000 nM
+(median IC50: >1,000 nM) in the 3D assay format and between 103 nM
+and 3,000 nM (median IC50: 3,000 nM) in the 2D assay format. These
+ab
+KRAS
+proteinMRTX1133
+SPR KD
+(pM)Inactive
+IC50 (nM)Active IC50
+(nM)
+G12D ~0.2 <2* 9
+WT 140 2.4 112
+c
+MRTX1133
+Mg•GMPPCPAsp-12dH
+N
+N
+N
+N
+FN ON
+F
+FHO
+pEGFRY1068
+EGFR
+pHER2Y1248
+pERKT202/Y204
+ERKHER2
+pS6S235/236
+S6
+DUSP6p4E-BP1S65
+/uni03B2-actin150 (kDa)
+150
+150
+150
+37
+37
+25
+25
+20
+37
+37nM0
+0.05
+0.1
+0.4
+1
+4
+11
+33
+100
+300
+e
+DMSO0.05 nM 0.14 nM0.4 nM 1.2 nM 3.7 nM11.1 nM 33.3 nM 100 nM 300 nM00.51.01.5
+95%97% 97%88%36% 37%32%
+57%
+97%Normalized pERKT202/Y204pERKT202/Y204
+ERK
+pS6S235/236
+S6
+DUSP6p4EBP1S65
+/uni03B2-actinDUSP4f
+g37
+37
+37
+20
+37
+3737 (kDa)
+37nM0
+1
+10
+100
+0
+1
+10
+100
+0
+1
+10
+100
+0
+1
+10
+100
+0
+1
+10
+100
+0
+1
+10
+1001 h 3 h 6 h 24 h 48 h 72 h
+DMSO110
+100
+DMSO110
+100
+DMSO110100
+DMSO110100
+DMSO110100
+DMSO11010000.51.01.52.0Normalized pERKT202/Y204
+304088 74839849 74 98 0 61 8900350 69 82% inhibition
+from DMSO1 hours 3 hours 6 hours 24 hours 48 hours 72 hours
+
+--- Page 4 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2174
+Article https://doi.org/10.1038/s41591-022-02007-7data demonstrate that MRTX1133 potently and selectively inhib -
+its KRAS-dependent signaling and viability in the vast majority of
+KRASG12D-mutant cancer cell lines.
+MRTX1133 demonstrates inhibition of KRAS-dependent
+signaling and tumor regression in xenograft models
+MRTX1133 was evaluated in immunocompromised mice bear -
+ing KRASG12D-mutant HPAC tumor xenografts for its effect on
+KRAS-mediated signaling and to characterize its anti-tumor activity
+over a range of dose levels and timepoints. MRTX1133 exhibited low
+intrinsic oral bioavailability in mice and was, therefore, administered at
+3 mg kg−1, 10 mg kg−1 and 30 mg kg−1 dose levels via intraperitoneal (IP)
+injection to achieve sufficient systemic plasma exposure to develop
+an understanding of the relationship between the extent and duration
+of KRAS inhibition and anti-tumor activity in mice (Extended Data Fig.
+3a). The IP route was selected owing to similar plasma disposition
+kinetics compared to intravenous (IV) administration as well as the fea -
+sibility for repeated dose administration to evaluate tumor response.
+MRTX1133 demonstrated complete pERK inhibition at both 1 hour and
+6 hours after dose in cancer cells using immunohistochemistry supple -
+mented with an image analysis algorithm designed to evaluate the frac -
+tion of biomarker-positive tumor cells (Fig. 2a  and Supplementary Fig.
+1). Dose-dependent reduction of the pERK-positive cell fraction was
+observed at the 12-hour and 24-hour post-dose timepoints, indicating
+partial recovery of this pathway at lower dose levels. The percentage of
+cancer cells expressing pS6 also exhibited a trend toward reduction in
+MRTX1133-treated tumors compared to vehicle-treated tumors, with
+near-complete inhibition observed at 1 hour and 6 hours after dose
+and a dose-dependent recovery by 12 hours and 24 hours at lower
+dose levels. Consistent with inhibition of KRAS-dependent signaling
+pathways, active RAS levels were determined in HPAC tumor lysates,
+and reduced RAS activity was observed at each post-administration
+timepoint up to 24 hours (Fig. 2b ). MRTX1133 was well-tolerated at
+dose levels administered IP at up to 30 mg kg−1 twice daily (BID) in
+repeat-dose studies for up to 28 days, with no evidence of weight loss or
+overt signs of toxicity (Extended Data Fig. 3b). In a repeat-dose study,
+daily IP administration of MRTX1133 demonstrated dose-dependent
+anti-tumor efficacy, leading to near-complete responses (85% regres-
+sion) in mice administered 30 mg kg−1 BID, 16% regression at the
+10 mg kg−1 BID dose level and 81% tumor growth inhibition at 3 mg kg−1
+BID (Fig. 2c ). In the HPAC model, the percentage of cells positive for
+cleaved caspase-3 staining was increased with MRTX1133 treatment
+at all dose levels at 12 hours after treatment and at 30 mg kg−1 at both
+12 hours and 24 hours after treatment (Fig. 2a and Supplementary Fig.
+1). Thus, tumor regression observed was consistent with induction of
+apoptosis in the HPAC model.MRTX1133 was also evaluated for its impact on KRAS-dependent
+signaling and anti-tumor efficacy in additional KRASG12D-mutant xeno -
+graft models. In the Panc 04.03 model, active RAS levels in tumor
+lysates were significantly reduced 1 hour and 12 hours after administra -
+tion of MRTX1133 at 3 mg kg−1, 10 mg kg−1 or 30 mg kg−1 administered
+IP for three consecutive doses at 12-hour intervals (Fig. 2d ). Active
+RAS was also evaluated 24 hours after the final dose in the 30 mg kg−1
+group, at which point active RAS remained inhibited. Administration of MRTX1133 also demonstrated dose-dependent inhibition of pERK
+in tumor lysates at 1 hour after the last dose in the BID × 7 days cohorts;
+however, pERK recovery was observed by the 12-hour timepoint at each
+dose level (Fig. 2e). Interestingly, pERK recovery at 12 hours after dose
+appeared to be incomplete after three consecutive doses compared to
+the complete pERK rebound observed after 7 days of BID administra-
+tion, suggesting that pERK reactivation pathways may be increasingly
+engaged over longer administration schedules (Fig. 2e). MRTX1133
+demonstrated dose-dependent anti-tumor efficacy over a repeat-dose
+schedule in the Panc 04.03 model, including marked regression at both
+the 10 mg kg−1 and 30 mg kg BID dose levels (60% and 74%, respectively)
+and approximate tumor stasis at 3 mg kg−1 BID (Fig. 2f ). The similar
+degree of regression in the 10 mg kg−1 and 30 mg kg−1 BID dose groups
+suggests that 10 mg kg−1 BID is the maximally effective dose in the Panc
+04.03 model. In the GP2D tumor model, a single dose of 30 mg kg−1
+MRTX1133 was administered, and prominent inhibition of pERK by
+immunoblot at 1 hour and 6 hours after the dose with partial rebound by 12 hours was observed along with marked tumor regression (63%) over a BID repeat administration schedule (Extended Data Fig. 3c,d).
+MRTX1133 elicits distinct tumor response patterns in KRASG12D
+mutant PDAC and CRC models
+To evaluate the breadth of anti-tumor activity across genetically and
+histologically heterogenous KRASG12D-mutant models, MRTX1133 was
+tested at a fixed dose of 30 mg kg−1 BID administered IP in a panel of
+human cell-line-derived and patient-derived xenografts. MRTX1133
+induced 30% or greater tumor regression in 11 of 25 KRASG12D-mutant
+models (Fig. 3). Body weight loss did not exceed 15% for the duration
+of the study for each model represented. The extent of MRTX1133
+anti-tumor activity was particularly notable in pancreatic cancer mod -
+els where eight of 11 (73%) exhibited 30% or greater tumor regression
+(Extended Data Fig. 4a). By comparison, > 30% regression was observed
+in two of eight (25%) CRC models. MRTX1133 did not demonstrate sig -
+nificant anti-tumor efficacy in all four non-KRASG12D-mutant models
+tested. Although treatment with MRTX1133 led to marked anti-tumor
+activity in most models tested, a subset of models was less sensitive
+to MRTX1133 and exhibited tumor growth inhibition or stable dis -
+ease as a best response. Bioinformatic analyses were performed to
+Fig. 2 | MRTX1133 inhibits KRASG12D -mediated MAP kinase signaling and
+tumor growth in vivo. a, Quantitation of pERK (top), pS6 (middle) and cleaved
+caspase-3 (bottom) staining after MRTX1133 administration IP to mice bearing
+established HPAC xenografts at 3 mg kg−1, 10 mg kg−1 and 30 mg kg−1 (n = 3 per
+timepoint). Tumors were harvested at 1 hour, 6 hours, 12 hours and 24 hours after a single dose, vehicles at 1 hour and 6 hours only. Tumor sections were stained with pERK1/2 (Thr202/Tyr204), pS6 (Ser235/236) and cleaved caspase-3 via
+immunohistochemistry methods. Quantitation of images is shown by % positive
+staining in tumor tissue. Reduction of pERK at all dose levels tested or increase in the percentage of cleaved caspase-3-positive tumor cells at the 30 mg kg
+−1 dose
+level was determined to be statistically significant relative to vehicle using one-way ANOVA. Brackets indicate significance (*P  < 0.05) compared to vehicle. Data
+are shown as mean ± s.d. b , Normalized active RAS in tumor lysates from mice
+treated with vehicle or MRTX1133 dosed at 30 mg kg
+−1 as in a  (n = 3 per timepoint).
+Bracket indicates statistical significance versus vehicle control using one-way ANOVA (*P  < 0.05). Data are shown as mean ± s.d. c , Tumor growth inhibition
+after IP administration of MRTX1133 BID to mice bearing HPAC xenografts at the
+doses indicated (n  = 5 per group). MRTX1133 was dosed until day 28. Data are
+shown as mean tumor volume ± s.e.m. Tumor volumes for all treatment groups were statistically significant versus vehicle using a two-tailed Studentʼ s t-test
+(*P < 0.05). All groups had <10% body weight loss over the duration of the study.
+d, Normalized active RAS in tumor lysates from mice bearing Panc 04.03
+xenografts treated with vehicle or MRTX1133 administered IP at the doses
+indicated plus one dose the next day (BID + 1, n  = 3 per timepoint). Tumors
+were harvested at 1 hour and 12 hours and at 24 hours in the 30 mg kg
+−1 cohort.
+Data are shown as mean ± s.d. Bracket indicates statistical significance versus vehicle control using one-way ANOVA (*P  < 0.05). e, Normalized pERK1/2
+(Thr202/Tyr204) levels in tumor lysates collected from mice bearing Panc
+04.03 xenografts 1 hour or 12 hours after treatment with vehicle or MRTX1133
+administered IP BID at the indicated doses for 1 day or 7 days (n  = 3 per
+timepoint). Levels of pERK were statistically significant versus vehicle using one-way ANOVA (*P  < 0.05). Data are shown as mean ± s.d. f , Tumor growth inhibition
+after IP administration of MRTX1133 BID to mice bearing MRTX1133 Panc 04.03 xenografts at the doses indicated. MRTX1133 was administered until day 32. Data are shown as mean tumor volume ± s.e.m. Tumor volumes were statistically
+significant versus vehicle using a two-tailed Studentʼ s t-test (*P  < 0.05).
+All groups had <10% body weight loss over the duration of the study. Hrs, hours;
+Veh, vehicle.
+
+--- Page 5 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2175
+Article https://doi.org/10.1038/s41591-022-02007-7identify molecular biomarkers that correlate with anti-tumor activ -
+ity. Lower PTEN and CDKN2A RNA expression was associated with
+reduced anti-tumor activity; however, neither trend reached statistical significance (Extended Data Fig. 4b,c). The potential impact of reduced
+PTEN and CDKN2A RNA expression on anti-tumor activity was further
+interrogated using targeted CRISPR screens and combination studies
+b
+cCleaved caspase-3 % positive*
+468
+2a
+pERKT202/Y204 % positive* * *
+0
+Veh 161224161224161224Hrs
+Veh 1
+Veh 12 24 12 24 12 24 Veh 112 112 112 2461224161224161224Hrs
+Hrs102030MRTX1133 3 mg kg–1
+MRTX1133 10 mg kg–1
+MRTX1133 30 mg kg–1
+MRTX1133 3 mg kg–1
+MRTX1133 10 mg kg–1
+MRTX1133 30 mg kg–1
+MRTX1133 3 mg kg–1
+MRTX1133 10 mg kg–1
+MRTX1133 30 mg kg–1Vehicle
+MRTX1133 3 mg kg–1 BID
+MRTX1133 10 mg kg–1 BID
+MRMRTX1133 30 mg kg–1 BIDpS6S235/236 % positive
+0102030
+0
+2,500
+2,0001,500Tumor volume (mm3)
+1,000
+500
+0
+0 10 20
+Study day30*
+40 50
+Normalized active RAS1.5
+1.0
+0.5
+0*Normalized active RAS
+MRTX1133 30 mg kg–11.5
+1.0
+0.5
+0*
+Hrs
+Hrs
+Veh 1
+1 7 1 7 1 71 12 121 12112112112 Hrs
+BID x days of
+treatmentVeh 1 6 12 24
+e d
+f
+MRTX1133 10 mg kg–1 BID
+MRTX1133 30 mg kg–1 BIDVehicle
+MRTX1133 3 mg kg–1 BID
+0 10 20 3005001,0001,5002,0002,500
+Study dayTumor volume (mm3)
+*1.5
+1.0Normalized pERKT202/Y204
+0.5
+0**
+*
+**
+*
+
+--- Page 6 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2176
+Article https://doi.org/10.1038/s41591-022-02007-7with CDK4/6 or PI3Kα inhibitors, respectively, to assess the functional
+consequences of co-targeting these pathways in concert with KRAS
+inhibition in subsequent experiments. Overall, these data confirm
+that KRASG12D functions as an oncogenic driver across multiple can -
+cer types and that inhibition of KRASG12D by MRTX1133 demonstrates
+KRASG12D-mediated and tumor-type-dependent efficacy, including
+marked cytoreductive activity in most PDAC models.
+Pancreatic cancer is characterized by a strong desmoplastic
+reactive stroma comprised of fibroblasts and extracellular matrix
+components arising from pancreatic stellate cells and features
+unique to the pancreas. The desmoplastic reaction has been impli -
+cated in limiting tissue distribution of small-molecule therapies,
+thereby mediating resistance11,12. Therefore, the ability of MRTX1133
+to inhibit KRAS signaling and demonstrate anti-tumor activity in an
+orthotopic pancreatic cancer model derived from the AsPC-1 cell line
+was explored. MRTX1133 administered at 30 mg kg−1 BID for 28 days
+demonstrated significant anti-tumor activity in the orthotopic
+AsPC-1 model compared to vehicle (Extended Data Fig. 5a–c). In addi -
+tion, MRTX1133 treatment demonstrated pERK inhibition in tumor
+lysates by immunoblot after three consecutive doses and also at end
+of study (Extended Data Fig. 5d). Together, these results indicate
+sufficient distribution of MRTX1133 to orthotopically implanted PDAC tumors, resulting in inhibition of KRAS-dependent signaling
+and anti-tumor efficacy.
+Regulation of KRAS-dependent oncogenic signaling and
+feedback pathways with MRTX1133 treatment
+A comprehensive analysis was conducted to evaluate MRTX1133-induced
+temporal molecular changes to further interrogate mechanisms of drug
+response across cell lines or tumor models. To evaluate global gene
+expression, tumor xenograft-bearing mice were administered vehicle or
+30 mg kg−1 MRTX1133 via IP every 12 hours for three consecutive doses,
+and RNA sequencing (RNA-seq) was performed on tumors at 6 hours and
+24 hours after the last dose for LS180 and AsPC-1 models and at 1 hour,
+6 hours, 12 hours and 24 hours after the last dose for the HPAC model.
+Global gene expression was also evaluated in A427, LS180, SNU-1033,
+AsPC-1 and AGS cell lines treated with DMSO or 100 nM MRTX1133 and
+harvested at 3 hours and 24 hours after treatment. RNA-seq analysis in
+both in vivo treated models and in vitro treated cell lines was used to
+evaluate mechanisms of drug response across cell lines or tumor models
+with varying degrees of sensitivity to MRTX1133. The top differentially
+expressed gene set enrichment analysis (GSEA) pathways for all cell lines
+and models, regardless of intrinsic sensitivity to MRTX1133, included
+KRAS signaling UP, KRAS signaling DOWN, MYC targets, MTORC1, E2F HCT116
+H1299
+H358
+MKN1
+LS180
+PA2410
+HCC1588
+PA1194
+CR3300
+A427
+CR1245
+LU5161
+PA1252
+LU0876
+CR2559
+SNU-1033
+CR6924
+CHL38B11
+Panc0203
+SUIT2
+CR3262
+GP2D
+PA1457
+SW1990
+PA0787
+AsPC-1
+HPAC
+Panc 04.03
+AGS–100–50050100
+CDX
+PDX
+KRAS G12D MAF (%) 415150744753616666100 587140NA4170100 3851100 6196465541
+KRAS CNV 24NA 8232339322NA 23223332222
+APC YNNNNNYNNNYYYNANNYYNNNNNYN
+BRAF YNYNNNNNNNNNNNANNNYNNYNNNN
+CCND1 NNNNNNNNNNNNNNANNNNNNNNNNN
+CCND2 NNNNNNNNNNYNNNANNNNNNNNNNN
+CDKN2A NNNNNNNNNYNNNNANYNNYNYYYYN
+CTNNB1 YNNNYYNNNNNNNNANNNYNNNNNNY
+EGFR NNNNYNNNNNNNNNANNNNNNNNNNN
+ERBB2 NNNNNNNNNNNNNNANNNNNNNNNNN
+ERBB3 NNNNNNNNNNNNNNANNNNNNNNNNN
+KEAP1 NNNNNNNYNNNNNNANNNNNNNNNNN
+PIK3CA YNNNNNNNNNNNYNANNNYNNNNYNY
+PTEN YNNNNNNNNNNNNNANNNYNNNNNNN
+PTGS2 NNNNNNNNNNNNNNANNNNNNNNNNN
+SMAD4 NNNNNNNNYNNNNNAYNNNNNNYYNN
+STK11 YNNNNNNNNNNNNNANNNNNNNNNNN
+TP53 NYNYYNYNYYNYYNANYYNYYYYYNNChange from baseline (% of control)Lung Pancreas Colon
+CholangiocarcinomaNon-G12D Gastric
+Fig. 3 | Anti-tumor activity of MRTX1133 in human tumor xenografts.
+Maximal percent change in tumor volume in the indicated xenograft or PDX
+models after MRTX1133 administration. MRTX1133 was administered IP BID at 30 mg kg
+−1 to mice bearing the cell line xenograft (n  = 5 per group) or PDX model
+(n = 4 per group) indicated. The % change from baseline control was calculated
+at approximately day 14 (range: 13–16 days). The statistical significance of the results is shown in Supplementary Table 2. Bottom: Amino acid changes in the indicated proteins are shown for each xenograft or PDX model. CNV, copy number variation; CDX, cell-line-derived xenograft; MAF (%), percent KRAS
+G12D
+mutant allele fraction as assessed by RNA-seq; N, no—functional mutation not present; NA, not available; PDX, patient-derived xenograft; Y , yes—functional mutation present. Black square indicates that the model is either a CDX or a PDX.
+
+--- Page 7 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2177
+Article https://doi.org/10.1038/s41591-022-02007-7targets and G2M checkpoint pathway signatures (Fig. 4a,b ). Consistent
+with inhibition of RAS signaling, MRTX1133 demonstrated clear reduc -
+tion in expression of MAPK-dependent target genes DUSP4, DUSP6,
+ETV4, SPRY4  and PHLDA1  (Extended Data Fig. 6a). In addition, MRTX1133
+treatment demonstrated time-dependent reduction in MYC , DNA repair,
+E2F target and cell cycle regulatory genes, including cyclins B, D and
+E (CCNB1, CCNB2, CCND1, CCND3, CCNE1 and CCNE2) independent of
+sensitivity to MRTX1133 across cell lines in vitro (Extended Data Fig.
+6b). Pro-apoptotic genes BBC3, BCL2L11 and BMF were significantly
+upregulated, whereas pro-survival genes BIRC5, MCL1 and BCL2L1 were
+downregulated with MRTX1133 (Extended Data Fig. 6b).
+Drug-anchored CRISPR screens identify MRTX1133
+vulnerabilities and response modifiers
+To interrogate the role of selected genes in mediating the response
+of MRTX1133, an MRTX1133-anchored CRISPR–Cas9 screen in
+KRASG12D-mutant cancer models was performed in vitro and in vivo.
+The single guide RNA (sgRNA) libraries targeted ~500 (in vivo library)
+or ~1,000 (in vitro library) genes and included KRAS pathway and
+cancer-related genes. For the in vitro screens, cells were treated with
+MRTX1133 concentrations approximating cellular viability IC50 val -
+ues (20–100 nM) to identify genes that augment the viability effect
+of MRTX1133 when deleted. In vitro, sgRNAs targeting key cancer
+genes, including KRAS, MYC , RPS6 and PTPN11, were decreased in both
+DMSO-treated and MRTX1133-treated conditions, and the extent of the
+reduction was similar to positive control, essential genes (Extended Data
+Fig. 7a). The sgRNA targeting the KRASG12D-mutant sequence exhibited
+the greatest decreased abundance in the in vitro screens. sgRNAs target -
+ing MYC , KRAS , RPS6 , EGFR  and PTPN11  genes were similarly depleted
+from vehicle and MRTX1133-treated tumors in vivo, indicating that they are critical regulators of cell viability and also modify the response to
+MRTX1133 (Extended Data Fig. 7b). In addition, PIK3CA-targeting sgRNAs
+were depleted in the LS180 model. These data suggest that co-targeting
+EGFR, PI3Kα (encoded by the PIK3CA gene) or SHP2 (encoded by the
+PTPN11 gene) may complement KRASG12D inhibition and represent thera -
+peutic strategies to augment the activity of MRTX1133.
+sgRNAs targeting several tumor suppressor genes, including PTEN,
+KEAP1, NF1 and RB1, were enriched in at least one in vitro model with
+DMSO and/or MRTX1133 treatment. In vivo, sgRNAs targeting TP53, RB1
+and KEAP1 were also enriched in vehicle-treated and MRTX1133-treated
+tumors. These data confirm that loss of these genes accelerates cancer
+cell growth and suggest that loss of these genes may confer partial
+resistance to MRTX1133. Interestingly, sgRNAs targeting KEAP1 were
+strongly enriched in vivo in the HPAC model and were not enriched
+in vitro, suggesting that KEAP1 may be a key modifier locus and that
+KEAP1 tumor biology is not accurately modeled in cell culture con -
+ditions in vitro. Enrichment of sgRNAs also indicates that KRAS can
+cooperate with key tumor suppressor pathways, including TP53, RB1
+and KEAP1. Of note, in a preliminary analysis, the response rate of
+MRTX849 in patients with non-small cell lung cancer (NSCLC) harbor -
+ing mutations in both KRASG12C and KEAP1 was reduced compared to the
+response rate in KRASG12C, KEAP1 WT patients13,14.
+Targeting feedback and resistance pathways augment MRTX1133 anti-tumor efficacy
+To identify targeted therapies capable of enhancing the response to
+MRTX1133, a 3-day combination viability screen was conducted in vitro
+using a focused set of compounds targeting key cancer-related signal
+transduction nodes across a panel of KRASG12D-mutant cell lines to iden -
+tify synergistic and additive combinations, as previously described4,15
+a b
+* = FDR < 0.25Normalized enrichment score (NES)
+–3 0 3MRTX1133 treatment time (hours) 6 24 6 24 1 6 12 24
+Xenograft model
+ALLOGRAFT_REJECTION
+ANGIOGENESIS
+APOPTOSIS * *
+DNA_REPAIR * ****
+E2F_TARGETS **** ***
+EPITHELIAL_MESENCHYMAL_TRANSITION **** ***
+FATTY_ACID_METABOLISM
+G2M_CHECKPOINT ********
+GLYCOLYSIS
+HYPOXIA * **
+IL2_STAT5_SIGNALING *
+IL6_JAK_STAT3_SIGNALING *
+INFLAMMATORY_RESPONSE ** ***
+KRAS_SIGNALING_UP ********
+KRAS_SIGNALING_DN * *
+MITOTIC_SPINDLE * * *
+MTORC1_SIGNALING ********
+MYC_TARGETS_V1 ********
+MYC_TARGETS_V2 ********
+OXIDATIVE_PHOSPHORYLATION *
+P53_PATHWAY * **
+PI3K_AKT_MTOR_SIGNALING *
+TGF_BETA_SIGNALING ** **
+TNFA_SIGNALING_VIA_NFKB *** ****LS180 AsPC-1 HPACMRTX1133 treatment time (hours) 3 24 3 24 3 24 3 24 3 24
+Cell line
+ALLOGRAFT_REJECTION ***
+ANGIOGENESIS ** * **
+APOPTOSIS
+DNA_REPAIR **
+E2F_TARGETS * * * *
+EPITHELIAL_MESENCHYMAL_TRANSITION * * *
+FATTY_ACID_METABOLISM
+G2M_CHECKPOINT * * *
+GLYCOLYSIS
+HYPOXIA * *
+IL2_STAT5_SIGNALING * * * *
+IL6_JAK_STAT3_SIGNALING * ** **
+INFLAMMATORY_RESPONSE * * *** *
+KRAS_SIGNALING_UP ** * * *
+KRAS_SIGNALING_DN * * *
+MITOTIC_SPINDLE * *
+MTORC1_SIGNALING *
+MYC_TARGETS_V1 * * * * *
+MYC_TARGETS_V2 * *******
+OXIDATIVE_PHOSPHORYLATION * *
+P53_PATHWAY *
+PI3K_AKT_MTOR_SIGNALING
+TGF_BETA_SIGNALING **
+TNFA_SIGNALING_VIA_NFKB *** ******A427 LS180 SNU1033 ASPC1 AGS
+* = FDR < 0.25Normalized enrichment score (NES)
+–3 0 3
+Fig. 4 | MRTX1133 treatment regulates KRAS-dependent oncogenic signaling
+and feedback inhibitory pathways in vitro and in vivo. a, Heat map depicting
+GSEA hallmark signatures of RNA-seq differential expression after MRTX1133 treatment. LS180, AsPC-1 and HPAC xenograft models were treated with vehicle
+or three doses of MRTX1133 (30 mg kg
+−1 IP), and tumors were harvested for
+RNA extraction at indicated timepoints after the last dose (n  = 3 per timepoint). *False discovery rate (FDR) < 0.25; NES, normalized enrichment score. b , Heat
+map depicting GSEA hallmark signatures of RNA-seq differential expression
+after MRTX1133 treatment. A427, LS180, SNU-1033, AsPC-1 and AGS cell lines were treated with DMSO or MRTX1133 (100 nM), followed by harvest and RNA
+extraction at 3 hours and 24 hours after dose (n  = 3 samples per timepoint).
+*FDR < 0.25.
+
+--- Page 8 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2178
+Article https://doi.org/10.1038/s41591-022-02007-7(Extended Data Fig. 8a). Compounds were selected based on hits iden-
+tified from CRISPR screens, relevance to KRAS-dependent signaling
+and agents that are used for systemic treatment of human pancreatic
+and colorectal cancers. Consistent with observations for KRASG12C
+inhibition, combination with MEK and ERK inhibitors did not appear
+to enhance the activity of MRTX1133. In contrast to observations with
+KRASG12C inhibition, SHP2, SOS1, mTOR and CDK4/6 inhibitors exhib -
+ited a more modest and a less consistent combinatorial effect with
+MRTX1133 in cell viability assays. The HER family inhibitors afatinib
+and cetuximab, as well as the PI3Kα inhibitor BYL-719, demonstrated
+evidence of synergy with MRTX1133 across a significant fraction of
+evaluated cell lines, including the observation of broad combina -
+tion synergy in both colon and pancreatic adenocarcinoma cell lines
+(Extended Data Fig. 8b,c).
+Cetuximab and BYL-719 enhance MRTX1133 activity in vivo
+Given the particular relevance of the EGFR pathway in the pathogenesis
+of pancreatic and colorectal cancers16,17, MRTX1133 and cetuximab
+were evaluated in multiple cell-line-derived colon or pancreatic cancer xenografts with varying sensitivity to MRTX1133 as a monotherapy. The
+combination of cetuximab and MRTX1133 improved anti-tumor efficacy
+compared to either single agent in all seven tumor models evaluated
+(Fig. 5a,c and Extended Data Fig. 9a,b). Of note, cetuximab did not
+demonstrate meaningful anti-tumor activity as a monotherapy in all
+but one model, in line with its notable lack of activity in patients with
+KRAS-mutant CRC18. Immunohistochemistry coupled with quantita -
+tive image analyses demonstrated that treatment with MRTX1133 plus
+cetuximab led to near-complete inhibition of cancer-cell-specific pERK
+and pS6 after 7 days of administration in the AsPC-1 pancreatic cancer
+model, whereas treatment with either single agent led to sub-maximal
+inhibition (Fig. 5b and Extended Data Fig. 9c,d). In addition, the combi -
+nation of MRTX1133 plus cetuximab led to a significant reduction in Ki67
+staining after 7 days of treatment, indicating inhibition of proliferation
+with combination treatment (Extended Data Fig. 9g,h). In the LS180 CRC
+model, MRTX1133 anti-tumor activity was explored using a 30 mg kg−1
+BID intermittent schedule of two treatment days, followed by 5 days off.
+When combining this schedule of MRTX1133 with cetuximab on a Q3D
+schedule, there was a significant improvement in anti-tumor activity * * * *pS6S235/236 % positive
+051015cb a
+dAsPC-1 (pancreatic)
+GP2D (colon)
+* *GP2D (colon)0 10 20 300200400600800
+Study dayTumor volume (mm3)Cetuximab 0.25mg/doseVehicle
+MRTX1133 30 mg kg–1 BID
+MRTX1133 BID + cetuximab
+**
+0 10 20 3005001,0001,5002,0002,500
+Study dayTumor volume (mm3)Cetuximab 0.25 mg/doseVehicle
+MRTX1133 30 mg kg–1 BID
+MRTX1133 BID + cetuximab
+*Hrs
+BID BID × 7MRTX1133
+Cetuximab*
+**
+**
+*AsPC-1 (pancreatic)
+050100150
+pS6S235/236 % positive
+02.55.07.510.0
+051015202424662424662424
+++++++++
++ + + + +2424662424662424
+++++++++
++ + + + +pERKT202/Y204 % positive
+Hrs
+BID × 7 BIDCetuximabMRTX1133
+24 24 6 6 24 24
++ + + +
++ + + CetuximabMRTX1133Hrs 24 24 6 6 24 24
++ + + +
++ + + CetuximabMRTX1133pERKT202/Y204 % positive
+Hrs
+Fig. 5 | Cetuximab combination further inhibits KRAS signaling and exhibits
+increased anti-tumor responses. a, TGI after treatment with MRTX1133,
+cetuximab or the combination administered IP to mice bearing the AsPC-1
+cell line xenograft (n  = 5 per group). Data are shown as mean tumor volume ±
+s.e.m. Tumor volumes for the combination group were statistically significant versus MRTX1133 single agent using a two-tailed Studentʼ s t-test (**P  < 0.01).
+b, Percent of tumor cells positive for pERK (Thr202/Tyr204) and pS6
+(Ser235/236) assessed via immunohistochemistry from mice administered MRTX1133 (BID × 7 days), cetuximab (Q3D) or the combination, followed by tumor harvest at 6 hours and 24 hours after dose administered IP to mice bearing AsPC-1 tumor xenografts (n  = 3 per timepoint). Statistical significance relative
+to vehicle was determined using one-way ANOVA. (*P  < 0.05). Data are shown as mean ± s.d. c , TGI after treatment with MRTX1133, cetuximab or the combination
+administered IP to mice bearing the GP2D cell line xenograft (n  = 5 per group).
+Data are shown as mean tumor volume ± s.e.m. Tumor volumes for the combination group were statistically significant versus MRTX1133 single agent
+using a two-tailed Studentʼ s t-test (*P  < 0.05). d, Percent of tumor cells positive
+for pERK and pS6 assessed via immunohistochemistry from mice administered
+MRTX1133, cetuximab or the combination administered IP to mice bearing the GP2D cell line xenograft (n  = 3 per timepoint), followed by tumor harvest at
+6 hours and 24 hours after treatment. Statistical significance relative to vehicle was determined using one-way ANOVA. (*P  < 0.05). Data are shown as mean ± s.d.
+Hrs, hours.
+
+--- Page 9 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2179
+Article https://doi.org/10.1038/s41591-022-02007-7(80% tumor growth inhibition (TGI)) compared to either single agent
+(Extended Data Fig. 9a). In addition, immunohistochemical analysis
+of tumor tissue demonstrated complete inhibition of pS6 at 24 hours
+with MRTX1133 plus cetuximab, whereas sub-maximal inhibition was
+achieved with either single agent (Extended Data Fig. 9e). A similar
+effect was observed in the GP2D colon cancer model, with complete
+inhibition of pERK and pS6 achieved at 6 hours and 24 hours after treat -
+ment with MRTX1133 BID plus cetuximab, whereas treatment with
+either single agent resulted in sub-maximal inhibition (Fig. 5d). No sig -
+nificant body weight loss was detected for the duration of the efficacy
+studies with MRTX1133, cetuximab or the combination treatments in
+the AsPC-1, GP2D and LS180 xenograft models (Extended Data Fig. 9f).
+In both the AsPC-1 and LS180 models, tumor RNA-seq indicated that the
+combination of MRTX1133 and cetuximab demonstrated a more pro -
+nounced impact on selected GSEA signatures, including KRAS signaling
+UP and MYC target gene sets, as well as individual MAPK-dependent
+target genes, including DUSP4, DUSP6, ETV4, ETV5, SPRY4 and PHLDA1,
+compared to either single agent, illustrating a more comprehensive
+inhibition of the RAS/ERK-dependent transcriptional program for
+the combination (Extended Data Fig. 10a,b). Similarly, the combina -
+tion demonstrated higher-magnitude impact on the expression of
+selected target genes implicated in regulation of E2F transcriptional
+program/cell cycle and selected apoptosis regulatory genes compared
+to either single agent (Extended Data Fig. 10c). These data illustrate
+the participation of EGFR upstream of KRAS pathway signaling and
+provide a combinatorial strategy to further inhibit KRAS-mediated
+signaling and enhance anti-tumor efficacy in KRASG12D-mutated tumors.
+PI3Kα is both a key regulator and effector of KRAS-dependent sign -
+aling and is also activated through mutations involving the PIK3CA  gene
+locus in CRC, including mutations co-occurring with KRAS (ref. 19). PTEN
+sgRNAs were enriched in drug-anchored CRISPR screens, and BYL-719 was one of the top hits from in vitro combination screens, suggesting
+that PI3Kα signaling represents a collateral dependency in the context
+of KRAS activation. In vitro, MRTX1133 and BYL-719 each both potently
+inhibited AKT phosphorylation on serine 473, and inhibition was further
+increased in combination in GP2D, LS180 and AsPC-1 cell lines (Extended
+Data Fig. 8c). In vivo, the combination of MRTX1133 and BYL-719 dem-onstrated modestly increased anti-tumor activity in both CRC models
+(PIK3CA H1047-mutant GP2D and LS180) and a pancreatic cancer model
+(AsPC-1) compared to either single agent (Supplementary Fig. 2). In
+addition, increased inhibition of RAS activity was observed at 6 hours
+and 24 hours after BID administration for the combination compared to
+either single agent in the LS180 and AsPC-1 models (Supplementary Fig.
+2a,c). Consistent with inhibition of activated RAS in these two models,
+greater inhibition of pERK and pAKT was observed for the combina -
+tion (Supplementary Figs. 2a,c and 3a,b). In the LS180 model, which
+is relatively insensitive to MRTX1133 monotherapy, the combination
+demonstrated a non-significant trend of ~50% pAKT inhibition in tumor
+lysates 6 hours after BID × 7 days of treatment, demonstrating that the
+combination may overcome the reactivation of key signaling pathways
+observed after KRASG12D inhibition alone (Supplementary Fig. 3a). In the
+relatively sensitive AsPC-1 model, analysis of pERK and pAKT in tumor
+lysates after BID × 7 days indicated a greater magnitude of inhibition of
+these phospho-proteins in combination compared to either single agent
+(Supplementary Fig. 2b). These data support a potential role of PI3Kα in
+modifying KRAS-dependent signaling in colon and pancreatic cancers
+harboring KRASG12D mutations and the potential utility of combining
+PI3Kα inhibitors with MRTX1133 in these cancers. No significant body
+weight loss was detected for the duration of the efficacy studies with
+MRTX1133, BYL-719 or the combination treatments in the LS180, GP2D and AsPC-1 xenograft models (Supplementary Fig. 3c).
+Discussion
+The development of KRASG12C inhibitors has illustrated a breakthrough
+advancement in strategies to develop targeted therapies directed at oncogenic proteins previously thought to be undruggable and has
+also provided a much-needed treatment option for patients harbor-
+ing this particular KRAS mutation. The increased understanding of
+nucleotide cycling dynamics for different KRAS mutations as well as
+key structural elements of the KRAS switch II pocket has allowed dis-
+covery scientists to contemplate inhibitors of additional RAS mutant
+variants. KRASG12D is a particularly compelling target for the design of
+mutant-selective KRAS inhibitors based on a three-fold-higher muta -
+tion frequency in human cancers compared to KRASG12C; a favorable
+GTP-hydrolysis rate compared to other non-KRASG12C mutations to
+enable targeting the inactive conformation of KRAS; and the ability
+to use the residue 12 glycine-to-aspartic acid mutational alteration
+to enable molecular interactions with the polar aspartate R group
+sidechain to achieve selectivity versus KRASWT. However, there are
+also significant barriers to overcome to facilitate development of KRAS
+G12D inhibitors with sufficient drug-like potency to support
+advancement to clinical development. These challenges include the observation that KRAS
+G12C inhibitors identified to date have intrinsic
+binding affinity in the micromolar range and require covalent modi-
+fication of the mutated cysteine residue to achieve drug-like potency.
+KRASG12D lacks a reactive residue to enable development of covalent
+small-molecule inhibitors; thus, it is predicted that a novel approach
+to increase intrinsic binding affinity several orders of magnitude
+would be required to effectively target this mutant variant. Despite
+these challenges, an in-depth analysis of binding modes derived from
+crystal structures allowed small-molecule inhibitor optimization to
+optimally occupy the switch II pocket through exploiting non-classical
+hydrogen bonding and ion pair interactions and to ultimately increase
+binding affinity toward the intended therapeutic target by more than
+1,000,000-fold relative to initial lead molecules, culminating in the
+discovery of MRTX1133 (ref. 10).
+Selectivity of KRASG12C inhibitors is driven by electrophilic
+KRAS inhibitors that can form irreversible covalent bonds with the
+nucleophilic sulfur atom of Cys12. MRTX1133 was designed as a
+KRASG12D-selective inhibitor based on structural understanding that
+critical switch II pocket binding interactions are conserved across
+KRAS variants in concert with the principle that small-molecule
+substituents with a protonated amine moiety proximal to the acidic
+sidechain Asp 12 could result in a productive interaction to drive
+selectivity for this mutant protein. The design of MRTX1133 using
+a C4 bridged [3.2.1] bicyclic diamino piperazine substituent both
+forms a non-classical hydrogen bond with the Gly10 carbonyl oxygen
+and positions the charged secondary amine to achieve an optimal
+and selective interaction with Asp12 and Gly60 while sparing KRASWT.
+MRTX1133 demonstrated robust anti-tumor activity at well-tolerated
+doses in mice administered IP at up to 30 mg kg−1 BID for up to 28 days
+with no evidence of extensive weight loss or overt signs of toxic -
+ity. As the consequences for targeting KRASWT in adult mammalian
+species are incompletely understood, the ability of MRTX1133 to
+selectively target KRASG12D to maximize therapeutic index and extent
+of target inhibition may be critical in the development of KRAS-
+targeted therapies.
+MRTX1133 provides a renewed opportunity to explore the contex -
+tual role of oncogenic KRASG12D mutations in driving the pathogenesis
+and progression of distinct cancer types. KRASG12D mutations are most
+commonly observed in PDAC (36% (ref. 20)) and CRCs (12% (ref. 21));
+thus, present studies focused on these cancer types. The observation
+that MRTX1133 potently impacted viability in the vast majority of
+KRASG12D-mutated cell lines evaluated in vitro indicates that this vari-
+ant can broadly act as an oncogenic driver. However, studies evaluat-
+ing the anti-tumor activity of KRASG12C inhibitors indicated that the
+dependence of cells on oncogenic KRASG12C for growth and survival
+was distinct in cultured cell lines compared to in vivo model systems4,22.
+The evaluation of MRTX1133 anti-tumor activity in cell-line-derived
+or patient-derived tumor xenograft models indicated that marked
+
+--- Page 10 ---
+Nature Medicine | Volume 28 | October 2022 | 2171–2182  2180
+Article https://doi.org/10.1038/s41591-022-02007-7tumor regression was observed in eight of 11 PDAC models and in two
+of eight CRC models. These data suggest that KRASG12D functions as a
+consistently strong oncogenic driver in PDAC; however, it may act as a more heterogeneous or contextual oncogenic driver in CRC. Recent data from clinical trials evaluating the KRAS
+G12C inhibitor adagrasib as
+a monotherapy also suggested a similar distinction in the response of
+patients in different cancer types with Response Evaluation Criteria
+in Solid Tumors (RECIST) objective responses observed in five of ten (50%) patients with PDAC and in ten of 45 (22%) patients with CRC
+23,24.
+Understanding distinct KRAS mutant alleles in the context of
+tissue of origin is crucial to develop effective treatment strategies for
+KRAS-dependent cancers. First, KRAS  mutations are often a founder
+genetic event involved in the pathogenesis of PDAC and are consistently
+found in pre-cancerous pancreatic intraepithelial neoplasms; however,
+they may be acquired as later events and as subclonal genetic altera -
+tions in a subset of patients with CRC25–27. Second, distinct subsets of
+CRC are characterized by chromosomal instability (CIN) or microsatel -
+lite instability (MSI) and are among cancers that exhibit a moder

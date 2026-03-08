@@ -1,0 +1,16 @@
+{
+  "jobName": "complex_dynamics",
+  "type": "openmm",
+  "settings": {
+    "systemType": "protein-ligand",
+    "pdbFile": "krasg12d_gdp_complex/best_model.pdb",
+    "ligandFile": "mrtx1133_diffdock/best_model.pdb",
+    "ligandCharge": 1,
+    "minimizationSteps": "20000",
+    "equilibrationTime": 0.5,
+    "productionTime": 5,
+    "forceField": "ff19SB",
+    "temperature": "310",
+    "pressure": "1"
+  }
+}
