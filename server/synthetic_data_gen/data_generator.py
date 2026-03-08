@@ -17,7 +17,6 @@ schema context so the model maintains coherent variable relationships.
 """
 
 from __future__ import annotations
-import asyncio
 import json
 import logging
 import math
@@ -128,7 +127,7 @@ class DataGenerator:
         Generate synthetic data rows from an experiment schema.
 
         Splits the requested rows into batches and processes them
-        concurrently for maximum throughput.
+        sequentially.
 
         Args:
             schema: The experiment schema from Step 1.
@@ -142,7 +141,20 @@ class DataGenerator:
             f"(batch_size={self.batch_size})"
         )
 
-        all_rows = asyncio.run(self._generate_async(schema, num_rows))
+        num_batches = math.ceil(num_rows / self.batch_size)
+        all_rows: list[SyntheticRow] = []
+
+        for i in range(num_batches):
+            start_index = i * self.batch_size
+            actual_batch_size = min(self.batch_size, num_rows - start_index)
+            logger.info(f"Generating batch {i + 1}/{num_batches}")
+            try:
+                rows = self._generate_batch(schema, actual_batch_size, start_index)
+                all_rows.extend(rows)
+            except Exception as e:
+                logger.error(f"Batch {i + 1} failed: {e}")
+
+        logger.info(f"Generated {len(all_rows)}/{num_rows} rows successfully")
 
         return GenerationResult(
             experiment_schema=schema,
@@ -155,51 +167,7 @@ class DataGenerator:
             },
         )
 
-    async def _generate_async(
-        self,
-        schema: ExperimentSchema,
-        num_rows: int,
-    ) -> list[SyntheticRow]:
-        """
-        Async orchestrator that manages concurrent batch generation.
-
-        Uses a semaphore to limit concurrency and gathers all batch
-        results into a single ordered list.
-
-        Args:
-            schema: Experiment schema to generate from.
-            num_rows: Total rows to generate.
-
-        Returns:
-            Flat list of all generated SyntheticRow objects.
-        """
-        num_batches = math.ceil(num_rows / self.batch_size)
-        semaphore = asyncio.Semaphore(self.max_concurrent)
-
-        async def limited_batch(batch_index: int) -> list[SyntheticRow]:
-            async with semaphore:
-                start_index = batch_index * self.batch_size
-                actual_batch_size = min(
-                    self.batch_size, num_rows - start_index
-                )
-                return await self._generate_batch(
-                    schema, actual_batch_size, start_index
-                )
-
-        tasks = [limited_batch(i) for i in range(num_batches)]
-        batch_results = await asyncio.gather(*tasks, return_exceptions=True)
-
-        all_rows = []
-        for i, result in enumerate(batch_results):
-            if isinstance(result, Exception):
-                logger.error(f"Batch {i} failed: {result}")
-                continue
-            all_rows.extend(result)
-
-        logger.info(f"Generated {len(all_rows)}/{num_rows} rows successfully")
-        return all_rows
-
-    async def _generate_batch(
+    def _generate_batch(
         self,
         schema: ExperimentSchema,
         batch_size: int,
@@ -242,16 +210,11 @@ class DataGenerator:
             start_index=start_index,
         )
 
-        # Run synchronous API call in thread pool for async compatibility
-        loop = asyncio.get_event_loop()
-        response = await loop.run_in_executor(
-            None,
-            lambda: self.client.messages.create(
-                model=self.model,
-                max_tokens=4096,
-                system=GENERATION_SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": prompt}],
-            ),
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=4096,
+            system=GENERATION_SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": prompt}],
         )
 
         raw_text = response.content[0].text

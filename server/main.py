@@ -1,6 +1,8 @@
+import json
 import logging
 import os
 import tempfile
+from pathlib import Path
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from pydantic import BaseModel, Field
@@ -13,14 +15,17 @@ logging.basicConfig(level=logging.INFO)
 app = FastAPI(title="Bio-Hack Synthetic Data API")
 pipeline = SyntheticDataPipeline(api_key=os.environ["ANTHROPIC_API_KEY"])
 
+OUTPUT_DIR = Path(__file__).parent / "output"
+OUTPUT_DIR.mkdir(exist_ok=True)
+
 
 class GenerateFromSchemaRequest(BaseModel):
     experiment_schema: ExperimentSchema
     num_rows: int = Field(default=100, ge=1, le=5000)
 
 
-def _flatten(result: GenerationResult) -> dict:
-    """Flatten GenerationResult into a simple {columns, data} response."""
+def _flatten_and_save(result: GenerationResult) -> dict:
+    """Flatten GenerationResult, save to JSON file, and return response."""
     columns = [col.name for col in result.experiment_schema.columns]
     data = []
     for row in result.rows:
@@ -29,10 +34,23 @@ def _flatten(result: GenerationResult) -> dict:
             flat["group"] = row.group
         flat.update(row.data)
         data.append(flat)
+
+    # Save the raw data array to a JSON file
+    title_slug = result.experiment_schema.title[:50].replace(" ", "_").lower()
+    title_slug = "".join(c for c in title_slug if c.isalnum() or c == "_")
+    output_file = OUTPUT_DIR / f"{title_slug}.json"
+
+    with open(output_file, "w") as f:
+        json.dump(data, f, indent=2, default=str)
+
+    logger = logging.getLogger(__name__)
+    logger.info(f"Saved {len(data)} rows to {output_file}")
+
     return {
         "title": result.experiment_schema.title,
         "total_rows": result.total_rows,
         "columns": columns,
+        "output_file": str(output_file),
         "data": data,
     }
 
@@ -68,7 +86,7 @@ async def generate_from_pdf(
 
     try:
         result = pipeline.run(tmp_path, num_rows=num_rows)
-        return _flatten(result)
+        return _flatten_and_save(result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     finally:
@@ -109,6 +127,6 @@ def generate_from_schema(request: GenerateFromSchemaRequest):
     """
     try:
         result = pipeline.run_from_schema(request.experiment_schema, num_rows=request.num_rows)
-        return _flatten(result)
+        return _flatten_and_save(result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
