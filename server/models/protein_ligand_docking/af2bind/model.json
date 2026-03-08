@@ -1,0 +1,34 @@
+{
+  "name": "AF2BIND",
+  "slug": "af2bind",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Small Molecule",
+    "Protein Ligand Docking"
+  ],
+  "description": "Given a protein structure, predict the small-molecule-binding ability of each residue. Uses a machine learning model trained on AlphaFold pairwise representations.",
+  "capabilities": [
+    "Given a protein structure, predict the small-molecule-binding ability of each residue",
+    "Uses a machine learning model trained on AlphaFold pairwise representations"
+  ],
+  "api_type": "af2bind",
+  "api_settings_example": {
+    "protein_pdb": "path/to/protein.pdb",
+    "sequence": "MKTIIALSYIFCLVFA"
+  },
+  "inputs": {
+    "protein_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file in PDB format"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence"
+    }
+  },
+  "outputs": {}
+}

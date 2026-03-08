@@ -1,0 +1,51 @@
+{
+  "name": "IgGM",
+  "slug": "iggm",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "De Novo Binder Design"
+  ],
+  "description": "Design de novo antibody/VHHs given a target antigen. Placed top 3 in AIntibody competition. Wet lab validated for 7/60 hit rate against PD-L1, with ~5.3x affinity boost over two iterative rounds.",
+  "capabilities": [
+    "Design de novo antibody/VHHs given a target antigen",
+    "Placed top 3 in AIntibody competition",
+    "Wet lab validated for 7/60 hit rate against PD-L1, with ~5.3x affinity boost over two iterative rounds"
+  ],
+  "api_type": "iggm",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "hotspots": "A10,A15,A20",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target antigen structure in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target antigen",
+      "example": "A"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Epitope residues on the target to focus design on",
+      "example": "A10,A15,A20"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of antibody/VHH designs to generate"
+    }
+  },
+  "outputs": {}
+}

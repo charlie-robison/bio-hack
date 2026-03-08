@@ -1,0 +1,52 @@
+{
+  "name": "DiffDock",
+  "slug": "diffdock",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Protein-ligand docking with DiffDock-L model, without known binding site (blind docking). State of the art diffusion based model. Poses will automatically be scored with Autodock Vina afterwards.",
+  "capabilities": [
+    "Protein-ligand docking with DiffDock-L model, without known binding site (blind docking)",
+    "State of the art diffusion based model",
+    "Poses will automatically be scored with Autodock Vina afterwards"
+  ],
+  "api_type": "diffdock",
+  "api_settings_example": {
+    "receptor_pdb": "path/to/receptor.pdb",
+    "ligand_sdf": "path/to/ligand.sdf",
+    "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "n_poses": 10
+  },
+  "inputs": {
+    "receptor": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Receptor protein structure in PDB format"
+    },
+    "ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format"
+    },
+    "ligand_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "Alternative: ligand as SMILES string",
+      "example": "CC(=O)Oc1ccccc1C(=O)O"
+    },
+    "n_poses": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of docking poses to generate",
+      "default": 10
+    }
+  },
+  "outputs": {}
+}

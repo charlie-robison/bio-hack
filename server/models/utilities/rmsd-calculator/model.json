@@ -1,0 +1,30 @@
+{
+  "name": "RMSD Calculator",
+  "slug": "rmsd-calculator",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Calculate RMSD between 2 protein structures. Rotate/translate one set of atoms on top of another to minimize RMSD, including for proteins of different lengths.",
+  "capabilities": [
+    "Calculate RMSD between 2 protein structures",
+    "Rotate/translate one set of atoms on top of another to minimize RMSD, including for proteins of different lengths"
+  ],
+  "api_type": "rmsd-calculator",
+  "api_settings_example": {},
+  "inputs": {
+    "structure_1": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "First protein structure for RMSD calculation"
+    },
+    "structure_2": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Second protein structure for RMSD calculation"
+    }
+  },
+  "outputs": {}
+}

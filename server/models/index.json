@@ -1,0 +1,1586 @@
+{
+  "total_models": 219,
+  "categories": {
+    "structure_prediction": [
+      "boltz-2",
+      "alphafold",
+      "chai-1",
+      "protenix-v1",
+      "openfold3",
+      "intellifold-2",
+      "immunebuilder",
+      "rosettafold-3",
+      "model-angelo",
+      "cryfold",
+      "afsample2",
+      "abodybuilder3",
+      "highfold",
+      "alphaflow",
+      "tcrmodel2",
+      "af-cluster",
+      "mhc-fine",
+      "af-unmasked",
+      "esmfold",
+      "af-traj",
+      "multiple-sequence-alignment",
+      "omegafold",
+      "af2rave",
+      "itsflexible",
+      "adapt",
+      "rna-fm"
+    ],
+    "protein_design": [
+      "rfantibody",
+      "rfdiffusion-protein-design",
+      "proteinmpnn",
+      "all-atom-protein-design",
+      "boltzgen",
+      "rfpeptides",
+      "bindcraft",
+      "nos",
+      "pepmlm",
+      "thermompnn",
+      "rfdiffusion3",
+      "rfdiffusion2",
+      "iggm",
+      "germinal",
+      "igdesign",
+      "pxdesign",
+      "antifold",
+      "mber",
+      "antibody-diffusion-properties",
+      "antibody-evolution",
+      "rfdiffusion",
+      "frameflow",
+      "proteinmpnn-ddg",
+      "antidif",
+      "proteinmpnn-ddg-binder",
+      "ligandmpnn",
+      "boltzdesign1",
+      "zymctrl",
+      "protein-hunter",
+      "thermompnn-d",
+      "evoprotgrad",
+      "afcycdesign",
+      "structural-evolution",
+      "na-mpnn",
+      "evopro",
+      "dayhoff",
+      "caliby",
+      "proteinmpnn-score",
+      "rso-binder-design",
+      "pocketgen",
+      "protein-solubilization",
+      "rfdiffusion-with-chai-verification",
+      "colabdesign-fixed-backbone",
+      "ablang-mpnn",
+      "antiberty",
+      "hypermpnn",
+      "abmpnn",
+      "apm",
+      "esm-if1",
+      "masif-neosurf",
+      "riffdiff-protflow",
+      "proteusai",
+      "multi-evolve",
+      "rhodesign",
+      "ribodiffusion",
+      "mosaic-hallucination",
+      "odesign-antibody"
+    ],
+    "utilities": [
+      "blast-search",
+      "allmetal3d",
+      "foldmason",
+      "foldseek",
+      "pykvfinder",
+      "psi-blast-search",
+      "space2",
+      "msa-clustering",
+      "msa-analysis",
+      "ancestral-sequence-reconstruction",
+      "anarci",
+      "antibody-annotation",
+      "molprobity",
+      "hmmalign",
+      "propka",
+      "align-pdbs",
+      "alphacutter",
+      "rmsd-calculator",
+      "min-distance-between-selected-residues",
+      "radius-of-gyration",
+      "usalign",
+      "legolas",
+      "oas-search",
+      "file-converter",
+      "chembl-search",
+      "pubchem-search",
+      "pdbsum",
+      "cluster-pdbs"
+    ],
+    "developability": [
+      "protein-scoring",
+      "antibody-developability",
+      "tnp-therapeutic-nanobody-profiler",
+      "tap2-therapeutic-antibody-profiler",
+      "compss-protein-metrics",
+      "pep-patch",
+      "deepimmuno",
+      "tlimmuno",
+      "netsolp",
+      "tempro",
+      "temstapro",
+      "biophi",
+      "humatch",
+      "aggrescan3d",
+      "deep-viscosity",
+      "deepsp",
+      "pepfunn-peptide-sequence-analysis",
+      "deepstabp",
+      "ipc-20",
+      "n-linked-glycosylation-prediction",
+      "protein-properties",
+      "protein-sol"
+    ],
+    "protein_language_models": [
+      "profluent-e1",
+      "catpred",
+      "syncodonlm",
+      "saprot-finetuning",
+      "deepfri",
+      "abmap",
+      "esm2-embeddings",
+      "prot-t5-xl-embeddings",
+      "atomsurf",
+      "progen2-finetuning",
+      "profam"
+    ],
+    "protein_ligand_docking": [
+      "placer",
+      "autodock-vina",
+      "diffdock",
+      "surfdock",
+      "smina",
+      "gnina",
+      "unimol-dockingv2",
+      "virtual-screening",
+      "mmgb-pbsa",
+      "flowdock",
+      "fpocket",
+      "af2bind",
+      "relative-binding-free-energy",
+      "orb-models-3",
+      "gems",
+      "aev-plig"
+    ],
+    "molecular_dynamics": [
+      "molstar-viewer",
+      "openmm-md",
+      "superwater",
+      "bioemu",
+      "mdgen",
+      "openfe",
+      "openmm-protein-relaxation",
+      "openmm-metadynamics",
+      "openmm-temperature-replica-exchange"
+    ],
+    "experimental_data": [
+      "cryodrgn",
+      "deepemhancer"
+    ],
+    "cryoem": [
+      "pulchra"
+    ],
+    "protein_protein_docking": [
+      "colabdock",
+      "equidock",
+      "binding-ddg",
+      "prodigy",
+      "ppap",
+      "dockq",
+      "deeprank-ab",
+      "spatial-ppi-v2",
+      "dsmbind",
+      "masif",
+      "pdockq",
+      "ipsae",
+      "intercaat"
+    ],
+    "antibody_design": [
+      "evonb",
+      "abgpt",
+      "parasurf",
+      "ablang2",
+      "plabdab",
+      "paragraph-paratope-prediction",
+      "mage",
+      "lichen"
+    ],
+    "small_molecule_generation": [
+      "thompson-sampling",
+      "free-wilson-sar",
+      "drugflow",
+      "diffsbdd",
+      "reinvent4",
+      "libinvent",
+      "moflow"
+    ],
+    "enzyme": [
+      "dlkcat"
+    ],
+    "thermostability": [
+      "saprot"
+    ],
+    "rna_language_models": [
+      "orthrus",
+      "evo-2"
+    ],
+    "immunogenicity": [
+      "igblast"
+    ],
+    "solubility": [
+      "fastsolv"
+    ],
+    "finetuning": [
+      "finetune-protein-language-model",
+      "finetune-balm",
+      "mave-neural-network-training"
+    ],
+    "rosetta": [
+      "intrinsically-disordered-region-idr-binder-design"
+    ],
+    "point_mutations": [
+      "esm2",
+      "amplify",
+      "balm-paired",
+      "esm-scan",
+      "evcouplings"
+    ],
+    "nucleic_acid": [
+      "emboss-backtranseq",
+      "dnaworks"
+    ],
+    "binding_affinity": [
+      "gmmpbsa"
+    ],
+    "small_molecule": [
+      "roshambo"
+    ]
+  },
+  "models": [
+    {
+      "name": "Boltz-2",
+      "slug": "boltz-2",
+      "category": "structure_prediction",
+      "path": "structure_prediction/boltz-2/model.json"
+    },
+    {
+      "name": "AlphaFold",
+      "slug": "alphafold",
+      "category": "structure_prediction",
+      "path": "structure_prediction/alphafold/model.json"
+    },
+    {
+      "name": "RFantibody",
+      "slug": "rfantibody",
+      "category": "protein_design",
+      "path": "protein_design/rfantibody/model.json"
+    },
+    {
+      "name": "Chai-1",
+      "slug": "chai-1",
+      "category": "structure_prediction",
+      "path": "structure_prediction/chai-1/model.json"
+    },
+    {
+      "name": "BLAST Search",
+      "slug": "blast-search",
+      "category": "utilities",
+      "path": "utilities/blast-search/model.json"
+    },
+    {
+      "name": "RFdiffusion Protein Design",
+      "slug": "rfdiffusion-protein-design",
+      "category": "protein_design",
+      "path": "protein_design/rfdiffusion-protein-design/model.json"
+    },
+    {
+      "name": "Protein Scoring",
+      "slug": "protein-scoring",
+      "category": "developability",
+      "path": "developability/protein-scoring/model.json"
+    },
+    {
+      "name": "Antibody Developability",
+      "slug": "antibody-developability",
+      "category": "developability",
+      "path": "developability/antibody-developability/model.json"
+    },
+    {
+      "name": "ProteinMPNN",
+      "slug": "proteinmpnn",
+      "category": "protein_design",
+      "path": "protein_design/proteinmpnn/model.json"
+    },
+    {
+      "name": "All Atom Protein Design",
+      "slug": "all-atom-protein-design",
+      "category": "protein_design",
+      "path": "protein_design/all-atom-protein-design/model.json"
+    },
+    {
+      "name": "BoltzGen",
+      "slug": "boltzgen",
+      "category": "protein_design",
+      "path": "protein_design/boltzgen/model.json"
+    },
+    {
+      "name": "Protenix-v1",
+      "slug": "protenix-v1",
+      "category": "structure_prediction",
+      "path": "structure_prediction/protenix-v1/model.json"
+    },
+    {
+      "name": "RFpeptides",
+      "slug": "rfpeptides",
+      "category": "protein_design",
+      "path": "protein_design/rfpeptides/model.json"
+    },
+    {
+      "name": "OpenFold3",
+      "slug": "openfold3",
+      "category": "structure_prediction",
+      "path": "structure_prediction/openfold3/model.json"
+    },
+    {
+      "name": "BindCraft",
+      "slug": "bindcraft",
+      "category": "protein_design",
+      "path": "protein_design/bindcraft/model.json"
+    },
+    {
+      "name": "NOS",
+      "slug": "nos",
+      "category": "protein_design",
+      "path": "protein_design/nos/model.json"
+    },
+    {
+      "name": "PepMLM",
+      "slug": "pepmlm",
+      "category": "protein_design",
+      "path": "protein_design/pepmlm/model.json"
+    },
+    {
+      "name": "IntelliFold 2",
+      "slug": "intellifold-2",
+      "category": "structure_prediction",
+      "path": "structure_prediction/intellifold-2/model.json"
+    },
+    {
+      "name": "ThermoMPNN",
+      "slug": "thermompnn",
+      "category": "protein_design",
+      "path": "protein_design/thermompnn/model.json"
+    },
+    {
+      "name": "RFdiffusion3",
+      "slug": "rfdiffusion3",
+      "category": "protein_design",
+      "path": "protein_design/rfdiffusion3/model.json"
+    },
+    {
+      "name": "RFdiffusion2",
+      "slug": "rfdiffusion2",
+      "category": "protein_design",
+      "path": "protein_design/rfdiffusion2/model.json"
+    },
+    {
+      "name": "TNP (Therapeutic Nanobody Profiler)",
+      "slug": "tnp-therapeutic-nanobody-profiler",
+      "category": "developability",
+      "path": "developability/tnp-therapeutic-nanobody-profiler/model.json"
+    },
+    {
+      "name": "TAP2 (Therapeutic Antibody Profiler)",
+      "slug": "tap2-therapeutic-antibody-profiler",
+      "category": "developability",
+      "path": "developability/tap2-therapeutic-antibody-profiler/model.json"
+    },
+    {
+      "name": "IgGM",
+      "slug": "iggm",
+      "category": "protein_design",
+      "path": "protein_design/iggm/model.json"
+    },
+    {
+      "name": "Germinal",
+      "slug": "germinal",
+      "category": "protein_design",
+      "path": "protein_design/germinal/model.json"
+    },
+    {
+      "name": "Profluent E1",
+      "slug": "profluent-e1",
+      "category": "protein_language_models",
+      "path": "protein_language_models/profluent-e1/model.json"
+    },
+    {
+      "name": "PLACER",
+      "slug": "placer",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/placer/model.json"
+    },
+    {
+      "name": "IgDesign",
+      "slug": "igdesign",
+      "category": "protein_design",
+      "path": "protein_design/igdesign/model.json"
+    },
+    {
+      "name": "PXDesign",
+      "slug": "pxdesign",
+      "category": "protein_design",
+      "path": "protein_design/pxdesign/model.json"
+    },
+    {
+      "name": "Autodock Vina",
+      "slug": "autodock-vina",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/autodock-vina/model.json"
+    },
+    {
+      "name": "AntiFold",
+      "slug": "antifold",
+      "category": "protein_design",
+      "path": "protein_design/antifold/model.json"
+    },
+    {
+      "name": "mBER",
+      "slug": "mber",
+      "category": "protein_design",
+      "path": "protein_design/mber/model.json"
+    },
+    {
+      "name": "Antibody Diffusion Properties",
+      "slug": "antibody-diffusion-properties",
+      "category": "protein_design",
+      "path": "protein_design/antibody-diffusion-properties/model.json"
+    },
+    {
+      "name": "DiffDock",
+      "slug": "diffdock",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/diffdock/model.json"
+    },
+    {
+      "name": "SurfDock",
+      "slug": "surfdock",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/surfdock/model.json"
+    },
+    {
+      "name": "Antibody Evolution",
+      "slug": "antibody-evolution",
+      "category": "protein_design",
+      "path": "protein_design/antibody-evolution/model.json"
+    },
+    {
+      "name": "Molstar Viewer",
+      "slug": "molstar-viewer",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/molstar-viewer/model.json"
+    },
+    {
+      "name": "OpenMM MD",
+      "slug": "openmm-md",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/openmm-md/model.json"
+    },
+    {
+      "name": "ImmuneBuilder",
+      "slug": "immunebuilder",
+      "category": "structure_prediction",
+      "path": "structure_prediction/immunebuilder/model.json"
+    },
+    {
+      "name": "RosettaFold-3",
+      "slug": "rosettafold-3",
+      "category": "structure_prediction",
+      "path": "structure_prediction/rosettafold-3/model.json"
+    },
+    {
+      "name": "RFdiffusion",
+      "slug": "rfdiffusion",
+      "category": "protein_design",
+      "path": "protein_design/rfdiffusion/model.json"
+    },
+    {
+      "name": "FrameFlow",
+      "slug": "frameflow",
+      "category": "protein_design",
+      "path": "protein_design/frameflow/model.json"
+    },
+    {
+      "name": "ProteinMPNN-ddG",
+      "slug": "proteinmpnn-ddg",
+      "category": "protein_design",
+      "path": "protein_design/proteinmpnn-ddg/model.json"
+    },
+    {
+      "name": "AntiDIF",
+      "slug": "antidif",
+      "category": "protein_design",
+      "path": "protein_design/antidif/model.json"
+    },
+    {
+      "name": "ProteinMPNN-ddG Binder",
+      "slug": "proteinmpnn-ddg-binder",
+      "category": "protein_design",
+      "path": "protein_design/proteinmpnn-ddg-binder/model.json"
+    },
+    {
+      "name": "LigandMPNN",
+      "slug": "ligandmpnn",
+      "category": "protein_design",
+      "path": "protein_design/ligandmpnn/model.json"
+    },
+    {
+      "name": "BoltzDesign1",
+      "slug": "boltzdesign1",
+      "category": "protein_design",
+      "path": "protein_design/boltzdesign1/model.json"
+    },
+    {
+      "name": "AllMetal3D",
+      "slug": "allmetal3d",
+      "category": "utilities",
+      "path": "utilities/allmetal3d/model.json"
+    },
+    {
+      "name": "SuperWater",
+      "slug": "superwater",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/superwater/model.json"
+    },
+    {
+      "name": "CryoDRGN",
+      "slug": "cryodrgn",
+      "category": "experimental_data",
+      "path": "experimental_data/cryodrgn/model.json"
+    },
+    {
+      "name": "DeepEMhancer",
+      "slug": "deepemhancer",
+      "category": "experimental_data",
+      "path": "experimental_data/deepemhancer/model.json"
+    },
+    {
+      "name": "Model Angelo",
+      "slug": "model-angelo",
+      "category": "structure_prediction",
+      "path": "structure_prediction/model-angelo/model.json"
+    },
+    {
+      "name": "CryFold",
+      "slug": "cryfold",
+      "category": "structure_prediction",
+      "path": "structure_prediction/cryfold/model.json"
+    },
+    {
+      "name": "PULCHRA",
+      "slug": "pulchra",
+      "category": "cryoem",
+      "path": "cryoem/pulchra/model.json"
+    },
+    {
+      "name": "AFSample2",
+      "slug": "afsample2",
+      "category": "structure_prediction",
+      "path": "structure_prediction/afsample2/model.json"
+    },
+    {
+      "name": "ZymCTRL",
+      "slug": "zymctrl",
+      "category": "protein_design",
+      "path": "protein_design/zymctrl/model.json"
+    },
+    {
+      "name": "ColabDock",
+      "slug": "colabdock",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/colabdock/model.json"
+    },
+    {
+      "name": "ABodyBuilder3",
+      "slug": "abodybuilder3",
+      "category": "structure_prediction",
+      "path": "structure_prediction/abodybuilder3/model.json"
+    },
+    {
+      "name": "EvoNB",
+      "slug": "evonb",
+      "category": "antibody_design",
+      "path": "antibody_design/evonb/model.json"
+    },
+    {
+      "name": "Thompson Sampling",
+      "slug": "thompson-sampling",
+      "category": "small_molecule_generation",
+      "path": "small_molecule_generation/thompson-sampling/model.json"
+    },
+    {
+      "name": "Free Wilson SAR",
+      "slug": "free-wilson-sar",
+      "category": "small_molecule_generation",
+      "path": "small_molecule_generation/free-wilson-sar/model.json"
+    },
+    {
+      "name": "Highfold",
+      "slug": "highfold",
+      "category": "structure_prediction",
+      "path": "structure_prediction/highfold/model.json"
+    },
+    {
+      "name": "BioEmu",
+      "slug": "bioemu",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/bioemu/model.json"
+    },
+    {
+      "name": "AbGPT",
+      "slug": "abgpt",
+      "category": "antibody_design",
+      "path": "antibody_design/abgpt/model.json"
+    },
+    {
+      "name": "Smina",
+      "slug": "smina",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/smina/model.json"
+    },
+    {
+      "name": "GNINA",
+      "slug": "gnina",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/gnina/model.json"
+    },
+    {
+      "name": "Unimol DockingV2",
+      "slug": "unimol-dockingv2",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/unimol-dockingv2/model.json"
+    },
+    {
+      "name": "DrugFlow",
+      "slug": "drugflow",
+      "category": "small_molecule_generation",
+      "path": "small_molecule_generation/drugflow/model.json"
+    },
+    {
+      "name": "DiffSBDD",
+      "slug": "diffsbdd",
+      "category": "small_molecule_generation",
+      "path": "small_molecule_generation/diffsbdd/model.json"
+    },
+    {
+      "name": "Virtual Screening",
+      "slug": "virtual-screening",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/virtual-screening/model.json"
+    },
+    {
+      "name": "AlphaFlow",
+      "slug": "alphaflow",
+      "category": "structure_prediction",
+      "path": "structure_prediction/alphaflow/model.json"
+    },
+    {
+      "name": "EquiDock",
+      "slug": "equidock",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/equidock/model.json"
+    },
+    {
+      "name": "REINVENT4",
+      "slug": "reinvent4",
+      "category": "small_molecule_generation",
+      "path": "small_molecule_generation/reinvent4/model.json"
+    },
+    {
+      "name": "MM/GB(PB)SA",
+      "slug": "mmgb-pbsa",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/mmgb-pbsa/model.json"
+    },
+    {
+      "name": "LibInvent",
+      "slug": "libinvent",
+      "category": "small_molecule_generation",
+      "path": "small_molecule_generation/libinvent/model.json"
+    },
+    {
+      "name": "TCRModel2",
+      "slug": "tcrmodel2",
+      "category": "structure_prediction",
+      "path": "structure_prediction/tcrmodel2/model.json"
+    },
+    {
+      "name": "DLKcat",
+      "slug": "dlkcat",
+      "category": "enzyme",
+      "path": "enzyme/dlkcat/model.json"
+    },
+    {
+      "name": "FlowDock",
+      "slug": "flowdock",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/flowdock/model.json"
+    },
+    {
+      "name": "CatPred",
+      "slug": "catpred",
+      "category": "protein_language_models",
+      "path": "protein_language_models/catpred/model.json"
+    },
+    {
+      "name": "ParaSurf",
+      "slug": "parasurf",
+      "category": "antibody_design",
+      "path": "antibody_design/parasurf/model.json"
+    },
+    {
+      "name": "Binding ddG",
+      "slug": "binding-ddg",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/binding-ddg/model.json"
+    },
+    {
+      "name": "FoldMason",
+      "slug": "foldmason",
+      "category": "utilities",
+      "path": "utilities/foldmason/model.json"
+    },
+    {
+      "name": "Foldseek",
+      "slug": "foldseek",
+      "category": "utilities",
+      "path": "utilities/foldseek/model.json"
+    },
+    {
+      "name": "COMPSS Protein Metrics",
+      "slug": "compss-protein-metrics",
+      "category": "developability",
+      "path": "developability/compss-protein-metrics/model.json"
+    },
+    {
+      "name": "SaProt",
+      "slug": "saprot",
+      "category": "thermostability",
+      "path": "thermostability/saprot/model.json"
+    },
+    {
+      "name": "PEP-Patch",
+      "slug": "pep-patch",
+      "category": "developability",
+      "path": "developability/pep-patch/model.json"
+    },
+    {
+      "name": "SynCodonLM",
+      "slug": "syncodonlm",
+      "category": "protein_language_models",
+      "path": "protein_language_models/syncodonlm/model.json"
+    },
+    {
+      "name": "MoFlow",
+      "slug": "moflow",
+      "category": "small_molecule_generation",
+      "path": "small_molecule_generation/moflow/model.json"
+    },
+    {
+      "name": "AF Cluster",
+      "slug": "af-cluster",
+      "category": "structure_prediction",
+      "path": "structure_prediction/af-cluster/model.json"
+    },
+    {
+      "name": "Protein Hunter",
+      "slug": "protein-hunter",
+      "category": "protein_design",
+      "path": "protein_design/protein-hunter/model.json"
+    },
+    {
+      "name": "FPocket",
+      "slug": "fpocket",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/fpocket/model.json"
+    },
+    {
+      "name": "pyKVFinder",
+      "slug": "pykvfinder",
+      "category": "utilities",
+      "path": "utilities/pykvfinder/model.json"
+    },
+    {
+      "name": "DeepImmuno",
+      "slug": "deepimmuno",
+      "category": "developability",
+      "path": "developability/deepimmuno/model.json"
+    },
+    {
+      "name": "TLimmuno",
+      "slug": "tlimmuno",
+      "category": "developability",
+      "path": "developability/tlimmuno/model.json"
+    },
+    {
+      "name": "NetSolP",
+      "slug": "netsolp",
+      "category": "developability",
+      "path": "developability/netsolp/model.json"
+    },
+    {
+      "name": "TEMPRO",
+      "slug": "tempro",
+      "category": "developability",
+      "path": "developability/tempro/model.json"
+    },
+    {
+      "name": "TemStaPro",
+      "slug": "temstapro",
+      "category": "developability",
+      "path": "developability/temstapro/model.json"
+    },
+    {
+      "name": "ThermoMPNN-D",
+      "slug": "thermompnn-d",
+      "category": "protein_design",
+      "path": "protein_design/thermompnn-d/model.json"
+    },
+    {
+      "name": "EvoProtGrad",
+      "slug": "evoprotgrad",
+      "category": "protein_design",
+      "path": "protein_design/evoprotgrad/model.json"
+    },
+    {
+      "name": "AF2BIND",
+      "slug": "af2bind",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/af2bind/model.json"
+    },
+    {
+      "name": "AfCycDesign",
+      "slug": "afcycdesign",
+      "category": "protein_design",
+      "path": "protein_design/afcycdesign/model.json"
+    },
+    {
+      "name": "Structural Evolution",
+      "slug": "structural-evolution",
+      "category": "protein_design",
+      "path": "protein_design/structural-evolution/model.json"
+    },
+    {
+      "name": "PRODIGY",
+      "slug": "prodigy",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/prodigy/model.json"
+    },
+    {
+      "name": "PPAP",
+      "slug": "ppap",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/ppap/model.json"
+    },
+    {
+      "name": "NA-MPNN",
+      "slug": "na-mpnn",
+      "category": "protein_design",
+      "path": "protein_design/na-mpnn/model.json"
+    },
+    {
+      "name": "BioPhi",
+      "slug": "biophi",
+      "category": "developability",
+      "path": "developability/biophi/model.json"
+    },
+    {
+      "name": "EvoPro",
+      "slug": "evopro",
+      "category": "protein_design",
+      "path": "protein_design/evopro/model.json"
+    },
+    {
+      "name": "Humatch",
+      "slug": "humatch",
+      "category": "developability",
+      "path": "developability/humatch/model.json"
+    },
+    {
+      "name": "MHC-Fine",
+      "slug": "mhc-fine",
+      "category": "structure_prediction",
+      "path": "structure_prediction/mhc-fine/model.json"
+    },
+    {
+      "name": "Aggrescan3D",
+      "slug": "aggrescan3d",
+      "category": "developability",
+      "path": "developability/aggrescan3d/model.json"
+    },
+    {
+      "name": "Dayhoff",
+      "slug": "dayhoff",
+      "category": "protein_design",
+      "path": "protein_design/dayhoff/model.json"
+    },
+    {
+      "name": "Caliby",
+      "slug": "caliby",
+      "category": "protein_design",
+      "path": "protein_design/caliby/model.json"
+    },
+    {
+      "name": "Deep Viscosity",
+      "slug": "deep-viscosity",
+      "category": "developability",
+      "path": "developability/deep-viscosity/model.json"
+    },
+    {
+      "name": "DeepSP",
+      "slug": "deepsp",
+      "category": "developability",
+      "path": "developability/deepsp/model.json"
+    },
+    {
+      "name": "PSI-BLAST Search",
+      "slug": "psi-blast-search",
+      "category": "utilities",
+      "path": "utilities/psi-blast-search/model.json"
+    },
+    {
+      "name": "Orthrus",
+      "slug": "orthrus",
+      "category": "rna_language_models",
+      "path": "rna_language_models/orthrus/model.json"
+    },
+    {
+      "name": "Relative Binding Free Energy",
+      "slug": "relative-binding-free-energy",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/relative-binding-free-energy/model.json"
+    },
+    {
+      "name": "PepFuNN Peptide Sequence Analysis",
+      "slug": "pepfunn-peptide-sequence-analysis",
+      "category": "developability",
+      "path": "developability/pepfunn-peptide-sequence-analysis/model.json"
+    },
+    {
+      "name": "SPACE2",
+      "slug": "space2",
+      "category": "utilities",
+      "path": "utilities/space2/model.json"
+    },
+    {
+      "name": "AF Unmasked",
+      "slug": "af-unmasked",
+      "category": "structure_prediction",
+      "path": "structure_prediction/af-unmasked/model.json"
+    },
+    {
+      "name": "DockQ",
+      "slug": "dockq",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/dockq/model.json"
+    },
+    {
+      "name": "DeepRank-Ab",
+      "slug": "deeprank-ab",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/deeprank-ab/model.json"
+    },
+    {
+      "name": "ESMFold",
+      "slug": "esmfold",
+      "category": "structure_prediction",
+      "path": "structure_prediction/esmfold/model.json"
+    },
+    {
+      "name": "AF-Traj",
+      "slug": "af-traj",
+      "category": "structure_prediction",
+      "path": "structure_prediction/af-traj/model.json"
+    },
+    {
+      "name": "Multiple Sequence Alignment",
+      "slug": "multiple-sequence-alignment",
+      "category": "structure_prediction",
+      "path": "structure_prediction/multiple-sequence-alignment/model.json"
+    },
+    {
+      "name": "IgBLAST",
+      "slug": "igblast",
+      "category": "immunogenicity",
+      "path": "immunogenicity/igblast/model.json"
+    },
+    {
+      "name": "MSA Clustering",
+      "slug": "msa-clustering",
+      "category": "utilities",
+      "path": "utilities/msa-clustering/model.json"
+    },
+    {
+      "name": "FastSolv",
+      "slug": "fastsolv",
+      "category": "solubility",
+      "path": "solubility/fastsolv/model.json"
+    },
+    {
+      "name": "MSA Analysis",
+      "slug": "msa-analysis",
+      "category": "utilities",
+      "path": "utilities/msa-analysis/model.json"
+    },
+    {
+      "name": "Ancestral Sequence Reconstruction",
+      "slug": "ancestral-sequence-reconstruction",
+      "category": "utilities",
+      "path": "utilities/ancestral-sequence-reconstruction/model.json"
+    },
+    {
+      "name": "SaProt Finetuning",
+      "slug": "saprot-finetuning",
+      "category": "protein_language_models",
+      "path": "protein_language_models/saprot-finetuning/model.json"
+    },
+    {
+      "name": "Finetune Protein Language Model",
+      "slug": "finetune-protein-language-model",
+      "category": "finetuning",
+      "path": "finetuning/finetune-protein-language-model/model.json"
+    },
+    {
+      "name": "Finetune BALM",
+      "slug": "finetune-balm",
+      "category": "finetuning",
+      "path": "finetuning/finetune-balm/model.json"
+    },
+    {
+      "name": "ProteinMPNN Score",
+      "slug": "proteinmpnn-score",
+      "category": "protein_design",
+      "path": "protein_design/proteinmpnn-score/model.json"
+    },
+    {
+      "name": "RSO Binder Design",
+      "slug": "rso-binder-design",
+      "category": "protein_design",
+      "path": "protein_design/rso-binder-design/model.json"
+    },
+    {
+      "name": "Spatial PPI v2",
+      "slug": "spatial-ppi-v2",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/spatial-ppi-v2/model.json"
+    },
+    {
+      "name": "PocketGen",
+      "slug": "pocketgen",
+      "category": "protein_design",
+      "path": "protein_design/pocketgen/model.json"
+    },
+    {
+      "name": "Protein Solubilization",
+      "slug": "protein-solubilization",
+      "category": "protein_design",
+      "path": "protein_design/protein-solubilization/model.json"
+    },
+    {
+      "name": "RFdiffusion with Chai verification",
+      "slug": "rfdiffusion-with-chai-verification",
+      "category": "protein_design",
+      "path": "protein_design/rfdiffusion-with-chai-verification/model.json"
+    },
+    {
+      "name": "ColabDesign Fixed Backbone",
+      "slug": "colabdesign-fixed-backbone",
+      "category": "protein_design",
+      "path": "protein_design/colabdesign-fixed-backbone/model.json"
+    },
+    {
+      "name": "DeepFRI",
+      "slug": "deepfri",
+      "category": "protein_language_models",
+      "path": "protein_language_models/deepfri/model.json"
+    },
+    {
+      "name": "AbLang2",
+      "slug": "ablang2",
+      "category": "antibody_design",
+      "path": "antibody_design/ablang2/model.json"
+    },
+    {
+      "name": "AbLang-MPNN",
+      "slug": "ablang-mpnn",
+      "category": "protein_design",
+      "path": "protein_design/ablang-mpnn/model.json"
+    },
+    {
+      "name": "AbMAP",
+      "slug": "abmap",
+      "category": "protein_language_models",
+      "path": "protein_language_models/abmap/model.json"
+    },
+    {
+      "name": "AntiBERTy",
+      "slug": "antiberty",
+      "category": "protein_design",
+      "path": "protein_design/antiberty/model.json"
+    },
+    {
+      "name": "deepSTABp",
+      "slug": "deepstabp",
+      "category": "developability",
+      "path": "developability/deepstabp/model.json"
+    },
+    {
+      "name": "HyperMPNN",
+      "slug": "hypermpnn",
+      "category": "protein_design",
+      "path": "protein_design/hypermpnn/model.json"
+    },
+    {
+      "name": "AbMPNN",
+      "slug": "abmpnn",
+      "category": "protein_design",
+      "path": "protein_design/abmpnn/model.json"
+    },
+    {
+      "name": "DSMBind",
+      "slug": "dsmbind",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/dsmbind/model.json"
+    },
+    {
+      "name": "ANARCI",
+      "slug": "anarci",
+      "category": "utilities",
+      "path": "utilities/anarci/model.json"
+    },
+    {
+      "name": "APM",
+      "slug": "apm",
+      "category": "protein_design",
+      "path": "protein_design/apm/model.json"
+    },
+    {
+      "name": "OmegaFold",
+      "slug": "omegafold",
+      "category": "structure_prediction",
+      "path": "structure_prediction/omegafold/model.json"
+    },
+    {
+      "name": "Antibody Annotation",
+      "slug": "antibody-annotation",
+      "category": "utilities",
+      "path": "utilities/antibody-annotation/model.json"
+    },
+    {
+      "name": "ESM2 Embeddings",
+      "slug": "esm2-embeddings",
+      "category": "protein_language_models",
+      "path": "protein_language_models/esm2-embeddings/model.json"
+    },
+    {
+      "name": "ESM-IF1",
+      "slug": "esm-if1",
+      "category": "protein_design",
+      "path": "protein_design/esm-if1/model.json"
+    },
+    {
+      "name": "MolProbity",
+      "slug": "molprobity",
+      "category": "utilities",
+      "path": "utilities/molprobity/model.json"
+    },
+    {
+      "name": "Prot T5 XL Embeddings",
+      "slug": "prot-t5-xl-embeddings",
+      "category": "protein_language_models",
+      "path": "protein_language_models/prot-t5-xl-embeddings/model.json"
+    },
+    {
+      "name": "IPC 2.0",
+      "slug": "ipc-20",
+      "category": "developability",
+      "path": "developability/ipc-20/model.json"
+    },
+    {
+      "name": "N-Linked Glycosylation Prediction",
+      "slug": "n-linked-glycosylation-prediction",
+      "category": "developability",
+      "path": "developability/n-linked-glycosylation-prediction/model.json"
+    },
+    {
+      "name": "MaSIF",
+      "slug": "masif",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/masif/model.json"
+    },
+    {
+      "name": "MaSIF-neosurf",
+      "slug": "masif-neosurf",
+      "category": "protein_design",
+      "path": "protein_design/masif-neosurf/model.json"
+    },
+    {
+      "name": "Intrinsically Disordered Region (IDR) Binder Design",
+      "slug": "intrinsically-disordered-region-idr-binder-design",
+      "category": "rosetta",
+      "path": "rosetta/intrinsically-disordered-region-idr-binder-design/model.json"
+    },
+    {
+      "name": "ESM2",
+      "slug": "esm2",
+      "category": "point_mutations",
+      "path": "point_mutations/esm2/model.json"
+    },
+    {
+      "name": "AMPLIFY",
+      "slug": "amplify",
+      "category": "point_mutations",
+      "path": "point_mutations/amplify/model.json"
+    },
+    {
+      "name": "BALM Paired",
+      "slug": "balm-paired",
+      "category": "point_mutations",
+      "path": "point_mutations/balm-paired/model.json"
+    },
+    {
+      "name": "ESM-Scan",
+      "slug": "esm-scan",
+      "category": "point_mutations",
+      "path": "point_mutations/esm-scan/model.json"
+    },
+    {
+      "name": "PDockQ",
+      "slug": "pdockq",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/pdockq/model.json"
+    },
+    {
+      "name": "Orb Models 3",
+      "slug": "orb-models-3",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/orb-models-3/model.json"
+    },
+    {
+      "name": "IPSAE",
+      "slug": "ipsae",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/ipsae/model.json"
+    },
+    {
+      "name": "HMMalign",
+      "slug": "hmmalign",
+      "category": "utilities",
+      "path": "utilities/hmmalign/model.json"
+    },
+    {
+      "name": "PROPKA",
+      "slug": "propka",
+      "category": "utilities",
+      "path": "utilities/propka/model.json"
+    },
+    {
+      "name": "MDGen",
+      "slug": "mdgen",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/mdgen/model.json"
+    },
+    {
+      "name": "PLAbDab",
+      "slug": "plabdab",
+      "category": "antibody_design",
+      "path": "antibody_design/plabdab/model.json"
+    },
+    {
+      "name": "Protein Properties",
+      "slug": "protein-properties",
+      "category": "developability",
+      "path": "developability/protein-properties/model.json"
+    },
+    {
+      "name": "Align PDBs",
+      "slug": "align-pdbs",
+      "category": "utilities",
+      "path": "utilities/align-pdbs/model.json"
+    },
+    {
+      "name": "AlphaCutter",
+      "slug": "alphacutter",
+      "category": "utilities",
+      "path": "utilities/alphacutter/model.json"
+    },
+    {
+      "name": "RMSD Calculator",
+      "slug": "rmsd-calculator",
+      "category": "utilities",
+      "path": "utilities/rmsd-calculator/model.json"
+    },
+    {
+      "name": "Min Distance Between Selected Residues",
+      "slug": "min-distance-between-selected-residues",
+      "category": "utilities",
+      "path": "utilities/min-distance-between-selected-residues/model.json"
+    },
+    {
+      "name": "Radius of Gyration",
+      "slug": "radius-of-gyration",
+      "category": "utilities",
+      "path": "utilities/radius-of-gyration/model.json"
+    },
+    {
+      "name": "USalign",
+      "slug": "usalign",
+      "category": "utilities",
+      "path": "utilities/usalign/model.json"
+    },
+    {
+      "name": "AtomSurf",
+      "slug": "atomsurf",
+      "category": "protein_language_models",
+      "path": "protein_language_models/atomsurf/model.json"
+    },
+    {
+      "name": "Emboss Backtranseq",
+      "slug": "emboss-backtranseq",
+      "category": "nucleic_acid",
+      "path": "nucleic_acid/emboss-backtranseq/model.json"
+    },
+    {
+      "name": "DNAWorks",
+      "slug": "dnaworks",
+      "category": "nucleic_acid",
+      "path": "nucleic_acid/dnaworks/model.json"
+    },
+    {
+      "name": "Legolas",
+      "slug": "legolas",
+      "category": "utilities",
+      "path": "utilities/legolas/model.json"
+    },
+    {
+      "name": "OpenFE",
+      "slug": "openfe",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/openfe/model.json"
+    },
+    {
+      "name": "RiffDiff-ProtFlow",
+      "slug": "riffdiff-protflow",
+      "category": "protein_design",
+      "path": "protein_design/riffdiff-protflow/model.json"
+    },
+    {
+      "name": "AF2Rave",
+      "slug": "af2rave",
+      "category": "structure_prediction",
+      "path": "structure_prediction/af2rave/model.json"
+    },
+    {
+      "name": "Paragraph Paratope Prediction",
+      "slug": "paragraph-paratope-prediction",
+      "category": "antibody_design",
+      "path": "antibody_design/paragraph-paratope-prediction/model.json"
+    },
+    {
+      "name": "ProteusAI",
+      "slug": "proteusai",
+      "category": "protein_design",
+      "path": "protein_design/proteusai/model.json"
+    },
+    {
+      "name": "Evo 2",
+      "slug": "evo-2",
+      "category": "rna_language_models",
+      "path": "rna_language_models/evo-2/model.json"
+    },
+    {
+      "name": "OAS Search",
+      "slug": "oas-search",
+      "category": "utilities",
+      "path": "utilities/oas-search/model.json"
+    },
+    {
+      "name": "OpenMM Protein Relaxation",
+      "slug": "openmm-protein-relaxation",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/openmm-protein-relaxation/model.json"
+    },
+    {
+      "name": "File Converter",
+      "slug": "file-converter",
+      "category": "utilities",
+      "path": "utilities/file-converter/model.json"
+    },
+    {
+      "name": "ChemBL Search",
+      "slug": "chembl-search",
+      "category": "utilities",
+      "path": "utilities/chembl-search/model.json"
+    },
+    {
+      "name": "PubChem Search",
+      "slug": "pubchem-search",
+      "category": "utilities",
+      "path": "utilities/pubchem-search/model.json"
+    },
+    {
+      "name": "PDBsum",
+      "slug": "pdbsum",
+      "category": "utilities",
+      "path": "utilities/pdbsum/model.json"
+    },
+    {
+      "name": "INTERCAAT",
+      "slug": "intercaat",
+      "category": "protein_protein_docking",
+      "path": "protein_protein_docking/intercaat/model.json"
+    },
+    {
+      "name": "ProGen2 Finetuning",
+      "slug": "progen2-finetuning",
+      "category": "protein_language_models",
+      "path": "protein_language_models/progen2-finetuning/model.json"
+    },
+    {
+      "name": "g_mmpbsa",
+      "slug": "gmmpbsa",
+      "category": "binding_affinity",
+      "path": "binding_affinity/gmmpbsa/model.json"
+    },
+    {
+      "name": "OpenMM Metadynamics",
+      "slug": "openmm-metadynamics",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/openmm-metadynamics/model.json"
+    },
+    {
+      "name": "MAGE",
+      "slug": "mage",
+      "category": "antibody_design",
+      "path": "antibody_design/mage/model.json"
+    },
+    {
+      "name": "OpenMM Temperature Replica Exchange",
+      "slug": "openmm-temperature-replica-exchange",
+      "category": "molecular_dynamics",
+      "path": "molecular_dynamics/openmm-temperature-replica-exchange/model.json"
+    },
+    {
+      "name": "LICHEN",
+      "slug": "lichen",
+      "category": "antibody_design",
+      "path": "antibody_design/lichen/model.json"
+    },
+    {
+      "name": "ITsFlexible",
+      "slug": "itsflexible",
+      "category": "structure_prediction",
+      "path": "structure_prediction/itsflexible/model.json"
+    },
+    {
+      "name": "MAVE Neural Network Training",
+      "slug": "mave-neural-network-training",
+      "category": "finetuning",
+      "path": "finetuning/mave-neural-network-training/model.json"
+    },
+    {
+      "name": "MULTI-evolve",
+      "slug": "multi-evolve",
+      "category": "protein_design",
+      "path": "protein_design/multi-evolve/model.json"
+    },
+    {
+      "name": "ADAPT",
+      "slug": "adapt",
+      "category": "structure_prediction",
+      "path": "structure_prediction/adapt/model.json"
+    },
+    {
+      "name": "Cluster PDBs",
+      "slug": "cluster-pdbs",
+      "category": "utilities",
+      "path": "utilities/cluster-pdbs/model.json"
+    },
+    {
+      "name": "RNA-FM",
+      "slug": "rna-fm",
+      "category": "structure_prediction",
+      "path": "structure_prediction/rna-fm/model.json"
+    },
+    {
+      "name": "RhoDesign",
+      "slug": "rhodesign",
+      "category": "protein_design",
+      "path": "protein_design/rhodesign/model.json"
+    },
+    {
+      "name": "RiboDiffusion",
+      "slug": "ribodiffusion",
+      "category": "protein_design",
+      "path": "protein_design/ribodiffusion/model.json"
+    },
+    {
+      "name": "EVcouplings",
+      "slug": "evcouplings",
+      "category": "point_mutations",
+      "path": "point_mutations/evcouplings/model.json"
+    },
+    {
+      "name": "Mosaic Hallucination",
+      "slug": "mosaic-hallucination",
+      "category": "protein_design",
+      "path": "protein_design/mosaic-hallucination/model.json"
+    },
+    {
+      "name": "ProFam",
+      "slug": "profam",
+      "category": "protein_language_models",
+      "path": "protein_language_models/profam/model.json"
+    },
+    {
+      "name": "GEMS",
+      "slug": "gems",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/gems/model.json"
+    },
+    {
+      "name": "AEV-PLIG",
+      "slug": "aev-plig",
+      "category": "protein_ligand_docking",
+      "path": "protein_ligand_docking/aev-plig/model.json"
+    },
+    {
+      "name": "ODesign Antibody",
+      "slug": "odesign-antibody",
+      "category": "protein_design",
+      "path": "protein_design/odesign-antibody/model.json"
+    },
+    {
+      "name": "Protein-Sol",
+      "slug": "protein-sol",
+      "category": "developability",
+      "path": "developability/protein-sol/model.json"
+    },
+    {
+      "name": "ROSHAMBO",
+      "slug": "roshambo",
+      "category": "small_molecule",
+      "path": "small_molecule/roshambo/model.json"
+    }
+  ]
+}

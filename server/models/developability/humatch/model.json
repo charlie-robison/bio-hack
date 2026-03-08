@@ -1,0 +1,41 @@
+{
+  "name": "Humatch",
+  "slug": "humatch",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Humanization",
+    "Developability"
+  ],
+  "description": "Identify human heavy V-genes, light V-genes, and well-paired antibody sequences with near-perfect accuracy.. Given an existing sequence, receive a jointly humanized antibody sequence in seconds steered toward a specific gene.",
+  "capabilities": [
+    "Identify human heavy V-genes, light V-genes, and well-paired antibody sequences with near-perfect accuracy.",
+    "Given an existing sequence, receive a jointly humanized antibody sequence in seconds steered toward a specific gene"
+  ],
+  "api_type": "humatch",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "light_chain": "DIQMTQSPSSLSASVGDRVTITC...",
+    "target_gene": "IGHV3-23"
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody heavy chain amino acid sequence"
+    },
+    "light_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody light chain amino acid sequence"
+    },
+    "target_gene": {
+      "type": "string",
+      "required": false,
+      "description": "Target V-gene to steer humanization toward a specific germline gene"
+    }
+  },
+  "outputs": {}
+}

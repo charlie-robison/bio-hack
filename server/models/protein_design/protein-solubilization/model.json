@@ -1,0 +1,41 @@
+{
+  "name": "Protein Solubilization",
+  "slug": "protein-solubilization",
+  "category": "protein_design",
+  "tags": [
+    "Protein Design"
+  ],
+  "description": "Creates soluble analogues to integral membrane proteins (e.g. GPCRs). Runs iterative AlphaFold protocol (with ColabDesign) to generate backbones, followed by SolubleMPNN to generate sequences. Uses 500 rounds of optimization for ColabDesign and 2 sequences per backbone for SolubleMPNN.",
+  "capabilities": [
+    "Creates soluble analogues to integral membrane proteins (e.g. GPCRs)",
+    "Runs iterative AlphaFold protocol (with ColabDesign) to generate backbones, followed by SolubleMPNN to generate sequences",
+    "Uses 500 rounds of optimization for ColabDesign and 2 sequences per backbone for SolubleMPNN"
+  ],
+  "api_type": "protein-solubilization",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "numDesigns": 2
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Integral membrane protein structure (e.g., GPCR) in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs to solubilize",
+      "example": "A"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 2,
+      "description": "Number of soluble analogue sequences to generate per backbone (SolubleMPNN)"
+    }
+  },
+  "outputs": {}
+}

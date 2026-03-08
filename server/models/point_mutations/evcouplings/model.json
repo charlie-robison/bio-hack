@@ -1,0 +1,28 @@
+{
+  "name": "EVcouplings",
+  "slug": "evcouplings",
+  "category": "point_mutations",
+  "tags": [
+    "Enzyme",
+    "Point Mutations"
+  ],
+  "description": "Predict protein function and mutations using evolutionary sequence covariation. Generate multiple sequence alignments and infer undirected statistical models from sequence variation. Predict mutation effects from sequence co-variation.",
+  "capabilities": [
+    "Predict protein function and mutations using evolutionary sequence covariation",
+    "Generate multiple sequence alignments and infer undirected statistical models from sequence variation",
+    "Predict mutation effects from sequence co-variation"
+  ],
+  "api_type": "evcouplings",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH..."
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for evolutionary covariation analysis and mutation effect prediction"
+    }
+  },
+  "outputs": {}
+}

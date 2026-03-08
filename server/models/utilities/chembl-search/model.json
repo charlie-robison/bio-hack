@@ -1,0 +1,34 @@
+{
+  "name": "ChemBL Search",
+  "slug": "chembl-search",
+  "category": "utilities",
+  "tags": [
+    "Small Molecule",
+    "Utilities"
+  ],
+  "description": "Find molecules in the ChemBL database.",
+  "capabilities": [
+    "Find molecules in the ChemBL database"
+  ],
+  "api_type": "chembl-search",
+  "api_settings_example": {
+    "query": "aspirin",
+    "smiles": "CC(=O)Oc1ccccc1C(=O)O"
+  },
+  "inputs": {
+    "query": {
+      "type": "string",
+      "required": true,
+      "description": "Search query: molecule name, SMILES, or target name",
+      "example": "aspirin"
+    },
+    "smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "SMILES string for similarity or substructure search",
+      "example": "CC(=O)Oc1ccccc1C(=O)O"
+    }
+  },
+  "outputs": {}
+}

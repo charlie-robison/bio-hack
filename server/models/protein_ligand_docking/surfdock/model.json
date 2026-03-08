@@ -1,0 +1,51 @@
+{
+  "name": "SurfDock",
+  "slug": "surfdock",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Surface-informed diffusion generative model for protein-ligand docking. Uses molecular surface features (geometry, electrostatics, chemical) for accurate pose prediction. Poses are rescored with smina for binding affinity estimation.",
+  "capabilities": [
+    "Surface-informed diffusion generative model for protein-ligand docking",
+    "Uses molecular surface features (geometry, electrostatics, chemical) for accurate pose prediction",
+    "Poses are rescored with smina for binding affinity estimation"
+  ],
+  "api_type": "surfdock",
+  "api_settings_example": {
+    "receptor_pdb": "path/to/receptor.pdb",
+    "ligand_sdf": "path/to/ligand.sdf",
+    "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "n_poses": 10
+  },
+  "inputs": {
+    "receptor": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Receptor protein structure in PDB format"
+    },
+    "ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": true,
+      "description": "Ligand structure in SDF format"
+    },
+    "ligand_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "Alternative: ligand as SMILES string"
+    },
+    "n_poses": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of docking poses to generate",
+      "default": 10
+    }
+  },
+  "outputs": {}
+}

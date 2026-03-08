@@ -1,0 +1,72 @@
+{
+  "name": "BindCraft",
+  "slug": "bindcraft",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "De Novo Binder Design",
+    "Protein Design",
+    "Rosetta"
+  ],
+  "description": "Generate de novo miniprotein binders for your target using Alphafold2 weights. 10-100% success rate for nanomolar binders without screening. Successfully designs binders for diverse targets including cell-surface receptors, allergens, and CRISPR-Cas9. Demonstrated therapeutic potential by reducing IgE binding to allergens, modulating Cas9 activity, reducing bacterial toxin effects, and enabling targeted gene delivery.",
+  "capabilities": [
+    "Generate de novo miniprotein binders for your target using Alphafold2 weights",
+    "10-100% success rate for nanomolar binders without screening",
+    "Successfully designs binders for diverse targets including cell-surface receptors, allergens, and CRISPR-Cas9",
+    "Demonstrated therapeutic potential by reducing IgE binding to allergens, modulating Cas9 activity, reducing bacterial toxin effects, and enabling targeted gene delivery"
+  ],
+  "api_type": "bindcraft",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "hotspots": "A10,A15,A20",
+    "binderLength": "50-80",
+    "filterStrictness": "standard",
+    "runtimeLimit": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format. Limited to ~600 residues."
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Initial hotspot residues on the target for binder generation. Adjust if designs fail.",
+      "example": "A10,A15,A20"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed miniprotein binder",
+      "example": "50-80"
+    },
+    "filterStrictness": {
+      "type": "string",
+      "required": false,
+      "default": "standard",
+      "description": "Filter stringency for design quality thresholds. Use 'relaxed' for more permissive filtering.",
+      "enum": [
+        "standard",
+        "relaxed",
+        "custom"
+      ]
+    },
+    "runtimeLimit": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Maximum runtime in hours (up to 48)"
+    }
+  },
+  "outputs": {}
+}

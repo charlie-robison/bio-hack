@@ -1,0 +1,25 @@
+{
+  "name": "AlphaCutter",
+  "slug": "alphacutter",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Remove non-globular regions from predicted protein structures.",
+  "capabilities": [
+    "Remove non-globular regions from predicted protein structures."
+  ],
+  "api_type": "alphacutter",
+  "api_settings_example": {
+    "pdbFile": "structure.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Predicted protein structure file to trim non-globular regions from"
+    }
+  },
+  "outputs": {}
+}

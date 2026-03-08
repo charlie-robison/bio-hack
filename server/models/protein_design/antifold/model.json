@@ -1,0 +1,66 @@
+{
+  "name": "AntiFold",
+  "slug": "antifold",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Inverse Folding",
+    "Protein Design"
+  ],
+  "description": "Given an input antibody structure, generate a set of sequences for that backbone (inverse folding). Specify to only design certain CDRs. Achieved 60% amino acid sequence recovery in CDR3 on AbMPNN test set, compared to 56% with AbMPNN and 35% with ProteinMPNN. Next steps may include inputting the resulting sequence into ImmuneBuilder or AlphaFold to verify the result.",
+  "capabilities": [
+    "Given an input antibody structure, generate a set of sequences for that backbone (inverse folding)",
+    "Specify to only design certain CDRs",
+    "Achieved 60% amino acid sequence recovery in CDR3 on AbMPNN test set, compared to 56% with AbMPNN and 35% with ProteinMPNN",
+    "Next steps may include inputting the resulting sequence into ImmuneBuilder or AlphaFold to verify the result"
+  ],
+  "api_type": "antifold",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "heavyChainId": "H",
+    "lightChainId": "L",
+    "includeAntigen": false,
+    "regionsToMutate": "CDRH3,CDRL3",
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody structure in PDB format"
+    },
+    "heavyChainId": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the antibody heavy chain",
+      "example": "H"
+    },
+    "lightChainId": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the antibody light chain",
+      "example": "L"
+    },
+    "includeAntigen": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Whether to include the antigen in the structural context for design"
+    },
+    "regionsToMutate": {
+      "type": "string",
+      "required": false,
+      "description": "Regions to design, e.g. CDR1, CDRH1, CDR3, or FW1. IMGT numbered CDRs used by default.",
+      "example": "CDRH3,CDRL3"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    }
+  },
+  "outputs": {}
+}

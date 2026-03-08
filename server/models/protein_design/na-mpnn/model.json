@@ -1,0 +1,49 @@
+{
+  "name": "NA-MPNN",
+  "slug": "na-mpnn",
+  "category": "protein_design",
+  "tags": [
+    "Nucleic Acid",
+    "Inverse Folding"
+  ],
+  "description": "Unified representation for proteins, DNA, and RNA. Design RNA sequences given a structure. Predict the specificity of a protein-DNA complex.",
+  "capabilities": [
+    "Unified representation for proteins, DNA, and RNA",
+    "Design RNA sequences given a structure",
+    "Predict the specificity of a protein-DNA complex"
+  ],
+  "api_type": "na-mpnn",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "designedChains": "B",
+    "temperature": 0.1,
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input structure in PDB format containing protein and/or nucleic acid"
+    },
+    "designedChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of nucleic acid chains to design sequences for",
+      "example": "B"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 0.1,
+      "description": "Sampling temperature for sequence diversity"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    }
+  },
+  "outputs": {}
+}

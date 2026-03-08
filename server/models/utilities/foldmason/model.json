@@ -1,0 +1,24 @@
+{
+  "name": "FoldMason",
+  "slug": "foldmason",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Fast, accurate alignment of large protein structure datasets using Foldseek's structural alphabet. Accurate phylogenetic analysis even with low sequence similarity.",
+  "capabilities": [
+    "Fast, accurate alignment of large protein structure datasets using Foldseek's structural alphabet",
+    "Accurate phylogenetic analysis even with low sequence similarity"
+  ],
+  "api_type": "foldmason",
+  "api_settings_example": {},
+  "inputs": {
+    "structures": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Multiple protein structure files (PDB) for structural alignment"
+    }
+  },
+  "outputs": {}
+}

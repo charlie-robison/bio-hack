@@ -1,0 +1,42 @@
+{
+  "name": "RiboDiffusion",
+  "slug": "ribodiffusion",
+  "category": "protein_design",
+  "tags": [
+    "Nucleic Acid",
+    "Inverse Folding"
+  ],
+  "description": "Design RNA sequences from fixed 3D RNA backbones (tertiary inverse folding). Uses diffusion-based ancestral denoising conditioned on RNA tertiary structure. Conditional scaling weight controls the recovery-diversity trade-off reported in the paper.",
+  "capabilities": [
+    "Design RNA sequences from fixed 3D RNA backbones (tertiary inverse folding)",
+    "Uses diffusion-based ancestral denoising conditioned on RNA tertiary structure",
+    "Conditional scaling weight controls the recovery-diversity trade-off reported in the paper"
+  ],
+  "api_type": "ribodiffusion",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "conditionalScaling": 1.0,
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Fixed 3D RNA backbone structure in PDB format for tertiary inverse folding"
+    },
+    "conditionalScaling": {
+      "type": "number",
+      "required": false,
+      "default": 1.0,
+      "description": "Conditional scaling weight controlling the recovery-diversity trade-off"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of RNA sequences to generate"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,37 @@
+{
+  "name": "AntiBERTy",
+  "slug": "antiberty",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Protein Design",
+    "Protein Language Models"
+  ],
+  "description": "Optimize the affinity of your antibody or nanobody sequences from sequence alone. Use a language model trained on 500M+ natural antibody sequences.",
+  "capabilities": [
+    "Optimize the affinity of your antibody or nanobody sequences from sequence alone",
+    "Use a language model trained on 500M+ natural antibody sequences"
+  ],
+  "api_type": "antiberty",
+  "api_settings_example": {
+    "sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "numSequences": 10
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody or nanobody amino acid sequence to optimize",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS..."
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of optimized sequence variants to generate"
+    }
+  },
+  "outputs": {}
+}

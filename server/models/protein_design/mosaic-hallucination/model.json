@@ -1,0 +1,59 @@
+{
+  "name": "Mosaic Hallucination",
+  "slug": "mosaic-hallucination",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "De Novo Binder Design",
+    "Protein Design"
+  ],
+  "description": "Design de novo binders using gradient-based optimization directly on the Boltz-2 loss landscape. Optimizes a PSSM against binding metrics (IPTM, PAE, Contacts) and inverse folding recovery. Winner of the in silico portion of the Adaptyv Nipah binding competition. Skips traditional separate inverse folding/filtering steps for an end-to-end design approach.",
+  "capabilities": [
+    "Design de novo binders using gradient-based optimization directly on the Boltz-2 loss landscape",
+    "Optimizes a PSSM against binding metrics (IPTM, PAE, Contacts) and inverse folding recovery",
+    "Winner of the in silico portion of the Adaptyv Nipah binding competition",
+    "Skips traditional separate inverse folding/filtering steps for an end-to-end design approach"
+  ],
+  "api_type": "mosaic-hallucination",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "binderLength": "50-80",
+    "hotspots": "A10,A15,A20",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed binder",
+      "example": "50-80"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Target residues for binder to interact with",
+      "example": "A10,A15,A20"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of binder designs to generate"
+    }
+  },
+  "outputs": {}
+}

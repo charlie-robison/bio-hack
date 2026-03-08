@@ -1,0 +1,34 @@
+{
+  "name": "Deep Viscosity",
+  "slug": "deep-viscosity",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Aggregation",
+    "Developability"
+  ],
+  "description": "Predict binary viscosity of monoclonal antibodies based on sequence information using properties from DeepSP.",
+  "capabilities": [
+    "Predict binary viscosity of monoclonal antibodies based on sequence information using properties from DeepSP"
+  ],
+  "api_type": "deep-viscosity",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "light_chain": "DIQMTQSPSSLSASVGDRVTITC..."
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody heavy chain amino acid sequence"
+    },
+    "light_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody light chain amino acid sequence"
+    }
+  },
+  "outputs": {}
+}

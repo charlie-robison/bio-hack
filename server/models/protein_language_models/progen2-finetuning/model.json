@@ -1,0 +1,40 @@
+{
+  "name": "ProGen2 Finetuning",
+  "slug": "progen2-finetuning",
+  "category": "protein_language_models",
+  "tags": [
+    "Finetuning and Active Learning",
+    "Protein Language Models"
+  ],
+  "description": "The pre-trained protein language model ProGen2 can be effectively fine-tuned for controllable generation of protein sequences from several distinct protein families.",
+  "capabilities": [
+    "The pre-trained protein language model ProGen2 can be effectively fine-tuned for controllable generation of protein sequences from several distinct protein families."
+  ],
+  "api_type": "progen2-finetuning",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "num_sequences": 100
+  },
+  "inputs": {
+    "training_data": {
+      "type": "file",
+      "format": "fasta",
+      "required": true,
+      "description": "FASTA file containing protein sequences from a target family for finetuning"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Seed protein sequence for conditional generation after finetuning",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "num_sequences": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of sequences to generate"
+    }
+  },
+  "outputs": {}
+}

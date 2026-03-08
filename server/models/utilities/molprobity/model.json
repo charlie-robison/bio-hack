@@ -1,0 +1,25 @@
+{
+  "name": "MolProbity",
+  "slug": "molprobity",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Check protein structure quality.",
+  "capabilities": [
+    "Check protein structure quality"
+  ],
+  "api_type": "molprobity",
+  "api_settings_example": {
+    "pdbFile": "structure.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file for quality validation"
+    }
+  },
+  "outputs": {}
+}

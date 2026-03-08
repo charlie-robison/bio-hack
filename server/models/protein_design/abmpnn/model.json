@@ -1,0 +1,51 @@
+{
+  "name": "AbMPNN",
+  "slug": "abmpnn",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Inverse Folding",
+    "Protein Design"
+  ],
+  "description": "Finetuned ProteinMPNN on antibodies in SAbDab and OAS to design CDR loops. Significantly outperforms ProteinMPNN on sequence recovery rate among antibodies, at around 60%.",
+  "capabilities": [
+    "Finetuned ProteinMPNN on antibodies in SAbDab and OAS to design CDR loops",
+    "Significantly outperforms ProteinMPNN on sequence recovery rate among antibodies, at around 60%"
+  ],
+  "api_type": "abmpnn",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "designedResidues": "H31-H35,H50-H65,H95-H102",
+    "temperature": 0.1,
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody structure in PDB format for inverse folding"
+    },
+    "designedResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residue positions to design. If not specified, CDR loops are designed by default.",
+      "example": "H31-H35,H50-H65,H95-H102"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 0.1,
+      "description": "Sampling temperature controlling sequence diversity"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    }
+  },
+  "outputs": {}
+}

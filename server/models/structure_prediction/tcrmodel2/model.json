@@ -1,0 +1,50 @@
+{
+  "name": "TCRModel2",
+  "slug": "tcrmodel2",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Structure Prediction"
+  ],
+  "description": "Model TCR-peptide-MHC complexes or unbound TCR structures given protein sequences. Shows similar or greater accuracy than AlphaFold and other methods for T Cell Receptors.",
+  "capabilities": [
+    "Model TCR-peptide-MHC complexes or unbound TCR structures given protein sequences",
+    "Shows similar or greater accuracy than AlphaFold and other methods for T Cell Receptors"
+  ],
+  "api_type": "tcrmodel2",
+  "api_settings_example": {
+    "tcrAlphaSequence": "AQSVTQPDARVTVSEGASLHLLCAVSGDYITDYYLMWFQQNPGQGLVHLAIYTSSTVADKMSSAESKAGRFSAPQTSVNFLYSELRWDSAVYYCAARGD",
+    "tcrBetaSequence": "DAGVIQSPRHEVTEMGQEVTLRCKPISGHDSYLYWYQQALGQGPEFLTYFQNEAQLDKSGLPSDRFFAERPEGSVSTLKIQRTQQEDSAVYLCASSLD",
+    "peptideSequence": "NLVPMVATV"
+  },
+  "inputs": {
+    "tcrAlphaSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "TCR alpha chain amino acid sequence",
+      "example": "AQSVTQPDARVTVSEGASLHLLCAVSGDYITDYYLMWFQQNPGQGLVHLAIYTSSTVADKMSSAESKAGRFSAPQTSVNFLYSELRWDSAVYYCAARGD"
+    },
+    "tcrBetaSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "TCR beta chain amino acid sequence",
+      "example": "DAGVIQSPRHEVTEMGQEVTLRCKPISGHDSYLYWYQQALGQGPEFLTYFQNEAQLDKSGLPSDRFFAERPEGSVSTLKIQRTQQEDSAVYLCASSLD"
+    },
+    "peptideSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Peptide sequence for TCR-peptide-MHC complex prediction. Omit for unbound TCR prediction.",
+      "example": "NLVPMVATV"
+    },
+    "mhcSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "MHC protein sequence for TCR-peptide-MHC complex prediction. Required when peptide sequence is provided."
+    }
+  },
+  "outputs": {}
+}

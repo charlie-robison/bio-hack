@@ -1,0 +1,27 @@
+{
+  "name": "Antibody Annotation",
+  "slug": "antibody-annotation",
+  "category": "utilities",
+  "tags": [
+    "Antibody",
+    "Utilities"
+  ],
+  "description": "Annotate immune proteins and view their residue frequencies using ANARCI and BioPhi.",
+  "capabilities": [
+    "Annotate immune proteins and view their residue frequencies using ANARCI and BioPhi"
+  ],
+  "api_type": "antibody-annotation",
+  "api_settings_example": {
+    "sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPT"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody sequence for annotation and residue frequency analysis",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPT"
+    }
+  },
+  "outputs": {}
+}

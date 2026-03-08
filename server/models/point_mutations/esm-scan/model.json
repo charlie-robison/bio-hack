@@ -1,0 +1,33 @@
+{
+  "name": "ESM-Scan",
+  "slug": "esm-scan",
+  "category": "point_mutations",
+  "tags": [
+    "Enzyme",
+    "Point Mutations",
+    "Protein Language Models"
+  ],
+  "description": "Score point mutations using ESM1b language model.",
+  "capabilities": [
+    "Score point mutations using ESM1b language model"
+  ],
+  "api_type": "esm-scan",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "mutations": "A123G"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for point mutation scoring using ESM1b language model"
+    },
+    "mutations": {
+      "type": "string",
+      "required": false,
+      "description": "Specific mutations to score in format like A123G, or leave empty to scan all positions"
+    }
+  },
+  "outputs": {}
+}

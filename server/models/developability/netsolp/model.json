@@ -1,0 +1,30 @@
+{
+  "name": "NetSolP",
+  "slug": "netsolp",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Solubility",
+    "Developability",
+    "Protein Language Models"
+  ],
+  "description": "Given a list of protein sequences, rapidly predict the Solubility and Usability. Uses an ensemble of finetuned ESM1b models.",
+  "capabilities": [
+    "Given a list of protein sequences, rapidly predict the Solubility and Usability",
+    "Uses an ensemble of finetuned ESM1b models"
+  ],
+  "api_type": "netsolp",
+  "api_settings_example": {
+    "sequences": ">protein1\nMVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...\n>protein2\nMKWVTFISLLFLFSSAYS..."
+  },
+  "inputs": {
+    "sequences": {
+      "type": "string",
+      "format": "fasta",
+      "required": true,
+      "description": "One or more protein amino acid sequences in FASTA format for solubility and usability prediction"
+    }
+  },
+  "outputs": {}
+}

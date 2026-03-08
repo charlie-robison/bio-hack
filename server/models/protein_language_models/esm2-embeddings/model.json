@@ -1,0 +1,34 @@
+{
+  "name": "ESM2 Embeddings",
+  "slug": "esm2-embeddings",
+  "category": "protein_language_models",
+  "tags": [
+    "Protein Language Models",
+    "Finetuning and Active Learning"
+  ],
+  "description": "Generate ESM2 Embeddings for up to 3B parameter models.",
+  "capabilities": [
+    "Generate ESM2 Embeddings for up to 3B parameter models"
+  ],
+  "api_type": "esm2-embeddings",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "model_size": "650M"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for ESM2 embedding generation",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "model_size": {
+      "type": "string",
+      "required": false,
+      "description": "ESM2 model size to use (e.g., '650M', '3B')",
+      "default": "650M"
+    }
+  },
+  "outputs": {}
+}

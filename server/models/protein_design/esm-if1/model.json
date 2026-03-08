@@ -1,0 +1,46 @@
+{
+  "name": "ESM-IF1",
+  "slug": "esm-if1",
+  "category": "protein_design",
+  "tags": [
+    "Inverse Folding"
+  ],
+  "description": "Inverse folding with ESM-IF1 language model.",
+  "capabilities": [
+    "Inverse folding with ESM-IF1 language model"
+  ],
+  "api_type": "esm-if1",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "designedChains": "A",
+    "temperature": 1.0,
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for inverse folding"
+    },
+    "designedChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs to design sequences for",
+      "example": "A"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 1.0,
+      "description": "Sampling temperature controlling sequence diversity"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    }
+  },
+  "outputs": {}
+}

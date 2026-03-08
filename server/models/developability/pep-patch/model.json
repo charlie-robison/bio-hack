@@ -1,0 +1,27 @@
+{
+  "name": "PEP-Patch",
+  "slug": "pep-patch",
+  "category": "developability",
+  "tags": [
+    "Aggregation",
+    "Developability"
+  ],
+  "description": "Given a protein structure, identify patches of electrostatic potential on the surface - areas with all negative or all positive potential. Use electrostatic interactions to better understand solubility, viscocity, and developability.",
+  "capabilities": [
+    "Given a protein structure, identify patches of electrostatic potential on the surface - areas with all negative or all positive potential",
+    "Use electrostatic interactions to better understand solubility, viscocity, and developability"
+  ],
+  "api_type": "pep-patch",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb"
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for electrostatic surface patch analysis"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Aggrescan3D",
+  "slug": "aggrescan3d",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Aggregation",
+    "Developability"
+  ],
+  "description": "Predict aggregation propensity for each residue in a protein structure.",
+  "capabilities": [
+    "Predict aggregation propensity for each residue in a protein structure"
+  ],
+  "api_type": "aggrescan3d",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb",
+    "dynamic_mode": false,
+    "distance": 10.0,
+    "foldx": false
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file in PDB format for aggregation propensity analysis"
+    },
+    "dynamic_mode": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Enable dynamic mode to account for protein flexibility via CABS-flex simulation"
+    },
+    "distance": {
+      "type": "float",
+      "required": false,
+      "default": 10.0,
+      "description": "Distance threshold in angstroms for aggregation patch detection"
+    },
+    "foldx": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Enable FoldX stability filter to discard destabilizing mutations"
+    }
+  },
+  "outputs": {}
+}

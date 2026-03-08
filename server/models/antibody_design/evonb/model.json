@@ -1,0 +1,49 @@
+{
+  "name": "EvoNB",
+  "slug": "evonb",
+  "category": "antibody_design",
+  "tags": [
+    "Antibody",
+    "Protein Language Models",
+    "Antibody Design"
+  ],
+  "description": "Finetuned ESM2 on ~8 million nanobody sequences from INDI. Validated using molecular dynamics to assess energy change.",
+  "capabilities": [
+    "Finetuned ESM2 on ~8 million nanobody sequences from INDI",
+    "Validated using molecular dynamics to assess energy change"
+  ],
+  "api_type": "evonb",
+  "api_settings_example": {
+    "seed_sequence": "QVQLVESGGGLVQAGGSLRLSCAASGFTFSNYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAA",
+    "num_sequences": 100,
+    "temperature": 1.0,
+    "top_p": 1.0
+  },
+  "inputs": {
+    "seed_sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Optional nanobody seed sequence to condition generation on"
+    },
+    "num_sequences": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of nanobody sequences to generate",
+      "default": 100
+    },
+    "temperature": {
+      "type": "float",
+      "required": false,
+      "description": "Sampling temperature controlling diversity vs conservation",
+      "default": 1.0
+    },
+    "top_p": {
+      "type": "float",
+      "required": false,
+      "description": "Nucleus sampling probability cutoff",
+      "default": 1.0
+    }
+  },
+  "outputs": {}
+}

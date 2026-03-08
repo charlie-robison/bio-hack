@@ -1,0 +1,80 @@
+{
+  "name": "Virtual Screening",
+  "slug": "virtual-screening",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Small Molecule",
+    "Protein Ligand Docking"
+  ],
+  "description": "Accelerate drug discovery with AFVS virtual screening and using QuickVina2. Select from public datasets like ZINC or upload your own ligands, define your binding site, and screen millions of compounds to identify promising hits.",
+  "capabilities": [
+    "Accelerate drug discovery with AFVS virtual screening and using QuickVina2",
+    "Select from public datasets like ZINC or upload your own ligands, define your binding site, and screen millions of compounds to identify promising hits."
+  ],
+  "api_type": "virtual_screening",
+  "api_settings_example": {
+    "receptor_pdb": "path/to/receptor.pdb",
+    "ligand_dataset": "ZINC",
+    "center_x": 10.0,
+    "center_y": 20.0,
+    "center_z": 30.0,
+    "size_x": 20.0,
+    "size_y": 20.0,
+    "size_z": 20.0
+  },
+  "inputs": {
+    "receptor": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Receptor protein structure in PDB format"
+    },
+    "ligand_library": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Custom ligand library in SDF format for screening"
+    },
+    "ligand_dataset": {
+      "type": "string",
+      "required": false,
+      "description": "Public ligand dataset to screen against",
+      "options": ["ZINC"],
+      "example": "ZINC"
+    },
+    "center_x": {
+      "type": "float",
+      "required": true,
+      "description": "X coordinate of the binding site center"
+    },
+    "center_y": {
+      "type": "float",
+      "required": true,
+      "description": "Y coordinate of the binding site center"
+    },
+    "center_z": {
+      "type": "float",
+      "required": true,
+      "description": "Z coordinate of the binding site center"
+    },
+    "size_x": {
+      "type": "float",
+      "required": false,
+      "description": "Width of the binding box along X axis (Angstroms)",
+      "default": 20.0
+    },
+    "size_y": {
+      "type": "float",
+      "required": false,
+      "description": "Width of the binding box along Y axis (Angstroms)",
+      "default": 20.0
+    },
+    "size_z": {
+      "type": "float",
+      "required": false,
+      "description": "Width of the binding box along Z axis (Angstroms)",
+      "default": 20.0
+    }
+  },
+  "outputs": {}
+}

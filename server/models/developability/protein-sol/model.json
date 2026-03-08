@@ -1,0 +1,29 @@
+{
+  "name": "Protein-Sol",
+  "slug": "protein-sol",
+  "category": "developability",
+  "tags": [
+    "Enzyme",
+    "Solubility",
+    "Developability"
+  ],
+  "description": "Predict protein solubility from amino acid sequence. Analyze amino acid composition and physicochemical properties. Generate windowed biophysical profiles (hydropathy, disorder, fold index, entropy).",
+  "capabilities": [
+    "Predict protein solubility from amino acid sequence",
+    "Analyze amino acid composition and physicochemical properties",
+    "Generate windowed biophysical profiles (hydropathy, disorder, fold index, entropy)"
+  ],
+  "api_type": "protein-sol",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH..."
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for solubility prediction and biophysical profiling"
+    }
+  },
+  "outputs": {}
+}

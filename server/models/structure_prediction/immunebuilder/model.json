@@ -1,0 +1,47 @@
+{
+  "name": "ImmuneBuilder",
+  "slug": "immunebuilder",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Structure Prediction"
+  ],
+  "description": "Rapidly predict the structures of immune proteins, including antibodies (ABodyBuilder2), nanobodies (NanoBodyBuilder2), and T-Cell receptors (TCRBuilder2). Predicts CDR-H3 loops with an RMSD of 2.81\u00c5, a 0.09\u00c5 improvement over AlphaFold-Multimer, while being over a hundred times faster.",
+  "capabilities": [
+    "Rapidly predict the structures of immune proteins, including antibodies (ABodyBuilder2), nanobodies (NanoBodyBuilder2), and T-Cell receptors (TCRBuilder2)",
+    "Predicts CDR-H3 loops with an RMSD of 2.81\u00c5, a 0.09\u00c5 improvement over AlphaFold-Multimer, while being over a hundred times faster"
+  ],
+  "api_type": "immunebuilder",
+  "api_settings_example": {
+    "modelType": "ABodyBuilder2",
+    "heavySequence": "EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAR",
+    "lightSequence": "DIQMTQSPSSLSASVGDRVTITCRASQGIRNDLGWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCLQHNSYPLT"
+  },
+  "inputs": {
+    "modelType": {
+      "type": "string",
+      "required": true,
+      "options": [
+        "ABodyBuilder2",
+        "NanoBodyBuilder2",
+        "TCRBuilder2"
+      ],
+      "description": "Type of immune protein to predict: antibodies, nanobodies, or T-cell receptors"
+    },
+    "heavySequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Heavy chain (VH) sequence for antibodies, VHH sequence for nanobodies, or alpha chain for TCRs",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAR"
+    },
+    "lightSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Light chain (VL) sequence for antibodies, or beta chain for TCRs. Not required for nanobodies.",
+      "example": "DIQMTQSPSSLSASVGDRVTITCRASQGIRNDLGWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCLQHNSYPLT"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,65 @@
+{
+  "name": "RSO Binder Design",
+  "slug": "rso-binder-design",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "De Novo Binder Design",
+    "Protein Design"
+  ],
+  "description": "Generate binders using ColabDesign gradient descent-based optimization over many iterations. Represents protein as continuous 20d vector to allow for sequence optimization. Experimentally validated to generate binders with good expression, solubility, and adopting the correct oligomeric state and secondary structure composition.",
+  "capabilities": [
+    "Generate binders using ColabDesign gradient descent-based optimization over many iterations",
+    "Represents protein as continuous 20d vector to allow for sequence optimization",
+    "Experimentally validated to generate binders with good expression, solubility, and adopting the correct oligomeric state and secondary structure composition"
+  ],
+  "api_type": "rso-binder-design",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "binderLength": "50-80",
+    "hotspots": "A10,A15,A20",
+    "numIterations": 100,
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed binder",
+      "example": "50-80"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Target residues for binder to focus on",
+      "example": "A10,A15,A20"
+    },
+    "numIterations": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of ColabDesign gradient descent optimization iterations"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of binder designs to generate"
+    }
+  },
+  "outputs": {}
+}

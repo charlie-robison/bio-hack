@@ -1,0 +1,23 @@
+{
+  "name": "Align PDBs",
+  "slug": "align-pdbs",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Align a list of PDB files.",
+  "capabilities": [
+    "Align a list of PDB files"
+  ],
+  "api_type": "align-pdbs",
+  "api_settings_example": {},
+  "inputs": {
+    "structures": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "List of PDB structure files to align"
+    }
+  },
+  "outputs": {}
+}

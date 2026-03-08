@@ -1,0 +1,42 @@
+{
+  "name": "PocketGen",
+  "slug": "pocketgen",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Protein Design",
+    "Protein Ligand Docking"
+  ],
+  "description": "Generate high-fidelity protein pockets with superior binding affinity and structural validity. Operates ten times faster than physics-based methods and achieves a 95% success rate, defined as the percentage of generated pockets with higher binding affinity than reference pockets.",
+  "capabilities": [
+    "Generate high-fidelity protein pockets with superior binding affinity and structural validity",
+    "Operates ten times faster than physics-based methods and achieves a 95% success rate, defined as the percentage of generated pockets with higher binding affinity than reference pockets"
+  ],
+  "api_type": "pocketgen",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "ligandFile": "path/to/ligand.sdf",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format containing the binding pocket"
+    },
+    "ligandFile": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": true,
+      "description": "Ligand structure in SDF format for pocket generation"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of pocket designs to generate"
+    }
+  },
+  "outputs": {}
+}

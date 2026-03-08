@@ -1,0 +1,26 @@
+{
+  "name": "IPC 2.0",
+  "slug": "ipc-20",
+  "category": "developability",
+  "tags": [
+    "Developability"
+  ],
+  "description": "Prediction of isoelectric point (pH at which a particular molecule is electrically neutral) and pKa dissociation constants using deep learning. Achieves RMSD = 0.868 (proteins) and 0.405 (peptides), outperforming previous methods.",
+  "capabilities": [
+    "Prediction of isoelectric point (pH at which a particular molecule is electrically neutral) and pKa dissociation constants using deep learning",
+    "Achieves RMSD = 0.868 (proteins) and 0.405 (peptides), outperforming previous methods"
+  ],
+  "api_type": "ipc-20",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH..."
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein or peptide amino acid sequence for isoelectric point and pKa prediction"
+    }
+  },
+  "outputs": {}
+}

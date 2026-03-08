@@ -1,0 +1,35 @@
+{
+  "name": "DeepImmuno",
+  "slug": "deepimmuno",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Humanization",
+    "Developability",
+    "Immunogenicity"
+  ],
+  "description": "Given a sequence, test all peptides of length 9 for immunogenicity to a given HLA. Uses a CNN model which outperforms DeepHLApan and IEDB.",
+  "capabilities": [
+    "Given a sequence, test all peptides of length 9 for immunogenicity to a given HLA",
+    "Uses a CNN model which outperforms DeepHLApan and IEDB"
+  ],
+  "api_type": "deepimmuno",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "hla": "HLA-A*02:01"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence to test for immunogenicity (peptides of length 9 are scanned)"
+    },
+    "hla": {
+      "type": "string",
+      "required": true,
+      "description": "HLA allele name for immunogenicity prediction (e.g., HLA-A*02:01)"
+    }
+  },
+  "outputs": {}
+}

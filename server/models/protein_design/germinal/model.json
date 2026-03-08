@@ -1,0 +1,97 @@
+{
+  "name": "Germinal",
+  "slug": "germinal",
+  "category": "protein_design",
+  "tags": [
+    "Protein Design",
+    "Antibody Design",
+    "De Novo Binder Design",
+    "Rosetta"
+  ],
+  "description": "De novo antibody design targeted to an epitope using pipeline with hallucination with ColabDesign, sequence redesign with AbMPNN, and cofolding with structure prediction. Achieved an experimental success rate of 4-22% across all targets, testing only 43-101 designs for each antigen. Experimental: Modified to use AbLang2 instead of IgLM (which requires a commercial license). By default, tool is modified to remove rosetta metrics, due to licensing.",
+  "capabilities": [
+    "De novo antibody design targeted to an epitope using pipeline with hallucination with ColabDesign, sequence redesign with AbMPNN, and cofolding with structure prediction",
+    "Achieved an experimental success rate of 4-22% across all targets, testing only 43-101 designs for each antigen",
+    "Experimental: Modified to use AbLang2 instead of IgLM (which requires a commercial license)",
+    "By default, tool is modified to remove rosetta metrics, due to licensing"
+  ],
+  "api_type": "germinal",
+  "api_settings_example": {
+    "task": "VHH",
+    "pdbFile": "path/to/file.pdb",
+    "targetChain": "A",
+    "hotspotResidues": "37,39,41",
+    "framework": "generic",
+    "frameworkPdbFile": "path/to/file.pdb",
+    "numDesigns": 1,
+    "omitAminoAcids": "C",
+    "useRosetta": false
+  },
+  "inputs": {
+    "task": {
+      "type": "string",
+      "required": true,
+      "description": "Antibody type to design",
+      "enum": [
+        "VHH",
+        "scFv"
+      ],
+      "example": "VHH"
+    },
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format"
+    },
+    "targetChain": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the target to design binder against",
+      "example": "A"
+    },
+    "hotspotResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Target residue numbers for the binder to focus on",
+      "example": "37,39,41"
+    },
+    "framework": {
+      "type": "string",
+      "required": false,
+      "default": "generic",
+      "description": "Framework to use: 'generic' for standard templates or 'custom' for uploaded framework",
+      "enum": [
+        "generic",
+        "custom"
+      ]
+    },
+    "frameworkPdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Custom antibody framework PDB file (required when framework is 'custom')"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of parallel design jobs to launch"
+    },
+    "omitAminoAcids": {
+      "type": "string",
+      "required": false,
+      "default": "C",
+      "description": "Comma-separated amino acids to exclude from CDR designs",
+      "example": "C"
+    },
+    "useRosetta": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Enable PyRosetta for additional biophysical scoring"
+    }
+  },
+  "outputs": {}
+}

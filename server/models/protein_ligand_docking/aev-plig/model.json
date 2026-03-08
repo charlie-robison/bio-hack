@@ -1,0 +1,36 @@
+{
+  "name": "AEV-PLIG",
+  "slug": "aev-plig",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Predicts binding affinity of protein-ligand complexes from 3D structure. GNN-based scoring function competitive with FEP calculations. 400,000x faster than free energy perturbation methods.",
+  "capabilities": [
+    "Predicts binding affinity of protein-ligand complexes from 3D structure",
+    "GNN-based scoring function competitive with FEP calculations",
+    "400,000x faster than free energy perturbation methods"
+  ],
+  "api_type": "aev_plig",
+  "api_settings_example": {
+    "complex_pdb": "path/to/protein_ligand_complex.pdb",
+    "ligand_chain_id": "LIG"
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein-ligand complex structure in PDB format containing both receptor and ligand"
+    },
+    "ligand_chain_id": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID or residue name identifying the ligand in the complex"
+    }
+  },
+  "outputs": {}
+}

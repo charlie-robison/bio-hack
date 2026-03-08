@@ -1,0 +1,33 @@
+{
+  "name": "BLAST Search",
+  "slug": "blast-search",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Find similar proteins to your input sequence in public databases.",
+  "capabilities": [
+    "Find similar proteins to your input sequence in public databases"
+  ],
+  "api_type": "blast-search",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "database": "nr"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein sequence to search against public databases",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "database": {
+      "type": "string",
+      "required": false,
+      "description": "Database to search (e.g., 'nr', 'swissprot', 'pdb')",
+      "default": "nr"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,31 @@
+{
+  "name": "PDBsum",
+  "slug": "pdbsum",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Generate overview and schematic diagrams of protein chains, DNA, ligands, and metal ions.",
+  "capabilities": [
+    "Generate overview and schematic diagrams of protein chains, DNA, ligands, and metal ions"
+  ],
+  "api_type": "pdbsum",
+  "api_settings_example": {
+    "pdb_id": "1ABC"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Protein structure file for generating overview diagrams"
+    },
+    "pdb_id": {
+      "type": "string",
+      "required": false,
+      "description": "PDB ID to fetch and analyze",
+      "example": "1ABC"
+    }
+  },
+  "outputs": {}
+}

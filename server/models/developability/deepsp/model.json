@@ -1,0 +1,34 @@
+{
+  "name": "DeepSP",
+  "slug": "deepsp",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Developability"
+  ],
+  "description": "Predict Spatial Charge Map (SCM) and Spatial Aggregation Propensity (SAP) for each region (including CDRs) of an antibody based on sequence information only. Properties achieved 0.87 correlation with MD derived scores, saving computation compared to MD simulation.",
+  "capabilities": [
+    "Predict Spatial Charge Map (SCM) and Spatial Aggregation Propensity (SAP) for each region (including CDRs) of an antibody based on sequence information only",
+    "Properties achieved 0.87 correlation with MD derived scores, saving computation compared to MD simulation"
+  ],
+  "api_type": "deepsp",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "light_chain": "DIQMTQSPSSLSASVGDRVTITC..."
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody heavy chain amino acid sequence"
+    },
+    "light_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody light chain amino acid sequence"
+    }
+  },
+  "outputs": {}
+}

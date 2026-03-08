@@ -1,0 +1,37 @@
+{
+  "name": "GEMS",
+  "slug": "gems",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Predicts binding affinity (pK) of protein-ligand complexes from 3D structure using graph neural networks. Enhances interaction graphs with ANKH, ESM2, and ChemBERTa language model embeddings. Ensemble inference for robust and generalizable binding affinity scoring.",
+  "capabilities": [
+    "Predicts binding affinity (pK) of protein-ligand complexes from 3D structure using graph neural networks",
+    "Enhances interaction graphs with ANKH, ESM2, and ChemBERTa language model embeddings",
+    "Ensemble inference for robust and generalizable binding affinity scoring"
+  ],
+  "api_type": "gems",
+  "api_settings_example": {
+    "complex_pdb": "path/to/protein_ligand_complex.pdb",
+    "ligand_sdf": "path/to/ligand.sdf"
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein-ligand complex structure in PDB format"
+    },
+    "ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format (if not included in complex PDB)"
+    }
+  },
+  "outputs": {}
+}

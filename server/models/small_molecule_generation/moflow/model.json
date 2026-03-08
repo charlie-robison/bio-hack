@@ -1,0 +1,50 @@
+{
+  "name": "MoFlow",
+  "slug": "moflow",
+  "category": "small_molecule_generation",
+  "tags": [
+    "Small Molecule",
+    "Generate Small Molecules"
+  ],
+  "description": "Conditional - optimize an existing smiles string for drug-likeness (QED) based on the ZINC250 dataset. Unconditional - sample from the distribution of SMILES in QM9 and ZINC250k. Uses invertible flow model to generates chemically valid molecular graph with chemical validity guarantees.",
+  "capabilities": [
+    "Conditional - optimize an existing smiles string for drug-likeness (QED) based on the ZINC250 dataset",
+    "Unconditional - sample from the distribution of SMILES in QM9 and ZINC250k",
+    "Uses invertible flow model to generates chemically valid molecular graph with chemical validity guarantees"
+  ],
+  "api_type": "moflow",
+  "api_settings_example": {
+    "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "mode": "unconditional",
+    "dataset": "zinc250k",
+    "num_molecules": 100
+  },
+  "inputs": {
+    "smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "SMILES string to optimize for drug-likeness (conditional mode)",
+      "example": "CC(=O)Oc1ccccc1C(=O)O"
+    },
+    "mode": {
+      "type": "string",
+      "required": false,
+      "description": "Generation mode: 'conditional' for optimization, 'unconditional' for sampling",
+      "default": "unconditional"
+    },
+    "dataset": {
+      "type": "string",
+      "required": false,
+      "description": "Dataset distribution to sample from: 'qm9' or 'zinc250k'",
+      "default": "zinc250k"
+    },
+    "num_molecules": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of molecules to generate"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,194 @@
+{
+  "name": "Boltz-2",
+  "slug": "boltz-2",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Structure Prediction",
+    "Protein Protein Docking",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Predicts the 3D structure of proteins, rna, dna and small molecules. Handles modified residues, covalent ligands and glycans, as well as condition the generation on pocket residues. Matches or outperforms AlphaFold3. Predict binding affinity given a binder chain.",
+  "capabilities": [
+    "Predicts the 3D structure of proteins, rna, dna and small molecules",
+    "Handles modified residues, covalent ligands and glycans, as well as condition the generation on pocket residues",
+    "Matches or outperforms AlphaFold3",
+    "Predict binding affinity given a binder chain"
+  ],
+  "api_type": "boltz-2",
+  "api_settings_example": {
+    "sequences": [
+      {
+        "entityType": "protein",
+        "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+      },
+      {
+        "entityType": "ligand",
+        "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+      }
+    ],
+    "numSamples": 1,
+    "useMSA": true,
+    "outputFormat": "pdb"
+  },
+  "inputs": {
+    "sequences": {
+      "type": "array",
+      "required": true,
+      "description": "Array of entity objects. Each entity has a type (protein, rna, dna, or ligand) and corresponding sequence or SMILES.",
+      "items": {
+        "entityType": {
+          "type": "string",
+          "options": [
+            "protein",
+            "rna",
+            "dna",
+            "ligand"
+          ],
+          "description": "Type of molecular entity"
+        },
+        "sequence": {
+          "type": "string",
+          "format": "amino_acid_sequence",
+          "description": "Amino acid sequence for protein, nucleotide sequence for RNA/DNA"
+        },
+        "smiles": {
+          "type": "string",
+          "format": "smiles",
+          "description": "SMILES string for ligand entities"
+        },
+        "ccd": {
+          "type": "string",
+          "description": "CCD code for ligand entities as alternative to SMILES"
+        }
+      },
+      "example": [
+        {
+          "entityType": "protein",
+          "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+        },
+        {
+          "entityType": "ligand",
+          "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+        }
+      ]
+    },
+    "numSamples": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of structure predictions to return"
+    },
+    "numRecycles": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of rounds of refinement during structure prediction"
+    },
+    "stepScale": {
+      "type": "number",
+      "required": false,
+      "description": "Lower step scale means more diversity. Recommended between 1 and 2."
+    },
+    "numSeeds": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of random seeds for sampling"
+    },
+    "seed": {
+      "type": "integer",
+      "required": false,
+      "description": "Random seed for reproducibility"
+    },
+    "outputFormat": {
+      "type": "string",
+      "required": false,
+      "default": "pdb",
+      "options": [
+        "pdb",
+        "mmcif"
+      ],
+      "description": "Output structure file format"
+    },
+    "useMSA": {
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "Whether to use multiple sequence alignment"
+    },
+    "customA3mFiles": {
+      "type": "file",
+      "format": "a3m_file",
+      "required": false,
+      "description": "Custom multiple sequence alignment files for protein chains"
+    },
+    "maxMsaSequences": {
+      "type": "integer",
+      "required": false,
+      "description": "Maximum number of sequences to use for MSA"
+    },
+    "msaDatabase": {
+      "type": "string",
+      "required": false,
+      "default": "uniref",
+      "options": [
+        "uniref",
+        "swissprot"
+      ],
+      "description": "Database for MSA generation"
+    },
+    "templateCifs": {
+      "type": "file",
+      "format": "cif_file",
+      "required": false,
+      "description": "Template CIF files to guide structure prediction"
+    },
+    "templateDistanceThreshold": {
+      "type": "number",
+      "required": false,
+      "description": "Distance in Angstroms that the prediction can deviate from the template"
+    },
+    "usePotentials": {
+      "type": "boolean",
+      "required": false,
+      "description": "Whether to run the Boltz-2 model using inference time potentials"
+    },
+    "contactRestraints": {
+      "type": "array",
+      "required": false,
+      "description": "Contact restraints between two residues specifying maximum distances",
+      "items": {
+        "chain1": "string",
+        "residue1": "integer",
+        "chain2": "string",
+        "residue2": "integer",
+        "maxDistance": "number"
+      }
+    },
+    "pocketRestraints": {
+      "type": "array",
+      "required": false,
+      "description": "Pocket restraints between a residue and a chain",
+      "items": {
+        "chain": "string",
+        "residue": "integer",
+        "targetChain": "string",
+        "maxDistance": "number"
+      }
+    },
+    "covalentBonds": {
+      "type": "array",
+      "required": false,
+      "description": "Covalent bond restraints between atoms"
+    },
+    "generateIpsaeMetrics": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Generate IPSAE metrics for protein-protein complex interfaces"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,68 @@
+{
+  "name": "All Atom Protein Design",
+  "slug": "all-atom-protein-design",
+  "category": "protein_design",
+  "tags": [
+    "Small Molecule",
+    "Protein Design"
+  ],
+  "description": "Design a new protein using RFdiffusion All Atom and score it for various properties. Design a binder to a ligand, scaffold an existing motif, or diversify your protein to generate variants.",
+  "capabilities": [
+    "Design a new protein using RFdiffusion All Atom and score it for various properties",
+    "Design a binder to a ligand, scaffold an existing motif, or diversify your protein to generate variants"
+  ],
+  "api_type": "rfdiffusion-all-atom",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "task": "binder_design",
+    "targetChains": "A",
+    "binderLength": "70-100",
+    "hotspots": "A10,A15,A20",
+    "numDesigns": 1
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input structure containing target protein and/or ligand in PDB format"
+    },
+    "task": {
+      "type": "string",
+      "required": true,
+      "description": "Design task type",
+      "enum": [
+        "binder_design",
+        "motif_scaffolding",
+        "diversify"
+      ],
+      "example": "binder_design"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target molecule",
+      "example": "A"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed binder",
+      "example": "70-100"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Target residues to focus binder design on",
+      "example": "A10,A15,A20"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of designs to generate"
+    }
+  },
+  "outputs": {}
+}

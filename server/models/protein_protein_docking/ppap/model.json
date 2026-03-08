@@ -1,0 +1,43 @@
+{
+  "name": "PPAP",
+  "slug": "ppap",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Antibody",
+    "Protein Protein Docking",
+    "Binding Affinity"
+  ],
+  "description": "Predict binding free energy (ΔG) and dissociation constant (Kd). Batch process multiple protein-protein complexes. Uses ESM2-3B embeddings and graph neural networks.",
+  "capabilities": [
+    "Predict binding free energy (ΔG) and dissociation constant (Kd)",
+    "Batch process multiple protein-protein complexes",
+    "Uses ESM2-3B embeddings and graph neural networks"
+  ],
+  "api_type": "ppap",
+  "api_settings_example": {
+    "complex_pdb": "path/to/complex.pdb",
+    "chain_a": "A",
+    "chain_b": "B"
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein-protein complex structure in PDB format"
+    },
+    "chain_a": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the first protein",
+      "example": "A"
+    },
+    "chain_b": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the second protein",
+      "example": "B"
+    }
+  },
+  "outputs": {}
+}

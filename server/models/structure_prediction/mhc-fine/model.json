@@ -1,0 +1,36 @@
+{
+  "name": "MHC-Fine",
+  "slug": "mhc-fine",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Structure Prediction"
+  ],
+  "description": "Specialized version of AlphaFold for MHC-Peptide complex prediction. Median of 0.65 \u00c5 RMSD, outperforming vanilla AlphaFold2 and PANDORA.",
+  "capabilities": [
+    "Specialized version of AlphaFold for MHC-Peptide complex prediction",
+    "Median of 0.65 \u00c5 RMSD, outperforming vanilla AlphaFold2 and PANDORA"
+  ],
+  "api_type": "mhc-fine",
+  "api_settings_example": {
+    "peptideSequence": "NLVPMVATV",
+    "mhcSequence": "GSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQRT"
+  },
+  "inputs": {
+    "peptideSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Peptide amino acid sequence for MHC-peptide complex prediction",
+      "example": "NLVPMVATV"
+    },
+    "mhcSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "MHC protein amino acid sequence",
+      "example": "GSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQRT"
+    }
+  },
+  "outputs": {}
+}

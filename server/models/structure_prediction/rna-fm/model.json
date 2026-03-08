@@ -1,0 +1,42 @@
+{
+  "name": "RNA-FM",
+  "slug": "rna-fm",
+  "category": "structure_prediction",
+  "tags": [
+    "Nucleic Acid",
+    "Structure Prediction",
+    "RNA Language Models"
+  ],
+  "description": "Extract embeddings from RNA sequences using pretrained foundation model. Predict RNA secondary structure and base-pairing probabilities. Trained on 23M+ non-coding RNA sequences via self-supervised learning. mRNA-FM variant available for mRNA coding sequences.",
+  "capabilities": [
+    "Extract embeddings from RNA sequences using pretrained foundation model",
+    "Predict RNA secondary structure and base-pairing probabilities",
+    "Trained on 23M+ non-coding RNA sequences via self-supervised learning",
+    "mRNA-FM variant available for mRNA coding sequences"
+  ],
+  "api_type": "rna-fm",
+  "api_settings_example": {
+    "sequence": "AUGCUAGCUAGCUAGCUAGCUAGC",
+    "modelVariant": "rna-fm"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "rna_sequence",
+      "required": true,
+      "description": "RNA nucleotide sequence (A, U, G, C) for secondary structure prediction and embedding extraction",
+      "example": "AUGCUAGCUAGCUAGCUAGCUAGC"
+    },
+    "modelVariant": {
+      "type": "string",
+      "required": false,
+      "default": "rna-fm",
+      "options": [
+        "rna-fm",
+        "mrna-fm"
+      ],
+      "description": "Model variant: rna-fm for non-coding RNA, mrna-fm for mRNA coding sequences"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,52 @@
+{
+  "name": "ColabDock",
+  "slug": "colabdock",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Protein Protein Docking",
+    "Experimental Data"
+  ],
+  "description": "Protein protein docking given their protein pdb structure files. Incorporate 1v1, 1vN, or MvN experimental restraints to dock to a known binding site.",
+  "capabilities": [
+    "Protein protein docking given their protein pdb structure files",
+    "Incorporate 1v1, 1vN, or MvN experimental restraints to dock to a known binding site"
+  ],
+  "api_type": "colabdock",
+  "api_settings_example": {
+    "protein_a_pdb": "path/to/protein_a.pdb",
+    "protein_b_pdb": "path/to/protein_b.pdb",
+    "restraint_type": "1v1",
+    "restraints": "A:45-B:30,A:46-B:31"
+  },
+  "inputs": {
+    "protein_a": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "First protein structure in PDB format"
+    },
+    "protein_b": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Second protein structure in PDB format"
+    },
+    "restraint_type": {
+      "type": "string",
+      "required": false,
+      "description": "Type of experimental restraints to incorporate",
+      "options": ["1v1", "1vN", "MvN"],
+      "default": "1v1"
+    },
+    "restraints": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Experimental restraints specifying residue pairs or interface regions",
+      "example": "A:45-B:30,A:46-B:31"
+    }
+  },
+  "outputs": {}
+}

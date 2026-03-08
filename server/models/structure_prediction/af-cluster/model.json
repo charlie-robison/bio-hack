@@ -1,0 +1,47 @@
+{
+  "name": "AF Cluster",
+  "slug": "af-cluster",
+  "category": "structure_prediction",
+  "tags": [
+    "Structure Prediction"
+  ],
+  "description": "Given a multiple sequence alignment (MSA) a3m file, generate clusters for conformation prediction. Receive pdbs of your structure in different conformations based on the clusters.",
+  "capabilities": [
+    "Given a multiple sequence alignment (MSA) a3m file, generate clusters for conformation prediction",
+    "Receive pdbs of your structure in different conformations based on the clusters"
+  ],
+  "api_type": "af-cluster",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "numModels": "5"
+  },
+  "inputs": {
+    "msaFile": {
+      "type": "file",
+      "format": "a3m_file",
+      "required": true,
+      "description": "Multiple sequence alignment (MSA) file in A3M format for conformation clustering"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Protein amino acid sequence. If provided without MSA file, an MSA will be generated automatically.",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "numModels": {
+      "type": "integer",
+      "required": false,
+      "default": 5,
+      "options": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "Number of structure models to generate per cluster"
+    }
+  },
+  "outputs": {}
+}

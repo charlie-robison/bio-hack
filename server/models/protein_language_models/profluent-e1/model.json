@@ -1,0 +1,35 @@
+{
+  "name": "Profluent E1",
+  "slug": "profluent-e1",
+  "category": "protein_language_models",
+  "tags": [
+    "Protein Language Models"
+  ],
+  "description": "Generate embeddings given protein sequence. Predict the fitness of zero-shot substitution mutants against a wild type parent. Score single mutants of a parent sequence.",
+  "capabilities": [
+    "Generate embeddings given protein sequence",
+    "Predict the fitness of zero-shot substitution mutants against a wild type parent",
+    "Score single mutants of a parent sequence"
+  ],
+  "api_type": "profluent-e1",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "mutant_positions": "5,10,15"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for embedding generation or fitness prediction",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "mutant_positions": {
+      "type": "string",
+      "required": false,
+      "description": "Positions to score single mutants, comma-separated",
+      "example": "5,10,15"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,27 @@
+{
+  "name": "AF-Traj",
+  "slug": "af-traj",
+  "category": "structure_prediction",
+  "tags": [
+    "Structure Prediction"
+  ],
+  "description": "High-throughput prediction of protein conformational distributions with subsampled AlphaFold2. Presently only supports single chains.",
+  "capabilities": [
+    "High-throughput prediction of protein conformational distributions with subsampled AlphaFold2",
+    "Presently only supports single chains"
+  ],
+  "api_type": "af-traj",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Single-chain protein amino acid sequence for conformational distribution prediction",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    }
+  },
+  "outputs": {}
+}

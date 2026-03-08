@@ -1,0 +1,43 @@
+{
+  "name": "AfCycDesign",
+  "slug": "afcycdesign",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "De Novo Binder Design",
+    "Protein Design"
+  ],
+  "description": "Modifies the AlphaFold model to design cyclic peptides. Design peptide backbones given a protein pdb file. 36 out of 49 cases predicted with high confidence (pLDDT > 0.85) match the native structure with root mean squared deviation (RMSD) less than 1.5 \u00c5.",
+  "capabilities": [
+    "Modifies the AlphaFold model to design cyclic peptides",
+    "Design peptide backbones given a protein pdb file",
+    "36 out of 49 cases predicted with high confidence (pLDDT > 0.85) match the native structure with root mean squared deviation (RMSD) less than 1.5 \u00c5"
+  ],
+  "api_type": "afcycdesign",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "peptideLength": 8,
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format as the target for cyclic peptide design"
+    },
+    "peptideLength": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Length of the cyclic peptide to design"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of peptide backbone designs to generate"
+    }
+  },
+  "outputs": {}
+}

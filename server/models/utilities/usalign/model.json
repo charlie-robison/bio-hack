@@ -1,0 +1,31 @@
+{
+  "name": "USalign",
+  "slug": "usalign",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Structurally align proteins and nucleic acids. Calculates size independent TM-score heuristic and minimizes it with a heuristic structural alignment algorithm. Has an advantage over RMSD with its higher alignment coverage.",
+  "capabilities": [
+    "Structurally align proteins and nucleic acids",
+    "Calculates size independent TM-score heuristic and minimizes it with a heuristic structural alignment algorithm",
+    "Has an advantage over RMSD with its higher alignment coverage"
+  ],
+  "api_type": "usalign",
+  "api_settings_example": {},
+  "inputs": {
+    "structure_1": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "First protein or nucleic acid structure for alignment"
+    },
+    "structure_2": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Second protein or nucleic acid structure for alignment"
+    }
+  },
+  "outputs": {}
+}

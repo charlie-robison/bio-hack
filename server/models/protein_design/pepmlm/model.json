@@ -1,0 +1,44 @@
+{
+  "name": "PepMLM",
+  "slug": "pepmlm",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "De Novo Binder Design",
+    "Protein Language Models"
+  ],
+  "description": "Generates peptide binders for any target protein using only sequence data (no structure needed). Uses ESM-2 language model with a custom masking strategy to predict the binder region. Produces candidates validated by AlphaFold-Multimer and experimental degradation assays.",
+  "capabilities": [
+    "Generates peptide binders for any target protein using only sequence data (no structure needed)",
+    "Uses ESM-2 language model with a custom masking strategy to predict the binder region",
+    "Produces candidates validated by AlphaFold-Multimer and experimental degradation assays"
+  ],
+  "api_type": "pepmlm",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAAD...",
+    "peptideLength": 15,
+    "numSequences": 10
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Target protein amino acid sequence (no structure needed)",
+      "example": "MKFLILLFNILCLFPVLAAD..."
+    },
+    "peptideLength": {
+      "type": "integer",
+      "required": false,
+      "default": 15,
+      "description": "Length of the peptide binder to generate"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of peptide binder candidates to generate"
+    }
+  },
+  "outputs": {}
+}

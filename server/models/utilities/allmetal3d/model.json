@@ -1,0 +1,25 @@
+{
+  "name": "AllMetal3D",
+  "slug": "allmetal3d",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Predict location of metal ions in proteins without needing to preselect a specific ion.",
+  "capabilities": [
+    "Predict location of metal ions in proteins without needing to preselect a specific ion"
+  ],
+  "api_type": "allmetal3d",
+  "api_settings_example": {
+    "pdbFile": "structure.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file for metal ion binding site prediction"
+    }
+  },
+  "outputs": {}
+}

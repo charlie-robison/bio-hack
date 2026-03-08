@@ -1,0 +1,36 @@
+{
+  "name": "ProteinMPNN Score",
+  "slug": "proteinmpnn-score",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "Antibody",
+    "Enzyme",
+    "Inverse Folding",
+    "Protein Design"
+  ],
+  "description": "Return score only (model's uncertainty) loading sequence from fasta files.",
+  "capabilities": [
+    "Return score only (model's uncertainty) loading sequence from fasta files"
+  ],
+  "api_type": "proteinmpnn-score",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "fastaFile": "path/to/file.fasta"
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format"
+    },
+    "fastaFile": {
+      "type": "file",
+      "format": "fasta",
+      "required": true,
+      "description": "Sequences in FASTA format to score against the structure"
+    }
+  },
+  "outputs": {}
+}

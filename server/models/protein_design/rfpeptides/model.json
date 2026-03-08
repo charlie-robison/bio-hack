@@ -1,0 +1,58 @@
+{
+  "name": "RFpeptides",
+  "slug": "rfpeptides",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "Protein Design",
+    "De Novo Binder Design",
+    "Rosetta"
+  ],
+  "description": "Design macrocyclic peptides to a target structure. Designs against MCL1 and MDM2 demonstrate KD between 1-10 \u03bcM, and the best anti-GABARAP macrocycle binds with a KD of 6 nM and a sub-nanomolar IC50 in vitro.",
+  "capabilities": [
+    "Design macrocyclic peptides to a target structure",
+    "Designs against MCL1 and MDM2 demonstrate KD between 1-10 \u03bcM, and the best anti-GABARAP macrocycle binds with a KD of 6 nM and a sub-nanomolar IC50 in vitro"
+  ],
+  "api_type": "rfpeptides",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "hotspots": "A10,A15,A20",
+    "peptideLength": "10-20",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target",
+      "example": "A"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Hotspot residues on the target for peptide binding",
+      "example": "A10,A15,A20"
+    },
+    "peptideLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or range for the macrocyclic peptide",
+      "example": "10-20"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of macrocyclic peptide designs to generate"
+    }
+  },
+  "outputs": {}
+}

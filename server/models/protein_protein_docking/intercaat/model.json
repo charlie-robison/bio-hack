@@ -1,0 +1,51 @@
+{
+  "name": "INTERCAAT",
+  "slug": "intercaat",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Protein Protein Docking"
+  ],
+  "description": "Identify interface residues between protein chains in macromolecular complexes. Calculate atomic interactions and distances between query and interacting chains. Generate compatibility matrix showing interface residue interactions. Analyze protein-protein interfaces with customizable distance thresholds. Support for both single and multiple interacting chain analysis. Uses Voronoi tessellation for accurate interface detection.",
+  "capabilities": [
+    "Identify interface residues between protein chains in macromolecular complexes",
+    "Calculate atomic interactions and distances between query and interacting chains",
+    "Generate compatibility matrix showing interface residue interactions",
+    "Analyze protein-protein interfaces with customizable distance thresholds",
+    "Support for both single and multiple interacting chain analysis",
+    "Uses Voronoi tessellation for accurate interface detection"
+  ],
+  "api_type": "intercaat",
+  "api_settings_example": {
+    "complex_pdb": "path/to/complex.pdb",
+    "query_chain": "A",
+    "interacting_chains": "B,C",
+    "distance_threshold": 5.0
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Macromolecular complex structure in PDB format"
+    },
+    "query_chain": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the query chain to analyze interface for",
+      "example": "A"
+    },
+    "interacting_chains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID(s) of the interacting chain(s), comma-separated for multiple",
+      "example": "B,C"
+    },
+    "distance_threshold": {
+      "type": "float",
+      "required": false,
+      "description": "Distance threshold in Angstroms for interface residue detection",
+      "default": 5.0
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,64 @@
+{
+  "name": "Antibody Diffusion Properties",
+  "slug": "antibody-diffusion-properties",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Protein Design",
+    "Antibody Design"
+  ],
+  "description": "Guiding diffusion models for antibody sequence and structure co-design with developability properties. Design CDRs conditioned on antigen structures while considering critical properties like solubility and folding stability. Modified property-aware DiffAb.",
+  "capabilities": [
+    "Guiding diffusion models for antibody sequence and structure co-design with developability properties",
+    "Design CDRs conditioned on antigen structures while considering critical properties like solubility and folding stability",
+    "Modified property-aware DiffAb"
+  ],
+  "api_type": "antibody-diffusion-properties",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "heavyChainSequence": "MKTLLILAVVAAALA...",
+    "lightChainSequence": "MKTLLILAVVAAALA...",
+    "cdrRegions": "CDR-H3",
+    "numDesigns": 10,
+    "optimizeProperties": true
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antigen structure in PDB format for CDR design"
+    },
+    "heavyChainSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Heavy chain framework sequence"
+    },
+    "lightChainSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Light chain framework sequence"
+    },
+    "cdrRegions": {
+      "type": "string",
+      "required": false,
+      "description": "CDR regions to design (e.g., CDR-H3, CDR-L3)",
+      "example": "CDR-H3"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of antibody designs to generate"
+    },
+    "optimizeProperties": {
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "Whether to condition generation on developability properties like solubility and folding stability"
+    }
+  },
+  "outputs": {}
+}

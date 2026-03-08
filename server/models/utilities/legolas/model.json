@@ -1,0 +1,25 @@
+{
+  "name": "Legolas",
+  "slug": "legolas",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Predict protein chemical shifts from PDB structures.",
+  "capabilities": [
+    "Predict protein chemical shifts from PDB structures"
+  ],
+  "api_type": "legolas",
+  "api_settings_example": {
+    "pdbFile": "structure.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein PDB structure for chemical shift prediction"
+    }
+  },
+  "outputs": {}
+}

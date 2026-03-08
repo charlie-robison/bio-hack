@@ -1,0 +1,73 @@
+{
+  "name": "OpenFold3",
+  "slug": "openfold3",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Peptide",
+    "Structure Prediction",
+    "Protein Protein Docking",
+    "Protein Ligand Docking"
+  ],
+  "description": "Predicts the 3D structure of proteins, rna, dna and small molecules.",
+  "capabilities": [
+    "Predicts the 3D structure of proteins, rna, dna and small molecules"
+  ],
+  "api_type": "openfold3",
+  "api_settings_example": {
+    "sequences": [
+      {
+        "entityType": "protein",
+        "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+      }
+    ],
+    "outputFormat": "pdb"
+  },
+  "inputs": {
+    "sequences": {
+      "type": "array",
+      "required": true,
+      "description": "Array of entity objects. Each entity has a type (protein, rna, dna, or ligand) and corresponding sequence or SMILES.",
+      "items": {
+        "entityType": {
+          "type": "string",
+          "options": [
+            "protein",
+            "rna",
+            "dna",
+            "ligand"
+          ],
+          "description": "Type of molecular entity"
+        },
+        "sequence": {
+          "type": "string",
+          "format": "amino_acid_sequence",
+          "description": "Amino acid sequence for protein, nucleotide sequence for RNA/DNA"
+        },
+        "smiles": {
+          "type": "string",
+          "format": "smiles",
+          "description": "SMILES string for ligand entities"
+        }
+      },
+      "example": [
+        {
+          "entityType": "protein",
+          "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+        }
+      ]
+    },
+    "outputFormat": {
+      "type": "string",
+      "required": false,
+      "default": "pdb",
+      "options": [
+        "pdb",
+        "mmcif"
+      ],
+      "description": "Output structure file format"
+    }
+  },
+  "outputs": {}
+}

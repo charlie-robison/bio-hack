@@ -1,0 +1,34 @@
+{
+  "name": "MDGen",
+  "slug": "mdgen",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Peptide",
+    "Molecular Dynamics"
+  ],
+  "description": "MDGen was trained on tetrapetides from the ATLAS database. The tool generates forward simulation of peptide trajectories.. MDGen should be used to generate trajectories of peptides. Its accuracy may degrade on longer sequences.",
+  "capabilities": [
+    "MDGen was trained on tetrapetides from the ATLAS database. The tool generates forward simulation of peptide trajectories.",
+    "MDGen should be used to generate trajectories of peptides. Its accuracy may degrade on longer sequences."
+  ],
+  "api_type": "mdgen",
+  "api_settings_example": {
+    "sequence": "ACDE",
+    "num_frames": 100
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Peptide amino acid sequence for trajectory simulation (optimized for tetrapeptides)"
+    },
+    "num_frames": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of trajectory frames to generate"
+    }
+  },
+  "outputs": {}
+}

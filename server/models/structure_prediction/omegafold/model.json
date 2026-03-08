@@ -1,0 +1,26 @@
+{
+  "name": "OmegaFold",
+  "slug": "omegafold",
+  "category": "structure_prediction",
+  "tags": [
+    "Structure Prediction"
+  ],
+  "description": "Predict protein structure quickly without MSA.",
+  "capabilities": [
+    "Predict protein structure quickly without MSA"
+  ],
+  "api_type": "omegafold",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for fast structure prediction without MSA",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    }
+  },
+  "outputs": {}
+}

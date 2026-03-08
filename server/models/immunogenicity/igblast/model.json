@@ -1,0 +1,59 @@
+{
+  "name": "IgBLAST",
+  "slug": "igblast",
+  "category": "immunogenicity",
+  "tags": [
+    "Antibody",
+    "Humanization",
+    "Utilities"
+  ],
+  "description": "Search immune proteins against public databases using nucleotides or AA sequences as input.",
+  "capabilities": [
+    "Search immune proteins against public databases using nucleotides or AA sequences as input"
+  ],
+  "api_type": "igblast",
+  "api_settings_example": {
+    "sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAK",
+    "sequence_type": "protein",
+    "organism": "human",
+    "domain_system": "imgt",
+    "query_type": "Ig"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Immune protein sequence to search (amino acid or nucleotide sequence)"
+    },
+    "sequence_type": {
+      "type": "string",
+      "required": false,
+      "description": "Type of input sequence",
+      "options": ["protein", "nucleotide"],
+      "default": "protein"
+    },
+    "organism": {
+      "type": "string",
+      "required": false,
+      "description": "Organism for germline database search",
+      "options": ["human", "mouse", "rat", "rabbit"],
+      "default": "human"
+    },
+    "domain_system": {
+      "type": "string",
+      "required": false,
+      "description": "Domain classification system",
+      "options": ["imgt", "kabat"],
+      "default": "imgt"
+    },
+    "query_type": {
+      "type": "string",
+      "required": false,
+      "description": "Type of immune receptor to search against",
+      "options": ["Ig", "TCR"],
+      "default": "Ig"
+    }
+  },
+  "outputs": {}
+}

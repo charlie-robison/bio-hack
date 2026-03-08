@@ -1,0 +1,52 @@
+{
+  "name": "AbLang2",
+  "slug": "ablang2",
+  "category": "antibody_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Protein Language Models"
+  ],
+  "description": "Generate embeddings, scan, or predict masked residues using antibody protein language model from paired sequences. Model optimized for predicting non germline residues.",
+  "capabilities": [
+    "Generate embeddings, scan, or predict masked residues using antibody protein language model from paired sequences",
+    "Model optimized for predicting non germline residues"
+  ],
+  "api_type": "ablang2",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAKVQLWDFDYWGQGTLVTVSS",
+    "light_chain": "DIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTPLTFGGGTKVEIK",
+    "mode": "seqcoding",
+    "align": false
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Heavy chain variable region (VH) amino acid sequence",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAKVQLWDFDYWGQGTLVTVSS"
+    },
+    "light_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Light chain variable region (VL) amino acid sequence. Use '|' separator between VH and VL for paired input",
+      "example": "DIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTPLTFGGGTKVEIK"
+    },
+    "mode": {
+      "type": "string",
+      "required": true,
+      "description": "Analysis mode to run",
+      "options": ["seqcoding", "rescoding", "restore", "likelihood"],
+      "default": "seqcoding"
+    },
+    "align": {
+      "type": "boolean",
+      "required": false,
+      "description": "Whether to align residue-level encodings (applicable for rescoding mode)",
+      "default": false
+    }
+  },
+  "outputs": {}
+}

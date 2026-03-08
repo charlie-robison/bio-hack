@@ -1,0 +1,44 @@
+{
+  "name": "OpenMM Protein Relaxation",
+  "slug": "openmm-protein-relaxation",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Molecular Dynamics"
+  ],
+  "description": "Relax a protein structure using OpenMM.",
+  "capabilities": [
+    "Relax a protein structure using OpenMM"
+  ],
+  "api_type": "openmm-protein-relaxation",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb",
+    "max_iterations": 1000,
+    "forcefield": "amber14-all"
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for energy minimization and relaxation"
+    },
+    "max_iterations": {
+      "type": "integer",
+      "required": false,
+      "default": 1000,
+      "description": "Maximum number of energy minimization iterations"
+    },
+    "forcefield": {
+      "type": "string",
+      "required": false,
+      "default": "amber14-all",
+      "options": [
+        "amber14-all",
+        "amber99sb",
+        "charmm36"
+      ],
+      "description": "Force field for protein relaxation"
+    }
+  },
+  "outputs": {}
+}

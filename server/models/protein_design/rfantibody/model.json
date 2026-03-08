@@ -1,0 +1,77 @@
+{
+  "name": "RFantibody",
+  "slug": "rfantibody",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "De Novo Binder Design"
+  ],
+  "description": "Design de novo antibody/VHHs given a target antigen. Experimentally validated to four disease-relevant epitopes using multiple orthogonal biophysical methods.",
+  "capabilities": [
+    "Design de novo antibody/VHHs given a target antigen",
+    "Experimentally validated to four disease-relevant epitopes using multiple orthogonal biophysical methods"
+  ],
+  "api_type": "rfantibody",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "framework": "h-NbBCII10",
+    "frameworkPdbFile": "path/to/file.pdb",
+    "hotspotResidues": "A37,A39,A41",
+    "cdrLengths": "auto",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target antigen structure in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target antigen",
+      "example": "A"
+    },
+    "framework": {
+      "type": "string",
+      "required": false,
+      "default": "h-NbBCII10",
+      "description": "Antibody framework template to use",
+      "enum": [
+        "h-NbBCII10",
+        "hu-4D5-8_Fv",
+        "custom"
+      ]
+    },
+    "frameworkPdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Custom Chothia-annotated antibody framework PDB (required when framework is 'custom')"
+    },
+    "hotspotResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": true,
+      "description": "Target epitope residues where C-beta distance to CDR residues would be <8 Angstrom",
+      "example": "A37,A39,A41"
+    },
+    "cdrLengths": {
+      "type": "string",
+      "required": false,
+      "default": "auto",
+      "description": "Per-CDR length ranges or 'auto' to preserve input framework lengths",
+      "example": "auto"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of antibody/VHH designs to generate"
+    }
+  },
+  "outputs": {}
+}

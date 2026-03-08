@@ -1,0 +1,27 @@
+{
+  "name": "Prot T5 XL Embeddings",
+  "slug": "prot-t5-xl-embeddings",
+  "category": "protein_language_models",
+  "tags": [
+    "Protein Language Models",
+    "Finetuning and Active Learning"
+  ],
+  "description": "Generate Prot T5 XL Uniref-50 Embeddings.",
+  "capabilities": [
+    "Generate Prot T5 XL Uniref-50 Embeddings"
+  ],
+  "api_type": "prot-t5-xl-embeddings",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for ProtT5-XL embedding generation",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    }
+  },
+  "outputs": {}
+}

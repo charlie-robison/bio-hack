@@ -1,0 +1,32 @@
+{
+  "name": "Protein Scoring",
+  "slug": "protein-scoring",
+  "category": "developability",
+  "tags": [
+    "Developability"
+  ],
+  "description": "Score your protein sequences or structures using any of our scoring tools.",
+  "capabilities": [
+    "Score your protein sequences or structures using any of our scoring tools"
+  ],
+  "api_type": "protein-scoring",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "pdb": "path/to/structure.pdb"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Protein amino acid sequence for sequence-based scoring"
+    },
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Protein structure in PDB format for structure-based scoring"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,42 @@
+{
+  "name": "ProteusAI",
+  "slug": "proteusai",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Finetuning and Active Learning",
+    "Protein Design",
+    "Experimental Data"
+  ],
+  "description": "Train a model on experimental data to predict fitness of protein variants. Suggest new designs through Bayesian optimization over sequence space.",
+  "capabilities": [
+    "Train a model on experimental data to predict fitness of protein variants",
+    "Suggest new designs through Bayesian optimization over sequence space"
+  ],
+  "api_type": "proteusai",
+  "api_settings_example": {
+    "sequence": "MKTLLILAVVAAALA...",
+    "experimentalData": "path/to/file",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Wild-type protein amino acid sequence"
+    },
+    "experimentalData": {
+      "type": "file",
+      "required": true,
+      "description": "CSV file with protein variants and their experimental fitness values"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of new variant designs to suggest via Bayesian optimization"
+    }
+  },
+  "outputs": {}
+}

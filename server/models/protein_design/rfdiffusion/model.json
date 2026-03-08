@@ -1,0 +1,134 @@
+{
+  "name": "RFdiffusion",
+  "slug": "rfdiffusion",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Protein Design",
+    "De Novo Binder Design"
+  ],
+  "description": "Generate new protein structures targeted to your inputs. Choose from one of our tasks or use custom contigs in the RFdiffusion format. Design a de novo binder to a target. Scaffold additional regions of an existing interface. Redesign an existing binder to a target. Diversify an existing protein chain.",
+  "capabilities": [
+    "Generate new protein structures targeted to your inputs",
+    "Choose from one of our tasks or use custom contigs in the RFdiffusion format",
+    "Design a de novo binder to a target",
+    "Scaffold additional regions of an existing interface",
+    "Redesign an existing binder to a target",
+    "Diversify an existing protein chain"
+  ],
+  "api_type": "rfdiffusion",
+  "api_settings_example": {
+    "task": "binder_design",
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "binderLength": "70-100",
+    "hotspots": "A10,A15,A20",
+    "binderChain": "B",
+    "designedResidues": "1-5,7-10",
+    "designedLengths": "5-10,3-8",
+    "interfaceChain": "A",
+    "interfaceResidues": "10-20,30-40",
+    "partial_T": 0.1,
+    "contigs": "A1-100/0 50-50",
+    "numDesigns": 1,
+    "verify": true
+  },
+  "inputs": {
+    "task": {
+      "type": "string",
+      "required": true,
+      "description": "Design task to run",
+      "enum": [
+        "binder_design",
+        "binder_redesign",
+        "motif_scaffolding",
+        "partial_diffusion"
+      ],
+      "example": "binder_design"
+    },
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input PDB file containing the target structure or complex"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein (for binder design)",
+      "example": "A"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Fixed length or range for the designed binder (binder_design task)",
+      "example": "70-100"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Target residues to prioritize during binder generation",
+      "example": "A10,A15,A20"
+    },
+    "binderChain": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the binder to modify (binder_redesign task)",
+      "example": "B"
+    },
+    "designedResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residues to redesign (binder_redesign and partial_diffusion tasks)",
+      "example": "1-5,7-10"
+    },
+    "designedLengths": {
+      "type": "string",
+      "required": false,
+      "description": "Length bounds for each redesigned region",
+      "example": "5-10,3-8"
+    },
+    "interfaceChain": {
+      "type": "string",
+      "required": false,
+      "description": "Chain with the interface to scaffold (motif_scaffolding task)",
+      "example": "A"
+    },
+    "interfaceResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residues to scaffold in motif scaffolding",
+      "example": "10-20,30-40"
+    },
+    "partial_T": {
+      "type": "number",
+      "required": false,
+      "description": "Temperature parameter controlling diffusion extent (partial_diffusion task)"
+    },
+    "contigs": {
+      "type": "string",
+      "format": "contig_string",
+      "required": false,
+      "description": "Custom RFdiffusion contig string for advanced usage",
+      "example": "A1-100/0 50-50"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of designs to generate"
+    },
+    "verify": {
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "Whether to verify designs with ProteinMPNN and AlphaFold"
+    }
+  },
+  "outputs": {}
+}

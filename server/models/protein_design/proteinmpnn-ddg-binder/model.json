@@ -1,0 +1,44 @@
+{
+  "name": "ProteinMPNN-ddG Binder",
+  "slug": "proteinmpnn-ddg-binder",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Antibody",
+    "Inverse Folding",
+    "Point Mutations",
+    "Protein Design"
+  ],
+  "description": "Given a protein structure, predict binding affinity change for all point mutations rapidly, prioritizing stability improving mutations (runs ProteinMPNN-ddG for unbound and bound states). Implements tied decoding scheme to limit computation compared to ProteinMPNN.",
+  "capabilities": [
+    "Given a protein structure, predict binding affinity change for all point mutations rapidly, prioritizing stability improving mutations (runs ProteinMPNN-ddG for unbound and bound states)",
+    "Implements tied decoding scheme to limit computation compared to ProteinMPNN"
+  ],
+  "api_type": "proteinmpnn-ddg-binder",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "binderChain": "B",
+    "targetChain": "A"
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein complex structure in PDB format for predicting binding affinity changes"
+    },
+    "binderChain": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the binder protein to evaluate mutations on",
+      "example": "B"
+    },
+    "targetChain": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the target protein",
+      "example": "A"
+    }
+  },
+  "outputs": {}
+}

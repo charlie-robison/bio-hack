@@ -1,0 +1,57 @@
+{
+  "name": "Protein Hunter",
+  "slug": "protein-hunter",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "Protein Design",
+    "De Novo Binder Design"
+  ],
+  "description": "De novo protein design against protein and small molecule targets. Achieves high AlphaFold3 in silico success rates across both unconditional and conditional generation tasks.",
+  "capabilities": [
+    "De novo protein design against protein and small molecule targets",
+    "Achieves high AlphaFold3 in silico success rates across both unconditional and conditional generation tasks"
+  ],
+  "api_type": "protein-hunter",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O",
+    "binderLength": "70-100",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Target protein structure in PDB format (for conditional generation)"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "SMILES string for small molecule target",
+      "example": "CC(=O)OC1=CC=CC=C1C(=O)O"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed protein",
+      "example": "70-100"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of protein designs to generate"
+    }
+  },
+  "outputs": {}
+}

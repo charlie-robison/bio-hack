@@ -1,0 +1,33 @@
+{
+  "name": "ESM2",
+  "slug": "esm2",
+  "category": "point_mutations",
+  "tags": [
+    "Point Mutations",
+    "Protein Language Models"
+  ],
+  "description": "Mask residues in protein to predict likely sequence using ESM2 650M parameter language model. Scan protein for every position/AA pair's likelihood.",
+  "capabilities": [
+    "Mask residues in protein to predict likely sequence using ESM2 650M parameter language model",
+    "Scan protein for every position/AA pair's likelihood"
+  ],
+  "api_type": "esm2",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "mask_positions": "10,25,50"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for residue masking and likelihood scanning using ESM2 650M model"
+    },
+    "mask_positions": {
+      "type": "string",
+      "required": false,
+      "description": "Specific residue positions to mask for prediction (comma-separated), or leave empty to scan all positions"
+    }
+  },
+  "outputs": {}
+}

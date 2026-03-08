@@ -1,0 +1,34 @@
+{
+  "name": "BioEmu",
+  "slug": "bioemu",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Peptide",
+    "Molecular Dynamics"
+  ],
+  "description": "Approximate the equilibrium distribution of structures for a protein monomer, given its amino acid sequence.. Samples protein conformations with relative free energy errors around 1 kcal/mol, as validated against millisecond-timescale MD simulation and experimentally-measured protein stabilities.",
+  "capabilities": [
+    "Approximate the equilibrium distribution of structures for a protein monomer, given its amino acid sequence.",
+    "Samples protein conformations with relative free energy errors around 1 kcal/mol, as validated against millisecond-timescale MD simulation and experimentally-measured protein stabilities"
+  ],
+  "api_type": "bioemu",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "num_samples": 10
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein monomer amino acid sequence for equilibrium conformational sampling"
+    },
+    "num_samples": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of conformational samples to generate"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Min Distance Between Selected Residues",
+  "slug": "min-distance-between-selected-residues",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Calculate the minimum distance between two sets of residues in a protein structure. For example, calculate the distance between an epitope and a binder.",
+  "capabilities": [
+    "Calculate the minimum distance between two sets of residues in a protein structure",
+    "For example, calculate the distance between an epitope and a binder"
+  ],
+  "api_type": "min-distance-between-selected-residues",
+  "api_settings_example": {
+    "residue_set_1": "A:10,A:15,A:20",
+    "residue_set_2": "B:30,B:35,B:40"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file containing the residues to measure"
+    },
+    "residue_set_1": {
+      "type": "string",
+      "required": true,
+      "description": "First set of residue IDs, comma-separated",
+      "example": "A:10,A:15,A:20"
+    },
+    "residue_set_2": {
+      "type": "string",
+      "required": true,
+      "description": "Second set of residue IDs, comma-separated",
+      "example": "B:30,B:35,B:40"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,40 @@
+{
+  "name": "ROSHAMBO",
+  "slug": "roshambo",
+  "category": "small_molecule",
+  "tags": [
+    "Small Molecule"
+  ],
+  "description": "GPU-accelerated 3D molecular shape comparison using Gaussian overlays. Compare a query molecule against a dataset to find shape-similar compounds. Supports both shape-only and combined shape + pharmacophore (color) scoring. Outputs aligned structures and similarity scores ranked by chosen metric.",
+  "capabilities": [
+    "GPU-accelerated 3D molecular shape comparison using Gaussian overlays",
+    "Compare a query molecule against a dataset to find shape-similar compounds",
+    "Supports both shape-only and combined shape + pharmacophore (color) scoring",
+    "Outputs aligned structures and similarity scores ranked by chosen metric"
+  ],
+  "api_type": "roshambo",
+  "api_settings_example": {
+    "scoring_method": "combo"
+  },
+  "inputs": {
+    "query_molecule": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": true,
+      "description": "Query molecule file for shape comparison"
+    },
+    "dataset": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": true,
+      "description": "Dataset of molecules to compare against"
+    },
+    "scoring_method": {
+      "type": "string",
+      "required": false,
+      "description": "Scoring method: 'shape' for shape-only or 'combo' for shape + pharmacophore",
+      "default": "combo"
+    }
+  },
+  "outputs": {}
+}

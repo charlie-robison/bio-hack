@@ -1,0 +1,35 @@
+{
+  "name": "DeepEMhancer",
+  "slug": "deepemhancer",
+  "category": "experimental_data",
+  "tags": [
+    "CryoEM",
+    "Experimental Data"
+  ],
+  "description": "Perform post processing, including local sharpening and automatic masking/denoising, of cryoEM maps given input raw volumes, preferably half maps. Deep learning model trained on pairs of experimental volumes and atomic model-corrected volumes. Post-translational modifications and ligands were not included in the traning set and may be inaccurate.",
+  "capabilities": [
+    "Perform post processing, including local sharpening and automatic masking/denoising, of cryoEM maps given input raw volumes, preferably half maps",
+    "Deep learning model trained on pairs of experimental volumes and atomic model-corrected volumes",
+    "Post-translational modifications and ligands were not included in the traning set and may be inaccurate"
+  ],
+  "api_type": "deepemhancer",
+  "api_settings_example": {},
+  "inputs": {
+    "half_map_1": {
+      "type": "file",
+      "required": true,
+      "description": "First half map from cryo-EM reconstruction (.mrc)"
+    },
+    "half_map_2": {
+      "type": "file",
+      "required": false,
+      "description": "Second half map from cryo-EM reconstruction (.mrc)"
+    },
+    "full_map": {
+      "type": "file",
+      "required": false,
+      "description": "Full cryo-EM density map if half maps are not available (.mrc)"
+    }
+  },
+  "outputs": {}
+}

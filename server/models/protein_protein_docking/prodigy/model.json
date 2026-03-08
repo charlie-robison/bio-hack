@@ -1,0 +1,34 @@
+{
+  "name": "PRODIGY",
+  "slug": "prodigy",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Protein Protein Docking",
+    "Binding Affinity"
+  ],
+  "description": "Given a complex protein structure, predict the binding affinity between each pair of chains. Showed 0.73 correlation on protein-protein binding affinity benchmark.",
+  "capabilities": [
+    "Given a complex protein structure, predict the binding affinity between each pair of chains",
+    "Showed 0.73 correlation on protein-protein binding affinity benchmark"
+  ],
+  "api_type": "prodigy",
+  "api_settings_example": {
+    "complex_pdb": "path/to/complex.pdb",
+    "temperature": 298.15
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein complex structure in PDB or mmCIF format"
+    },
+    "temperature": {
+      "type": "float",
+      "required": false,
+      "description": "Temperature in Kelvin for binding affinity calculation",
+      "default": 298.15
+    }
+  },
+  "outputs": {}
+}

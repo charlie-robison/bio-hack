@@ -1,0 +1,28 @@
+{
+  "name": "PULCHRA",
+  "slug": "pulchra",
+  "category": "cryoem",
+  "tags": [
+    "CryoEM",
+    "Utilities"
+  ],
+  "description": "Reconstruct full-atom protein models from Ca-only model. Correct alpha carbon positions, add backbone and side chain atoms, improve hydrogen bonds patterns and check proper protein chirality. Intermediate step between coarse grained model-based structure prediction and applications such as molecular dynamics, protein-ligand docking, and structure-based function prediction.",
+  "capabilities": [
+    "Reconstruct full-atom protein models from Ca-only model",
+    "Correct alpha carbon positions, add backbone and side chain atoms, improve hydrogen bonds patterns and check proper protein chirality",
+    "Intermediate step between coarse grained model-based structure prediction and applications such as molecular dynamics, protein-ligand docking, and structure-based function prediction"
+  ],
+  "api_type": "pulchra",
+  "api_settings_example": {
+    "structure": "path/to/ca_trace.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Ca-only (alpha carbon trace) PDB file to reconstruct into a full-atom protein model with backbone and side chain atoms"
+    }
+  },
+  "outputs": {}
+}

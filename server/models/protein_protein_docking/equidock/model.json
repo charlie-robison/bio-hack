@@ -1,0 +1,33 @@
+{
+  "name": "EquiDock",
+  "slug": "equidock",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Protein Protein Docking"
+  ],
+  "description": "Quick rigid body protein-protein docking given two protein pdb files. Approximates the binding pockets and predicts the docking poses using keypoint matching and alignment.",
+  "capabilities": [
+    "Quick rigid body protein-protein docking given two protein pdb files",
+    "Approximates the binding pockets and predicts the docking poses using keypoint matching and alignment"
+  ],
+  "api_type": "equidock",
+  "api_settings_example": {
+    "receptor_pdb": "path/to/receptor.pdb",
+    "ligand_protein_pdb": "path/to/ligand_protein.pdb"
+  },
+  "inputs": {
+    "receptor": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Receptor protein structure in PDB format"
+    },
+    "ligand_protein": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Ligand protein structure in PDB format to be docked onto the receptor"
+    }
+  },
+  "outputs": {}
+}

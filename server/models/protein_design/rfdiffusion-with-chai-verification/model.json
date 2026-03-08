@@ -1,0 +1,62 @@
+{
+  "name": "RFdiffusion with Chai verification",
+  "slug": "rfdiffusion-with-chai-verification",
+  "category": "protein_design",
+  "tags": [
+    "Protein Design"
+  ],
+  "description": "Run pipeline with RFdiffusion (design protein backbones), ProteinMPNN (design sequences to fold into structure), and Chai (fold final sequences).",
+  "capabilities": [
+    "Run pipeline with RFdiffusion (design protein backbones), ProteinMPNN (design sequences to fold into structure), and Chai (fold final sequences)"
+  ],
+  "api_type": "rfdiffusion-with-chai-verification",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "binderLength": "70-100",
+    "hotspots": "A10,A15,A20",
+    "contigs": "A1-100/0 50-50",
+    "numDesigns": 1
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input protein structure in PDB format for the RFdiffusion+ProteinMPNN+Chai pipeline"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed binder",
+      "example": "70-100"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Target residues for binder design",
+      "example": "A10,A15,A20"
+    },
+    "contigs": {
+      "type": "string",
+      "format": "contig_string",
+      "required": false,
+      "description": "Custom RFdiffusion contig string",
+      "example": "A1-100/0 50-50"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of designs to generate"
+    }
+  },
+  "outputs": {}
+}

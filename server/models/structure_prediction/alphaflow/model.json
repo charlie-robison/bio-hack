@@ -1,0 +1,34 @@
+{
+  "name": "AlphaFlow",
+  "slug": "alphaflow",
+  "category": "structure_prediction",
+  "tags": [
+    "Structure Prediction"
+  ],
+  "description": "Predict the structure of a given protein sequence using AlphaFold fine tuned with a flow matching objective for better precision and diversity of conformations. Generate possible conformational states and molecular dynamics ensembles and physiological temperatures.",
+  "capabilities": [
+    "Predict the structure of a given protein sequence using AlphaFold fine tuned with a flow matching objective for better precision and diversity of conformations",
+    "Generate possible conformational states and molecular dynamics ensembles and physiological temperatures"
+  ],
+  "api_type": "alphaflow",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "numSamples": 10
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for structure prediction using flow-matching fine-tuned AlphaFold",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "numSamples": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of conformational samples to generate"
+    }
+  },
+  "outputs": {}
+}

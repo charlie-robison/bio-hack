@@ -1,0 +1,33 @@
+{
+  "name": "DLKcat",
+  "slug": "dlkcat",
+  "category": "enzyme",
+  "tags": [
+    "Enzyme"
+  ],
+  "description": "Predict enzyme-substrate kcat/turnover number given enzyme sequence and substrate SMILES. Deep Learning approach for high throughput prediction.",
+  "capabilities": [
+    "Predict enzyme-substrate kcat/turnover number given enzyme sequence and substrate SMILES",
+    "Deep Learning approach for high throughput prediction"
+  ],
+  "api_type": "dlkcat",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "substrate_smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Enzyme amino acid sequence"
+    },
+    "substrate_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": true,
+      "description": "Substrate molecule in SMILES format (concatenate multiple substrates with . separator)"
+    }
+  },
+  "outputs": {}
+}

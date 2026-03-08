@@ -1,0 +1,28 @@
+{
+  "name": "HMMalign",
+  "slug": "hmmalign",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Align list of sequences using HMMER.",
+  "capabilities": [
+    "Align list of sequences using HMMER"
+  ],
+  "api_type": "hmmalign",
+  "api_settings_example": {},
+  "inputs": {
+    "sequences": {
+      "type": "file",
+      "format": "fasta",
+      "required": true,
+      "description": "FASTA file with sequences to align using HMMER"
+    },
+    "hmm_profile": {
+      "type": "file",
+      "required": false,
+      "description": "Custom HMM profile file for alignment"
+    }
+  },
+  "outputs": {}
+}

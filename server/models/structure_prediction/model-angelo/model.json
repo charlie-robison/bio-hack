@@ -1,0 +1,36 @@
+{
+  "name": "Model Angelo",
+  "slug": "model-angelo",
+  "category": "structure_prediction",
+  "tags": [
+    "CryoEM",
+    "Structure Prediction",
+    "Experimental Data"
+  ],
+  "description": "Automatic atomic model building program for protein and nucleic acid structures from cryo-EM maps given a mrc file. Optionally, include a known protein sequence to inform the model building.",
+  "capabilities": [
+    "Automatic atomic model building program for protein and nucleic acid structures from cryo-EM maps given a mrc file",
+    "Optionally, include a known protein sequence to inform the model building"
+  ],
+  "api_type": "model-angelo",
+  "api_settings_example": {
+    "mrcFile": "path/to/density_map.mrc",
+    "sequence": ">chain_A\nMKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "mrcFile": {
+      "type": "file",
+      "format": "mrc_file",
+      "required": true,
+      "description": "Cryo-EM density map file in MRC format for automatic atomic model building"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "fasta",
+      "required": false,
+      "description": "Optional protein sequence in FASTA format to inform the model building process",
+      "example": ">chain_A\nMKFLILLFNILCLFPVLAADNHGVSMNAS"
+    }
+  },
+  "outputs": {}
+}

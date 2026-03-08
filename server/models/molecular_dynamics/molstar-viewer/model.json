@@ -1,0 +1,59 @@
+{
+  "name": "Molstar Viewer",
+  "slug": "molstar-viewer",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Utilities",
+    "GROMACS",
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Small Molecule",
+    "Molecular Dynamics"
+  ],
+  "description": "Simulate energy minimization between a protein and ligand or protein only in aqueous solution. Run molecular simulation with GROMACS forcefield and conduct trajectory analysis including RMSD, RMSF, Rg, and PCA.",
+  "capabilities": [
+    "Simulate energy minimization between a protein and ligand or protein only in aqueous solution",
+    "Run molecular simulation with GROMACS forcefield and conduct trajectory analysis including RMSD, RMSF, Rg, and PCA"
+  ],
+  "api_type": "molstar-viewer",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb",
+    "ligand": "path/to/ligand.sdf",
+    "simulation_time_ns": 10,
+    "forcefield": "gromos"
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for molecular dynamics simulation"
+    },
+    "ligand_file": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format for protein-ligand simulation"
+    },
+    "simulation_time_ns": {
+      "type": "float",
+      "required": false,
+      "default": 10,
+      "description": "Simulation time in nanoseconds"
+    },
+    "forcefield": {
+      "type": "string",
+      "required": false,
+      "default": "gromos",
+      "options": [
+        "gromos",
+        "amber",
+        "charmm",
+        "opls"
+      ],
+      "description": "GROMACS force field for the simulation"
+    }
+  },
+  "outputs": {}
+}

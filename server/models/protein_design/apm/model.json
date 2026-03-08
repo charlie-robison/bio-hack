@@ -1,0 +1,41 @@
+{
+  "name": "APM",
+  "slug": "apm",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Protein Design"
+  ],
+  "description": "An All-Atom Generative Model for Designing Protein Complexes. Precisely models inter-chain interactions by integrating all-atom information.",
+  "capabilities": [
+    "An All-Atom Generative Model for Designing Protein Complexes",
+    "Precisely models inter-chain interactions by integrating all-atom information"
+  ],
+  "api_type": "apm",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A,B",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input protein complex structure in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein chains",
+      "example": "A,B"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of complex designs to generate"
+    }
+  },
+  "outputs": {}
+}

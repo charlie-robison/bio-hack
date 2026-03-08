@@ -1,0 +1,35 @@
+{
+  "name": "LibInvent",
+  "slug": "libinvent",
+  "category": "small_molecule_generation",
+  "tags": [
+    "Small Molecule",
+    "Generate Small Molecules"
+  ],
+  "description": "Given a set of smiles strings of scaffolds, perform decoration to generate molecules which fit the scaffolds. Generate virtual chemical libraries for lead optimization in a broad range of scenarios.",
+  "capabilities": [
+    "Given a set of smiles strings of scaffolds, perform decoration to generate molecules which fit the scaffolds",
+    "Generate virtual chemical libraries for lead optimization in a broad range of scenarios"
+  ],
+  "api_type": "libinvent",
+  "api_settings_example": {
+    "scaffold_smiles": "c1ccc([*:1])c([*:2])c1",
+    "num_molecules": 100
+  },
+  "inputs": {
+    "scaffold_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": true,
+      "description": "SMILES string of the scaffold with decoration points marked",
+      "example": "c1ccc([*:1])c([*:2])c1"
+    },
+    "num_molecules": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of decorated molecules to generate"
+    }
+  },
+  "outputs": {}
+}

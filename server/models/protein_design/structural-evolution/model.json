@@ -1,0 +1,44 @@
+{
+  "name": "Structural Evolution",
+  "slug": "structural-evolution",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Protein Language Models",
+    "Protein Design"
+  ],
+  "description": "Generates mutation recommendations for one chain of interest given a protein structure. To produce mutations for antibody variable domains, run the workflow individually for the heavy and light chains. Achieved up to 25-fold improvement in neutralization and 37-fold improvement in affinity against antibody-escaped viral variants of concern BQ.1.1 and XBB.1.5, respectively.",
+  "capabilities": [
+    "Generates mutation recommendations for one chain of interest given a protein structure",
+    "To produce mutations for antibody variable domains, run the workflow individually for the heavy and light chains",
+    "Achieved up to 25-fold improvement in neutralization and 37-fold improvement in affinity against antibody-escaped viral variants of concern BQ.1.1 and XBB.1.5, respectively"
+  ],
+  "api_type": "structural-evolution",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "designedChain": "H",
+    "numMutations": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format"
+    },
+    "designedChain": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the chain of interest for mutation recommendations",
+      "example": "H"
+    },
+    "numMutations": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of mutation recommendations to generate"
+    }
+  },
+  "outputs": {}
+}

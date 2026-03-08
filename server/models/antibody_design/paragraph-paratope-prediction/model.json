@@ -1,0 +1,34 @@
+{
+  "name": "Paragraph Paratope Prediction",
+  "slug": "paragraph-paratope-prediction",
+  "category": "antibody_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design"
+  ],
+  "description": "Predict antibody paratope residues from heavy chain structures.",
+  "capabilities": [
+    "Predict antibody paratope residues from heavy chain structures"
+  ],
+  "api_type": "paragraph",
+  "api_settings_example": {
+    "antibody_pdb": "path/to/antibody.pdb",
+    "heavy_chain_id": "H"
+  },
+  "inputs": {
+    "antibody_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody structure file in PDB format containing heavy chain"
+    },
+    "heavy_chain_id": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the heavy chain in the PDB file",
+      "example": "H",
+      "default": "H"
+    }
+  },
+  "outputs": {}
+}

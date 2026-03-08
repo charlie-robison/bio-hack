@@ -1,0 +1,34 @@
+{
+  "name": "MSA Analysis",
+  "slug": "msa-analysis",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Multiple sequence alignment using Clustal Omega, MUSCLE, or MAFFT. Automatically selects optimal algorithm based on sequence count and characteristics. Supports FASTA input with up to thousands of sequences. Outputs alignment statistics and quality metrics.",
+  "capabilities": [
+    "Multiple sequence alignment using Clustal Omega, MUSCLE, or MAFFT",
+    "Automatically selects optimal algorithm based on sequence count and characteristics",
+    "Supports FASTA input with up to thousands of sequences",
+    "Outputs alignment statistics and quality metrics"
+  ],
+  "api_type": "msa-analysis",
+  "api_settings_example": {
+    "algorithm": "auto"
+  },
+  "inputs": {
+    "sequences": {
+      "type": "file",
+      "format": "fasta",
+      "required": true,
+      "description": "FASTA file with sequences for multiple sequence alignment"
+    },
+    "algorithm": {
+      "type": "string",
+      "required": false,
+      "description": "Alignment algorithm: 'clustalo', 'muscle', or 'mafft'",
+      "default": "auto"
+    }
+  },
+  "outputs": {}
+}

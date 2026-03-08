@@ -1,0 +1,52 @@
+{
+  "name": "HyperMPNN",
+  "slug": "hypermpnn",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Inverse Folding",
+    "Developability",
+    "Protein Design"
+  ],
+  "description": "Retrained ProteinMPNN on hyperthermophiles to recover their unique amino acid composition. Tested approach on a protein nanoparticle with a melting temperature of 65 degrees resulted in designs remaining stable at 95 degrees.",
+  "capabilities": [
+    "Retrained ProteinMPNN on hyperthermophiles to recover their unique amino acid composition",
+    "Tested approach on a protein nanoparticle with a melting temperature of 65 degrees resulted in designs remaining stable at 95 degrees"
+  ],
+  "api_type": "hypermpnn",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "designedResidues": "A10,A15,B20",
+    "temperature": 0.1,
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for thermostable sequence design"
+    },
+    "designedResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Specific residues to design. If not set, all residues are designed.",
+      "example": "A10,A15,B20"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 0.1,
+      "description": "Sampling temperature for sequence diversity"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    }
+  },
+  "outputs": {}
+}

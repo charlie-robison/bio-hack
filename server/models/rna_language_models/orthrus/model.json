@@ -1,0 +1,28 @@
+{
+  "name": "Orthrus",
+  "slug": "orthrus",
+  "category": "rna_language_models",
+  "tags": [
+    "Nucleic Acid",
+    "RNA Language Models"
+  ],
+  "description": "Generate mRNA embeddings for RNA property prediction. Uses 6-track model to generate embeddings.",
+  "capabilities": [
+    "Generate mRNA embeddings for RNA property prediction",
+    "Uses 6-track model to generate embeddings"
+  ],
+  "api_type": "orthrus",
+  "api_settings_example": {
+    "sequence": "AUGCUAGCUAGCUAGCUAGC"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "rna_sequence",
+      "required": true,
+      "description": "mRNA sequence for embedding generation",
+      "example": "AUGCUAGCUAGCUAGCUAGC"
+    }
+  },
+  "outputs": {}
+}

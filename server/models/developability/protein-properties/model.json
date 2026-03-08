@@ -1,0 +1,35 @@
+{
+  "name": "Protein Properties",
+  "slug": "protein-properties",
+  "category": "developability",
+  "tags": [
+    "Aggregation",
+    "Developability"
+  ],
+  "description": "Calculate a variety of properties on your protein sequences or structures. Sequence properties: Amino Acids Percent, Molecular Weight, Aromaticity, Instability Index, Average Flexibility, GRAVY, Isoelectric Point, Charge at pH 7, Helix Fraction, Turn Fraction, Sheet Fraction, Molar Extinction Coefficient. Structure properties: Surface Hydrophobicity, Solvent Accessible Surface Areas, Relative Accessible Surface Areas, Half-Sphere Exposure Calculations, Residue Depth.",
+  "capabilities": [
+    "Calculate a variety of properties on your protein sequences or structures",
+    "Sequence properties: Amino Acids Percent, Molecular Weight, Aromaticity, Instability Index, Average Flexibility, GRAVY, Isoelectric Point, Charge at pH 7, Helix Fraction, Turn Fraction, Sheet Fraction, Molar Extinction Coefficient",
+    "Structure properties: Surface Hydrophobicity, Solvent Accessible Surface Areas, Relative Accessible Surface Areas, Half-Sphere Exposure Calculations, Residue Depth"
+  ],
+  "api_type": "protein-properties",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "pdb": "path/to/structure.pdb"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Protein amino acid sequence for sequence-based property calculations (molecular weight, aromaticity, GRAVY, etc.)"
+    },
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Protein structure in PDB format for structure-based property calculations (surface hydrophobicity, SASA, residue depth, etc.)"
+    }
+  },
+  "outputs": {}
+}

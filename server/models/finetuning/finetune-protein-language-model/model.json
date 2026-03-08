@@ -1,0 +1,41 @@
+{
+  "name": "Finetune Protein Language Model",
+  "slug": "finetune-protein-language-model",
+  "category": "finetuning",
+  "tags": [
+    "Finetuning and Active Learning"
+  ],
+  "description": "Generate higher accuracy predictor for a protein property of interest, incorporating experimental data. Finetune ESM, ProtT5, and Ankh on your protein sequences and corresponding properties. Save your trained model as its own tool for future inference.",
+  "capabilities": [
+    "Generate higher accuracy predictor for a protein property of interest, incorporating experimental data",
+    "Finetune ESM, ProtT5, and Ankh on your protein sequences and corresponding properties",
+    "Save your trained model as its own tool for future inference"
+  ],
+  "api_type": "finetune-protein-language-model",
+  "api_settings_example": {
+    "base_model": "esm2",
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "training_data": {
+      "type": "file",
+      "format": "csv_file",
+      "required": true,
+      "description": "CSV file with protein sequences and corresponding property values for finetuning"
+    },
+    "base_model": {
+      "type": "string",
+      "required": false,
+      "description": "Base model to finetune: 'esm2', 'prot_t5_xl', or 'ankh'",
+      "default": "esm2"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Protein sequence for inference with the finetuned model",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    }
+  },
+  "outputs": {}
+}

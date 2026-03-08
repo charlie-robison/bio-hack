@@ -1,0 +1,41 @@
+{
+  "name": "DNAWorks",
+  "slug": "dnaworks",
+  "category": "nucleic_acid",
+  "tags": [
+    "Nucleic Acid",
+    "Utilities"
+  ],
+  "description": "Automatic oligonucleotide design for PCR-based gene synthesis.",
+  "capabilities": [
+    "Automatic oligonucleotide design for PCR-based gene synthesis"
+  ],
+  "api_type": "dnaworks",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "melting_temperature": 62,
+    "organism": "ecoli"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence or DNA sequence for oligonucleotide design",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "melting_temperature": {
+      "type": "number",
+      "required": false,
+      "default": 62,
+      "description": "Target melting temperature for oligonucleotides in degrees Celsius"
+    },
+    "organism": {
+      "type": "string",
+      "required": false,
+      "description": "Target organism for codon optimization",
+      "default": "ecoli"
+    }
+  },
+  "outputs": {}
+}

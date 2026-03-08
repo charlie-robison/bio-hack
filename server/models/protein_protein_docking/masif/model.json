@@ -1,0 +1,33 @@
+{
+  "name": "MaSIF",
+  "slug": "masif",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Protein Protein Docking",
+    "Binding Affinity"
+  ],
+  "description": "Molecular surface interaction fingerprints.",
+  "capabilities": [
+    "Molecular surface interaction fingerprints."
+  ],
+  "api_type": "masif",
+  "api_settings_example": {
+    "protein_pdb": "path/to/protein.pdb",
+    "chain_ids": "A,B"
+  },
+  "inputs": {
+    "protein_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for molecular surface fingerprint computation"
+    },
+    "chain_ids": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs to analyze, comma-separated",
+      "example": "A,B"
+    }
+  },
+  "outputs": {}
+}

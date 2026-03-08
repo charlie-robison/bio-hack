@@ -1,0 +1,44 @@
+{
+  "name": "BALM Paired",
+  "slug": "balm-paired",
+  "category": "point_mutations",
+  "tags": [
+    "Point Mutations"
+  ],
+  "description": "Scan protein for every position/AA pair's likelihood. Score protein using either ft-ESM model (ESM2 with 650M parameters) finetuned from ESM2 or BALM-paired language model (modified RoBERTa-large with 355M parameters) finetuned from BALM.",
+  "capabilities": [
+    "Scan protein for every position/AA pair's likelihood",
+    "Score protein using either ft-ESM model (ESM2 with 650M parameters) finetuned from ESM2 or BALM-paired language model (modified RoBERTa-large with 355M parameters) finetuned from BALM"
+  ],
+  "api_type": "balm-paired",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "light_chain": "DIQMTQSPSSLSASVGDRVTITC...",
+    "model": "balm_paired"
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody heavy chain amino acid sequence for paired likelihood scanning"
+    },
+    "light_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody light chain amino acid sequence for paired likelihood scanning"
+    },
+    "model": {
+      "type": "string",
+      "required": false,
+      "default": "balm_paired",
+      "options": [
+        "balm_paired",
+        "ft_esm"
+      ],
+      "description": "Language model to use: BALM-paired (355M params) or ft-ESM (ESM2 650M params finetuned)"
+    }
+  },
+  "outputs": {}
+}

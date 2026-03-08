@@ -1,0 +1,45 @@
+{
+  "name": "ThermoMPNN-D",
+  "slug": "thermompnn-d",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Thermostability",
+    "Point Mutations",
+    "Developability",
+    "Inverse Folding"
+  ],
+  "description": "Given a protein structure, predict the stability change from double point mutations. Extends ThermoMPNN to capture epistatic couplings between point mutations.",
+  "capabilities": [
+    "Given a protein structure, predict the stability change from double point mutations",
+    "Extends ThermoMPNN to capture epistatic couplings between point mutations"
+  ],
+  "api_type": "thermompnn-d",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "chains": "A",
+    "multi": false
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input protein structure in PDB format for double point mutation stability prediction"
+    },
+    "chains": {
+      "type": "string",
+      "required": true,
+      "description": "Chain(s) to evaluate double point mutations on",
+      "example": "A"
+    },
+    "multi": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Include all chains in structural context for multi-chain complexes"
+    }
+  },
+  "outputs": {}
+}
