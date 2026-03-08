@@ -1,0 +1,41 @@
+{
+  "name": "SaProt Finetuning",
+  "slug": "saprot-finetuning",
+  "category": "protein_language_models",
+  "tags": [
+    "Finetuning and Active Learning",
+    "Protein Language Models"
+  ],
+  "description": "SaProt trained on approximately 40 million protein sequences/structures. Base finetuning on official SaProt models. Save your trained model as its own tool for future inference.",
+  "capabilities": [
+    "SaProt trained on approximately 40 million protein sequences/structures",
+    "Base finetuning on official SaProt models",
+    "Save your trained model as its own tool for future inference"
+  ],
+  "api_type": "saprot-finetuning",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "training_data": {
+      "type": "file",
+      "format": "csv_file",
+      "required": true,
+      "description": "CSV file with protein sequences and corresponding property labels for finetuning"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Protein sequence for inference after finetuning",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Protein structure file for structure-aware finetuning"
+    }
+  },
+  "outputs": {}
+}

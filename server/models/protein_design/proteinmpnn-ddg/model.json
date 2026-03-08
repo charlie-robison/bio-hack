@@ -1,0 +1,37 @@
+{
+  "name": "ProteinMPNN-ddG",
+  "slug": "proteinmpnn-ddg",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Antibody",
+    "Thermostability",
+    "Point Mutations",
+    "Protein Design"
+  ],
+  "description": "Given a protein structure, predict the stability for all point mutations rapidly. Implements tied decoding scheme to limit computation compared to ProteinMPNN.",
+  "capabilities": [
+    "Given a protein structure, predict the stability for all point mutations rapidly",
+    "Implements tied decoding scheme to limit computation compared to ProteinMPNN"
+  ],
+  "api_type": "proteinmpnn-ddg",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "chains": "A"
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format to predict stability changes for all point mutations"
+    },
+    "chains": {
+      "type": "string",
+      "required": true,
+      "description": "Chain(s) to evaluate mutations on",
+      "example": "A"
+    }
+  },
+  "outputs": {}
+}

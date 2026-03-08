@@ -1,0 +1,42 @@
+{
+  "name": "CryoDRGN",
+  "slug": "cryodrgn",
+  "category": "experimental_data",
+  "tags": [
+    "CryoEM",
+    "Experimental Data"
+  ],
+  "description": "Given a cryo-EM dataset (from CryoSPARC or RELION), reconstruct continuous distributions of 3D density maps. Use interactive tools to visualize a dataset's distribution of per-particle variability, generate density maps for exploratory analysis, extract particle subsets for use with other tools and generate trajectories to visualize molecular motions.",
+  "capabilities": [
+    "Given a cryo-EM dataset (from CryoSPARC or RELION), reconstruct continuous distributions of 3D density maps",
+    "Use interactive tools to visualize a dataset's distribution of per-particle variability, generate density maps for exploratory analysis, extract particle subsets for use with other tools and generate trajectories to visualize molecular motions"
+  ],
+  "api_type": "cryodrgn",
+  "api_settings_example": {
+    "num_epochs": 25
+  },
+  "inputs": {
+    "particles": {
+      "type": "file",
+      "required": true,
+      "description": "Particle stack file from CryoSPARC or RELION (.cs, .star, or .mrcs)"
+    },
+    "ctf": {
+      "type": "file",
+      "required": false,
+      "description": "CTF parameters file for the particle stack"
+    },
+    "poses": {
+      "type": "file",
+      "required": false,
+      "description": "Pose parameters file from a consensus reconstruction"
+    },
+    "num_epochs": {
+      "type": "integer",
+      "required": false,
+      "default": 25,
+      "description": "Number of training epochs"
+    }
+  },
+  "outputs": {}
+}

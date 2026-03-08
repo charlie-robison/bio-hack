@@ -1,0 +1,49 @@
+{
+  "name": "RhoDesign",
+  "slug": "rhodesign",
+  "category": "protein_design",
+  "tags": [
+    "Nucleic Acid",
+    "Inverse Folding"
+  ],
+  "description": "RNA inverse folding: generate sequences predicted to fold into a given 3D RNA structure. Optional secondary structure integration for higher accuracy design. Temperature-controlled sampling for sequence diversity.",
+  "capabilities": [
+    "RNA inverse folding: generate sequences predicted to fold into a given 3D RNA structure",
+    "Optional secondary structure integration for higher accuracy design",
+    "Temperature-controlled sampling for sequence diversity"
+  ],
+  "api_type": "rhodesign",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "secondaryStructure": "(((...)))",
+    "temperature": 1.0,
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "3D RNA structure in PDB format for inverse folding"
+    },
+    "secondaryStructure": {
+      "type": "string",
+      "required": false,
+      "description": "Optional secondary structure in dot-bracket notation for higher accuracy design",
+      "example": "(((...)))"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 1.0,
+      "description": "Sampling temperature controlling sequence diversity"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of RNA sequences to generate"
+    }
+  },
+  "outputs": {}
+}

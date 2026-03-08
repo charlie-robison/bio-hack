@@ -1,0 +1,31 @@
+{
+  "name": "ESMFold",
+  "slug": "esmfold",
+  "category": "structure_prediction",
+  "tags": [
+    "Peptide",
+    "Enzyme",
+    "Antibody",
+    "Structure Prediction",
+    "Protein Language Models"
+  ],
+  "description": "Predict protein structure given a sequence. Include a \":\" to seperate chains for multimers.",
+  "capabilities": [
+    "Predict protein structure given a sequence",
+    "Include a \":\" to seperate chains for multimers"
+  ],
+  "api_type": "esmfold",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence. Use ':' to separate chains for multimers.",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,56 @@
+{
+  "name": "REINVENT4",
+  "slug": "reinvent4",
+  "category": "small_molecule_generation",
+  "tags": [
+    "Small Molecule",
+    "Generate Small Molecules"
+  ],
+  "description": "De novo molecule generation using the Reinvent model pretrained on ChEMBL. Molecule optimization with Mol2Mol, scaffold decoration with LibInvent, linker design with LinkInvent, peptide design with PepInvent. Finetune on custom SMILES datasets with multi-stage reinforcement learning and transfer learning. Score existing molecules with configurable scoring components (QED, Tanimoto, molecular weight, TPSA, SlogP, SMARTS filters, etc.).",
+  "capabilities": [
+    "De novo molecule generation using the Reinvent model pretrained on ChEMBL",
+    "Molecule optimization with Mol2Mol, scaffold decoration with LibInvent, linker design with LinkInvent, peptide design with PepInvent",
+    "Finetune on custom SMILES datasets with multi-stage reinforcement learning and transfer learning",
+    "Score existing molecules with configurable scoring components (QED, Tanimoto, molecular weight, TPSA, SlogP, SMARTS filters, etc.)"
+  ],
+  "api_type": "reinvent4",
+  "api_settings_example": {
+    "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "mode": "denovo",
+    "num_molecules": 100,
+    "scoring_components": "QED,Tanimoto"
+  },
+  "inputs": {
+    "smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "SMILES string for molecule optimization or scaffold decoration",
+      "example": "CC(=O)Oc1ccccc1C(=O)O"
+    },
+    "smiles_file": {
+      "type": "file",
+      "format": "csv_file",
+      "required": false,
+      "description": "File with SMILES strings for finetuning or scoring"
+    },
+    "mode": {
+      "type": "string",
+      "required": false,
+      "description": "Generation mode: 'denovo', 'mol2mol', 'libinvent', 'linkinvent', 'pepinvent', or 'scoring'",
+      "default": "denovo"
+    },
+    "num_molecules": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of molecules to generate"
+    },
+    "scoring_components": {
+      "type": "string",
+      "required": false,
+      "description": "Comma-separated scoring components (e.g., 'QED,Tanimoto,molecular_weight')"
+    }
+  },
+  "outputs": {}
+}

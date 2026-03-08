@@ -1,0 +1,27 @@
+{
+  "name": "PepFuNN Peptide Sequence Analysis",
+  "slug": "pepfunn-peptide-sequence-analysis",
+  "category": "developability",
+  "tags": [
+    "Peptide",
+    "Developability"
+  ],
+  "description": "Calculate net charge, average hydrophobicity, isolectric point of input peptide sequence. Report solubility and synthesis liability rule violations.",
+  "capabilities": [
+    "Calculate net charge, average hydrophobicity, isolectric point of input peptide sequence",
+    "Report solubility and synthesis liability rule violations"
+  ],
+  "api_type": "pepfunn-peptide-sequence-analysis",
+  "api_settings_example": {
+    "sequence": "ACDEFGHIKLMNPQRSTVWY"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Peptide amino acid sequence for property calculation (net charge, hydrophobicity, isoelectric point)"
+    }
+  },
+  "outputs": {}
+}

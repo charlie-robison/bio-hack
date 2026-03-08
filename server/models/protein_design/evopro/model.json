@@ -1,0 +1,52 @@
+{
+  "name": "EvoPro",
+  "slug": "evopro",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "De Novo Binder Design",
+    "Protein Design"
+  ],
+  "description": "In silico evolution of high affinity protein binders with deep learning models for structure prediction and sequence design. Given binder and target sequence information, use iterative rounds of AlphaFold and ProteinMPNN to generate high-affinity binders. Experimentally validated to produce binders with Kd < 150nM for a PD-L1 antagonist.",
+  "capabilities": [
+    "In silico evolution of high affinity protein binders with deep learning models for structure prediction and sequence design",
+    "Given binder and target sequence information, use iterative rounds of AlphaFold and ProteinMPNN to generate high-affinity binders",
+    "Experimentally validated to produce binders with Kd < 150nM for a PD-L1 antagonist"
+  ],
+  "api_type": "evopro",
+  "api_settings_example": {
+    "binderSequence": "MKFLILLFNILCLFPVLAAD...",
+    "targetSequence": "EVQLVESGGGLVQPGG...",
+    "numIterations": 10,
+    "numDesigns": 10
+  },
+  "inputs": {
+    "binderSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Amino acid sequence of the binder protein",
+      "example": "MKFLILLFNILCLFPVLAAD..."
+    },
+    "targetSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Amino acid sequence of the target protein",
+      "example": "EVQLVESGGGLVQPGG..."
+    },
+    "numIterations": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of iterative rounds of AlphaFold and ProteinMPNN optimization"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of high-affinity binder designs to generate"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,27 @@
+{
+  "name": "SaProt",
+  "slug": "saprot",
+  "category": "thermostability",
+  "tags": [
+    "Solubility",
+    "Thermostability"
+  ],
+  "description": "Given a fasta file of sequences, score your proteins for Stability and Solubility. Use structure aware protein language model trained in 40 million sequences and structures.",
+  "capabilities": [
+    "Given a fasta file of sequences, score your proteins for Stability and Solubility",
+    "Use structure aware protein language model trained in 40 million sequences and structures"
+  ],
+  "api_type": "saprot",
+  "api_settings_example": {
+    "fasta": "path/to/sequences.fasta"
+  },
+  "inputs": {
+    "fasta_file": {
+      "type": "file",
+      "format": "fasta",
+      "required": true,
+      "description": "FASTA file containing one or more protein sequences for stability and solubility scoring"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,45 @@
+{
+  "name": "ThermoMPNN",
+  "slug": "thermompnn",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Thermostability",
+    "Point Mutations",
+    "Developability",
+    "Inverse Folding"
+  ],
+  "description": "Given a protein structure, predict the stability change upon each point mutation at each position. Uses transfer learning from features in ProteinMPNN for improved performance on Megascale and Fireprot datasets.",
+  "capabilities": [
+    "Given a protein structure, predict the stability change upon each point mutation at each position",
+    "Uses transfer learning from features in ProteinMPNN for improved performance on Megascale and Fireprot datasets"
+  ],
+  "api_type": "thermompnn",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "chains": "A",
+    "multi": false
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input wildtype protein structure in PDB format to score stability changes"
+    },
+    "chains": {
+      "type": "string",
+      "required": true,
+      "description": "Chain(s) to evaluate mutations on",
+      "example": "A"
+    },
+    "multi": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Include all chains in structural context for multi-chain complexes"
+    }
+  },
+  "outputs": {}
+}

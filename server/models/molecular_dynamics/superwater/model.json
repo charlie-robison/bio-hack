@@ -1,0 +1,28 @@
+{
+  "name": "SuperWater",
+  "slug": "superwater",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Utilities",
+    "Molecular Dynamics"
+  ],
+  "description": "Accurately predict water molecule positions around protein. Achieves water localization within 0.3 +/- 0.06 A of experimentally validated positions. Tested using case studies for protein hydration, protein-ligand binding, and protein-protein binding sites.",
+  "capabilities": [
+    "Accurately predict water molecule positions around protein",
+    "Achieves water localization within 0.3 +/- 0.06 A of experimentally validated positions",
+    "Tested using case studies for protein hydration, protein-ligand binding, and protein-protein binding sites"
+  ],
+  "api_type": "superwater",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb"
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for water molecule position prediction"
+    }
+  },
+  "outputs": {}
+}

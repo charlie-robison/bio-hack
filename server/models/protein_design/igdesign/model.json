@@ -1,0 +1,70 @@
+{
+  "name": "IgDesign",
+  "slug": "igdesign",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Inverse Folding"
+  ],
+  "description": "In-vitro validated tool to redesign antibody CDRs in complex with antigens for improved binding affinity. Experimentally validated for binding against 8 targets, resulting in ~10-20% improved binders.",
+  "capabilities": [
+    "In-vitro validated tool to redesign antibody CDRs in complex with antigens for improved binding affinity",
+    "Experimentally validated for binding against 8 targets, resulting in ~10-20% improved binders"
+  ],
+  "api_type": "igdesign",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "heavyChainId": "H",
+    "lightChainId": "L",
+    "antigenChainId": "A",
+    "numBatches": 1000,
+    "verifySequences": false,
+    "customCdrIndices": false
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody-antigen complex structure in PDB format"
+    },
+    "heavyChainId": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the antibody heavy chain",
+      "example": "H"
+    },
+    "lightChainId": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the antibody light chain",
+      "example": "L"
+    },
+    "antigenChainId": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the antigen chain",
+      "example": "A"
+    },
+    "numBatches": {
+      "type": "integer",
+      "required": false,
+      "default": 1000,
+      "description": "Number of batches to process, each generating 1000 sequences"
+    },
+    "verifySequences": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Automatically submit output sequences to structure prediction for verification"
+    },
+    "customCdrIndices": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Select custom indices for each CDR instead of auto-detecting IMGT numbered CDRs"
+    }
+  },
+  "outputs": {}
+}

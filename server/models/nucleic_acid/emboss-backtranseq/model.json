@@ -1,0 +1,34 @@
+{
+  "name": "Emboss Backtranseq",
+  "slug": "emboss-backtranseq",
+  "category": "nucleic_acid",
+  "tags": [
+    "Nucleic Acid",
+    "Utilities"
+  ],
+  "description": "Translate a protein sequence back to a nucleic acid sequence using a chosen codon usage table.",
+  "capabilities": [
+    "Translate a protein sequence back to a nucleic acid sequence using a chosen codon usage table"
+  ],
+  "api_type": "emboss-backtranseq",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "codon_table": "Ehuman.cut"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence to back-translate to nucleic acid",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "codon_table": {
+      "type": "string",
+      "required": false,
+      "description": "Codon usage table to use for back-translation (e.g., organism name or table ID)",
+      "default": "Ehuman.cut"
+    }
+  },
+  "outputs": {}
+}

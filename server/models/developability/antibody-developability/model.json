@@ -1,0 +1,33 @@
+{
+  "name": "Antibody Developability",
+  "slug": "antibody-developability",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Developability"
+  ],
+  "description": "Score your antibodies for immunogenicity and humanness.",
+  "capabilities": [
+    "Score your antibodies for immunogenicity and humanness"
+  ],
+  "api_type": "antibody-developability",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "light_chain": "DIQMTQSPSSLSASVGDRVTITC..."
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody heavy chain amino acid sequence"
+    },
+    "light_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody light chain amino acid sequence"
+    }
+  },
+  "outputs": {}
+}

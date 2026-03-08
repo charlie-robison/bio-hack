@@ -1,0 +1,28 @@
+{
+  "name": "AF2Rave",
+  "slug": "af2rave",
+  "category": "structure_prediction",
+  "tags": [
+    "Molecular Dynamics",
+    "Structure Prediction"
+  ],
+  "description": "Generates diverse protein structures using reduced MSA AlphaFold2. Learns reaction coordinates with SPIB for enhanced sampling and Boltzmann-ranked ensembles.",
+  "capabilities": [
+    "Generates diverse protein structures using reduced MSA AlphaFold2",
+    "Learns reaction coordinates with SPIB for enhanced sampling and Boltzmann-ranked ensembles"
+  ],
+  "api_type": "af2rave",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for diverse structure generation using reduced MSA AlphaFold2",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    }
+  },
+  "outputs": {}
+}

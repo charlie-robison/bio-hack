@@ -1,0 +1,1808 @@
+Boltz-2
+Antibody
+Peptide
+Enzyme
+Structure Prediction
+Protein Protein Docking
+Protein Ligand Docking
+Binding Affinity
+• Predicts the 3D structure of proteins, rna, dna and small molecules
+
+• Handles modified residues, covalent ligands and glycans, as well as condition the generation on pocket residues
+
+• Matches or outperforms AlphaFold3
+
+• Predict binding affinity given a binder chain
+
+AlphaFold
+Peptide
+Antibody
+Enzyme
+Structure Prediction
+• Predict the structure of a protein monomer or multimer given its amino acid sequence
+
+• Uses DeepMind's AlphaFold v2.3.2 (implemented by ColabFold)
+
+• Specify optional additional settings including recycles, MSA depth, custom templates
+
+• Receive up to five pdb models, including scores for pTM, PAE, iPTM/iPAE (multimers), and pLDDT
+
+RFantibody
+Antibody
+Antibody Design
+De Novo Binder Design
+• Design de novo antibody/VHHs given a target antigen
+
+• Experimentally validated to four disease-relevant epitopes using multiple orthogonal biophysical methods
+
+Chai-1
+Antibody
+Peptide
+Enzyme
+Structure Prediction
+Protein Protein Docking
+Protein Ligand Docking
+• Predicts the 3D structure of proteins, rna, dna and small molecules
+
+• Handles covalent ligands and glycans, as well as restricting prediction based on distances between residues
+
+• Matches or outperforms AlphaFold3
+
+BLAST Search
+Utilities
+• Find similar proteins to your input sequence in public databases
+
+RFdiffusion Protein Design
+Protein Design
+• Design a new protein using RFdiffusion and score it for various properties
+
+• Design a binder to a target, scaffold an existing motif, or diversify your protein to generate variants
+
+• Score for properties like thermostability, solubilty, and binding affinity
+
+Protein Scoring
+Developability
+• Score your protein sequences or structures using any of our scoring tools
+
+Antibody Developability
+Antibody
+Developability
+• Score your antibodies for immunogenicity and humanness
+
+ProteinMPNN
+Peptide
+Antibody
+Enzyme
+Inverse Folding
+Protein Design
+• Generate sequences for a given protein backbone, or upload multiple structures to submit as a batch
+
+• Choose which residues of your protein to design / keep fixed
+
+• Select Verify with Alphafold to automatically filter and predict the structures of the top scoring sequences (by MPNN score) with AlphaFold
+
+All Atom Protein Design
+Small Molecule
+Protein Design
+• Design a new protein using RFdiffusion All Atom and score it for various properties
+
+• Design a binder to a ligand, scaffold an existing motif, or diversify your protein to generate variants
+
+BoltzGen
+Antibody
+Peptide
+De Novo Binder Design
+Protein Design
+Antibody Design
+• Designs nanobodies, antibodies, proteins, peptides, and cyclotides to bind protein targets
+
+• Designs proteins to bind small molecules
+
+• Specifies binding sites or exclusion zones on targets
+
+• Supports constraints: disulfide bonds, secondary structure (helix/loop/sheet), cyclic peptides
+
+• 67% experimental success rate: 6 of 9 targets yielded nanomolar nanobody binders with no prior structural data
+
+Protenix-v1
+Antibody
+Peptide
+Enzyme
+Structure Prediction
+Protein Protein Docking
+Protein Ligand Docking
+• Predicts 3D structures of protein, RNA, DNA, and small-molecule complexes. Supports contact/pocket restraints and covalent bonds
+
+• Open-source biomolecular structure prediction model reaching AlphaFold3-level performance under matched training cutoff and inference budget. Higher accuracy on protein–protein (72.7% vs 71.7% DockQ SR) and antibody–antigen interfaces (52.3% vs 48.8%) on FoldBench
+
+• Benchmarked across multiple datasets totaling 8k+ complexes (FoldBench, Runs-N-Poses, PXM-2024/2025): ~10% relative improvement over Boltz-1 and Chai-1 on protein–protein interfaces, 54.2% Ab–Ag DockQ SR, and 72.8% ligand RMSD<2Å success rate
+
+• Inference-time scaling: prediction accuracy improves with increased sampling (≈36%→48% DockQ SR from 1 to 80 seeds on antibody–antigen benchmarks)
+
+RFpeptides
+Peptide
+Protein Design
+De Novo Binder Design
+Rosetta
+• Design macrocyclic peptides to a target structure
+
+• Designs against MCL1 and MDM2 demonstrate KD between 1-10 μM, and the best anti-GABARAP macrocycle binds with a KD of 6 nM and a sub-nanomolar IC50 in vitro
+
+OpenFold3
+Antibody
+Enzyme
+Peptide
+Structure Prediction
+Protein Protein Docking
+Protein Ligand Docking
+• Predicts the 3D structure of proteins, rna, dna and small molecules
+
+BindCraft
+Peptide
+De Novo Binder Design
+Protein Design
+Rosetta
+• Generate de novo miniprotein binders for your target using Alphafold2 weights
+
+• 10-100% success rate for nanomolar binders without screening
+
+• Successfully designs binders for diverse targets including cell-surface receptors, allergens, and CRISPR-Cas9
+
+• Demonstrated therapeutic potential by reducing IgE binding to allergens, modulating Cas9 activity, reducing bacterial toxin effects, and enabling targeted gene delivery
+
+NOS
+Antibody
+Finetuning and Active Learning
+Protein Design
+• Finetune a model to generate new antibody sequences optimized for a given property from H and L sequences and numeric labels
+
+• Redesign CDR regions
+
+PepMLM
+Peptide
+De Novo Binder Design
+Protein Language Models
+• Generates peptide binders for any target protein using only sequence data (no structure needed)
+
+• Uses ESM-2 language model with a custom masking strategy to predict the binder region
+
+• Produces candidates validated by AlphaFold-Multimer and experimental degradation assays
+
+IntelliFold 2
+Antibody
+Peptide
+Enzyme
+Structure Prediction
+Protein Protein Docking
+Protein Ligand Docking
+• Predicts the 3D structure of proteins, RNA, DNA, and small molecules with support for modified residues and covalent ligands
+
+• Outperforms AlphaFold 3 on FoldBench with 54.5% antibody-antigen and 66.7% protein-ligand success rates (vs AF3's 47.9% and 64.9%)
+
+• Three model variants: v2 (most accurate, 0.89 protein monomer LDDT), v2-flash (fast), and v1
+
+ThermoMPNN
+Antibody
+Enzyme
+Thermostability
+Point Mutations
+Developability
+Inverse Folding
+• Given a protein structure, predict the stability change upon each point mutation at each position
+
+• Uses transfer learning from features in ProteinMPNN for improved performance on Megascale and Fireprot datasets
+
+RFdiffusion3
+Antibody
+Peptide
+Enzyme
+Protein Design
+• Design a de novo binder to a target with complex all atom constraints
+
+• Experimentally characterized DNA binding proteins and cysteine hydrolases
+
+RFdiffusion2
+Enzyme
+Protein Design
+• De Novo design enzymes given active site residues and atoms
+
+• Experimental validation of 3 diverse catalytic sites, identifying active catalysts in less than 96 sequences
+
+• In in-silico Motif Enzyme benchmarking spanning EC 1-5, produced at least one success for 41/41 cases vs 16/41 for prior RFdiffusion
+
+TNP (Therapeutic Nanobody Profiler)
+Antibody
+Developability
+• Predict nanobody developability, calibrated against 36 available clinical-stage nanobodies
+
+TAP2 (Therapeutic Antibody Profiler)
+Antibody
+Developability
+• Assess your antibody H/L sequence pair for developability issues: CDR length, the extent and magnitude of surface hydrophobicity, positive charge and negative charge in the CDRs, and asymmetry in the net heavy- and light-chain surface charges
+
+• Compare your antibody's properties to TAP2 thresholds determined from the updated ABodyBuilder2-modeled therapeutic set
+
+IgGM
+Antibody
+Antibody Design
+De Novo Binder Design
+• Design de novo antibody/VHHs given a target antigen
+
+• Placed top 3 in AIntibody competition
+
+• Wet lab validated for 7/60 hit rate against PD-L1, with ~5.3x affinity boost over two iterative rounds
+
+Germinal
+Protein Design
+Antibody Design
+De Novo Binder Design
+Rosetta
+• De novo antibody design targeted to an epitope using pipeline with hallucination with ColabDesign, sequence redesign with AbMPNN, and cofolding with structure prediction
+
+• Achieved an experimental success rate of 4-22% across all targets, testing only 43-101 designs for each antigen
+
+• Experimental: Modified to use AbLang2 instead of IgLM (which requires a commercial license)
+
+• By default, tool is modified to remove rosetta metrics, due to licensing
+
+Profluent E1
+Protein Language Models
+• Generate embeddings given protein sequence
+
+• Predict the fitness of zero-shot substitution mutants against a wild type parent
+
+• Score single mutants of a parent sequence
+
+PLACER
+Enzyme
+Small Molecule
+Protein Ligand Docking
+• Local docking for a protein/small molecule complex to sample conformations
+
+• Accurately generates structures of organic small molecules bound to active sites, and can accurately generate conformations of structures of small molecules and protein side chains
+
+• Enables generation of ensembles of solutions to model conformational heterogeneity
+
+IgDesign
+Antibody
+Antibody Design
+Inverse Folding
+• In-vitro validated tool to redesign antibody CDRs in complex with antigens for improved binding affinity
+
+• Experimentally validated for binding against 8 targets, resulting in ~10-20% improved binders
+
+PXDesign
+De Novo Binder Design
+Protein Design
+• Designs de novo protein binders targeting specified proteins
+
+• Combines a diffusion generator with Protenix and AF2-IG confidence models for selection
+
+• Achieved 17-82% nanomolar hits across seven benchmark targets
+
+Autodock Vina
+Enzyme
+Small Molecule
+Protein Ligand Docking
+Binding Affinity
+• Predict how small molecules or drug candidates bind to a known binding site of a protein, specified through coordinates of a binding box
+
+• One of the fastest and most widely used open source docking softwares - receive your result in seconds
+
+• Predicts binding affinity (kcal/mol) and ligand pose
+
+AntiFold
+Antibody
+Antibody Design
+Inverse Folding
+Protein Design
+• Given an input antibody structure, generate a set of sequences for that backbone (inverse folding)
+
+• Specify to only design certain CDRs
+
+• Achieved 60% amino acid sequence recovery in CDR3 on AbMPNN test set, compared to 56% with AbMPNN and 35% with ProteinMPNN
+
+• Next steps may include inputting the resulting sequence into ImmuneBuilder or AlphaFold to verify the result
+
+mBER
+Antibody
+Protein Design
+Antibody Design
+De Novo Binder Design
+• Design VHH binders against target proteins using structure templates and sequence conditioning
+
+• Leverages AlphaFold-Multimer for protein folding predictions during optimization
+
+• Support for custom epitope/hotspot selection to target specific binding sites
+
+• Automatic hotspot detection when hotspot residues not specified
+
+• Achieved specific and significant design success against 45% of 145 targets. In a filtered set of designs, detected binding rates to specific epitopes as high as 38%
+
+Antibody Diffusion Properties
+Antibody
+Protein Design
+Antibody Design
+• Guiding diffusion models for antibody sequence and structure co-design with developability properties
+
+• Design CDRs conditioned on antigen structures while considering critical properties like solubility and folding stability
+
+• Modified property-aware DiffAb
+
+DiffDock
+Enzyme
+Small Molecule
+Protein Ligand Docking
+Binding Affinity
+• Protein-ligand docking with DiffDock-L model, without known binding site (blind docking)
+
+• State of the art diffusion based model
+
+• Poses will automatically be scored with Autodock Vina afterwards
+
+SurfDock
+Enzyme
+Small Molecule
+Protein Ligand Docking
+Binding Affinity
+• Surface-informed diffusion generative model for protein-ligand docking
+
+• Uses molecular surface features (geometry, electrostatics, chemical) for accurate pose prediction
+
+• Poses are rescored with smina for binding affinity estimation
+
+Antibody Evolution
+Antibody
+Protein Language Models
+Protein Design
+• Given a sequence, uses language models to generate point mutations predicted to increase antibody binding affinity
+
+• Experimentally shown to improve binding affinities of four clinically relevant, highly mature antibodies up to sevenfold and unmatured antibodies up to 160-fold
+
+Molstar Viewer
+Utilities
+GROMACS
+Antibody
+Peptide
+Enzyme
+Small Molecule
+Molecular Dynamics
+• Simulate energy minimization between a protein and ligand or protein only in aqueous solution
+
+• Run molecular simulation with GROMACS forcefield and conduct trajectory analysis including RMSD, RMSF, Rg, and PCA
+
+OpenMM MD
+Antibody
+Peptide
+Enzyme
+Small Molecule
+Molecular Dynamics
+• Simulate energy minimization of a protein in water
+
+• Run molecular simulation with AMBER forcefield and conduct trajectory analysis including RMSD, RMSF, Rg, and PCA
+
+ImmuneBuilder
+Antibody
+Structure Prediction
+• Rapidly predict the structures of immune proteins, including antibodies (ABodyBuilder2), nanobodies (NanoBodyBuilder2), and T-Cell receptors (TCRBuilder2)
+
+• Predicts CDR-H3 loops with an RMSD of 2.81Å, a 0.09Å improvement over AlphaFold-Multimer, while being over a hundred times faster
+
+RosettaFold-3
+Structure Prediction
+• Predict structures of arbitrary biomolecular complexes with improved chirality treatment
+
+• AlphaFold3 reproduction
+
+RFdiffusion
+Antibody
+Peptide
+Enzyme
+Protein Design
+De Novo Binder Design
+• Generate new protein structures targeted to your inputs
+
+• Choose from one of our tasks or use custom contigs in the RFdiffusion format
+
+• Design a de novo binder to a target
+
+• Scaffold additional regions of an existing interface
+
+• Redesign an existing binder to a target
+
+• Diversify an existing protein chain
+
+FrameFlow
+Protein Design
+• Scaffold parts of an existing protein with newly designed structures, given a pdb structure
+
+• Generate de-novo protein backbones
+
+• Want to test a large number of potential designs? Get in touch at info@tamarind.bio
+
+ProteinMPNN-ddG
+Enzyme
+Antibody
+Thermostability
+Point Mutations
+Protein Design
+• Given a protein structure, predict the stability for all point mutations rapidly
+
+• Implements tied decoding scheme to limit computation compared to ProteinMPNN
+
+AntiDIF
+Antibody
+Inverse Folding
+Antibody Design
+• Generate diverse antibody sequences from 3D backbone structure using discrete diffusion
+
+ProteinMPNN-ddG Binder
+Enzyme
+Antibody
+Inverse Folding
+Point Mutations
+Protein Design
+• Given a protein structure, predict binding affinity change for all point mutations rapidly, prioritizing stability improving mutations (runs ProteinMPNN-ddG for unbound and bound states)
+
+• Implements tied decoding scheme to limit computation compared to ProteinMPNN
+
+LigandMPNN
+Enzyme
+Inverse Folding
+Protein Design
+• Given an input pdb which contains a protein and a small molecule, nucleotide, or metal, design a set of sequences for that backbone
+
+• Extends ProteinMPNN to include enzymes, protein-nucleic acids, protein-metal, and protein-small molecule binders
+
+BoltzDesign1
+Antibody
+Peptide
+Enzyme
+De Novo Binder Design
+Protein Design
+• Design protein binders using inverted Boltz-1 model
+
+• All atom model enables generating diverse complexes with flexible ligand conformations
+
+AllMetal3D
+Utilities
+• Predict location of metal ions in proteins without needing to preselect a specific ion
+
+SuperWater
+Utilities
+Molecular Dynamics
+• Accurately predict water molecule positions around protein
+
+• Achieves water localization within 0.3 +/- 0.06 A of experimentally validated positions
+
+• Tested using case studies for protein hydration, protein-ligand binding, and protein-protein binding sites
+
+CryoDRGN
+CryoEM
+Experimental Data
+• Given a cryo-EM dataset (from CryoSPARC or RELION), reconstruct continuous distributions of 3D density maps
+
+• Use interactive tools to visualize a dataset's distribution of per-particle variability, generate density maps for exploratory analysis, extract particle subsets for use with other tools and generate trajectories to visualize molecular motions
+
+DeepEMhancer
+CryoEM
+Experimental Data
+• Perform post processing, including local sharpening and automatic masking/denoising, of cryoEM maps given input raw volumes, preferably half maps
+
+• Deep learning model trained on pairs of experimental volumes and atomic model-corrected volumes
+
+• Post-translational modifications and ligands were not included in the traning set and may be inaccurate
+
+Model Angelo
+CryoEM
+Structure Prediction
+Experimental Data
+• Automatic atomic model building program for protein and nucleic acid structures from cryo-EM maps given a mrc file
+
+• Optionally, include a known protein sequence to inform the model building
+
+CryFold
+CryoEM
+Structure Prediction
+Experimental Data
+• Automatic atomic model building program for protein and nucleic acid structures from cryo-EM maps given a mrc file
+
+PULCHRA
+CryoEM
+Utilities
+• Reconstruct full-atom protein models from Ca-only model
+
+• Correct alpha carbon positions, add backbone and side chain atoms, improve hydrogen bonds patterns and check proper protein chirality
+
+• Intermediate step between coarse grained model-based structure prediction and applications such as molecular dynamics, protein-ligand docking, and structure-based function prediction
+
+AFSample2
+Structure Prediction
+• Given a protein sequence, predict its structure with significant conformational diversity
+
+• Identify possible diverse states for your protein
+
+ZymCTRL
+Enzyme
+Protein Design
+Protein Language Models
+• Given a Enzymatic Commission (EC) number, generate protein sequences to fulfill the catalytic reaction
+
+• Generate ordered and globular enzymes distant to natural ones, while maintaining intended catalytic properties
+
+ColabDock
+Antibody
+Peptide
+Protein Protein Docking
+Experimental Data
+• Protein protein docking given their protein pdb structure files
+
+• Incorporate 1v1, 1vN, or MvN experimental restraints to dock to a known binding site
+
+ABodyBuilder3
+Antibody
+Structure Prediction
+• Rapidly predict antibody structures given H and L sequences using language model embeddings
+
+• State of the art accuracy in modeling CDR loops, with 80% of models passing pLDDT threshold of 85 having RMSD below 2A
+
+EvoNB
+Antibody
+Protein Language Models
+Antibody Design
+• Finetuned ESM2 on ~8 million nanobody sequences from INDI
+
+• Validated using molecular dynamics to assess energy change
+
+Thompson Sampling
+Small Molecule
+Generate Small Molecules
+• Efficiently search synthesis on demand databases given your reagent smiles and reaction SMARTS
+
+• Use active learning to search the reagent space to screen large un-enumerated libraries such as Enamine REAL SPACE
+
+Free Wilson SAR
+Small Molecule
+Generate Small Molecules
+Experimental Data
+• Perform Structure-activity relationship (SAR) analysis given a scaffold with R-groups and a list of smiles and their activities
+
+• Generate unsynthesized molecules predicted to have high activity
+
+• Upload multiple scaffolds to consider all cores together
+
+Highfold
+Peptide
+Structure Prediction
+• AlphaFold modified for cyclic peptide structure prediction
+
+• Accurately predict the structures of native cyclic peptides from a single sequence, with 36 out of 49 cases predicted with high confidence (pLDDT > 0.85) matching the native structure with root mean squared deviation (RMSD) less than 1.5 Å
+
+BioEmu
+Peptide
+Molecular Dynamics
+• Approximate the equilibrium distribution of structures for a protein monomer, given its amino acid sequence.
+
+• Samples protein conformations with relative free energy errors around 1 kcal/mol, as validated against millisecond-timescale MD simulation and experimentally-measured protein stabilities
+
+AbGPT
+Antibody
+Protein Language Models
+Antibody Design
+• Generate antibody sequences using finetuned ProtGPT2 protein language model
+
+• Successfully generated library of 15,000 BCR sequences with strong diversity and developability profile
+
+Smina
+Small Molecule
+Enzyme
+Protein Ligand Docking
+Binding Affinity
+• Predict how small molecules/drug candidates bind to receptors
+
+• Returns docked ligand pose and binding affinity prediction given a ligand sdf or smiles string and receptor pdb
+
+• Modifies AutoDock Vina to handle unconventional ligands
+
+GNINA
+Small Molecule
+Enzyme
+Protein Ligand Docking
+Binding Affinity
+• Autodock Vina with CNN scoring function to rescore output poses
+
+• Outperforms AutoDock Vina on redocking and cross-docking tasks (Top1 increases from 58% to 73% and from 27% to 37%, respectively)
+
+• Predict how small molecules bind to receptors given sdf ligand file and pdb protein structure
+
+Unimol DockingV2
+Small Molecule
+Protein Ligand Docking
+Binding Affinity
+• Chemically and quantitatively accurate small molecule docking with machine learning
+
+• Accurately predicting the binding poses of 77+% of ligands in the PoseBusters benchmark with an RMSD value of less than 2.0 Å, outperforming AlphaFold 3, AutoDock, and DiffDock
+
+DrugFlow
+Small Molecule
+Generate Small Molecules
+• Sample molecules for a given protein target given a reference ligand
+
+DiffSBDD
+Small Molecule
+Generate Small Molecules
+• Generate or optimize small molecules in the binding pocket of a protein
+
+• Structure-based drug design using diffusion model
+
+Virtual Screening
+Small Molecule
+Protein Ligand Docking
+• Accelerate drug discovery with AFVS virtual screening and using QuickVina2
+
+• Select from public datasets like ZINC or upload your own ligands, define your binding site, and screen millions of compounds to identify promising hits.
+
+AlphaFlow
+Structure Prediction
+• Predict the structure of a given protein sequence using AlphaFold fine tuned with a flow matching objective for better precision and diversity of conformations
+
+• Generate possible conformational states and molecular dynamics ensembles and physiological temperatures
+
+EquiDock
+Protein Protein Docking
+• Quick rigid body protein-protein docking given two protein pdb files
+
+• Approximates the binding pockets and predicts the docking poses using keypoint matching and alignment
+
+REINVENT4
+Small Molecule
+Generate Small Molecules
+• De novo molecule generation using the Reinvent model pretrained on ChEMBL
+
+• Molecule optimization with Mol2Mol, scaffold decoration with LibInvent, linker design with LinkInvent, peptide design with PepInvent
+
+• Finetune on custom SMILES datasets with multi-stage reinforcement learning and transfer learning
+
+• Score existing molecules with configurable scoring components (QED, Tanimoto, molecular weight, TPSA, SlogP, SMARTS filters, etc.)
+
+MM/GB(PB)SA
+Enzyme
+Small Molecule
+Molecular Dynamics
+Protein Ligand Docking
+• Calculate binding free energy between protein and ligand or protein and protein using MM/GB(PB)SA
+
+• Supports energy minimization (fast scoring) or full MD simulation (averaged over trajectory frames)
+
+• Choose between Generalized Born (GB) or Poisson-Boltzmann (PB) solvation models
+
+LibInvent
+Small Molecule
+Generate Small Molecules
+• Given a set of smiles strings of scaffolds, perform decoration to generate molecules which fit the scaffolds
+
+• Generate virtual chemical libraries for lead optimization in a broad range of scenarios
+
+TCRModel2
+Antibody
+Structure Prediction
+• Model TCR-peptide-MHC complexes or unbound TCR structures given protein sequences
+
+• Shows similar or greater accuracy than AlphaFold and other methods for T Cell Receptors
+
+DLKcat
+Enzyme
+• Predict enzyme-substrate kcat/turnover number given enzyme sequence and substrate SMILES
+
+• Deep Learning approach for high throughput prediction
+
+FlowDock
+Enzyme
+Small Molecule
+Protein Ligand Docking
+Binding Affinity
+• Directly maps unbound (apo) protein structures to their bound (holo) counterparts for any number of binding ligands.
+
+• Among the top-5 methods for pharmacological binding affinity estimation across 140 protein-ligand complexes in CASP 16.
+
+• On the PoseBusters Benchmark dataset: Achieves a 51% blind docking success rate using only apo structures and no multiple sequence alignment information.
+
+• Matches single-sequence Chai-1 performance for binding pocket generalization on DockGen-E.
+
+CatPred
+Enzyme
+Protein Language Models
+• Predict in vitro Km for a given enzyme sequence and substrate SMILES string
+
+• Uses Machine Learning model trained on 41k data points
+
+ParaSurf
+Antibody
+Antibody Design
+Developability
+• Predict paratope residues using geometric and non-geometric factors
+
+• Accurately predicts antibody binding sites across the Fab region, achieving state-of-the-art results
+
+Binding ddG
+Antibody
+Protein Protein Docking
+Binding Affinity
+Point Mutations
+• Predict changes in binding energy upon mutation for protein-protein complexes
+
+• Wild Type and Mutant Protein Complexes must have the same chain lengths
+
+• Experimentally shown to improve antibody CDRs, increasing potency by ~10 to 600-fold against SARS-CoV-2 variants
+
+FoldMason
+Utilities
+• Fast, accurate alignment of large protein structure datasets using Foldseek's structural alphabet
+
+• Accurate phylogenetic analysis even with low sequence similarity
+
+Foldseek
+Utilities
+• Search protein structure databases with unprecedented speed using structural alphabet encoding
+
+• 4-5 orders of magnitude faster than traditional methods while maintaining high sensitivity
+
+• Efficiently handles large-scale structure databases by encoding tertiary amino acid interactions
+
+• Create custom databases directly from FASTA sequences using ProstT5 for 3Di prediction
+
+COMPSS Protein Metrics
+Protein Language Models
+Developability
+• Evaluate your protein sequences or structures on a variety of models for likelihood and stability
+
+• Structure metrics: ESM-IF, ProteinMPNN, MIF-ST
+
+• Sequence metrics: ESM-1v, ESM-1v mask6, CARP-640m
+
+SaProt
+Solubility
+Thermostability
+• Given a fasta file of sequences, score your proteins for Stability and Solubility
+
+• Use structure aware protein language model trained in 40 million sequences and structures
+
+PEP-Patch
+Aggregation
+Developability
+• Given a protein structure, identify patches of electrostatic potential on the surface - areas with all negative or all positive potential
+
+• Use electrostatic interactions to better understand solubility, viscocity, and developability
+
+SynCodonLM
+Nucleic Acid
+Protein Language Models
+Utilities
+• Generate embeddings for a DNA sequence or generate natural coding-DNA sequences for a protein sequence
+
+MoFlow
+Small Molecule
+Generate Small Molecules
+• Conditional - optimize an existing smiles string for drug-likeness (QED) based on the ZINC250 dataset
+
+• Unconditional - sample from the distribution of SMILES in QM9 and ZINC250k
+
+• Uses invertible flow model to generates chemically valid molecular graph with chemical validity guarantees
+
+AF Cluster
+Structure Prediction
+• Given a multiple sequence alignment (MSA) a3m file, generate clusters for conformation prediction
+
+• Receive pdbs of your structure in different conformations based on the clusters
+
+Protein Hunter
+Peptide
+Protein Design
+De Novo Binder Design
+• De novo protein design against protein and small molecule targets
+
+• Achieves high AlphaFold3 in silico success rates across both unconditional and conditional generation tasks
+
+FPocket
+Enzyme
+Utilities
+Protein Ligand Docking
+• Detect pockets on a protein
+
+pyKVFinder
+Utilities
+• Detect and characterize cavities and pockets in protein structures
+
+• Calculate volume and surface area of detected cavities
+
+• Analyze cavity depth to identify buried binding sites
+
+• Map hydrophobicity onto cavity surfaces using multiple scales
+
+• Identify interface residues surrounding each cavity
+
+DeepImmuno
+Antibody
+Humanization
+Developability
+Immunogenicity
+• Given a sequence, test all peptides of length 9 for immunogenicity to a given HLA
+
+• Uses a CNN model which outperforms DeepHLApan and IEDB
+
+TLimmuno
+Antibody
+Humanization
+Developability
+Immunogenicity
+• Given a list peptides of length 9 or 10 AAs and matching HLAs, predict whether the peptide will elicit T cell response
+
+• Binding affinity model showed better accuracy compared to NetMHCIIpan4.0 and MixMHC2pred
+
+NetSolP
+Antibody
+Enzyme
+Solubility
+Developability
+Protein Language Models
+• Given a list of protein sequences, rapidly predict the Solubility and Usability
+
+• Uses an ensemble of finetuned ESM1b models
+
+TEMPRO
+Antibody
+Thermostability
+Developability
+Protein Language Models
+• Predict melting temperature of nanobodies
+
+• Uses ESM2 language model embeddings
+
+• Achieves mean absolute error (MAE) or 4.03°C and root mean squared error (RMSE) of 5.66°C
+
+TemStaPro
+Antibody
+Enzyme
+Thermostability
+Developability
+Protein Language Models
+• Binary classification for protein thermostability for temperature thresholds: 40, 45, 50, 55, 60, 65
+
+• Uses transfer learning from protein language model ProtT5-XL, outperforming existing pLM methods
+
+ThermoMPNN-D
+Antibody
+Enzyme
+Thermostability
+Point Mutations
+Developability
+Inverse Folding
+• Given a protein structure, predict the stability change from double point mutations
+
+• Extends ThermoMPNN to capture epistatic couplings between point mutations
+
+EvoProtGrad
+Antibody
+Enzyme
+Protein Design
+Protein Language Models
+• Generate mutations with directed evolution given a protein sequence with a fast Markov chain Monte Carlo sampler
+
+• Uses mixture of expert models: ESM2, Protein EVmutation Potts, Energy Based Model, and Denoising Autoencoder to discover variants with high evolutionary likelihood
+
+AF2BIND
+Small Molecule
+Protein Ligand Docking
+• Given a protein structure, predict the small-molecule-binding ability of each residue
+
+• Uses a machine learning model trained on AlphaFold pairwise representations
+
+AfCycDesign
+Peptide
+De Novo Binder Design
+Protein Design
+• Modifies the AlphaFold model to design cyclic peptides
+
+• Design peptide backbones given a protein pdb file
+
+• 36 out of 49 cases predicted with high confidence (pLDDT > 0.85) match the native structure with root mean squared deviation (RMSD) less than 1.5 Å
+
+Structural Evolution
+Antibody
+Enzyme
+Protein Language Models
+Protein Design
+• Generates mutation recommendations for one chain of interest given a protein structure
+
+• To produce mutations for antibody variable domains, run the workflow individually for the heavy and light chains
+
+• Achieved up to 25-fold improvement in neutralization and 37-fold improvement in affinity against antibody-escaped viral variants of concern BQ.1.1 and XBB.1.5, respectively
+
+PRODIGY
+Protein Protein Docking
+Binding Affinity
+• Given a complex protein structure, predict the binding affinity between each pair of chains
+
+• Showed 0.73 correlation on protein-protein binding affinity benchmark
+
+PPAP
+Antibody
+Protein Protein Docking
+Binding Affinity
+• Predict binding free energy (ΔG) and dissociation constant (Kd)
+
+• Batch process multiple protein-protein complexes
+
+• Uses ESM2-3B embeddings and graph neural networks
+
+NA-MPNN
+Nucleic Acid
+Inverse Folding
+• Unified representation for proteins, DNA, and RNA
+
+• Design RNA sequences given a structure
+
+• Predict the specificity of a protein-DNA complex
+
+BioPhi
+Antibody
+Humanization
+Developability
+• Evaluate antibody humanness using peptide search in natural antibody repertoires (OASis) and germline sequence identity
+
+• Humanize your H/L sequences using a language model trained on OAS
+
+EvoPro
+Peptide
+De Novo Binder Design
+Protein Design
+• In silico evolution of high affinity protein binders with deep learning models for structure prediction and sequence design
+
+• Given binder and target sequence information, use iterative rounds of AlphaFold and ProteinMPNN to generate high-affinity binders
+
+• Experimentally validated to produce binders with Kd < 150nM for a PD-L1 antagonist
+
+Humatch
+Antibody
+Humanization
+Developability
+• Identify human heavy V-genes, light V-genes, and well-paired antibody sequences with near-perfect accuracy.
+
+• Given an existing sequence, receive a jointly humanized antibody sequence in seconds steered toward a specific gene
+
+MHC-Fine
+Antibody
+Structure Prediction
+• Specialized version of AlphaFold for MHC-Peptide complex prediction
+
+• Median of 0.65 Å RMSD, outperforming vanilla AlphaFold2 and PANDORA
+
+Aggrescan3D
+Antibody
+Aggregation
+Developability
+• Predict aggregation propensity for each residue in a protein structure
+
+Dayhoff
+Antibody
+Protein Design
+• Generate new protein sequences from known sequence and homologous sequences from MSA
+
+• Perform guided generation of novel proteins within specified families
+
+• Generated sequences wet lab validated for in vitro expression (15/29 proteins express successfully from Dayhoff-170m-UR50-BRn)
+
+Caliby
+Peptide
+Antibody
+Enzyme
+Inverse Folding
+Protein Design
+• Conditioning on a synthetic ensemble generated from an input backbone allows sampling of sequences consistent with the structural constraints of the ensemble while averaging out undesired biases towards the native sequence.
+
+• Ensemble-conditioned sequence design with Caliby reduces native sequence recovery while substantially improving AlphaFold2 self-consistency, outperforming state-of-the-art models ProteinMPNN and ChromaDesign on both native and de novo backbones
+
+Deep Viscosity
+Antibody
+Aggregation
+Developability
+• Predict binary viscosity of monoclonal antibodies based on sequence information using properties from DeepSP
+
+DeepSP
+Antibody
+Developability
+• Predict Spatial Charge Map (SCM) and Spatial Aggregation Propensity (SAP) for each region (including CDRs) of an antibody based on sequence information only
+
+• Properties achieved 0.87 correlation with MD derived scores, saving computation compared to MD simulation
+
+PSI-BLAST Search
+Utilities
+• Identify remote homologs using iterative profile-based search
+
+Orthrus
+Nucleic Acid
+RNA Language Models
+• Generate mRNA embeddings for RNA property prediction
+
+• Uses 6-track model to generate embeddings
+
+Relative Binding Free Energy
+Enzyme
+Small Molecule
+Molecular Dynamics
+Protein Ligand Docking
+Binding Affinity
+• State of the art physics-based relative binding free energy calculation
+
+• Given a receptor pdb structure and multiple ligand sdfs, rank the ligands by binding affinity to the receptor
+
+PepFuNN Peptide Sequence Analysis
+Peptide
+Developability
+• Calculate net charge, average hydrophobicity, isolectric point of input peptide sequence
+
+• Report solubility and synthesis liability rule violations
+
+SPACE2
+Antibody
+Utilities
+• Rapidly clusters antibodies by the similarity of structural models and accurately groups antibodies that bind the same epitope
+
+• Clustered based on Ca RMSDs of CDR loop residues
+
+AF Unmasked
+Antibody
+Peptide
+Enzyme
+Structure Prediction
+• Structure prediction using multimeric template information for assembly of subunits
+
+• Generates high quality (DockQ > 0.8) structures even with no evolutionary information and imperfect templates
+
+DockQ
+Peptide
+Antibody
+Small Molecule
+Protein Protein Docking
+Utilities
+• Score a docked model pose given a native complex for Protein, Nucleic Acids and Small Molecule Docking Models
+
+• Receive a DockQ score, along with interface and ligand RMSD, precision/recall for native residues, and number of clashes.
+
+• Find the optimal mapping between interfaces found in the native and in the model
+
+DeepRank-Ab
+Antibody
+Peptide
+Protein Protein Docking
+Utilities
+• Rank antibody-antigen docking poses using a geometric deep-learning scoring model
+
+• Uses atom-level interface representation with antibody-specific features tailored for antibody-antigen interfaces
+
+• Outputs a predicted DockQ score to prioritize near-native models
+
+ESMFold
+Peptide
+Enzyme
+Antibody
+Structure Prediction
+Protein Language Models
+• Predict protein structure given a sequence
+
+• Include a ":" to seperate chains for multimers
+
+AF-Traj
+Structure Prediction
+• High-throughput prediction of protein conformational distributions with subsampled AlphaFold2
+
+• Presently only supports single chains
+
+Multiple Sequence Alignment
+Structure Prediction
+• Multiple sequence alignment (MSA) using MMseqs2
+
+• Generates MSAs using the ColabFold MMseqs2 pipeline: searches UniRef30 and extends results with the ColabFold environmental database (BFD/MGnify-derived)
+
+IgBLAST
+Antibody
+Humanization
+Utilities
+• Search immune proteins against public databases using nucleotides or AA sequences as input
+
+MSA Clustering
+Utilities
+• Cluster sequences using MMseqs2 MSA alignments
+
+FastSolv
+Small Molecule
+Solubility
+• Predict the solubility of a solute/solvent solution for a given temperature
+
+MSA Analysis
+Utilities
+• Multiple sequence alignment using Clustal Omega, MUSCLE, or MAFFT
+
+• Automatically selects optimal algorithm based on sequence count and characteristics
+
+• Supports FASTA input with up to thousands of sequences
+
+• Outputs alignment statistics and quality metrics
+
+Ancestral Sequence Reconstruction
+Utilities
+• Reconstruct ancestral protein or DNA sequences from modern sequences
+
+• Automatically aligns unaligned sequences with MAFFT
+
+• Build phylogenetic tree with maximum likelihood using IQ-TREE
+
+• Output probability estimates for each ancestral position
+
+SaProt Finetuning
+Finetuning and Active Learning
+Protein Language Models
+• SaProt trained on approximately 40 million protein sequences/structures
+
+• Base finetuning on official SaProt models
+
+• Save your trained model as its own tool for future inference
+
+Finetune Protein Language Model
+Finetuning and Active Learning
+• Generate higher accuracy predictor for a protein property of interest, incorporating experimental data
+
+• Finetune ESM, ProtT5, and Ankh on your protein sequences and corresponding properties
+
+• Save your trained model as its own tool for future inference
+
+Finetune BALM
+Finetuning and Active Learning
+• Finetune BALM on your protein-ligand binding affinity data
+
+ProteinMPNN Score
+Peptide
+Antibody
+Enzyme
+Inverse Folding
+Protein Design
+• Return score only (model's uncertainty) loading sequence from fasta files
+
+RSO Binder Design
+Peptide
+De Novo Binder Design
+Protein Design
+• Generate binders using ColabDesign gradient descent-based optimization over many iterations
+
+• Represents protein as continuous 20d vector to allow for sequence optimization
+
+• Experimentally validated to generate binders with good expression, solubility, and adopting the correct oligomeric state and secondary structure composition
+
+Spatial PPI v2
+Protein Protein Docking
+• Predict PPI between two proteins from sequence or structural information
+
+• Use protein language models and graph attention networks
+
+• Outperforms state of the art PPI methods like D-Script and GNN-PPI
+
+PocketGen
+Enzyme
+Protein Design
+Protein Ligand Docking
+• Generate high-fidelity protein pockets with superior binding affinity and structural validity
+
+• Operates ten times faster than physics-based methods and achieves a 95% success rate, defined as the percentage of generated pockets with higher binding affinity than reference pockets
+
+Protein Solubilization
+Protein Design
+• Creates soluble analogues to integral membrane proteins (e.g. GPCRs)
+
+• Runs iterative AlphaFold protocol (with ColabDesign) to generate backbones, followed by SolubleMPNN to generate sequences
+
+• Uses 500 rounds of optimization for ColabDesign and 2 sequences per backbone for SolubleMPNN
+
+RFdiffusion with Chai verification
+Protein Design
+• Run pipeline with RFdiffusion (design protein backbones), ProteinMPNN (design sequences to fold into structure), and Chai (fold final sequences)
+
+ColabDesign Fixed Backbone
+Protein Design
+Inverse Folding
+• Generate sequences to match an input structure via reversing AlphaFold
+
+• Produce similar structures to the input structure, with de novo sequences
+
+• Keep/Fix parts of the sequences produced and design the rest
+
+DeepFRI
+Enzyme
+Protein Language Models
+• Predict function (GO-term/EC-number) using protein language model
+
+• Supports multiple ontologies: Molecular Function, Biological Process, Cellular Component, Enzyme Commission
+
+AbLang2
+Antibody
+Antibody Design
+Protein Language Models
+• Generate embeddings, scan, or predict masked residues using antibody protein language model from paired sequences
+
+• Model optimized for predicting non germline residues
+
+AbLang-MPNN
+Antibody
+Antibody Design
+Inverse Folding
+Protein Design
+• Hybrid antibody sequence design combining AbLang and ProteinMPNN
+
+• Generate antibody-like sequences with improved binding properties
+
+• Keep heavy and light chains to <150 residues, performance will be significantly degraded above this limit
+
+AbMAP
+Antibody
+Protein Language Models
+• Generate embeddings for antibody sequences
+
+• Sequence generation coming soon
+
+AntiBERTy
+Antibody
+Antibody Design
+Protein Design
+Protein Language Models
+• Optimize the affinity of your antibody or nanobody sequences from sequence alone
+
+• Use a language model trained on 500M+ natural antibody sequences
+
+deepSTABp
+Antibody
+Enzyme
+Thermostability
+Developability
+Protein Language Models
+• Predict protein melting temperature given sequence using protein language model
+
+• Outperforms existing approaches like ProTstab2
+
+HyperMPNN
+Antibody
+Enzyme
+Inverse Folding
+Developability
+Protein Design
+• Retrained ProteinMPNN on hyperthermophiles to recover their unique amino acid composition
+
+• Tested approach on a protein nanoparticle with a melting temperature of 65 degrees resulted in designs remaining stable at 95 degrees
+
+AbMPNN
+Antibody
+Antibody Design
+Inverse Folding
+Protein Design
+• Finetuned ProteinMPNN on antibodies in SAbDab and OAS to design CDR loops
+
+• Significantly outperforms ProteinMPNN on sequence recovery rate among antibodies, at around 60%
+
+DSMBind
+Antibody
+Protein Protein Docking
+Binding Affinity
+• Predict antibody-antigen binding affinity
+
+ANARCI
+Antibody
+Utilities
+• Annotate immune proteins according to numbering system
+
+APM
+Antibody
+Protein Design
+• An All-Atom Generative Model for Designing Protein Complexes
+
+• Precisely models inter-chain interactions by integrating all-atom information
+
+OmegaFold
+Structure Prediction
+• Predict protein structure quickly without MSA
+
+Antibody Annotation
+Antibody
+Utilities
+• Annotate immune proteins and view their residue frequencies using ANARCI and BioPhi
+
+ESM2 Embeddings
+Protein Language Models
+Finetuning and Active Learning
+• Generate ESM2 Embeddings for up to 3B parameter models
+
+ESM-IF1
+Inverse Folding
+• Inverse folding with ESM-IF1 language model
+
+MolProbity
+Utilities
+• Check protein structure quality
+
+Prot T5 XL Embeddings
+Protein Language Models
+Finetuning and Active Learning
+• Generate Prot T5 XL Uniref-50 Embeddings
+
+IPC 2.0
+Developability
+• Prediction of isoelectric point (pH at which a particular molecule is electrically neutral) and pKa dissociation constants using deep learning
+
+• Achieves RMSD = 0.868 (proteins) and 0.405 (peptides), outperforming previous methods
+
+N-Linked Glycosylation Prediction
+Developability
+• Predict N-linked glycosylation sites confined to the N-X-[S/T] sequon from protein sequence
+
+• Trained using Prot T5 embeddings, achieving 0.49 matthews correlation coefficient
+
+MaSIF
+Protein Protein Docking
+Binding Affinity
+• Molecular surface interaction fingerprints.
+
+MaSIF-neosurf
+Protein Design
+• Surface-based protein design for ternary complexes.
+
+• From a protein structure MaSIF computes a molecular surface discretized as a mesh. Then, MaSIF applies a geometric deep neural network to these patches.
+
+• Surface fingerprints trained only on proteins can be applied to neosurfaces emerging from small molecules
+
+• MaSIF processes the input PDB by creating a triangulated molecular surface and computing surface features. It then finds complementary seeds, refines them into motifs, searches a structural database for scaffolds, grafts the seeds, and refines the scaffolds to produce the final design.
+
+• Experimental, features will be generated but full embeddings not currently supported
+
+Intrinsically Disordered Region (IDR) Binder Design
+Rosetta
+• Design protein/peptide binders to intrinsically disordered regions with RFdiffusion
+
+• Tested by designing binders for 18 synthetic peptides sequences 21 diverse, therapeutically relevant, intrinsically disordered regions. Found binders for 39 of 43 targets
+
+ESM2
+Point Mutations
+Protein Language Models
+• Mask residues in protein to predict likely sequence using ESM2 650M parameter language model
+
+• Scan protein for every position/AA pair's likelihood
+
+AMPLIFY
+Point Mutations
+• Scan protein for every position/AA pair's likelihood
+
+• Score protein using AMPLIFY 350M language model
+
+BALM Paired
+Point Mutations
+• Scan protein for every position/AA pair's likelihood
+
+• Score protein using either ft-ESM model (ESM2 with 650M parameters) finetuned from ESM2 or BALM-paired language model (modified RoBERTa-large with 355M parameters) finetuned from BALM
+
+ESM-Scan
+Enzyme
+Point Mutations
+Protein Language Models
+• Score point mutations using ESM1b language model
+
+PDockQ
+Protein Protein Docking
+Utilities
+• Predict DockQ score of a predicted protein structure
+
+Orb Models 3
+Small Molecule
+Molecular Dynamics
+Protein Ligand Docking
+Binding Affinity
+• Compute an approximate interaction energy between a protein and ligand using the Orb-models v3 method
+
+IPSAE
+Protein Protein Docking
+Binding Affinity
+• Scoring function for interprotein interactions in AlphaFold2 and Boltz
+
+HMMalign
+Utilities
+• Align list of sequences using HMMER
+
+PROPKA
+Utilities
+• Predict the pKa values of ionizable groups in proteins
+
+MDGen
+Peptide
+Molecular Dynamics
+• MDGen was trained on tetrapetides from the ATLAS database. The tool generates forward simulation of peptide trajectories.
+
+• MDGen should be used to generate trajectories of peptides. Its accuracy may degrade on longer sequences.
+
+PLAbDab
+Antibody
+Antibody Design
+Utilities
+• Searchable database of 150,000 paired antibody sequences extracted from patents and literature, linking each entry to its primary source.
+
+• Search for antibodies by keyword or sequence.
+
+Protein Properties
+Aggregation
+Developability
+• Calculate a variety of properties on your protein sequences or structures
+
+• Sequence properties: Amino Acids Percent, Molecular Weight, Aromaticity, Instability Index, Average Flexibility, GRAVY, Isoelectric Point, Charge at pH 7, Helix Fraction, Turn Fraction, Sheet Fraction, Molar Extinction Coefficient
+
+• Structure properties: Surface Hydrophobicity, Solvent Accessible Surface Areas, Relative Accessible Surface Areas, Half-Sphere Exposure Calculations, Residue Depth
+
+Align PDBs
+Utilities
+• Align a list of PDB files
+
+AlphaCutter
+Utilities
+• Remove non-globular regions from predicted protein structures.
+
+RMSD Calculator
+Utilities
+• Calculate RMSD between 2 protein structures
+
+• Rotate/translate one set of atoms on top of another to minimize RMSD, including for proteins of different lengths
+
+Min Distance Between Selected Residues
+Utilities
+• Calculate the minimum distance between two sets of residues in a protein structure
+
+• For example, calculate the distance between an epitope and a binder
+
+Radius of Gyration
+Utilities
+• Calculate radius of gyration of a protein structure
+
+USalign
+Utilities
+• Structurally align proteins and nucleic acids
+
+• Calculates size independent TM-score heuristic and minimizes it with a heuristic structural alignment algorithm
+
+• Has an advantage over RMSD with its higher alignment coverage
+
+AtomSurf
+Protein Language Models
+• Generate embeddings using protein structure encoder that jointly encodes graphs and surfaces
+
+Emboss Backtranseq
+Nucleic Acid
+Utilities
+• Translate a protein sequence back to a nucleic acid sequence using a chosen codon usage table
+
+DNAWorks
+Nucleic Acid
+Utilities
+• Automatic oligonucleotide design for PCR-based gene synthesis
+
+Legolas
+Utilities
+• Predict protein chemical shifts from PDB structures
+
+OpenFE
+Small Molecule
+Molecular Dynamics
+• Run protein ligand free energy calculation or Relative Binding Free Energy calculation
+
+RiffDiff-ProtFlow
+Enzyme
+Protein Design
+• Generate backbone fragments from a theozyme to build a motif library
+
+• Generate and iteratively refine protein structures using multiple design tools
+
+AF2Rave
+Molecular Dynamics
+Structure Prediction
+• Generates diverse protein structures using reduced MSA AlphaFold2
+
+• Learns reaction coordinates with SPIB for enhanced sampling and Boltzmann-ranked ensembles
+
+Paragraph Paratope Prediction
+Antibody
+Antibody Design
+• Predict antibody paratope residues from heavy chain structures
+
+ProteusAI
+Enzyme
+Finetuning and Active Learning
+Protein Design
+Experimental Data
+• Train a model on experimental data to predict fitness of protein variants
+
+• Suggest new designs through Bayesian optimization over sequence space
+
+Evo 2
+Nucleic Acid
+RNA Language Models
+• Returns the Evo 2 embeddings
+
+OAS Search
+Utilities
+• Find proteins similar to your input sequence in the OAS paired sequence database
+
+OpenMM Protein Relaxation
+Molecular Dynamics
+• Relax a protein structure using OpenMM
+
+File Converter
+Utilities
+• Convert between different file formats
+
+ChemBL Search
+Small Molecule
+Utilities
+• Find molecules in the ChemBL database
+
+PubChem Search
+Small Molecule
+Utilities
+• Find molecules in the PubChem database
+
+PDBsum
+Utilities
+• Generate overview and schematic diagrams of protein chains, DNA, ligands, and metal ions
+
+INTERCAAT
+Protein Protein Docking
+• Identify interface residues between protein chains in macromolecular complexes
+
+• Calculate atomic interactions and distances between query and interacting chains
+
+• Generate compatibility matrix showing interface residue interactions
+
+• Analyze protein-protein interfaces with customizable distance thresholds
+
+• Support for both single and multiple interacting chain analysis
+
+• Uses Voronoi tessellation for accurate interface detection
+
+ProGen2 Finetuning
+Finetuning and Active Learning
+Protein Language Models
+• The pre-trained protein language model ProGen2 can be effectively fine-tuned for controllable generation of protein sequences from several distinct protein families.
+
+g_mmpbsa
+Enzyme
+Small Molecule
+Molecular Dynamics
+Binding Affinity
+• Calculate MM-PBSA binding free energies from GROMACS trajectories
+
+• Perform per-residue energy decomposition of protein-protein and protein–ligand interactions
+
+OpenMM Metadynamics
+Antibody
+Peptide
+Enzyme
+Small Molecule
+Molecular Dynamics
+• Perform enhanced sampling molecular dynamics with metadynamics biasing
+
+• Explore free energy landscapes using 1D or 2D collective variables
+
+• Calculate free energy surfaces for conformational changes and binding pathways
+
+• Support multiple CV types: RMSD, distance, angles, coordination, and gyration
+
+• Run well-tempered metadynamics for improved convergence
+
+• Conduct trajectory analysis including RMSD, RMSF, Rg, and bias evolution
+
+MAGE
+Antibody
+Antibody Design
+Protein Language Models
+• Generate de novo paired heavy-light chain antibody variable sequences given an antigen target
+
+• Uses Progen2-based language model trained on antibody sequences
+
+• Outputs variable region sequences ready for experimental validation
+
+• Designed for antigen-specific antibody generation
+
+OpenMM Temperature Replica Exchange
+Antibody
+Peptide
+Enzyme
+Small Molecule
+Molecular Dynamics
+• Enhanced conformational sampling using temperature replica exchange molecular dynamics (T-REMD)
+
+• Overcome energy barriers by exchanging replicas across temperature ladder
+
+• Generate thermodynamically weighted ensembles with improved sampling efficiency
+
+LICHEN
+Antibody
+Antibody Design
+Protein Language Models
+• Generate light chain sequences conditioned on heavy chain input
+
+• Supports germline seed specification (V-gene type, family, or specific genes)
+
+• CDR grafting with IMGT or Kabat numbering schemes
+
+• Custom seed sequences for tailored generation
+
+• Built-in filtering: redundancy removal, diversity selection, humanness validation (Humatch), and AbLang2 scoring
+
+• Batch processing via FASTA or CSV file upload
+
+ITsFlexible
+Antibody
+Antibody Design
+Structure Prediction
+• Classify conformational flexibility of antibody and TCR CDR3 loops
+
+• Predict whether loops adopt rigid (single conformation) or flexible (multiple conformations) structures
+
+• Classify loop motifs with identical secondary structures bounded between antiparallel beta-strands
+
+• Provides two predictors: 'loop' (alignment on loop residues) and 'anchors' (alignment on Fv residues)
+
+• Outputs classification scores with confidence levels for rigid vs flexible predictions
+
+MAVE Neural Network Training
+Finetuning and Active Learning
+Experimental Data
+• Train supervised machine learning models on Deep Mutational Scanning (DMS) and MAVE datasets
+
+• Predict protein variant effects and combinatorial mutation outcomes
+
+• Run Markov Chain Monte Carlo (MCMC) simulations to characterize fitness landscapes
+
+MULTI-evolve
+Enzyme
+Antibody
+Protein Design
+Point Mutations
+Experimental Data
+Finetuning and Active Learning
+• Train neural network models on deep mutational scanning data and rank combinatorial variants
+
+• Propose multi-mutants from single-mutation pools using model-guided search
+
+• Generate MULTI-assembly mutagenic oligos for nominated variants
+
+• Run protein language model zero-shot ensemble nomination for single mutants
+
+ADAPT
+Antibody
+Protein Design
+De Novo Binder Design
+Structure Prediction
+• Design T cell receptors (TCRs) for specific peptide-MHC targets
+
+• Uses AlphaFold docking and ProteinMPNN for TCR sequence design
+
+• Iteratively designs CDR loops to bind target pMHC complexes
+
+• Outputs designed TCR sequences with quality metrics including pAE scores and dock-RMSD
+
+Cluster PDBs
+Utilities
+• Cluster a list of PDB files or a trajectory
+
+RNA-FM
+Nucleic Acid
+Structure Prediction
+RNA Language Models
+• Extract embeddings from RNA sequences using pretrained foundation model
+
+• Predict RNA secondary structure and base-pairing probabilities
+
+• Trained on 23M+ non-coding RNA sequences via self-supervised learning
+
+• mRNA-FM variant available for mRNA coding sequences
+
+RhoDesign
+Nucleic Acid
+Inverse Folding
+• RNA inverse folding: generate sequences predicted to fold into a given 3D RNA structure
+
+• Optional secondary structure integration for higher accuracy design
+
+• Temperature-controlled sampling for sequence diversity
+
+RiboDiffusion
+Nucleic Acid
+Inverse Folding
+• Design RNA sequences from fixed 3D RNA backbones (tertiary inverse folding)
+
+• Uses diffusion-based ancestral denoising conditioned on RNA tertiary structure
+
+• Conditional scaling weight controls the recovery-diversity trade-off reported in the paper
+
+EVcouplings
+Enzyme
+Point Mutations
+• Predict protein function and mutations using evolutionary sequence covariation
+
+• Generate multiple sequence alignments and infer undirected statistical models from sequence variation
+
+• Predict mutation effects from sequence co-variation
+
+Mosaic Hallucination
+Peptide
+De Novo Binder Design
+Protein Design
+• Design de novo binders using gradient-based optimization directly on the Boltz-2 loss landscape
+
+• Optimizes a PSSM against binding metrics (IPTM, PAE, Contacts) and inverse folding recovery
+
+• Winner of the in silico portion of the Adaptyv Nipah binding competition
+
+• Skips traditional separate inverse folding/filtering steps for an end-to-end design approach
+
+ProFam
+Protein Language Models
+• Language model trained with next-token prediction on protein sequences from the same family
+
+• Generate and score protein sequences and their point mutants
+
+GEMS
+Enzyme
+Small Molecule
+Protein Ligand Docking
+Binding Affinity
+• Predicts binding affinity (pK) of protein-ligand complexes from 3D structure using graph neural networks
+
+• Enhances interaction graphs with ANKH, ESM2, and ChemBERTa language model embeddings
+
+• Ensemble inference for robust and generalizable binding affinity scoring
+
+AEV-PLIG
+Enzyme
+Small Molecule
+Protein Ligand Docking
+Binding Affinity
+• Predicts binding affinity of protein-ligand complexes from 3D structure
+
+• GNN-based scoring function competitive with FEP calculations
+
+• 400,000x faster than free energy perturbation methods
+
+ODesign Antibody
+Antibody
+Antibody Design
+De Novo Binder Design
+Protein Design
+• Design antibody CDR sequences and structures given a target antigen
+
+• Input antibody framework sequence with masked CDR regions using hyphens (-)
+
+• Specify target CDR lengths for each masked region
+
+• Uses all-atom generative model for biomolecular interaction design
+
+Protein-Sol
+Enzyme
+Solubility
+Developability
+• Predict protein solubility from amino acid sequence
+
+• Analyze amino acid composition and physicochemical properties
+
+• Generate windowed biophysical profiles (hydropathy, disorder, fold index, entropy)
+
+ROSHAMBO
+Small Molecule
+• GPU-accelerated 3D molecular shape comparison using Gaussian overlays
+
+• Compare a query molecule against a dataset to find shape-similar compounds
+
+• Supports both shape-only and combined shape + pharmacophore (color) scoring
+
+• Outputs aligned structures and similarity scores ranked by chosen metric

@@ -1,0 +1,29 @@
+{
+  "name": "pyKVFinder",
+  "slug": "pykvfinder",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Detect and characterize cavities and pockets in protein structures. Calculate volume and surface area of detected cavities. Analyze cavity depth to identify buried binding sites. Map hydrophobicity onto cavity surfaces using multiple scales. Identify interface residues surrounding each cavity.",
+  "capabilities": [
+    "Detect and characterize cavities and pockets in protein structures",
+    "Calculate volume and surface area of detected cavities",
+    "Analyze cavity depth to identify buried binding sites",
+    "Map hydrophobicity onto cavity surfaces using multiple scales",
+    "Identify interface residues surrounding each cavity"
+  ],
+  "api_type": "pykvfinder",
+  "api_settings_example": {
+    "pdbFile": "structure.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file for cavity and pocket detection"
+    }
+  },
+  "outputs": {}
+}

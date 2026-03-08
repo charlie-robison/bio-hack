@@ -1,0 +1,27 @@
+{
+  "name": "AFSample2",
+  "slug": "afsample2",
+  "category": "structure_prediction",
+  "tags": [
+    "Structure Prediction"
+  ],
+  "description": "Given a protein sequence, predict its structure with significant conformational diversity. Identify possible diverse states for your protein.",
+  "capabilities": [
+    "Given a protein sequence, predict its structure with significant conformational diversity",
+    "Identify possible diverse states for your protein"
+  ],
+  "api_type": "afsample2",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for conformational diversity prediction. Uses AlphaFold jackhammer MSAs.",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    }
+  },
+  "outputs": {}
+}

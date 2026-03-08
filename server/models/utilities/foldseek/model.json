@@ -1,0 +1,42 @@
+{
+  "name": "Foldseek",
+  "slug": "foldseek",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Search protein structure databases with unprecedented speed using structural alphabet encoding. 4-5 orders of magnitude faster than traditional methods while maintaining high sensitivity. Efficiently handles large-scale structure databases by encoding tertiary amino acid interactions. Create custom databases directly from FASTA sequences using ProstT5 for 3Di prediction.",
+  "capabilities": [
+    "Search protein structure databases with unprecedented speed using structural alphabet encoding",
+    "4-5 orders of magnitude faster than traditional methods while maintaining high sensitivity",
+    "Efficiently handles large-scale structure databases by encoding tertiary amino acid interactions",
+    "Create custom databases directly from FASTA sequences using ProstT5 for 3Di prediction"
+  ],
+  "api_type": "foldseek",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "database": "pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Query protein structure file for database search"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Protein sequence for ProstT5-based 3Di prediction and search",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "database": {
+      "type": "string",
+      "required": false,
+      "description": "Structure database to search (e.g., 'pdb', 'afdb')",
+      "default": "pdb"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,60 @@
+{
+  "name": "ODesign Antibody",
+  "slug": "odesign-antibody",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "De Novo Binder Design",
+    "Protein Design"
+  ],
+  "description": "Design antibody CDR sequences and structures given a target antigen. Input antibody framework sequence with masked CDR regions using hyphens (-). Specify target CDR lengths for each masked region. Uses all-atom generative model for biomolecular interaction design.",
+  "capabilities": [
+    "Design antibody CDR sequences and structures given a target antigen",
+    "Input antibody framework sequence with masked CDR regions using hyphens (-)",
+    "Specify target CDR lengths for each masked region",
+    "Uses all-atom generative model for biomolecular interaction design"
+  ],
+  "api_type": "odesign-antibody",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "frameworkSequence": "EVQLVES------GGLVQ------PGGSLRL------",
+    "cdrLengths": "8,10,12",
+    "targetChains": "A",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target antigen structure in PDB format"
+    },
+    "frameworkSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody framework sequence with masked CDR regions using hyphens (-)",
+      "example": "EVQLVES------GGLVQ------PGGSLRL------"
+    },
+    "cdrLengths": {
+      "type": "string",
+      "required": false,
+      "description": "Target CDR lengths for each masked region (comma-separated)",
+      "example": "8,10,12"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target antigen",
+      "example": "A"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of antibody designs to generate"
+    }
+  },
+  "outputs": {}
+}

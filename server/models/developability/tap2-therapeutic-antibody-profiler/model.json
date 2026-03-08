@@ -1,0 +1,34 @@
+{
+  "name": "TAP2 (Therapeutic Antibody Profiler)",
+  "slug": "tap2-therapeutic-antibody-profiler",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Developability"
+  ],
+  "description": "Assess your antibody H/L sequence pair for developability issues: CDR length, the extent and magnitude of surface hydrophobicity, positive charge and negative charge in the CDRs, and asymmetry in the net heavy- and light-chain surface charges. Compare your antibody's properties to TAP2 thresholds determined from the updated ABodyBuilder2-modeled therapeutic set.",
+  "capabilities": [
+    "Assess your antibody H/L sequence pair for developability issues: CDR length, the extent and magnitude of surface hydrophobicity, positive charge and negative charge in the CDRs, and asymmetry in the net heavy- and light-chain surface charges",
+    "Compare your antibody's properties to TAP2 thresholds determined from the updated ABodyBuilder2-modeled therapeutic set"
+  ],
+  "api_type": "tap2-therapeutic-antibody-profiler",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "light_chain": "DIQMTQSPSSLSASVGDRVTITC..."
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody heavy chain amino acid sequence"
+    },
+    "light_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody light chain amino acid sequence"
+    }
+  },
+  "outputs": {}
+}

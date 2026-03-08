@@ -1,0 +1,58 @@
+{
+  "name": "AbLang-MPNN",
+  "slug": "ablang-mpnn",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Inverse Folding",
+    "Protein Design"
+  ],
+  "description": "Hybrid antibody sequence design combining AbLang and ProteinMPNN. Generate antibody-like sequences with improved binding properties. Keep heavy and light chains to <150 residues, performance will be significantly degraded above this limit.",
+  "capabilities": [
+    "Hybrid antibody sequence design combining AbLang and ProteinMPNN",
+    "Generate antibody-like sequences with improved binding properties",
+    "Keep heavy and light chains to <150 residues, performance will be significantly degraded above this limit"
+  ],
+  "api_type": "ablang-mpnn",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "heavyChainId": "H",
+    "lightChainId": "L",
+    "temperature": 0.1,
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody structure in PDB format. Heavy and light chains should be <150 residues each."
+    },
+    "heavyChainId": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the antibody heavy chain",
+      "example": "H"
+    },
+    "lightChainId": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the antibody light chain",
+      "example": "L"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 0.1,
+      "description": "Sampling temperature controlling sequence diversity. Higher values generate more diverse sequences."
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Multiple Sequence Alignment",
+  "slug": "multiple-sequence-alignment",
+  "category": "structure_prediction",
+  "tags": [
+    "Structure Prediction"
+  ],
+  "description": "Multiple sequence alignment (MSA) using MMseqs2. Generates MSAs using the ColabFold MMseqs2 pipeline: searches UniRef30 and extends results with the ColabFold environmental database (BFD/MGnify-derived).",
+  "capabilities": [
+    "Multiple sequence alignment (MSA) using MMseqs2",
+    "Generates MSAs using the ColabFold MMseqs2 pipeline: searches UniRef30 and extends results with the ColabFold environmental database (BFD/MGnify-derived)"
+  ],
+  "api_type": "multiple-sequence-alignment",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "msaDatabase": "uniref"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence to generate a multiple sequence alignment using MMseqs2. Use ':' to separate chains for multimers.",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "msaDatabase": {
+      "type": "string",
+      "required": false,
+      "default": "uniref",
+      "options": [
+        "uniref",
+        "swissprot",
+        "uniref+swissprot"
+      ],
+      "description": "Database for MSA generation. Searches UniRef30 and ColabFold environmental database."
+    }
+  },
+  "outputs": {}
+}

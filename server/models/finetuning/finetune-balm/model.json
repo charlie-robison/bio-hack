@@ -1,0 +1,40 @@
+{
+  "name": "Finetune BALM",
+  "slug": "finetune-balm",
+  "category": "finetuning",
+  "tags": [
+    "Finetuning and Active Learning"
+  ],
+  "description": "Finetune BALM on your protein-ligand binding affinity data.",
+  "capabilities": [
+    "Finetune BALM on your protein-ligand binding affinity data"
+  ],
+  "api_type": "finetune-balm",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O"
+  },
+  "inputs": {
+    "training_data": {
+      "type": "file",
+      "format": "csv_file",
+      "required": true,
+      "description": "CSV file with protein sequences, ligand SMILES, and binding affinity values"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Protein sequence for binding affinity prediction after finetuning",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "ligand_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "SMILES string of ligand for binding affinity prediction",
+      "example": "CC(=O)Oc1ccccc1C(=O)O"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,25 @@
+{
+  "name": "SPACE2",
+  "slug": "space2",
+  "category": "utilities",
+  "tags": [
+    "Antibody",
+    "Utilities"
+  ],
+  "description": "Rapidly clusters antibodies by the similarity of structural models and accurately groups antibodies that bind the same epitope. Clustered based on Ca RMSDs of CDR loop residues.",
+  "capabilities": [
+    "Rapidly clusters antibodies by the similarity of structural models and accurately groups antibodies that bind the same epitope",
+    "Clustered based on Ca RMSDs of CDR loop residues"
+  ],
+  "api_type": "space2",
+  "api_settings_example": {},
+  "inputs": {
+    "sequences": {
+      "type": "file",
+      "format": "fasta",
+      "required": true,
+      "description": "FASTA file containing antibody sequences to cluster by structural similarity"
+    }
+  },
+  "outputs": {}
+}

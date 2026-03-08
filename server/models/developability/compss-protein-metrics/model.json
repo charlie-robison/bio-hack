@@ -1,0 +1,49 @@
+{
+  "name": "COMPSS Protein Metrics",
+  "slug": "compss-protein-metrics",
+  "category": "developability",
+  "tags": [
+    "Protein Language Models",
+    "Developability"
+  ],
+  "description": "Evaluate your protein sequences or structures on a variety of models for likelihood and stability. Structure metrics: ESM-IF, ProteinMPNN, MIF-ST. Sequence metrics: ESM-1v, ESM-1v mask6, CARP-640m.",
+  "capabilities": [
+    "Evaluate your protein sequences or structures on a variety of models for likelihood and stability",
+    "Structure metrics: ESM-IF, ProteinMPNN, MIF-ST",
+    "Sequence metrics: ESM-1v, ESM-1v mask6, CARP-640m"
+  ],
+  "api_type": "compss-protein-metrics",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "pdb": "path/to/structure.pdb",
+    "metrics": ["esm_if", "proteinmpnn", "mif_st", "esm_1v"]
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Protein amino acid sequence for sequence-based metrics (ESM-1v, CARP-640m)"
+    },
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Protein structure in PDB format for structure-based metrics (ESM-IF, ProteinMPNN, MIF-ST)"
+    },
+    "metrics": {
+      "type": "array",
+      "required": false,
+      "options": [
+        "esm_if",
+        "proteinmpnn",
+        "mif_st",
+        "esm_1v",
+        "esm_1v_mask6",
+        "carp_640m"
+      ],
+      "description": "List of scoring models to evaluate. Structure metrics require PDB input; sequence metrics require amino acid sequence."
+    }
+  },
+  "outputs": {}
+}

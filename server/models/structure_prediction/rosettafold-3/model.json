@@ -1,0 +1,65 @@
+{
+  "name": "RosettaFold-3",
+  "slug": "rosettafold-3",
+  "category": "structure_prediction",
+  "tags": [
+    "Structure Prediction"
+  ],
+  "description": "Predict structures of arbitrary biomolecular complexes with improved chirality treatment. AlphaFold3 reproduction.",
+  "capabilities": [
+    "Predict structures of arbitrary biomolecular complexes with improved chirality treatment",
+    "AlphaFold3 reproduction"
+  ],
+  "api_type": "rosettafold-3",
+  "api_settings_example": {
+    "sequences": [
+      {
+        "entityType": "protein",
+        "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+      }
+    ],
+    "numSamples": 1
+  },
+  "inputs": {
+    "sequences": {
+      "type": "array",
+      "required": true,
+      "description": "Array of entity objects. Each entity has a type (protein, rna, dna, or ligand) and corresponding sequence or SMILES.",
+      "items": {
+        "entityType": {
+          "type": "string",
+          "options": [
+            "protein",
+            "rna",
+            "dna",
+            "ligand"
+          ],
+          "description": "Type of molecular entity"
+        },
+        "sequence": {
+          "type": "string",
+          "format": "amino_acid_sequence",
+          "description": "Amino acid sequence for protein, nucleotide sequence for RNA/DNA"
+        },
+        "smiles": {
+          "type": "string",
+          "format": "smiles",
+          "description": "SMILES string for ligand entities"
+        }
+      },
+      "example": [
+        {
+          "entityType": "protein",
+          "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+        }
+      ]
+    },
+    "numSamples": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of structure predictions to return"
+    }
+  },
+  "outputs": {}
+}

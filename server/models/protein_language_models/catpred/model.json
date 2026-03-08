@@ -1,0 +1,36 @@
+{
+  "name": "CatPred",
+  "slug": "catpred",
+  "category": "protein_language_models",
+  "tags": [
+    "Enzyme",
+    "Protein Language Models"
+  ],
+  "description": "Predict in vitro Km for a given enzyme sequence and substrate SMILES string. Uses Machine Learning model trained on 41k data points.",
+  "capabilities": [
+    "Predict in vitro Km for a given enzyme sequence and substrate SMILES string",
+    "Uses Machine Learning model trained on 41k data points"
+  ],
+  "api_type": "catpred",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "substrate_smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Enzyme amino acid sequence",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "substrate_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": true,
+      "description": "SMILES string of the substrate molecule",
+      "example": "CC(=O)OC1=CC=CC=C1C(=O)O"
+    }
+  },
+  "outputs": {}
+}

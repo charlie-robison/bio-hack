@@ -1,0 +1,38 @@
+{
+  "name": "DrugFlow",
+  "slug": "drugflow",
+  "category": "small_molecule_generation",
+  "tags": [
+    "Small Molecule",
+    "Generate Small Molecules"
+  ],
+  "description": "Sample molecules for a given protein target given a reference ligand.",
+  "capabilities": [
+    "Sample molecules for a given protein target given a reference ligand"
+  ],
+  "api_type": "drugflow",
+  "api_settings_example": {
+    "num_molecules": 100
+  },
+  "inputs": {
+    "receptor_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format"
+    },
+    "reference_ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": true,
+      "description": "Reference ligand to define the binding pocket"
+    },
+    "num_molecules": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of molecules to sample"
+    }
+  },
+  "outputs": {}
+}

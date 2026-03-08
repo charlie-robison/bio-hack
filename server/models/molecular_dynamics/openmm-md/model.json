@@ -1,0 +1,62 @@
+{
+  "name": "OpenMM MD",
+  "slug": "openmm-md",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Small Molecule",
+    "Molecular Dynamics"
+  ],
+  "description": "Simulate energy minimization of a protein in water. Run molecular simulation with AMBER forcefield and conduct trajectory analysis including RMSD, RMSF, Rg, and PCA.",
+  "capabilities": [
+    "Simulate energy minimization of a protein in water",
+    "Run molecular simulation with AMBER forcefield and conduct trajectory analysis including RMSD, RMSF, Rg, and PCA"
+  ],
+  "api_type": "openmm-md",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb",
+    "simulation_time_ns": 10,
+    "temperature_k": 300,
+    "forcefield": "amber14-all"
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for molecular dynamics simulation"
+    },
+    "ligand_file": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format for protein-ligand simulation"
+    },
+    "simulation_time_ns": {
+      "type": "float",
+      "required": false,
+      "default": 10,
+      "description": "Simulation time in nanoseconds"
+    },
+    "temperature_k": {
+      "type": "float",
+      "required": false,
+      "default": 300,
+      "description": "Simulation temperature in Kelvin"
+    },
+    "forcefield": {
+      "type": "string",
+      "required": false,
+      "default": "amber14-all",
+      "options": [
+        "amber14-all",
+        "amber99sb",
+        "charmm36"
+      ],
+      "description": "AMBER force field for the simulation"
+    }
+  },
+  "outputs": {}
+}

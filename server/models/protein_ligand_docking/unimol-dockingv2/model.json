@@ -1,0 +1,60 @@
+{
+  "name": "Unimol DockingV2",
+  "slug": "unimol-dockingv2",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Small Molecule",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Chemically and quantitatively accurate small molecule docking with machine learning. Accurately predicting the binding poses of 77+% of ligands in the PoseBusters benchmark with an RMSD value of less than 2.0 Å, outperforming AlphaFold 3, AutoDock, and DiffDock.",
+  "capabilities": [
+    "Chemically and quantitatively accurate small molecule docking with machine learning",
+    "Accurately predicting the binding poses of 77+% of ligands in the PoseBusters benchmark with an RMSD value of less than 2.0 Å, outperforming AlphaFold 3, AutoDock, and DiffDock"
+  ],
+  "api_type": "unimol_dockingv2",
+  "api_settings_example": {
+    "receptor_pdb": "path/to/receptor.pdb",
+    "ligand_sdf": "path/to/ligand.sdf",
+    "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "pocket_center_x": 10.0,
+    "pocket_center_y": 20.0,
+    "pocket_center_z": 30.0
+  },
+  "inputs": {
+    "receptor": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Receptor protein structure in PDB format"
+    },
+    "ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand conformer in SDF format"
+    },
+    "ligand_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "Alternative: ligand as SMILES string (conformer will be auto-generated)"
+    },
+    "pocket_center_x": {
+      "type": "float",
+      "required": true,
+      "description": "X coordinate of the binding pocket center"
+    },
+    "pocket_center_y": {
+      "type": "float",
+      "required": true,
+      "description": "Y coordinate of the binding pocket center"
+    },
+    "pocket_center_z": {
+      "type": "float",
+      "required": true,
+      "description": "Z coordinate of the binding pocket center"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,35 @@
+{
+  "name": "DeepFRI",
+  "slug": "deepfri",
+  "category": "protein_language_models",
+  "tags": [
+    "Enzyme",
+    "Protein Language Models"
+  ],
+  "description": "Predict function (GO-term/EC-number) using protein language model. Supports multiple ontologies: Molecular Function, Biological Process, Cellular Component, Enzyme Commission.",
+  "capabilities": [
+    "Predict function (GO-term/EC-number) using protein language model",
+    "Supports multiple ontologies: Molecular Function, Biological Process, Cellular Component, Enzyme Commission"
+  ],
+  "api_type": "deepfri",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "ontology": "mf"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for function prediction",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "ontology": {
+      "type": "string",
+      "required": false,
+      "description": "Ontology to predict: 'mf' (Molecular Function), 'bp' (Biological Process), 'cc' (Cellular Component), 'ec' (Enzyme Commission)",
+      "default": "mf"
+    }
+  },
+  "outputs": {}
+}

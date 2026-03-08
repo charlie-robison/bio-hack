@@ -1,0 +1,47 @@
+{
+  "name": "Intrinsically Disordered Region (IDR) Binder Design",
+  "slug": "intrinsically-disordered-region-idr-binder-design",
+  "category": "rosetta",
+  "tags": [
+    "Rosetta"
+  ],
+  "description": "Design protein/peptide binders to intrinsically disordered regions with RFdiffusion. Tested by designing binders for 18 synthetic peptides sequences 21 diverse, therapeutically relevant, intrinsically disordered regions. Found binders for 39 of 43 targets.",
+  "capabilities": [
+    "Design protein/peptide binders to intrinsically disordered regions with RFdiffusion",
+    "Tested by designing binders for 18 synthetic peptides sequences 21 diverse, therapeutically relevant, intrinsically disordered regions. Found binders for 39 of 43 targets"
+  ],
+  "api_type": "intrinsically-disordered-region-idr-binder-design",
+  "api_settings_example": {
+    "target_sequence": "GSGSGSGSGS",
+    "num_designs": 10,
+    "binder_length": 100
+  },
+  "inputs": {
+    "target_sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Amino acid sequence of the intrinsically disordered region target",
+      "example": "GSGSGSGSGS"
+    },
+    "target_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "PDB structure of the target protein containing the IDR"
+    },
+    "num_designs": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of binder designs to generate"
+    },
+    "binder_length": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Length of the designed binder protein"
+    }
+  },
+  "outputs": {}
+}

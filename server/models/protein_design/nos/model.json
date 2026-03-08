@@ -1,0 +1,54 @@
+{
+  "name": "NOS",
+  "slug": "nos",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Finetuning and Active Learning",
+    "Protein Design"
+  ],
+  "description": "Finetune a model to generate new antibody sequences optimized for a given property from H and L sequences and numeric labels. Redesign CDR regions.",
+  "capabilities": [
+    "Finetune a model to generate new antibody sequences optimized for a given property from H and L sequences and numeric labels",
+    "Redesign CDR regions"
+  ],
+  "api_type": "nos",
+  "api_settings_example": {
+    "heavySequences": "MKTLLILAVVAAALA...",
+    "lightSequences": "MKTLLILAVVAAALA...",
+    "numSequences": 10,
+    "cdrRegions": "CDR-H3,CDR-L3"
+  },
+  "inputs": {
+    "heavySequences": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody heavy chain sequences (one per line or comma-separated)"
+    },
+    "lightSequences": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody light chain sequences (one per line or comma-separated)"
+    },
+    "labels": {
+      "type": "string",
+      "required": true,
+      "description": "Numeric property labels corresponding to each sequence pair"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of optimized antibody sequences to generate"
+    },
+    "cdrRegions": {
+      "type": "string",
+      "required": false,
+      "description": "CDR regions to redesign",
+      "example": "CDR-H3,CDR-L3"
+    }
+  },
+  "outputs": {}
+}

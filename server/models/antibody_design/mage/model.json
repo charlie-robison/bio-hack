@@ -1,0 +1,50 @@
+{
+  "name": "MAGE",
+  "slug": "mage",
+  "category": "antibody_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Protein Language Models"
+  ],
+  "description": "Generate de novo paired heavy-light chain antibody variable sequences given an antigen target. Uses Progen2-based language model trained on antibody sequences. Outputs variable region sequences ready for experimental validation. Designed for antigen-specific antibody generation.",
+  "capabilities": [
+    "Generate de novo paired heavy-light chain antibody variable sequences given an antigen target",
+    "Uses Progen2-based language model trained on antibody sequences",
+    "Outputs variable region sequences ready for experimental validation",
+    "Designed for antigen-specific antibody generation"
+  ],
+  "api_type": "mage",
+  "api_settings_example": {
+    "antigen_sequence": "MKTIIALSYIFCLVFA",
+    "num_sequences": 100,
+    "temperature": 1.0
+  },
+  "inputs": {
+    "antigen_sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Target antigen amino acid sequence for antigen-specific antibody generation"
+    },
+    "antigen_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Target antigen PDB structure file"
+    },
+    "num_sequences": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of paired heavy-light chain antibody sequences to generate",
+      "default": 100
+    },
+    "temperature": {
+      "type": "float",
+      "required": false,
+      "description": "Sampling temperature controlling diversity of generated sequences",
+      "default": 1.0
+    }
+  },
+  "outputs": {}
+}

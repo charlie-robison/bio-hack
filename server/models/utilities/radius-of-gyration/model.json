@@ -1,0 +1,25 @@
+{
+  "name": "Radius of Gyration",
+  "slug": "radius-of-gyration",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Calculate radius of gyration of a protein structure.",
+  "capabilities": [
+    "Calculate radius of gyration of a protein structure"
+  ],
+  "api_type": "radius-of-gyration",
+  "api_settings_example": {
+    "pdbFile": "structure.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file for radius of gyration calculation"
+    }
+  },
+  "outputs": {}
+}

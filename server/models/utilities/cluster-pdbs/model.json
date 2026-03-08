@@ -1,0 +1,30 @@
+{
+  "name": "Cluster PDBs",
+  "slug": "cluster-pdbs",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Cluster a list of PDB files or a trajectory.",
+  "capabilities": [
+    "Cluster a list of PDB files or a trajectory"
+  ],
+  "api_type": "cluster-pdbs",
+  "api_settings_example": {
+    "num_clusters": 5
+  },
+  "inputs": {
+    "structures": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "List of PDB structure files or trajectory to cluster"
+    },
+    "num_clusters": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of clusters to generate"
+    }
+  },
+  "outputs": {}
+}

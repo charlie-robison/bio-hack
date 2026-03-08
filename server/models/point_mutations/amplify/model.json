@@ -1,0 +1,26 @@
+{
+  "name": "AMPLIFY",
+  "slug": "amplify",
+  "category": "point_mutations",
+  "tags": [
+    "Point Mutations"
+  ],
+  "description": "Scan protein for every position/AA pair's likelihood. Score protein using AMPLIFY 350M language model.",
+  "capabilities": [
+    "Scan protein for every position/AA pair's likelihood",
+    "Score protein using AMPLIFY 350M language model"
+  ],
+  "api_type": "amplify",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH..."
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for positional likelihood scanning using AMPLIFY 350M model"
+    }
+  },
+  "outputs": {}
+}

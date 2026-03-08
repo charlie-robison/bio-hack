@@ -1,0 +1,27 @@
+{
+  "name": "FPocket",
+  "slug": "fpocket",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Utilities",
+    "Protein Ligand Docking"
+  ],
+  "description": "Detect pockets on a protein.",
+  "capabilities": [
+    "Detect pockets on a protein"
+  ],
+  "api_type": "fpocket",
+  "api_settings_example": {
+    "protein_pdb": "path/to/protein.pdb"
+  },
+  "inputs": {
+    "protein_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for pocket detection"
+    }
+  },
+  "outputs": {}
+}

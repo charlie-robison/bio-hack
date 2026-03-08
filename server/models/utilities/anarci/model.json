@@ -1,0 +1,34 @@
+{
+  "name": "ANARCI",
+  "slug": "anarci",
+  "category": "utilities",
+  "tags": [
+    "Antibody",
+    "Utilities"
+  ],
+  "description": "Annotate immune proteins according to numbering system.",
+  "capabilities": [
+    "Annotate immune proteins according to numbering system"
+  ],
+  "api_type": "anarci",
+  "api_settings_example": {
+    "sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPT",
+    "scheme": "imgt"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody or immune protein sequence for numbering annotation",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPT"
+    },
+    "scheme": {
+      "type": "string",
+      "required": false,
+      "description": "Numbering scheme: 'imgt', 'chothia', 'kabat', or 'aho'",
+      "default": "imgt"
+    }
+  },
+  "outputs": {}
+}

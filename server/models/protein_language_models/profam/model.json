@@ -1,0 +1,41 @@
+{
+  "name": "ProFam",
+  "slug": "profam",
+  "category": "protein_language_models",
+  "tags": [
+    "Protein Language Models"
+  ],
+  "description": "Language model trained with next-token prediction on protein sequences from the same family. Generate and score protein sequences and their point mutants.",
+  "capabilities": [
+    "Language model trained with next-token prediction on protein sequences from the same family",
+    "Generate and score protein sequences and their point mutants"
+  ],
+  "api_type": "profam",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "num_sequences": 10,
+    "mutations": "A5G,L10V"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein sequence for scoring or generation from a protein family",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "num_sequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of sequences to generate"
+    },
+    "mutations": {
+      "type": "string",
+      "required": false,
+      "description": "Point mutations to score, comma-separated (e.g., 'A5G,L10V')",
+      "example": "A5G,L10V"
+    }
+  },
+  "outputs": {}
+}

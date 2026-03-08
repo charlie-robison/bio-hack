@@ -1,0 +1,25 @@
+{
+  "name": "PROPKA",
+  "slug": "propka",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Predict the pKa values of ionizable groups in proteins.",
+  "capabilities": [
+    "Predict the pKa values of ionizable groups in proteins"
+  ],
+  "api_type": "propka",
+  "api_settings_example": {
+    "pdbFile": "structure.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file for pKa prediction of ionizable groups"
+    }
+  },
+  "outputs": {}
+}

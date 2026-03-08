@@ -1,0 +1,44 @@
+{
+  "name": "DeepRank-Ab",
+  "slug": "deeprank-ab",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Protein Protein Docking",
+    "Utilities"
+  ],
+  "description": "Rank antibody-antigen docking poses using a geometric deep-learning scoring model. Uses atom-level interface representation with antibody-specific features tailored for antibody-antigen interfaces. Outputs a predicted DockQ score to prioritize near-native models.",
+  "capabilities": [
+    "Rank antibody-antigen docking poses using a geometric deep-learning scoring model",
+    "Uses atom-level interface representation with antibody-specific features tailored for antibody-antigen interfaces",
+    "Outputs a predicted DockQ score to prioritize near-native models"
+  ],
+  "api_type": "deeprank_ab",
+  "api_settings_example": {
+    "docking_poses_pdb": "path/to/docking_poses.pdb",
+    "antibody_chain_ids": "H,L",
+    "antigen_chain_id": "A"
+  },
+  "inputs": {
+    "docking_poses": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody-antigen docking pose(s) in PDB format to rank"
+    },
+    "antibody_chain_ids": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the antibody chains (heavy and/or light)",
+      "example": "H,L"
+    },
+    "antigen_chain_id": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the antigen chain",
+      "example": "A"
+    }
+  },
+  "outputs": {}
+}

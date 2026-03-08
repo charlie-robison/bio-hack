@@ -1,0 +1,25 @@
+{
+  "name": "AtomSurf",
+  "slug": "atomsurf",
+  "category": "protein_language_models",
+  "tags": [
+    "Protein Language Models"
+  ],
+  "description": "Generate embeddings using protein structure encoder that jointly encodes graphs and surfaces.",
+  "capabilities": [
+    "Generate embeddings using protein structure encoder that jointly encodes graphs and surfaces"
+  ],
+  "api_type": "atomsurf",
+  "api_settings_example": {
+    "pdbFile": "structure.pdb"
+  },
+  "inputs": {
+    "structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure file for graph and surface-based embedding generation"
+    }
+  },
+  "outputs": {}
+}

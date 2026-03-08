@@ -1,0 +1,40 @@
+{
+  "name": "FastSolv",
+  "slug": "fastsolv",
+  "category": "solubility",
+  "tags": [
+    "Small Molecule",
+    "Solubility"
+  ],
+  "description": "Predict the solubility of a solute/solvent solution for a given temperature.",
+  "capabilities": [
+    "Predict the solubility of a solute/solvent solution for a given temperature"
+  ],
+  "api_type": "fastsolv",
+  "api_settings_example": {
+    "solute_smiles": "CC(=O)OC1=CC=CC=C1C(=O)O",
+    "solvent_smiles": "O",
+    "temperature": 298.15
+  },
+  "inputs": {
+    "solute_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": true,
+      "description": "SMILES string of the solute molecule"
+    },
+    "solvent_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": true,
+      "description": "SMILES string of the solvent molecule"
+    },
+    "temperature": {
+      "type": "float",
+      "required": false,
+      "default": 298.15,
+      "description": "Temperature in Kelvin for solubility prediction"
+    }
+  },
+  "outputs": {}
+}

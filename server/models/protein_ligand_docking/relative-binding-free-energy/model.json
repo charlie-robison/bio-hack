@@ -1,0 +1,37 @@
+{
+  "name": "Relative Binding Free Energy",
+  "slug": "relative-binding-free-energy",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Molecular Dynamics",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "State of the art physics-based relative binding free energy calculation. Given a receptor pdb structure and multiple ligand sdfs, rank the ligands by binding affinity to the receptor.",
+  "capabilities": [
+    "State of the art physics-based relative binding free energy calculation",
+    "Given a receptor pdb structure and multiple ligand sdfs, rank the ligands by binding affinity to the receptor"
+  ],
+  "api_type": "relative_binding_free_energy",
+  "api_settings_example": {
+    "receptor_pdb": "path/to/receptor.pdb",
+    "ligands_sdf": "path/to/ligands.sdf"
+  },
+  "inputs": {
+    "receptor": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Receptor protein structure in PDB format"
+    },
+    "ligands": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": true,
+      "description": "Multiple ligand structures in SDF format (multi-molecule SDF file) to rank by binding affinity"
+    }
+  },
+  "outputs": {}
+}

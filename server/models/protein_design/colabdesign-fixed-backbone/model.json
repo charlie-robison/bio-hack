@@ -1,0 +1,50 @@
+{
+  "name": "ColabDesign Fixed Backbone",
+  "slug": "colabdesign-fixed-backbone",
+  "category": "protein_design",
+  "tags": [
+    "Protein Design",
+    "Inverse Folding"
+  ],
+  "description": "Generate sequences to match an input structure via reversing AlphaFold. Produce similar structures to the input structure, with de novo sequences. Keep/Fix parts of the sequences produced and design the rest.",
+  "capabilities": [
+    "Generate sequences to match an input structure via reversing AlphaFold",
+    "Produce similar structures to the input structure, with de novo sequences",
+    "Keep/Fix parts of the sequences produced and design the rest"
+  ],
+  "api_type": "colabdesign-fixed-backbone",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "fixedPositions": "1-10,50-60",
+    "designedChains": "A",
+    "numDesigns": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input protein structure in PDB format to design sequences for"
+    },
+    "fixedPositions": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residue positions to keep fixed during design",
+      "example": "1-10,50-60"
+    },
+    "designedChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs to design",
+      "example": "A"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequence designs to generate"
+    }
+  },
+  "outputs": {}
+}

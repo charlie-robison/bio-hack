@@ -1,0 +1,50 @@
+{
+  "name": "PLACER",
+  "slug": "placer",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Protein Ligand Docking"
+  ],
+  "description": "Local docking for a protein/small molecule complex to sample conformations. Accurately generates structures of organic small molecules bound to active sites, and can accurately generate conformations of structures of small molecules and protein side chains. Enables generation of ensembles of solutions to model conformational heterogeneity.",
+  "capabilities": [
+    "Local docking for a protein/small molecule complex to sample conformations",
+    "Accurately generates structures of organic small molecules bound to active sites, and can accurately generate conformations of structures of small molecules and protein side chains",
+    "Enables generation of ensembles of solutions to model conformational heterogeneity"
+  ],
+  "api_type": "placer",
+  "api_settings_example": {
+    "complex_pdb": "path/to/protein_ligand_complex.pdb",
+    "ligand_sdf": "path/to/ligand.sdf",
+    "n_conformations": 10,
+    "flexible_sidechains": true
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein-ligand complex structure in PDB format with ligand positioned near binding site"
+    },
+    "ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format"
+    },
+    "n_conformations": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of conformations to sample",
+      "default": 10
+    },
+    "flexible_sidechains": {
+      "type": "boolean",
+      "required": false,
+      "description": "Allow protein side chain flexibility during local docking",
+      "default": true
+    }
+  },
+  "outputs": {}
+}

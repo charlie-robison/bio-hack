@@ -1,0 +1,34 @@
+{
+  "name": "Ancestral Sequence Reconstruction",
+  "slug": "ancestral-sequence-reconstruction",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Reconstruct ancestral protein or DNA sequences from modern sequences. Automatically aligns unaligned sequences with MAFFT. Build phylogenetic tree with maximum likelihood using IQ-TREE. Output probability estimates for each ancestral position.",
+  "capabilities": [
+    "Reconstruct ancestral protein or DNA sequences from modern sequences",
+    "Automatically aligns unaligned sequences with MAFFT",
+    "Build phylogenetic tree with maximum likelihood using IQ-TREE",
+    "Output probability estimates for each ancestral position"
+  ],
+  "api_type": "ancestral-sequence-reconstruction",
+  "api_settings_example": {
+    "sequence_type": "protein"
+  },
+  "inputs": {
+    "sequences": {
+      "type": "file",
+      "format": "fasta",
+      "required": true,
+      "description": "FASTA file with modern protein or DNA sequences for ancestral reconstruction"
+    },
+    "sequence_type": {
+      "type": "string",
+      "required": false,
+      "description": "Type of sequences: 'protein' or 'dna'",
+      "default": "protein"
+    }
+  },
+  "outputs": {}
+}

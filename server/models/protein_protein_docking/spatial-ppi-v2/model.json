@@ -1,0 +1,46 @@
+{
+  "name": "Spatial PPI v2",
+  "slug": "spatial-ppi-v2",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Protein Protein Docking"
+  ],
+  "description": "Predict PPI between two proteins from sequence or structural information. Use protein language models and graph attention networks. Outperforms state of the art PPI methods like D-Script and GNN-PPI.",
+  "capabilities": [
+    "Predict PPI between two proteins from sequence or structural information",
+    "Use protein language models and graph attention networks",
+    "Outperforms state of the art PPI methods like D-Script and GNN-PPI"
+  ],
+  "api_type": "spatial_ppi_v2",
+  "api_settings_example": {
+    "protein_a_sequence": "MKTIIALSYIFCLVFA",
+    "protein_b_sequence": "EVQLVESGGGLVQPGG"
+  },
+  "inputs": {
+    "protein_a_sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Amino acid sequence of the first protein"
+    },
+    "protein_b_sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Amino acid sequence of the second protein"
+    },
+    "protein_a_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Optional structure of the first protein in PDB format for structure-based prediction"
+    },
+    "protein_b_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Optional structure of the second protein in PDB format for structure-based prediction"
+    }
+  },
+  "outputs": {}
+}

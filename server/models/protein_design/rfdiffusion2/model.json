@@ -1,0 +1,67 @@
+{
+  "name": "RFdiffusion2",
+  "slug": "rfdiffusion2",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Protein Design"
+  ],
+  "description": "De Novo design enzymes given active site residues and atoms. Experimental validation of 3 diverse catalytic sites, identifying active catalysts in less than 96 sequences. In in-silico Motif Enzyme benchmarking spanning EC 1-5, produced at least one success for 41/41 cases vs 16/41 for prior RFdiffusion.",
+  "capabilities": [
+    "De Novo design enzymes given active site residues and atoms",
+    "Experimental validation of 3 diverse catalytic sites, identifying active catalysts in less than 96 sequences",
+    "In in-silico Motif Enzyme benchmarking spanning EC 1-5, produced at least one success for 41/41 cases vs 16/41 for prior RFdiffusion"
+  ],
+  "api_type": "rfdiffusion2",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "activeSiteResidues": "A41,A70,A101",
+    "scaffoldLength": "150-200",
+    "numDesigns": 1,
+    "verify": true
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input PDB file with active site residues and/or ligand atoms for enzyme design"
+    },
+    "activeSiteResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": true,
+      "description": "Catalytic residue positions defining the active site",
+      "example": "A41,A70,A101"
+    },
+    "ligandAtoms": {
+      "type": "string",
+      "required": false,
+      "description": "Ligand or cofactor atom specifications for the active site"
+    },
+    "scaffoldLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed enzyme scaffold",
+      "example": "150-200"
+    },
+    "solventAccessibility": {
+      "type": "string",
+      "required": false,
+      "description": "Control solvent accessibility of ligand atoms"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of enzyme designs to generate"
+    },
+    "verify": {
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "Verify designs with ProteinMPNN and structure prediction"
+    }
+  },
+  "outputs": {}
+}

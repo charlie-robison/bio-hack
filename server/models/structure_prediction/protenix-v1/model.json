@@ -1,0 +1,91 @@
+{
+  "name": "Protenix-v1",
+  "slug": "protenix-v1",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Structure Prediction",
+    "Protein Protein Docking",
+    "Protein Ligand Docking"
+  ],
+  "description": "Predicts 3D structures of protein, RNA, DNA, and small-molecule complexes. Supports contact/pocket restraints and covalent bonds. Open-source biomolecular structure prediction model reaching AlphaFold3-level performance under matched training cutoff and inference budget. Higher accuracy on protein\u2013protein (72.7% vs 71.7% DockQ SR) and antibody\u2013antigen interfaces (52.3% vs 48.8%) on FoldBench. Benchmarked across multiple datasets totaling 8k+ complexes (FoldBench, Runs-N-Poses, PXM-2024/2025): ~10% relative improvement over Boltz-1 and Chai-1 on protein\u2013protein interfaces, 54.2% Ab\u2013Ag DockQ SR, and 72.8% ligand RMSD<2\u00c5 success rate. Inference-time scaling: prediction accuracy improves with increased sampling (\u224836%\u219248% DockQ SR from 1 to 80 seeds on antibody\u2013antigen benchmarks).",
+  "capabilities": [
+    "Predicts 3D structures of protein, RNA, DNA, and small-molecule complexes. Supports contact/pocket restraints and covalent bonds",
+    "Open-source biomolecular structure prediction model reaching AlphaFold3-level performance under matched training cutoff and inference budget. Higher accuracy on protein\u2013protein (72.7% vs 71.7% DockQ SR) and antibody\u2013antigen interfaces (52.3% vs 48.8%) on FoldBench",
+    "Benchmarked across multiple datasets totaling 8k+ complexes (FoldBench, Runs-N-Poses, PXM-2024/2025): ~10% relative improvement over Boltz-1 and Chai-1 on protein\u2013protein interfaces, 54.2% Ab\u2013Ag DockQ SR, and 72.8% ligand RMSD<2\u00c5 success rate",
+    "Inference-time scaling: prediction accuracy improves with increased sampling (\u224836%\u219248% DockQ SR from 1 to 80 seeds on antibody\u2013antigen benchmarks)"
+  ],
+  "api_type": "protenix-v1",
+  "api_settings_example": {
+    "sequences": [
+      {
+        "entityType": "protein",
+        "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+      }
+    ],
+    "numSamples": 1
+  },
+  "inputs": {
+    "sequences": {
+      "type": "array",
+      "required": true,
+      "description": "Array of entity objects. Each entity has a type (protein, rna, dna, or ligand) and corresponding sequence or CCD code.",
+      "items": {
+        "entityType": {
+          "type": "string",
+          "options": [
+            "protein",
+            "rna",
+            "dna",
+            "ligand"
+          ],
+          "description": "Type of molecular entity"
+        },
+        "sequence": {
+          "type": "string",
+          "format": "amino_acid_sequence",
+          "description": "Amino acid sequence for protein, nucleotide sequence for RNA/DNA"
+        },
+        "ccd": {
+          "type": "string",
+          "description": "CCD code for ligand entities"
+        }
+      },
+      "example": [
+        {
+          "entityType": "protein",
+          "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+        }
+      ]
+    },
+    "numSamples": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of structure predictions to return. More samples improve accuracy for difficult targets."
+    },
+    "numSeeds": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of random seeds for inference-time scaling. More seeds improve prediction accuracy."
+    },
+    "contactRestraints": {
+      "type": "array",
+      "required": false,
+      "description": "Contact restraints between residues"
+    },
+    "pocketRestraints": {
+      "type": "array",
+      "required": false,
+      "description": "Pocket restraints for binding site specification"
+    },
+    "covalentBonds": {
+      "type": "array",
+      "required": false,
+      "description": "Covalent bond specifications between entities"
+    }
+  },
+  "outputs": {}
+}

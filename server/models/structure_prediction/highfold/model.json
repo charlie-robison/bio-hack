@@ -1,0 +1,28 @@
+{
+  "name": "Highfold",
+  "slug": "highfold",
+  "category": "structure_prediction",
+  "tags": [
+    "Peptide",
+    "Structure Prediction"
+  ],
+  "description": "AlphaFold modified for cyclic peptide structure prediction. Accurately predict the structures of native cyclic peptides from a single sequence, with 36 out of 49 cases predicted with high confidence (pLDDT > 0.85) matching the native structure with root mean squared deviation (RMSD) less than 1.5 \u00c5.",
+  "capabilities": [
+    "AlphaFold modified for cyclic peptide structure prediction",
+    "Accurately predict the structures of native cyclic peptides from a single sequence, with 36 out of 49 cases predicted with high confidence (pLDDT > 0.85) matching the native structure with root mean squared deviation (RMSD) less than 1.5 \u00c5"
+  ],
+  "api_type": "highfold",
+  "api_settings_example": {
+    "sequence": "CAGRILCG"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Cyclic peptide amino acid sequence for structure prediction",
+      "example": "CAGRILCG"
+    }
+  },
+  "outputs": {}
+}

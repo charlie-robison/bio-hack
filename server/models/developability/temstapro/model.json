@@ -1,0 +1,45 @@
+{
+  "name": "TemStaPro",
+  "slug": "temstapro",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Thermostability",
+    "Developability",
+    "Protein Language Models"
+  ],
+  "description": "Binary classification for protein thermostability for temperature thresholds: 40, 45, 50, 55, 60, 65. Uses transfer learning from protein language model ProtT5-XL, outperforming existing pLM methods.",
+  "capabilities": [
+    "Binary classification for protein thermostability for temperature thresholds: 40, 45, 50, 55, 60, 65",
+    "Uses transfer learning from protein language model ProtT5-XL, outperforming existing pLM methods"
+  ],
+  "api_type": "temstapro",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH...",
+    "temperature_threshold": 65
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for thermostability binary classification"
+    },
+    "temperature_threshold": {
+      "type": "integer",
+      "required": false,
+      "default": 65,
+      "options": [
+        40,
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "description": "Temperature threshold in Celsius for thermostability classification"
+    }
+  },
+  "outputs": {}
+}

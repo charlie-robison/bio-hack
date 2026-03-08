@@ -1,0 +1,31 @@
+{
+  "name": "MSA Clustering",
+  "slug": "msa-clustering",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Cluster sequences using MMseqs2 MSA alignments.",
+  "capabilities": [
+    "Cluster sequences using MMseqs2 MSA alignments"
+  ],
+  "api_type": "msa-clustering",
+  "api_settings_example": {
+    "identity_threshold": 0.3
+  },
+  "inputs": {
+    "sequences": {
+      "type": "file",
+      "format": "fasta",
+      "required": true,
+      "description": "FASTA file with sequences to cluster using MMseqs2"
+    },
+    "identity_threshold": {
+      "type": "number",
+      "required": false,
+      "default": 0.3,
+      "description": "Sequence identity threshold for clustering (0.0-1.0)"
+    }
+  },
+  "outputs": {}
+}

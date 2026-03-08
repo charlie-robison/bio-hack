@@ -1,0 +1,41 @@
+{
+  "name": "ZymCTRL",
+  "slug": "zymctrl",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Protein Design",
+    "Protein Language Models"
+  ],
+  "description": "Given a Enzymatic Commission (EC) number, generate protein sequences to fulfill the catalytic reaction. Generate ordered and globular enzymes distant to natural ones, while maintaining intended catalytic properties.",
+  "capabilities": [
+    "Given a Enzymatic Commission (EC) number, generate protein sequences to fulfill the catalytic reaction",
+    "Generate ordered and globular enzymes distant to natural ones, while maintaining intended catalytic properties"
+  ],
+  "api_type": "zymctrl",
+  "api_settings_example": {
+    "ecNumber": "3.4.21.62",
+    "numSequences": 10,
+    "maxLength": 1
+  },
+  "inputs": {
+    "ecNumber": {
+      "type": "string",
+      "required": true,
+      "description": "Enzymatic Commission (EC) number specifying the catalytic reaction",
+      "example": "3.4.21.62"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of enzyme sequences to generate"
+    },
+    "maxLength": {
+      "type": "integer",
+      "required": false,
+      "description": "Maximum length of generated enzyme sequences"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,55 @@
+{
+  "name": "BioPhi",
+  "slug": "biophi",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Humanization",
+    "Developability"
+  ],
+  "description": "Evaluate antibody humanness using peptide search in natural antibody repertoires (OASis) and germline sequence identity. Humanize your H/L sequences using a language model trained on OAS.",
+  "capabilities": [
+    "Evaluate antibody humanness using peptide search in natural antibody repertoires (OASis) and germline sequence identity",
+    "Humanize your H/L sequences using a language model trained on OAS"
+  ],
+  "api_type": "biophi",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "light_chain": "DIQMTQSPSSLSASVGDRVTITC...",
+    "humanize": false,
+    "scheme": "chothia"
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody heavy chain amino acid sequence"
+    },
+    "light_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody light chain amino acid sequence"
+    },
+    "humanize": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Enable Sapiens humanization of the input antibody sequences"
+    },
+    "scheme": {
+      "type": "string",
+      "required": false,
+      "default": "chothia",
+      "options": [
+        "chothia",
+        "kabat",
+        "imgt",
+        "aho"
+      ],
+      "description": "Antibody numbering scheme for CDR identification"
+    }
+  },
+  "outputs": {}
+}

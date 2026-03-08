@@ -1,0 +1,49 @@
+{
+  "name": "FrameFlow",
+  "slug": "frameflow",
+  "category": "protein_design",
+  "tags": [
+    "Protein Design"
+  ],
+  "description": "Scaffold parts of an existing protein with newly designed structures, given a pdb structure. Generate de-novo protein backbones. Want to test a large number of potential designs? Get in touch at info@tamarind.bio.",
+  "capabilities": [
+    "Scaffold parts of an existing protein with newly designed structures, given a pdb structure",
+    "Generate de-novo protein backbones",
+    "Want to test a large number of potential designs? Get in touch at info@tamarind.bio"
+  ],
+  "api_type": "frameflow",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "motifResidues": "A10-A25",
+    "scaffoldLength": "80-120",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Input PDB structure for motif scaffolding. Optional for de novo backbone generation."
+    },
+    "motifResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residue positions of the motif to scaffold",
+      "example": "A10-A25"
+    },
+    "scaffoldLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed scaffold",
+      "example": "80-120"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of backbone designs to generate"
+    }
+  },
+  "outputs": {}
+}

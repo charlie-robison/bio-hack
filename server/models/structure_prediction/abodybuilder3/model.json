@@ -1,0 +1,36 @@
+{
+  "name": "ABodyBuilder3",
+  "slug": "abodybuilder3",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Structure Prediction"
+  ],
+  "description": "Rapidly predict antibody structures given H and L sequences using language model embeddings. State of the art accuracy in modeling CDR loops, with 80% of models passing pLDDT threshold of 85 having RMSD below 2A.",
+  "capabilities": [
+    "Rapidly predict antibody structures given H and L sequences using language model embeddings",
+    "State of the art accuracy in modeling CDR loops, with 80% of models passing pLDDT threshold of 85 having RMSD below 2A"
+  ],
+  "api_type": "abodybuilder3",
+  "api_settings_example": {
+    "heavySequence": "EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAR",
+    "lightSequence": "DIQMTQSPSSLSASVGDRVTITCRASQGIRNDLGWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCLQHNSYPLT"
+  },
+  "inputs": {
+    "heavySequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Heavy chain (VH) amino acid sequence of the antibody",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAR"
+    },
+    "lightSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Light chain (VL) amino acid sequence of the antibody",
+      "example": "DIQMTQSPSSLSASVGDRVTITCRASQGIRNDLGWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCLQHNSYPLT"
+    }
+  },
+  "outputs": {}
+}

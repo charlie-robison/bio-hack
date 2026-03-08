@@ -1,0 +1,83 @@
+{
+  "name": "IntelliFold 2",
+  "slug": "intellifold-2",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Structure Prediction",
+    "Protein Protein Docking",
+    "Protein Ligand Docking"
+  ],
+  "description": "Predicts the 3D structure of proteins, RNA, DNA, and small molecules with support for modified residues and covalent ligands. Outperforms AlphaFold 3 on FoldBench with 54.5% antibody-antigen and 66.7% protein-ligand success rates (vs AF3's 47.9% and 64.9%). Three model variants: v2 (most accurate, 0.89 protein monomer LDDT), v2-flash (fast), and v1.",
+  "capabilities": [
+    "Predicts the 3D structure of proteins, RNA, DNA, and small molecules with support for modified residues and covalent ligands",
+    "Outperforms AlphaFold 3 on FoldBench with 54.5% antibody-antigen and 66.7% protein-ligand success rates (vs AF3's 47.9% and 64.9%)",
+    "Three model variants: v2 (most accurate, 0.89 protein monomer LDDT), v2-flash (fast), and v1"
+  ],
+  "api_type": "intellifold-2",
+  "api_settings_example": {
+    "sequences": [
+      {
+        "entityType": "protein",
+        "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+      }
+    ],
+    "modelVariant": "v2",
+    "numSamples": 1
+  },
+  "inputs": {
+    "sequences": {
+      "type": "array",
+      "required": true,
+      "description": "Array of entity objects. Each entity has a type (protein, rna, dna, or ligand) and corresponding sequence or SMILES.",
+      "items": {
+        "entityType": {
+          "type": "string",
+          "options": [
+            "protein",
+            "rna",
+            "dna",
+            "ligand"
+          ],
+          "description": "Type of molecular entity"
+        },
+        "sequence": {
+          "type": "string",
+          "format": "amino_acid_sequence",
+          "description": "Amino acid sequence for protein, nucleotide sequence for RNA/DNA"
+        },
+        "smiles": {
+          "type": "string",
+          "format": "smiles",
+          "description": "SMILES string for ligand entities"
+        }
+      },
+      "example": [
+        {
+          "entityType": "protein",
+          "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+        }
+      ]
+    },
+    "modelVariant": {
+      "type": "string",
+      "required": false,
+      "default": "v2",
+      "options": [
+        "v2",
+        "v2-flash",
+        "v1"
+      ],
+      "description": "Model variant to use. v2 is most accurate (0.89 protein monomer LDDT), v2-flash is fast, v1 is the original."
+    },
+    "numSamples": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of structure predictions to return"
+    }
+  },
+  "outputs": {}
+}

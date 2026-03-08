@@ -1,0 +1,30 @@
+{
+  "name": "deepSTABp",
+  "slug": "deepstabp",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Thermostability",
+    "Developability",
+    "Protein Language Models"
+  ],
+  "description": "Predict protein melting temperature given sequence using protein language model. Outperforms existing approaches like ProTstab2.",
+  "capabilities": [
+    "Predict protein melting temperature given sequence using protein language model",
+    "Outperforms existing approaches like ProTstab2"
+  ],
+  "api_type": "deepstabp",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH..."
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for melting temperature prediction"
+    }
+  },
+  "outputs": {}
+}

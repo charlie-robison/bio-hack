@@ -1,0 +1,43 @@
+{
+  "name": "Dayhoff",
+  "slug": "dayhoff",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Protein Design"
+  ],
+  "description": "Generate new protein sequences from known sequence and homologous sequences from MSA. Perform guided generation of novel proteins within specified families. Generated sequences wet lab validated for in vitro expression (15/29 proteins express successfully from Dayhoff-170m-UR50-BRn).",
+  "capabilities": [
+    "Generate new protein sequences from known sequence and homologous sequences from MSA",
+    "Perform guided generation of novel proteins within specified families",
+    "Generated sequences wet lab validated for in vitro expression (15/29 proteins express successfully from Dayhoff-170m-UR50-BRn)"
+  ],
+  "api_type": "dayhoff",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAAD...",
+    "msaFile": "path/to/file",
+    "numSequences": 10
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence to generate variants from",
+      "example": "MKFLILLFNILCLFPVLAAD..."
+    },
+    "msaFile": {
+      "type": "file",
+      "format": "fasta",
+      "required": false,
+      "description": "Multiple sequence alignment of homologous sequences in FASTA format"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of novel protein sequences to generate"
+    }
+  },
+  "outputs": {}
+}

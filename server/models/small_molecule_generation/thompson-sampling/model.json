@@ -1,0 +1,41 @@
+{
+  "name": "Thompson Sampling",
+  "slug": "thompson-sampling",
+  "category": "small_molecule_generation",
+  "tags": [
+    "Small Molecule",
+    "Generate Small Molecules"
+  ],
+  "description": "Efficiently search synthesis on demand databases given your reagent smiles and reaction SMARTS. Use active learning to search the reagent space to screen large un-enumerated libraries such as Enamine REAL SPACE.",
+  "capabilities": [
+    "Efficiently search synthesis on demand databases given your reagent smiles and reaction SMARTS",
+    "Use active learning to search the reagent space to screen large un-enumerated libraries such as Enamine REAL SPACE"
+  ],
+  "api_type": "thompson-sampling",
+  "api_settings_example": {
+    "reaction_smarts": "[C:1](=O)[OH].[N:2]>>[C:1](=O)[N:2]",
+    "num_iterations": 100
+  },
+  "inputs": {
+    "reagent_smiles": {
+      "type": "file",
+      "format": "csv_file",
+      "required": true,
+      "description": "CSV file with reagent SMILES strings"
+    },
+    "reaction_smarts": {
+      "type": "string",
+      "format": "reaction_smarts",
+      "required": true,
+      "description": "Reaction SMARTS defining the chemical transformation",
+      "example": "[C:1](=O)[OH].[N:2]>>[C:1](=O)[N:2]"
+    },
+    "num_iterations": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of Thompson sampling iterations"
+    }
+  },
+  "outputs": {}
+}

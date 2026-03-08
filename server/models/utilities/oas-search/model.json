@@ -1,0 +1,26 @@
+{
+  "name": "OAS Search",
+  "slug": "oas-search",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Find proteins similar to your input sequence in the OAS paired sequence database.",
+  "capabilities": [
+    "Find proteins similar to your input sequence in the OAS paired sequence database"
+  ],
+  "api_type": "oas-search",
+  "api_settings_example": {
+    "sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPT"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody sequence to search against the OAS paired sequence database",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPT"
+    }
+  },
+  "outputs": {}
+}

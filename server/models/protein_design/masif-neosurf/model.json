@@ -1,0 +1,43 @@
+{
+  "name": "MaSIF-neosurf",
+  "slug": "masif-neosurf",
+  "category": "protein_design",
+  "tags": [
+    "Protein Design"
+  ],
+  "description": "Surface-based protein design for ternary complexes.. From a protein structure MaSIF computes a molecular surface discretized as a mesh. Then, MaSIF applies a geometric deep neural network to these patches.. Surface fingerprints trained only on proteins can be applied to neosurfaces emerging from small molecules. MaSIF processes the input PDB by creating a triangulated molecular surface and computing surface features. It then finds complementary seeds, refines them into motifs, searches a structural database for scaffolds, grafts the seeds, and refines the scaffolds to produce the final design.. Experimental, features will be generated but full embeddings not currently supported.",
+  "capabilities": [
+    "Surface-based protein design for ternary complexes.",
+    "From a protein structure MaSIF computes a molecular surface discretized as a mesh. Then, MaSIF applies a geometric deep neural network to these patches.",
+    "Surface fingerprints trained only on proteins can be applied to neosurfaces emerging from small molecules",
+    "MaSIF processes the input PDB by creating a triangulated molecular surface and computing surface features. It then finds complementary seeds, refines them into motifs, searches a structural database for scaffolds, grafts the seeds, and refines the scaffolds to produce the final design.",
+    "Experimental, features will be generated but full embeddings not currently supported"
+  ],
+  "api_type": "masif-neosurf",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input protein structure in PDB format for surface-based design"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of scaffold designs to generate"
+    }
+  },
+  "outputs": {}
+}

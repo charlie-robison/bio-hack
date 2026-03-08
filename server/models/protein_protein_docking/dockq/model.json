@@ -1,0 +1,38 @@
+{
+  "name": "DockQ",
+  "slug": "dockq",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Peptide",
+    "Antibody",
+    "Small Molecule",
+    "Protein Protein Docking",
+    "Utilities"
+  ],
+  "description": "Score a docked model pose given a native complex for Protein, Nucleic Acids and Small Molecule Docking Models. Receive a DockQ score, along with interface and ligand RMSD, precision/recall for native residues, and number of clashes.. Find the optimal mapping between interfaces found in the native and in the model.",
+  "capabilities": [
+    "Score a docked model pose given a native complex for Protein, Nucleic Acids and Small Molecule Docking Models",
+    "Receive a DockQ score, along with interface and ligand RMSD, precision/recall for native residues, and number of clashes.",
+    "Find the optimal mapping between interfaces found in the native and in the model"
+  ],
+  "api_type": "dockq",
+  "api_settings_example": {
+    "native_pdb": "path/to/native_complex.pdb",
+    "model_pdb": "path/to/model_complex.pdb"
+  },
+  "inputs": {
+    "native_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Native (reference) complex structure in PDB or mmCIF format"
+    },
+    "model_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Predicted/docked model complex structure in PDB or mmCIF format to evaluate"
+    }
+  },
+  "outputs": {}
+}

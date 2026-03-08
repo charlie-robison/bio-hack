@@ -1,0 +1,26 @@
+{
+  "name": "TNP (Therapeutic Nanobody Profiler)",
+  "slug": "tnp-therapeutic-nanobody-profiler",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Developability"
+  ],
+  "description": "Predict nanobody developability, calibrated against 36 available clinical-stage nanobodies.",
+  "capabilities": [
+    "Predict nanobody developability, calibrated against 36 available clinical-stage nanobodies"
+  ],
+  "api_type": "tnp-therapeutic-nanobody-profiler",
+  "api_settings_example": {
+    "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFS..."
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Nanobody amino acid sequence for developability profiling"
+    }
+  },
+  "outputs": {}
+}

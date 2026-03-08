@@ -1,0 +1,51 @@
+{
+  "name": "BoltzDesign1",
+  "slug": "boltzdesign1",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "De Novo Binder Design",
+    "Protein Design"
+  ],
+  "description": "Design protein binders using inverted Boltz-1 model. All atom model enables generating diverse complexes with flexible ligand conformations.",
+  "capabilities": [
+    "Design protein binders using inverted Boltz-1 model",
+    "All atom model enables generating diverse complexes with flexible ligand conformations"
+  ],
+  "api_type": "boltzdesign1",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "binderLength": "70-100",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target structure in PDB format for binder design"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target",
+      "example": "A"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range for the designed binder",
+      "example": "70-100"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of binder designs to generate"
+    }
+  },
+  "outputs": {}
+}

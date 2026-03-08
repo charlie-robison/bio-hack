@@ -1,0 +1,75 @@
+{
+  "name": "RFdiffusion Protein Design",
+  "slug": "rfdiffusion-protein-design",
+  "category": "protein_design",
+  "tags": [
+    "Protein Design"
+  ],
+  "description": "Design a new protein using RFdiffusion and score it for various properties. Design a binder to a target, scaffold an existing motif, or diversify your protein to generate variants. Score for properties like thermostability, solubilty, and binding affinity.",
+  "capabilities": [
+    "Design a new protein using RFdiffusion and score it for various properties",
+    "Design a binder to a target, scaffold an existing motif, or diversify your protein to generate variants",
+    "Score for properties like thermostability, solubilty, and binding affinity"
+  ],
+  "api_type": "rfdiffusion-protein-design",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "task": "binder_design",
+    "targetChains": "A",
+    "binderLength": "70-100",
+    "hotspots": "A10,A15,A20",
+    "numDesigns": 1,
+    "scoreProperties": true
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input protein structure in PDB format"
+    },
+    "task": {
+      "type": "string",
+      "required": true,
+      "description": "Design task type",
+      "enum": [
+        "binder_design",
+        "motif_scaffolding",
+        "diversify"
+      ],
+      "example": "binder_design"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed binder",
+      "example": "70-100"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Target residues to focus design on",
+      "example": "A10,A15,A20"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of designs to generate"
+    },
+    "scoreProperties": {
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "Score designs for thermostability, solubility, and binding affinity"
+    }
+  },
+  "outputs": {}
+}

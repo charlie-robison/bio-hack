@@ -1,0 +1,73 @@
+{
+  "name": "mBER",
+  "slug": "mber",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Protein Design",
+    "Antibody Design",
+    "De Novo Binder Design"
+  ],
+  "description": "Design VHH binders against target proteins using structure templates and sequence conditioning. Leverages AlphaFold-Multimer for protein folding predictions during optimization. Support for custom epitope/hotspot selection to target specific binding sites. Automatic hotspot detection when hotspot residues not specified. Achieved specific and significant design success against 45% of 145 targets. In a filtered set of designs, detected binding rates to specific epitopes as high as 38%.",
+  "capabilities": [
+    "Design VHH binders against target proteins using structure templates and sequence conditioning",
+    "Leverages AlphaFold-Multimer for protein folding predictions during optimization",
+    "Support for custom epitope/hotspot selection to target specific binding sites",
+    "Automatic hotspot detection when hotspot residues not specified",
+    "Achieved specific and significant design success against 45% of 145 targets. In a filtered set of designs, detected binding rates to specific epitopes as high as 38%"
+  ],
+  "api_type": "mber",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "hotspotResidues": "A10,A15,A20",
+    "vhhTemplate": "EVQLVES***GGLVQ***PGGSLRL***",
+    "plmModel": "ESM",
+    "temperature": 1.0
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "hotspotResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Specific epitope residues to target. If empty, mBER auto-detects binding sites.",
+      "example": "A10,A15,A20"
+    },
+    "vhhTemplate": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "VHH framework sequence where asterisks (*) denote CDR regions for optimization",
+      "example": "EVQLVES***GGLVQ***PGGSLRL***"
+    },
+    "plmModel": {
+      "type": "string",
+      "required": false,
+      "default": "ESM",
+      "description": "Language model used for guidance",
+      "enum": [
+        "ESM",
+        "Ablang2"
+      ]
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 1.0,
+      "description": "Controls sequence sampling diversity (0.1 to 2.0)"
+    }
+  },
+  "outputs": {}
+}

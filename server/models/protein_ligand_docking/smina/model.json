@@ -1,0 +1,98 @@
+{
+  "name": "Smina",
+  "slug": "smina",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Small Molecule",
+    "Enzyme",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Predict how small molecules/drug candidates bind to receptors. Returns docked ligand pose and binding affinity prediction given a ligand sdf or smiles string and receptor pdb. Modifies AutoDock Vina to handle unconventional ligands.",
+  "capabilities": [
+    "Predict how small molecules/drug candidates bind to receptors",
+    "Returns docked ligand pose and binding affinity prediction given a ligand sdf or smiles string and receptor pdb",
+    "Modifies AutoDock Vina to handle unconventional ligands"
+  ],
+  "api_type": "smina",
+  "api_settings_example": {
+    "receptor_pdb": "path/to/receptor.pdb",
+    "ligand_sdf": "path/to/ligand.sdf",
+    "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "center_x": 10.0,
+    "center_y": 20.0,
+    "center_z": 30.0,
+    "size_x": 20.0,
+    "size_y": 20.0,
+    "size_z": 20.0,
+    "exhaustiveness": 8,
+    "n_poses": 9
+  },
+  "inputs": {
+    "receptor": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Receptor protein structure in PDB format"
+    },
+    "ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format"
+    },
+    "ligand_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "Alternative: ligand as SMILES string",
+      "example": "CC(=O)Oc1ccccc1C(=O)O"
+    },
+    "center_x": {
+      "type": "float",
+      "required": true,
+      "description": "X coordinate of the binding box center"
+    },
+    "center_y": {
+      "type": "float",
+      "required": true,
+      "description": "Y coordinate of the binding box center"
+    },
+    "center_z": {
+      "type": "float",
+      "required": true,
+      "description": "Z coordinate of the binding box center"
+    },
+    "size_x": {
+      "type": "float",
+      "required": false,
+      "description": "Width of the binding box along X axis (Angstroms)",
+      "default": 20.0
+    },
+    "size_y": {
+      "type": "float",
+      "required": false,
+      "description": "Width of the binding box along Y axis (Angstroms)",
+      "default": 20.0
+    },
+    "size_z": {
+      "type": "float",
+      "required": false,
+      "description": "Width of the binding box along Z axis (Angstroms)",
+      "default": 20.0
+    },
+    "exhaustiveness": {
+      "type": "integer",
+      "required": false,
+      "description": "Exhaustiveness of the global search",
+      "default": 8
+    },
+    "n_poses": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of binding poses to generate",
+      "default": 9
+    }
+  },
+  "outputs": {}
+}

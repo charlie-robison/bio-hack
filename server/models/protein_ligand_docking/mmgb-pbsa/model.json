@@ -1,0 +1,66 @@
+{
+  "name": "MM/GB(PB)SA",
+  "slug": "mmgb-pbsa",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Molecular Dynamics",
+    "Protein Ligand Docking"
+  ],
+  "description": "Calculate binding free energy between protein and ligand or protein and protein using MM/GB(PB)SA. Supports energy minimization (fast scoring) or full MD simulation (averaged over trajectory frames). Choose between Generalized Born (GB) or Poisson-Boltzmann (PB) solvation models.",
+  "capabilities": [
+    "Calculate binding free energy between protein and ligand or protein and protein using MM/GB(PB)SA",
+    "Supports energy minimization (fast scoring) or full MD simulation (averaged over trajectory frames)",
+    "Choose between Generalized Born (GB) or Poisson-Boltzmann (PB) solvation models"
+  ],
+  "api_type": "mmgb_pbsa",
+  "api_settings_example": {
+    "complex_pdb": "path/to/complex.pdb",
+    "receptor_chain": "A",
+    "ligand_chain": "LIG",
+    "solvation_model": "GB",
+    "simulation_mode": "minimize",
+    "num_frames": 100
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein-ligand or protein-protein complex structure in PDB format"
+    },
+    "receptor_chain": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID(s) for the receptor protein",
+      "example": "A"
+    },
+    "ligand_chain": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID or residue name for the ligand"
+    },
+    "solvation_model": {
+      "type": "string",
+      "required": false,
+      "description": "Solvation model to use for free energy calculation",
+      "options": ["GB", "PB"],
+      "default": "GB"
+    },
+    "simulation_mode": {
+      "type": "string",
+      "required": false,
+      "description": "Calculation mode: energy minimization (fast) or full MD simulation (accurate)",
+      "options": ["minimize", "md"],
+      "default": "minimize"
+    },
+    "num_frames": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of MD trajectory frames to average over (only for md mode)",
+      "default": 100
+    }
+  },
+  "outputs": {}
+}

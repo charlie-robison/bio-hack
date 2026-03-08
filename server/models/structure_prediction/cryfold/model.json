@@ -1,0 +1,27 @@
+{
+  "name": "CryFold",
+  "slug": "cryfold",
+  "category": "structure_prediction",
+  "tags": [
+    "CryoEM",
+    "Structure Prediction",
+    "Experimental Data"
+  ],
+  "description": "Automatic atomic model building program for protein and nucleic acid structures from cryo-EM maps given a mrc file.",
+  "capabilities": [
+    "Automatic atomic model building program for protein and nucleic acid structures from cryo-EM maps given a mrc file"
+  ],
+  "api_type": "cryfold",
+  "api_settings_example": {
+    "mrcFile": "path/to/density_map.mrc"
+  },
+  "inputs": {
+    "mrcFile": {
+      "type": "file",
+      "format": "mrc_file",
+      "required": true,
+      "description": "Cryo-EM density map file in MRC format for automatic atomic model building"
+    }
+  },
+  "outputs": {}
+}

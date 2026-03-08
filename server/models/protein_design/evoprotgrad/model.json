@@ -1,0 +1,51 @@
+{
+  "name": "EvoProtGrad",
+  "slug": "evoprotgrad",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Enzyme",
+    "Protein Design",
+    "Protein Language Models"
+  ],
+  "description": "Generate mutations with directed evolution given a protein sequence with a fast Markov chain Monte Carlo sampler. Uses mixture of expert models: ESM2, Protein EVmutation Potts, Energy Based Model, and Denoising Autoencoder to discover variants with high evolutionary likelihood.",
+  "capabilities": [
+    "Generate mutations with directed evolution given a protein sequence with a fast Markov chain Monte Carlo sampler",
+    "Uses mixture of expert models: ESM2, Protein EVmutation Potts, Energy Based Model, and Denoising Autoencoder to discover variants with high evolutionary likelihood"
+  ],
+  "api_type": "evoprotgrad",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAAD...",
+    "numSteps": 100,
+    "numSequences": 10,
+    "expertModels": "ESM2,EVmutation"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence for directed evolution",
+      "example": "MKFLILLFNILCLFPVLAAD..."
+    },
+    "numSteps": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of MCMC sampling steps"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of evolved variant sequences to return"
+    },
+    "expertModels": {
+      "type": "string",
+      "required": false,
+      "description": "Mixture of expert models to use (e.g., ESM2, EVmutation, EBM, DAE)",
+      "example": "ESM2,EVmutation"
+    }
+  },
+  "outputs": {}
+}

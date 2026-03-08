@@ -1,0 +1,30 @@
+{
+  "name": "TEMPRO",
+  "slug": "tempro",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Thermostability",
+    "Developability",
+    "Protein Language Models"
+  ],
+  "description": "Predict melting temperature of nanobodies. Uses ESM2 language model embeddings. Achieves mean absolute error (MAE) or 4.03\u00b0C and root mean squared error (RMSE) of 5.66\u00b0C.",
+  "capabilities": [
+    "Predict melting temperature of nanobodies",
+    "Uses ESM2 language model embeddings",
+    "Achieves mean absolute error (MAE) or 4.03\u00b0C and root mean squared error (RMSE) of 5.66\u00b0C"
+  ],
+  "api_type": "tempro",
+  "api_settings_example": {
+    "sequence": "QVQLVESGGGLVQAGGSLRLSCAASGRTFS..."
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Nanobody amino acid sequence for melting temperature prediction"
+    }
+  },
+  "outputs": {}
+}

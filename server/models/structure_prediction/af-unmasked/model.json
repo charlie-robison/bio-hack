@@ -1,0 +1,57 @@
+{
+  "name": "AF Unmasked",
+  "slug": "af-unmasked",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Structure Prediction"
+  ],
+  "description": "Structure prediction using multimeric template information for assembly of subunits. Generates high quality (DockQ > 0.8) structures even with no evolutionary information and imperfect templates.",
+  "capabilities": [
+    "Structure prediction using multimeric template information for assembly of subunits",
+    "Generates high quality (DockQ > 0.8) structures even with no evolutionary information and imperfect templates"
+  ],
+  "api_type": "af-unmasked",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS:EVQLVESGGGLVQPGG",
+    "numModels": "5",
+    "numRecycles": 3
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence. Use ':' to separate chains for multimers.",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS:EVQLVESGGGLVQPGG"
+    },
+    "templateFiles": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Multimeric template PDB files to guide structure assembly of subunits"
+    },
+    "numModels": {
+      "type": "integer",
+      "required": false,
+      "default": 5,
+      "options": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "Number of structure models to generate"
+    },
+    "numRecycles": {
+      "type": "integer",
+      "required": false,
+      "default": 3,
+      "description": "Number of recycling iterations"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Evo 2",
+  "slug": "evo-2",
+  "category": "rna_language_models",
+  "tags": [
+    "Nucleic Acid",
+    "RNA Language Models"
+  ],
+  "description": "Returns the Evo 2 embeddings.",
+  "capabilities": [
+    "Returns the Evo 2 embeddings"
+  ],
+  "api_type": "evo-2",
+  "api_settings_example": {
+    "sequence": "ATGCTAGCTAGCTAGCTAGC"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "dna_sequence",
+      "required": true,
+      "description": "DNA or RNA sequence for Evo 2 embedding generation",
+      "example": "ATGCTAGCTAGCTAGCTAGC"
+    }
+  },
+  "outputs": {}
+}

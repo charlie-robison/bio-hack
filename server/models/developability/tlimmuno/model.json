@@ -1,0 +1,35 @@
+{
+  "name": "TLimmuno",
+  "slug": "tlimmuno",
+  "category": "developability",
+  "tags": [
+    "Antibody",
+    "Humanization",
+    "Developability",
+    "Immunogenicity"
+  ],
+  "description": "Given a list peptides of length 9 or 10 AAs and matching HLAs, predict whether the peptide will elicit T cell response. Binding affinity model showed better accuracy compared to NetMHCIIpan4.0 and MixMHC2pred.",
+  "capabilities": [
+    "Given a list peptides of length 9 or 10 AAs and matching HLAs, predict whether the peptide will elicit T cell response",
+    "Binding affinity model showed better accuracy compared to NetMHCIIpan4.0 and MixMHC2pred"
+  ],
+  "api_type": "tlimmuno",
+  "api_settings_example": {
+    "peptides": "GILGFVFTL",
+    "hla": "HLA-DRB1*01:01"
+  },
+  "inputs": {
+    "peptides": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Peptide sequences of length 9 or 10 amino acids for T cell response prediction"
+    },
+    "hla": {
+      "type": "string",
+      "required": true,
+      "description": "HLA allele name matching the input peptides (e.g., HLA-DRB1*01:01)"
+    }
+  },
+  "outputs": {}
+}

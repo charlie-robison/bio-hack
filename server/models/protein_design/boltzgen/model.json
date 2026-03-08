@@ -1,0 +1,146 @@
+{
+  "name": "BoltzGen",
+  "slug": "boltzgen",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "De Novo Binder Design",
+    "Protein Design",
+    "Antibody Design"
+  ],
+  "description": "Designs nanobodies, antibodies, proteins, peptides, and cyclotides to bind protein targets. Designs proteins to bind small molecules. Specifies binding sites or exclusion zones on targets. Supports constraints: disulfide bonds, secondary structure (helix/loop/sheet), cyclic peptides. 67% experimental success rate: 6 of 9 targets yielded nanomolar nanobody binders with no prior structural data.",
+  "capabilities": [
+    "Designs nanobodies, antibodies, proteins, peptides, and cyclotides to bind protein targets",
+    "Designs proteins to bind small molecules",
+    "Specifies binding sites or exclusion zones on targets",
+    "Supports constraints: disulfide bonds, secondary structure (helix/loop/sheet), cyclic peptides",
+    "67% experimental success rate: 6 of 9 targets yielded nanomolar nanobody binders with no prior structural data"
+  ],
+  "api_type": "boltzgen",
+  "api_settings_example": {
+    "task": "nanobody",
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "bindingSiteResidues": "A10,A15,A20",
+    "lengthRange": "100-150",
+    "scaffoldType": "default",
+    "frameworkPdbFile": "path/to/file.pdb",
+    "frameworkSequence": "MKTLLILAVVAAALA...",
+    "cyclic": false,
+    "targetSmiles": "CC(=O)OC1=CC=CC=C1C(=O)O",
+    "omitAminoAcids": "C",
+    "numDesigns": 10,
+    "batchSize": 10,
+    "budget": 2
+  },
+  "inputs": {
+    "task": {
+      "type": "string",
+      "required": true,
+      "description": "Design task type",
+      "enum": [
+        "nanobody",
+        "antibody",
+        "protein_binder",
+        "peptide",
+        "cyclotide",
+        "small_molecule_binder",
+        "custom",
+        "yaml"
+      ],
+      "example": "nanobody"
+    },
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Target protein structure in PDB format (required for protein target tasks)"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target. Defaults to all chains.",
+      "example": "A"
+    },
+    "bindingSiteResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Specific residues on the target to bind",
+      "example": "A10,A15,A20"
+    },
+    "lengthRange": {
+      "type": "string",
+      "required": false,
+      "description": "Length range for the designed protein/peptide",
+      "example": "100-150"
+    },
+    "scaffoldType": {
+      "type": "string",
+      "required": false,
+      "default": "default",
+      "description": "Use default (de novo) or custom framework scaffold",
+      "enum": [
+        "default",
+        "custom"
+      ]
+    },
+    "frameworkPdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": false,
+      "description": "Custom framework structure for scaffold-based design"
+    },
+    "frameworkSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Framework sequence with CDR placeholders using ranges for nanobody/antibody design"
+    },
+    "cdrRegions": {
+      "type": "string",
+      "required": false,
+      "description": "CDR regions to design in the framework"
+    },
+    "cyclic": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Whether to design cyclic peptides (peptide task only)"
+    },
+    "targetSmiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "SMILES string for small molecule target (small_molecule_binder task only)",
+      "example": "CC(=O)OC1=CC=CC=C1C(=O)O"
+    },
+    "omitAminoAcids": {
+      "type": "string",
+      "required": false,
+      "default": "C",
+      "description": "Amino acids to exclude from the design",
+      "example": "C"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of designs to generate (range: 1-100000)"
+    },
+    "batchSize": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Designs per job when auto-batching is enabled"
+    },
+    "budget": {
+      "type": "integer",
+      "required": false,
+      "default": 2,
+      "description": "Final number of designs optimized for diversity and quality"
+    }
+  },
+  "outputs": {}
+}

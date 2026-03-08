@@ -1,0 +1,28 @@
+{
+  "name": "AbMAP",
+  "slug": "abmap",
+  "category": "protein_language_models",
+  "tags": [
+    "Antibody",
+    "Protein Language Models"
+  ],
+  "description": "Generate embeddings for antibody sequences. Sequence generation coming soon.",
+  "capabilities": [
+    "Generate embeddings for antibody sequences",
+    "Sequence generation coming soon"
+  ],
+  "api_type": "abmap",
+  "api_settings_example": {
+    "sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPT"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody amino acid sequence for embedding generation",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPT"
+    }
+  },
+  "outputs": {}
+}

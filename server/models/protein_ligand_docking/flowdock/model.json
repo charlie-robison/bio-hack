@@ -1,0 +1,53 @@
+{
+  "name": "FlowDock",
+  "slug": "flowdock",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Directly maps unbound (apo) protein structures to their bound (holo) counterparts for any number of binding ligands.. Among the top-5 methods for pharmacological binding affinity estimation across 140 protein-ligand complexes in CASP 16.. On the PoseBusters Benchmark dataset: Achieves a 51% blind docking success rate using only apo structures and no multiple sequence alignment information.. Matches single-sequence Chai-1 performance for binding pocket generalization on DockGen-E.",
+  "capabilities": [
+    "Directly maps unbound (apo) protein structures to their bound (holo) counterparts for any number of binding ligands.",
+    "Among the top-5 methods for pharmacological binding affinity estimation across 140 protein-ligand complexes in CASP 16.",
+    "On the PoseBusters Benchmark dataset: Achieves a 51% blind docking success rate using only apo structures and no multiple sequence alignment information.",
+    "Matches single-sequence Chai-1 performance for binding pocket generalization on DockGen-E."
+  ],
+  "api_type": "flowdock",
+  "api_settings_example": {
+    "protein_pdb": "path/to/apo_protein.pdb",
+    "ligand_sdf": "path/to/ligand.sdf",
+    "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "n_poses": 10
+  },
+  "inputs": {
+    "protein_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Apo (unbound) protein structure in PDB format"
+    },
+    "ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format"
+    },
+    "ligand_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "Alternative: ligand as SMILES string",
+      "example": "CC(=O)Oc1ccccc1C(=O)O"
+    },
+    "n_poses": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of docking poses to generate",
+      "default": 10
+    }
+  },
+  "outputs": {}
+}

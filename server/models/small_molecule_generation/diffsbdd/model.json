@@ -1,0 +1,47 @@
+{
+  "name": "DiffSBDD",
+  "slug": "diffsbdd",
+  "category": "small_molecule_generation",
+  "tags": [
+    "Small Molecule",
+    "Generate Small Molecules"
+  ],
+  "description": "Generate or optimize small molecules in the binding pocket of a protein. Structure-based drug design using diffusion model.",
+  "capabilities": [
+    "Generate or optimize small molecules in the binding pocket of a protein",
+    "Structure-based drug design using diffusion model"
+  ],
+  "api_type": "diffsbdd",
+  "api_settings_example": {
+    "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "num_molecules": 100
+  },
+  "inputs": {
+    "receptor_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format"
+    },
+    "reference_ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Reference ligand to define the binding pocket"
+    },
+    "smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "SMILES string of seed molecule to optimize",
+      "example": "CC(=O)Oc1ccccc1C(=O)O"
+    },
+    "num_molecules": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of molecules to generate"
+    }
+  },
+  "outputs": {}
+}

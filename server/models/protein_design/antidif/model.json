@@ -1,0 +1,48 @@
+{
+  "name": "AntiDIF",
+  "slug": "antidif",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Inverse Folding",
+    "Antibody Design"
+  ],
+  "description": "Generate diverse antibody sequences from 3D backbone structure using discrete diffusion.",
+  "capabilities": [
+    "Generate diverse antibody sequences from 3D backbone structure using discrete diffusion"
+  ],
+  "api_type": "antidif",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "heavyChainId": "H",
+    "lightChainId": "L",
+    "numSequences": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody 3D backbone structure in PDB format"
+    },
+    "heavyChainId": {
+      "type": "string",
+      "required": true,
+      "description": "Chain ID of the heavy chain",
+      "example": "H"
+    },
+    "lightChainId": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the light chain",
+      "example": "L"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of diverse sequences to generate via discrete diffusion"
+    }
+  },
+  "outputs": {}
+}

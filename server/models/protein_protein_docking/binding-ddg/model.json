@@ -1,0 +1,37 @@
+{
+  "name": "Binding ddG",
+  "slug": "binding-ddg",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Antibody",
+    "Protein Protein Docking",
+    "Binding Affinity",
+    "Point Mutations"
+  ],
+  "description": "Predict changes in binding energy upon mutation for protein-protein complexes. Wild Type and Mutant Protein Complexes must have the same chain lengths. Experimentally shown to improve antibody CDRs, increasing potency by ~10 to 600-fold against SARS-CoV-2 variants.",
+  "capabilities": [
+    "Predict changes in binding energy upon mutation for protein-protein complexes",
+    "Wild Type and Mutant Protein Complexes must have the same chain lengths",
+    "Experimentally shown to improve antibody CDRs, increasing potency by ~10 to 600-fold against SARS-CoV-2 variants"
+  ],
+  "api_type": "binding_ddg",
+  "api_settings_example": {
+    "wildtype_pdb": "path/to/wildtype_complex.pdb",
+    "mutant_pdb": "path/to/mutant_complex.pdb"
+  },
+  "inputs": {
+    "wildtype_complex": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Wild-type protein-protein complex structure in PDB format"
+    },
+    "mutant_complex": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Mutant protein-protein complex structure in PDB format (must have same chain lengths as wild type)"
+    }
+  },
+  "outputs": {}
+}

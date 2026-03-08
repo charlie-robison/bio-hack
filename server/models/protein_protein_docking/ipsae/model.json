@@ -1,0 +1,40 @@
+{
+  "name": "IPSAE",
+  "slug": "ipsae",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Protein Protein Docking",
+    "Binding Affinity"
+  ],
+  "description": "Scoring function for interprotein interactions in AlphaFold2 and Boltz.",
+  "capabilities": [
+    "Scoring function for interprotein interactions in AlphaFold2 and Boltz"
+  ],
+  "api_type": "ipsae",
+  "api_settings_example": {
+    "complex_pdb": "path/to/predicted_complex.pdb",
+    "chain_a": "A",
+    "chain_b": "B"
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Predicted protein complex structure in PDB format (from AlphaFold2 or Boltz)"
+    },
+    "chain_a": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the first interacting protein",
+      "example": "A"
+    },
+    "chain_b": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the second interacting protein",
+      "example": "B"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,54 @@
+{
+  "name": "MULTI-evolve",
+  "slug": "multi-evolve",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Antibody",
+    "Protein Design",
+    "Point Mutations",
+    "Experimental Data",
+    "Finetuning and Active Learning"
+  ],
+  "description": "Train neural network models on deep mutational scanning data and rank combinatorial variants. Propose multi-mutants from single-mutation pools using model-guided search. Generate MULTI-assembly mutagenic oligos for nominated variants. Run protein language model zero-shot ensemble nomination for single mutants.",
+  "capabilities": [
+    "Train neural network models on deep mutational scanning data and rank combinatorial variants",
+    "Propose multi-mutants from single-mutation pools using model-guided search",
+    "Generate MULTI-assembly mutagenic oligos for nominated variants",
+    "Run protein language model zero-shot ensemble nomination for single mutants"
+  ],
+  "api_type": "multi-evolve",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAAD...",
+    "dmsData": "path/to/file",
+    "mutationPool": "A10V,A15L,S20T",
+    "numVariants": 10
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Wild-type protein amino acid sequence",
+      "example": "MKFLILLFNILCLFPVLAAD..."
+    },
+    "dmsData": {
+      "type": "file",
+      "required": false,
+      "description": "Deep mutational scanning data file with mutations and fitness values (CSV format)"
+    },
+    "mutationPool": {
+      "type": "string",
+      "required": false,
+      "description": "Single mutation pool to combine into multi-mutants",
+      "example": "A10V,A15L,S20T"
+    },
+    "numVariants": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of combinatorial variants to nominate"
+    }
+  },
+  "outputs": {}
+}

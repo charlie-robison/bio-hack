@@ -1,0 +1,51 @@
+{
+  "name": "Caliby",
+  "slug": "caliby",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "Antibody",
+    "Enzyme",
+    "Inverse Folding",
+    "Protein Design"
+  ],
+  "description": "Conditioning on a synthetic ensemble generated from an input backbone allows sampling of sequences consistent with the structural constraints of the ensemble while averaging out undesired biases towards the native sequence.. Ensemble-conditioned sequence design with Caliby reduces native sequence recovery while substantially improving AlphaFold2 self-consistency, outperforming state-of-the-art models ProteinMPNN and ChromaDesign on both native and de novo backbones.",
+  "capabilities": [
+    "Conditioning on a synthetic ensemble generated from an input backbone allows sampling of sequences consistent with the structural constraints of the ensemble while averaging out undesired biases towards the native sequence.",
+    "Ensemble-conditioned sequence design with Caliby reduces native sequence recovery while substantially improving AlphaFold2 self-consistency, outperforming state-of-the-art models ProteinMPNN and ChromaDesign on both native and de novo backbones"
+  ],
+  "api_type": "caliby",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "designedChains": "A",
+    "temperature": 0.1,
+    "numSequences": 8
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input backbone structure in PDB format for ensemble-conditioned sequence design"
+    },
+    "designedChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs to design sequences for",
+      "example": "A"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 0.1,
+      "description": "Sampling temperature for sequence diversity"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    }
+  },
+  "outputs": {}
+}

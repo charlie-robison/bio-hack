@@ -1,0 +1,41 @@
+{
+  "name": "DSMBind",
+  "slug": "dsmbind",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Antibody",
+    "Protein Protein Docking",
+    "Binding Affinity"
+  ],
+  "description": "Predict antibody-antigen binding affinity.",
+  "capabilities": [
+    "Predict antibody-antigen binding affinity"
+  ],
+  "api_type": "dsmbind",
+  "api_settings_example": {
+    "complex_pdb": "path/to/ab_ag_complex.pdb",
+    "antibody_chain_ids": "H,L",
+    "antigen_chain_id": "A"
+  },
+  "inputs": {
+    "complex_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody-antigen complex structure in PDB format"
+    },
+    "antibody_chain_ids": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the antibody chains",
+      "example": "H,L"
+    },
+    "antigen_chain_id": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the antigen chain",
+      "example": "A"
+    }
+  },
+  "outputs": {}
+}

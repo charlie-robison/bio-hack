@@ -1,0 +1,29 @@
+{
+  "name": "File Converter",
+  "slug": "file-converter",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Convert between different file formats.",
+  "capabilities": [
+    "Convert between different file formats"
+  ],
+  "api_type": "file-converter",
+  "api_settings_example": {
+    "output_format": "pdb"
+  },
+  "inputs": {
+    "input_file": {
+      "type": "file",
+      "required": true,
+      "description": "Input file to convert to a different format"
+    },
+    "output_format": {
+      "type": "string",
+      "required": true,
+      "description": "Target output format (e.g., 'pdb', 'sdf', 'mol2', 'fasta', 'csv')"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,43 @@
+{
+  "name": "ITsFlexible",
+  "slug": "itsflexible",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Structure Prediction"
+  ],
+  "description": "Classify conformational flexibility of antibody and TCR CDR3 loops. Predict whether loops adopt rigid (single conformation) or flexible (multiple conformations) structures. Classify loop motifs with identical secondary structures bounded between antiparallel beta-strands. Provides two predictors: 'loop' (alignment on loop residues) and 'anchors' (alignment on Fv residues). Outputs classification scores with confidence levels for rigid vs flexible predictions.",
+  "capabilities": [
+    "Classify conformational flexibility of antibody and TCR CDR3 loops",
+    "Predict whether loops adopt rigid (single conformation) or flexible (multiple conformations) structures",
+    "Classify loop motifs with identical secondary structures bounded between antiparallel beta-strands",
+    "Provides two predictors: 'loop' (alignment on loop residues) and 'anchors' (alignment on Fv residues)",
+    "Outputs classification scores with confidence levels for rigid vs flexible predictions"
+  ],
+  "api_type": "itsflexible",
+  "api_settings_example": {
+    "sequence": "CARDYLGYFDYW",
+    "predictor": "loop"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "CDR3 loop amino acid sequence from an antibody or TCR for flexibility classification",
+      "example": "CARDYLGYFDYW"
+    },
+    "predictor": {
+      "type": "string",
+      "required": false,
+      "default": "loop",
+      "options": [
+        "loop",
+        "anchors"
+      ],
+      "description": "Predictor type: 'loop' aligns on loop residues, 'anchors' aligns on Fv residues"
+    }
+  },
+  "outputs": {}
+}

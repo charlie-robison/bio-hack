@@ -1,0 +1,60 @@
+{
+  "name": "AbGPT",
+  "slug": "abgpt",
+  "category": "antibody_design",
+  "tags": [
+    "Antibody",
+    "Protein Language Models",
+    "Antibody Design"
+  ],
+  "description": "Generate antibody sequences using finetuned ProtGPT2 protein language model. Successfully generated library of 15,000 BCR sequences with strong diversity and developability profile.",
+  "capabilities": [
+    "Generate antibody sequences using finetuned ProtGPT2 protein language model",
+    "Successfully generated library of 15,000 BCR sequences with strong diversity and developability profile"
+  ],
+  "api_type": "abgpt",
+  "api_settings_example": {
+    "seed_sequence": "EVQLVESGGGLVQPGG",
+    "chain_type": "heavy",
+    "num_sequences": 100,
+    "temperature": 1.0,
+    "top_p": 0.95
+  },
+  "inputs": {
+    "seed_sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Optional seed amino acid sequence to condition generation on",
+      "example": "EVQLVESGGGLVQPGG"
+    },
+    "chain_type": {
+      "type": "string",
+      "required": false,
+      "description": "Type of antibody chain to generate",
+      "options": ["heavy", "light"],
+      "default": "heavy"
+    },
+    "num_sequences": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of antibody sequences to generate",
+      "default": 100
+    },
+    "temperature": {
+      "type": "float",
+      "required": false,
+      "description": "Sampling temperature controlling diversity vs conservation (higher = more diverse)",
+      "default": 1.0,
+      "example": 0.8
+    },
+    "top_p": {
+      "type": "float",
+      "required": false,
+      "description": "Nucleus sampling probability cutoff",
+      "default": 1.0,
+      "example": 0.95
+    }
+  },
+  "outputs": {}
+}

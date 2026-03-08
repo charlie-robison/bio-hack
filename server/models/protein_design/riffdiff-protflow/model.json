@@ -1,0 +1,48 @@
+{
+  "name": "RiffDiff-ProtFlow",
+  "slug": "riffdiff-protflow",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Protein Design"
+  ],
+  "description": "Generate backbone fragments from a theozyme to build a motif library. Generate and iteratively refine protein structures using multiple design tools.",
+  "capabilities": [
+    "Generate backbone fragments from a theozyme to build a motif library",
+    "Generate and iteratively refine protein structures using multiple design tools"
+  ],
+  "api_type": "riffdiff-protflow",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "theozymeResidues": "A41,A70,A101",
+    "numDesigns": 10,
+    "numIterations": 1
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input PDB structure containing theozyme or active site definition"
+    },
+    "theozymeResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": true,
+      "description": "Theozyme residue positions for motif library generation",
+      "example": "A41,A70,A101"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of protein scaffold designs to generate"
+    },
+    "numIterations": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of iterative refinement rounds"
+    }
+  },
+  "outputs": {}
+}

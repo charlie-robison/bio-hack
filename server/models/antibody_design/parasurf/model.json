@@ -1,0 +1,42 @@
+{
+  "name": "ParaSurf",
+  "slug": "parasurf",
+  "category": "antibody_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Developability"
+  ],
+  "description": "Predict paratope residues using geometric and non-geometric factors. Accurately predicts antibody binding sites across the Fab region, achieving state-of-the-art results.",
+  "capabilities": [
+    "Predict paratope residues using geometric and non-geometric factors",
+    "Accurately predicts antibody binding sites across the Fab region, achieving state-of-the-art results"
+  ],
+  "api_type": "parasurf",
+  "api_settings_example": {
+    "antibody_pdb": "path/to/antibody_fab.pdb",
+    "heavy_chain_id": "H",
+    "light_chain_id": "L"
+  },
+  "inputs": {
+    "antibody_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Antibody Fab structure file in PDB format"
+    },
+    "heavy_chain_id": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the heavy chain in the PDB file",
+      "example": "H"
+    },
+    "light_chain_id": {
+      "type": "string",
+      "required": false,
+      "description": "Chain ID of the light chain in the PDB file",
+      "example": "L"
+    }
+  },
+  "outputs": {}
+}

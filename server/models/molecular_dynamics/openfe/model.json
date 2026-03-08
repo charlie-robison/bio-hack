@@ -1,0 +1,47 @@
+{
+  "name": "OpenFE",
+  "slug": "openfe",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Small Molecule",
+    "Molecular Dynamics"
+  ],
+  "description": "Run protein ligand free energy calculation or Relative Binding Free Energy calculation.",
+  "capabilities": [
+    "Run protein ligand free energy calculation or Relative Binding Free Energy calculation"
+  ],
+  "api_type": "openfe",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb",
+    "ligand_files": "path/to/ligands.sdf",
+    "num_lambda_windows": 11,
+    "simulation_time_ns": 5
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for free energy calculation"
+    },
+    "ligand_files": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": true,
+      "description": "Ligand structure files in SDF format for relative binding free energy calculation"
+    },
+    "num_lambda_windows": {
+      "type": "integer",
+      "required": false,
+      "default": 11,
+      "description": "Number of lambda windows for free energy perturbation"
+    },
+    "simulation_time_ns": {
+      "type": "float",
+      "required": false,
+      "default": 5,
+      "description": "Simulation time per lambda window in nanoseconds"
+    }
+  },
+  "outputs": {}
+}

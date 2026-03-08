@@ -1,0 +1,65 @@
+{
+  "name": "LigandMPNN",
+  "slug": "ligandmpnn",
+  "category": "protein_design",
+  "tags": [
+    "Enzyme",
+    "Inverse Folding",
+    "Protein Design"
+  ],
+  "description": "Given an input pdb which contains a protein and a small molecule, nucleotide, or metal, design a set of sequences for that backbone. Extends ProteinMPNN to include enzymes, protein-nucleic acids, protein-metal, and protein-small molecule binders.",
+  "capabilities": [
+    "Given an input pdb which contains a protein and a small molecule, nucleotide, or metal, design a set of sequences for that backbone",
+    "Extends ProteinMPNN to include enzymes, protein-nucleic acids, protein-metal, and protein-small molecule binders"
+  ],
+  "api_type": "ligandmpnn",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "designedResidues": "A10,A15,B20",
+    "fixedResidues": "A1-A9",
+    "temperature": 0.1,
+    "numSequences": 8,
+    "omitAminoAcids": "C,M"
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input PDB containing protein and small molecule, nucleotide, or metal"
+    },
+    "designedResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residues to design. Format: {chain}{residue} (e.g., A10 B15). If not set, all residues are designed.",
+      "example": "A10,A15,B20"
+    },
+    "fixedResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residues to keep fixed during design",
+      "example": "A1-A9"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 0.1,
+      "description": "Sampling temperature controlling sequence diversity. Higher values generate more mutations."
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    },
+    "omitAminoAcids": {
+      "type": "string",
+      "required": false,
+      "description": "Amino acids to omit from being sampled",
+      "example": "C,M"
+    }
+  },
+  "outputs": {}
+}

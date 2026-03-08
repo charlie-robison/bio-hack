@@ -1,0 +1,41 @@
+{
+  "name": "PLAbDab",
+  "slug": "plabdab",
+  "category": "antibody_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Utilities"
+  ],
+  "description": "Searchable database of 150,000 paired antibody sequences extracted from patents and literature, linking each entry to its primary source.. Search for antibodies by keyword or sequence.",
+  "capabilities": [
+    "Searchable database of 150,000 paired antibody sequences extracted from patents and literature, linking each entry to its primary source.",
+    "Search for antibodies by keyword or sequence."
+  ],
+  "api_type": "plabdab",
+  "api_settings_example": {
+    "query": "trastuzumab",
+    "search_type": "keyword"
+  },
+  "inputs": {
+    "query": {
+      "type": "string",
+      "required": false,
+      "description": "Keyword search query to find antibodies by name, target, or source"
+    },
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Antibody amino acid sequence for sequence-based search"
+    },
+    "search_type": {
+      "type": "string",
+      "required": false,
+      "description": "Type of search to perform",
+      "options": ["keyword", "sequence"],
+      "default": "keyword"
+    }
+  },
+  "outputs": {}
+}

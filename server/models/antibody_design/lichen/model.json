@@ -1,0 +1,85 @@
+{
+  "name": "LICHEN",
+  "slug": "lichen",
+  "category": "antibody_design",
+  "tags": [
+    "Antibody",
+    "Antibody Design",
+    "Protein Language Models"
+  ],
+  "description": "Generate light chain sequences conditioned on heavy chain input. Supports germline seed specification (V-gene type, family, or specific genes). CDR grafting with IMGT or Kabat numbering schemes. Custom seed sequences for tailored generation. Built-in filtering: redundancy removal, diversity selection, humanness validation (Humatch), and AbLang2 scoring. Batch processing via FASTA or CSV file upload.",
+  "capabilities": [
+    "Generate light chain sequences conditioned on heavy chain input",
+    "Supports germline seed specification (V-gene type, family, or specific genes)",
+    "CDR grafting with IMGT or Kabat numbering schemes",
+    "Custom seed sequences for tailored generation",
+    "Built-in filtering: redundancy removal, diversity selection, humanness validation (Humatch), and AbLang2 scoring",
+    "Batch processing via FASTA or CSV file upload"
+  ],
+  "api_type": "lichen",
+  "api_settings_example": {
+    "heavy_chain": "EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYAMSWVRQAPGKGLEWVSAISGSGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAKVQLWDFDYWGQGTLVTVSS",
+    "germline_seed": "IGKV1-39",
+    "numbering_scheme": "IMGT",
+    "num_sequences": 100,
+    "filter_redundancy": true,
+    "filter_humanness": true
+  },
+  "inputs": {
+    "heavy_chain": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Heavy chain variable region (VH) amino acid sequence to condition light chain generation on"
+    },
+    "germline_seed": {
+      "type": "string",
+      "required": false,
+      "description": "Germline seed specification: V-gene type, family, or specific gene names",
+      "example": "IGKV1-39"
+    },
+    "cdr_grafting": {
+      "type": "string",
+      "required": false,
+      "description": "CDR sequences to graft into generated light chains"
+    },
+    "numbering_scheme": {
+      "type": "string",
+      "required": false,
+      "description": "Numbering scheme for CDR grafting",
+      "options": ["IMGT", "Kabat"],
+      "default": "IMGT"
+    },
+    "custom_seed_sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Custom light chain seed sequence for tailored generation"
+    },
+    "num_sequences": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of light chain sequences to generate",
+      "default": 100
+    },
+    "input_file": {
+      "type": "file",
+      "format": "fasta",
+      "required": false,
+      "description": "Batch input file in FASTA or CSV format containing multiple heavy chain sequences"
+    },
+    "filter_redundancy": {
+      "type": "boolean",
+      "required": false,
+      "description": "Enable redundancy removal filtering",
+      "default": true
+    },
+    "filter_humanness": {
+      "type": "boolean",
+      "required": false,
+      "description": "Enable humanness validation filtering via Humatch",
+      "default": true
+    }
+  },
+  "outputs": {}
+}

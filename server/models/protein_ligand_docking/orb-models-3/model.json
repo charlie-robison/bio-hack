@@ -1,0 +1,42 @@
+{
+  "name": "Orb Models 3",
+  "slug": "orb-models-3",
+  "category": "protein_ligand_docking",
+  "tags": [
+    "Small Molecule",
+    "Molecular Dynamics",
+    "Protein Ligand Docking",
+    "Binding Affinity"
+  ],
+  "description": "Compute an approximate interaction energy between a protein and ligand using the Orb-models v3 method.",
+  "capabilities": [
+    "Compute an approximate interaction energy between a protein and ligand using the Orb-models v3 method"
+  ],
+  "api_type": "orb_models_3",
+  "api_settings_example": {
+    "protein_pdb": "path/to/protein.pdb",
+    "ligand_sdf": "path/to/ligand.sdf",
+    "ligand_smiles": "CC(=O)Oc1ccccc1C(=O)O"
+  },
+  "inputs": {
+    "protein_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format"
+    },
+    "ligand": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": true,
+      "description": "Ligand structure in SDF format"
+    },
+    "ligand_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": false,
+      "description": "Alternative: ligand as SMILES string"
+    }
+  },
+  "outputs": {}
+}

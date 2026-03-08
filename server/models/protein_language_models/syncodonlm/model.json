@@ -1,0 +1,34 @@
+{
+  "name": "SynCodonLM",
+  "slug": "syncodonlm",
+  "category": "protein_language_models",
+  "tags": [
+    "Nucleic Acid",
+    "Protein Language Models",
+    "Utilities"
+  ],
+  "description": "Generate embeddings for a DNA sequence or generate natural coding-DNA sequences for a protein sequence.",
+  "capabilities": [
+    "Generate embeddings for a DNA sequence or generate natural coding-DNA sequences for a protein sequence"
+  ],
+  "api_type": "syncodonlm",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "mode": "generate"
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "required": true,
+      "description": "Protein amino acid sequence for codon optimization or DNA sequence for embedding generation",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "mode": {
+      "type": "string",
+      "required": false,
+      "description": "Mode of operation: 'embeddings' for DNA embeddings, 'generate' for coding DNA generation",
+      "default": "generate"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,83 @@
+{
+  "name": "OpenMM Metadynamics",
+  "slug": "openmm-metadynamics",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Small Molecule",
+    "Molecular Dynamics"
+  ],
+  "description": "Perform enhanced sampling molecular dynamics with metadynamics biasing. Explore free energy landscapes using 1D or 2D collective variables. Calculate free energy surfaces for conformational changes and binding pathways. Support multiple CV types: RMSD, distance, angles, coordination, and gyration. Run well-tempered metadynamics for improved convergence. Conduct trajectory analysis including RMSD, RMSF, Rg, and bias evolution.",
+  "capabilities": [
+    "Perform enhanced sampling molecular dynamics with metadynamics biasing",
+    "Explore free energy landscapes using 1D or 2D collective variables",
+    "Calculate free energy surfaces for conformational changes and binding pathways",
+    "Support multiple CV types: RMSD, distance, angles, coordination, and gyration",
+    "Run well-tempered metadynamics for improved convergence",
+    "Conduct trajectory analysis including RMSD, RMSF, Rg, and bias evolution"
+  ],
+  "api_type": "openmm-metadynamics",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb",
+    "simulation_time_ns": 10,
+    "temperature_k": 300,
+    "cv_type": "rmsd",
+    "bias_height": 1.0,
+    "bias_pace": 500
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for metadynamics simulation"
+    },
+    "ligand_file": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format for protein-ligand metadynamics"
+    },
+    "simulation_time_ns": {
+      "type": "float",
+      "required": false,
+      "default": 10,
+      "description": "Simulation time in nanoseconds"
+    },
+    "temperature_k": {
+      "type": "float",
+      "required": false,
+      "default": 300,
+      "description": "Simulation temperature in Kelvin"
+    },
+    "cv_type": {
+      "type": "string",
+      "required": false,
+      "default": "rmsd",
+      "options": [
+        "rmsd",
+        "distance",
+        "angle",
+        "dihedral",
+        "coordination",
+        "gyration"
+      ],
+      "description": "Collective variable type for biasing the simulation"
+    },
+    "bias_height": {
+      "type": "float",
+      "required": false,
+      "default": 1.0,
+      "description": "Height of Gaussian bias in kJ/mol for well-tempered metadynamics"
+    },
+    "bias_pace": {
+      "type": "integer",
+      "required": false,
+      "default": 500,
+      "description": "Frequency of Gaussian deposition in simulation steps"
+    }
+  },
+  "outputs": {}
+}

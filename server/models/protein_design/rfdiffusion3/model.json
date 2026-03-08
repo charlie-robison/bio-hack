@@ -1,0 +1,82 @@
+{
+  "name": "RFdiffusion3",
+  "slug": "rfdiffusion3",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Protein Design"
+  ],
+  "description": "Design a de novo binder to a target with complex all atom constraints. Experimentally characterized DNA binding proteins and cysteine hydrolases.",
+  "capabilities": [
+    "Design a de novo binder to a target with complex all atom constraints",
+    "Experimentally characterized DNA binding proteins and cysteine hydrolases"
+  ],
+  "api_type": "rfdiffusion3",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "contigs": "A1-100/0 50-50",
+    "targetChains": "A",
+    "binderLength": "70-100",
+    "hotspots": "A10,A15,A20",
+    "symmetry": "C3",
+    "numDesigns": 1
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Input PDB file with target molecule and/or atomic motif coordinates"
+    },
+    "contigs": {
+      "type": "string",
+      "format": "contig_string",
+      "required": false,
+      "description": "Contig specification for the design",
+      "example": "A1-100/0 50-50"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target molecule",
+      "example": "A"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed protein",
+      "example": "70-100"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residues or atoms to focus design on"
+    },
+    "hbondConstraints": {
+      "type": "string",
+      "required": false,
+      "description": "Hydrogen bonding constraints specifying donor and acceptor atoms"
+    },
+    "solventAccessibility": {
+      "type": "string",
+      "required": false,
+      "description": "RASA constraints controlling burial depth of ligand atoms"
+    },
+    "symmetry": {
+      "type": "string",
+      "required": false,
+      "description": "Symmetry constraints for oligomeric design (e.g., C3, D2, C5)",
+      "example": "C3"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of designs to generate"
+    }
+  },
+  "outputs": {}
+}

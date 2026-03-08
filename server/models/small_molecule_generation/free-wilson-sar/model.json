@@ -1,0 +1,43 @@
+{
+  "name": "Free Wilson SAR",
+  "slug": "free-wilson-sar",
+  "category": "small_molecule_generation",
+  "tags": [
+    "Small Molecule",
+    "Generate Small Molecules",
+    "Experimental Data"
+  ],
+  "description": "Perform Structure-activity relationship (SAR) analysis given a scaffold with R-groups and a list of smiles and their activities. Generate unsynthesized molecules predicted to have high activity. Upload multiple scaffolds to consider all cores together.",
+  "capabilities": [
+    "Perform Structure-activity relationship (SAR) analysis given a scaffold with R-groups and a list of smiles and their activities",
+    "Generate unsynthesized molecules predicted to have high activity",
+    "Upload multiple scaffolds to consider all cores together"
+  ],
+  "api_type": "free-wilson-sar",
+  "api_settings_example": {
+    "scaffold_smiles": "c1ccc([*:1])c([*:2])c1",
+    "num_molecules": 100
+  },
+  "inputs": {
+    "activity_data": {
+      "type": "file",
+      "format": "csv_file",
+      "required": true,
+      "description": "CSV file with SMILES strings and corresponding activity values"
+    },
+    "scaffold_smiles": {
+      "type": "string",
+      "format": "smiles",
+      "required": true,
+      "description": "SMILES string of the core scaffold with R-group attachment points",
+      "example": "c1ccc([*:1])c([*:2])c1"
+    },
+    "num_molecules": {
+      "type": "integer",
+      "required": false,
+      "default": 100,
+      "description": "Number of molecules to generate"
+    }
+  },
+  "outputs": {}
+}

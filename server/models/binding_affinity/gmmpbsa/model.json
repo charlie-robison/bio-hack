@@ -1,0 +1,60 @@
+{
+  "name": "g_mmpbsa",
+  "slug": "gmmpbsa",
+  "category": "binding_affinity",
+  "tags": [
+    "Enzyme",
+    "Small Molecule",
+    "Molecular Dynamics",
+    "Binding Affinity"
+  ],
+  "description": "Calculate MM-PBSA binding free energies from GROMACS trajectories. Perform per-residue energy decomposition of protein-protein and protein\u2013ligand interactions.",
+  "capabilities": [
+    "Calculate MM-PBSA binding free energies from GROMACS trajectories",
+    "Perform per-residue energy decomposition of protein-protein and protein\u2013ligand interactions"
+  ],
+  "api_type": "gmmpbsa",
+  "api_settings_example": {
+    "trajectory": "path/to/trajectory.xtc",
+    "topology": "path/to/topology.tpr",
+    "index": "path/to/index.ndx",
+    "decomposition": false
+  },
+  "inputs": {
+    "trajectory_file": {
+      "type": "file",
+      "format": "xtc_file",
+      "required": true,
+      "description": "GROMACS trajectory file (XTC format) from a molecular dynamics simulation"
+    },
+    "topology_file": {
+      "type": "file",
+      "format": "tpr_file",
+      "required": true,
+      "description": "GROMACS topology file (TPR format) for the simulation system"
+    },
+    "index_file": {
+      "type": "file",
+      "format": "ndx_file",
+      "required": false,
+      "description": "GROMACS index file (NDX format) defining custom atom groups for energy decomposition"
+    },
+    "start_frame": {
+      "type": "integer",
+      "required": false,
+      "description": "Starting frame for MM-PBSA calculation"
+    },
+    "end_frame": {
+      "type": "integer",
+      "required": false,
+      "description": "Ending frame for MM-PBSA calculation"
+    },
+    "decomposition": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Enable per-residue energy decomposition of binding interactions"
+    }
+  },
+  "outputs": {}
+}

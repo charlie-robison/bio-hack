@@ -1,0 +1,42 @@
+{
+  "name": "MAVE Neural Network Training",
+  "slug": "mave-neural-network-training",
+  "category": "finetuning",
+  "tags": [
+    "Finetuning and Active Learning",
+    "Experimental Data"
+  ],
+  "description": "Train supervised machine learning models on Deep Mutational Scanning (DMS) and MAVE datasets. Predict protein variant effects and combinatorial mutation outcomes. Run Markov Chain Monte Carlo (MCMC) simulations to characterize fitness landscapes.",
+  "capabilities": [
+    "Train supervised machine learning models on Deep Mutational Scanning (DMS) and MAVE datasets",
+    "Predict protein variant effects and combinatorial mutation outcomes",
+    "Run Markov Chain Monte Carlo (MCMC) simulations to characterize fitness landscapes"
+  ],
+  "api_type": "mave-neural-network-training",
+  "api_settings_example": {
+    "wild_type_sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "num_mcmc_samples": 1000
+  },
+  "inputs": {
+    "training_data": {
+      "type": "file",
+      "format": "csv_file",
+      "required": true,
+      "description": "CSV file with protein variant sequences and corresponding fitness/activity measurements from DMS or MAVE experiments"
+    },
+    "wild_type_sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Wild type protein sequence as the reference",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "num_mcmc_samples": {
+      "type": "integer",
+      "required": false,
+      "default": 1000,
+      "description": "Number of MCMC samples for fitness landscape characterization"
+    }
+  },
+  "outputs": {}
+}

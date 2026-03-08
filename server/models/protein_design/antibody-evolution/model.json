@@ -1,0 +1,43 @@
+{
+  "name": "Antibody Evolution",
+  "slug": "antibody-evolution",
+  "category": "protein_design",
+  "tags": [
+    "Antibody",
+    "Protein Language Models",
+    "Protein Design"
+  ],
+  "description": "Given a sequence, uses language models to generate point mutations predicted to increase antibody binding affinity. Experimentally shown to improve binding affinities of four clinically relevant, highly mature antibodies up to sevenfold and unmatured antibodies up to 160-fold.",
+  "capabilities": [
+    "Given a sequence, uses language models to generate point mutations predicted to increase antibody binding affinity",
+    "Experimentally shown to improve binding affinities of four clinically relevant, highly mature antibodies up to sevenfold and unmatured antibodies up to 160-fold"
+  ],
+  "api_type": "antibody-evolution",
+  "api_settings_example": {
+    "sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS...",
+    "numMutations": 5,
+    "numSequences": 10
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Antibody amino acid sequence to evolve for improved binding affinity",
+      "example": "EVQLVESGGGLVQPGGSLRLSCAASGFTFS..."
+    },
+    "numMutations": {
+      "type": "integer",
+      "required": false,
+      "default": 5,
+      "description": "Maximum number of point mutations to introduce"
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of evolved sequence variants to generate"
+    }
+  },
+  "outputs": {}
+}

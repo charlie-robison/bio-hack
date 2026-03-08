@@ -1,0 +1,26 @@
+{
+  "name": "N-Linked Glycosylation Prediction",
+  "slug": "n-linked-glycosylation-prediction",
+  "category": "developability",
+  "tags": [
+    "Developability"
+  ],
+  "description": "Predict N-linked glycosylation sites confined to the N-X-[S/T] sequon from protein sequence. Trained using Prot T5 embeddings, achieving 0.49 matthews correlation coefficient.",
+  "capabilities": [
+    "Predict N-linked glycosylation sites confined to the N-X-[S/T] sequon from protein sequence",
+    "Trained using Prot T5 embeddings, achieving 0.49 matthews correlation coefficient"
+  ],
+  "api_type": "n-linked-glycosylation-prediction",
+  "api_settings_example": {
+    "sequence": "MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSH..."
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein amino acid sequence to scan for N-linked glycosylation sites at N-X-[S/T] sequons"
+    }
+  },
+  "outputs": {}
+}

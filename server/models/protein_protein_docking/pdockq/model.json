@@ -1,0 +1,26 @@
+{
+  "name": "PDockQ",
+  "slug": "pdockq",
+  "category": "protein_protein_docking",
+  "tags": [
+    "Protein Protein Docking",
+    "Utilities"
+  ],
+  "description": "Predict DockQ score of a predicted protein structure.",
+  "capabilities": [
+    "Predict DockQ score of a predicted protein structure"
+  ],
+  "api_type": "pdockq",
+  "api_settings_example": {
+    "predicted_structure_pdb": "path/to/predicted_complex.pdb"
+  },
+  "inputs": {
+    "predicted_structure": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Predicted protein complex structure in PDB format"
+    }
+  },
+  "outputs": {}
+}

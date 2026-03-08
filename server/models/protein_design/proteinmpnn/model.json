@@ -1,0 +1,88 @@
+{
+  "name": "ProteinMPNN",
+  "slug": "proteinmpnn",
+  "category": "protein_design",
+  "tags": [
+    "Peptide",
+    "Antibody",
+    "Enzyme",
+    "Inverse Folding",
+    "Protein Design"
+  ],
+  "description": "Generate sequences for a given protein backbone, or upload multiple structures to submit as a batch. Choose which residues of your protein to design / keep fixed. Select Verify with Alphafold to automatically filter and predict the structures of the top scoring sequences (by MPNN score) with AlphaFold.",
+  "capabilities": [
+    "Generate sequences for a given protein backbone, or upload multiple structures to submit as a batch",
+    "Choose which residues of your protein to design / keep fixed",
+    "Select Verify with Alphafold to automatically filter and predict the structures of the top scoring sequences (by MPNN score) with AlphaFold"
+  ],
+  "api_type": "proteinmpnn",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "designedResidues": "A10,A15,B20",
+    "fixedResidues": "A10,A15,A20",
+    "temperature": 0.1,
+    "modelType": "proteinmpnn",
+    "numSequences": 8,
+    "omitAminoAcids": "C,M",
+    "verifyWithAlphafold": false
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein backbone structure in PDB format. Upload multiple structures for batch submission."
+    },
+    "designedResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residues to design. Format: {chain}{residue} (e.g., A10 B15). If not set, all residues are designed.",
+      "example": "A10,A15,B20"
+    },
+    "fixedResidues": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Residues to keep fixed during design"
+    },
+    "temperature": {
+      "type": "number",
+      "required": false,
+      "default": 0.1,
+      "description": "Sampling temperature controlling sequence diversity. Higher values generate more mutations."
+    },
+    "modelType": {
+      "type": "string",
+      "required": false,
+      "default": "proteinmpnn",
+      "description": "Model variant to use",
+      "enum": [
+        "proteinmpnn",
+        "solublempnn",
+        "abmpnn",
+        "hypermpnn",
+        "ligandmpnn"
+      ]
+    },
+    "numSequences": {
+      "type": "integer",
+      "required": false,
+      "default": 8,
+      "description": "Number of sequences to generate"
+    },
+    "omitAminoAcids": {
+      "type": "string",
+      "required": false,
+      "description": "Amino acids to omit from being sampled",
+      "example": "C,M"
+    },
+    "verifyWithAlphafold": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Automatically filter and predict structures of top scoring sequences with AlphaFold"
+    }
+  },
+  "outputs": {}
+}

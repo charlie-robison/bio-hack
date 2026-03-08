@@ -1,0 +1,65 @@
+{
+  "name": "OpenMM Temperature Replica Exchange",
+  "slug": "openmm-temperature-replica-exchange",
+  "category": "molecular_dynamics",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Small Molecule",
+    "Molecular Dynamics"
+  ],
+  "description": "Enhanced conformational sampling using temperature replica exchange molecular dynamics (T-REMD). Overcome energy barriers by exchanging replicas across temperature ladder. Generate thermodynamically weighted ensembles with improved sampling efficiency.",
+  "capabilities": [
+    "Enhanced conformational sampling using temperature replica exchange molecular dynamics (T-REMD)",
+    "Overcome energy barriers by exchanging replicas across temperature ladder",
+    "Generate thermodynamically weighted ensembles with improved sampling efficiency"
+  ],
+  "api_type": "openmm-temperature-replica-exchange",
+  "api_settings_example": {
+    "pdb": "path/to/structure.pdb",
+    "simulation_time_ns": 10,
+    "min_temperature_k": 300,
+    "max_temperature_k": 400,
+    "num_replicas": 4
+  },
+  "inputs": {
+    "pdb_file": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Protein structure in PDB format for T-REMD simulation"
+    },
+    "ligand_file": {
+      "type": "file",
+      "format": "sdf_file",
+      "required": false,
+      "description": "Ligand structure in SDF format for protein-ligand T-REMD"
+    },
+    "simulation_time_ns": {
+      "type": "float",
+      "required": false,
+      "default": 10,
+      "description": "Simulation time per replica in nanoseconds"
+    },
+    "min_temperature_k": {
+      "type": "float",
+      "required": false,
+      "default": 300,
+      "description": "Minimum temperature in Kelvin for the temperature ladder"
+    },
+    "max_temperature_k": {
+      "type": "float",
+      "required": false,
+      "default": 400,
+      "description": "Maximum temperature in Kelvin for the temperature ladder"
+    },
+    "num_replicas": {
+      "type": "integer",
+      "required": false,
+      "default": 4,
+      "description": "Number of temperature replicas in the exchange ladder"
+    }
+  },
+  "outputs": {}
+}

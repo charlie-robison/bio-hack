@@ -1,0 +1,33 @@
+{
+  "name": "PSI-BLAST Search",
+  "slug": "psi-blast-search",
+  "category": "utilities",
+  "tags": [
+    "Utilities"
+  ],
+  "description": "Identify remote homologs using iterative profile-based search.",
+  "capabilities": [
+    "Identify remote homologs using iterative profile-based search"
+  ],
+  "api_type": "psi-blast-search",
+  "api_settings_example": {
+    "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS",
+    "num_iterations": 3
+  },
+  "inputs": {
+    "sequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Protein sequence for iterative profile-based homolog search",
+      "example": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+    },
+    "num_iterations": {
+      "type": "integer",
+      "required": false,
+      "default": 3,
+      "description": "Number of PSI-BLAST iterations"
+    }
+  },
+  "outputs": {}
+}

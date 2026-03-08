@@ -1,0 +1,57 @@
+{
+  "name": "PXDesign",
+  "slug": "pxdesign",
+  "category": "protein_design",
+  "tags": [
+    "De Novo Binder Design",
+    "Protein Design"
+  ],
+  "description": "Designs de novo protein binders targeting specified proteins. Combines a diffusion generator with Protenix and AF2-IG confidence models for selection. Achieved 17-82% nanomolar hits across seven benchmark targets.",
+  "capabilities": [
+    "Designs de novo protein binders targeting specified proteins",
+    "Combines a diffusion generator with Protenix and AF2-IG confidence models for selection",
+    "Achieved 17-82% nanomolar hits across seven benchmark targets"
+  ],
+  "api_type": "pxdesign",
+  "api_settings_example": {
+    "pdbFile": "path/to/file.pdb",
+    "targetChains": "A",
+    "hotspots": "A10,A15,A20",
+    "binderLength": "60-100",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "pdbFile": {
+      "type": "file",
+      "format": "pdb_file",
+      "required": true,
+      "description": "Target protein structure in PDB format"
+    },
+    "targetChains": {
+      "type": "string",
+      "required": false,
+      "description": "Chain IDs of the target protein",
+      "example": "A"
+    },
+    "hotspots": {
+      "type": "string",
+      "format": "residue_positions",
+      "required": false,
+      "description": "Target residues to focus binder design on",
+      "example": "A10,A15,A20"
+    },
+    "binderLength": {
+      "type": "string",
+      "required": false,
+      "description": "Length or length range of the designed binder",
+      "example": "60-100"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of binder designs to generate"
+    }
+  },
+  "outputs": {}
+}

@@ -1,0 +1,59 @@
+{
+  "name": "ADAPT",
+  "slug": "adapt",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Protein Design",
+    "De Novo Binder Design",
+    "Structure Prediction"
+  ],
+  "description": "Design T cell receptors (TCRs) for specific peptide-MHC targets. Uses AlphaFold docking and ProteinMPNN for TCR sequence design. Iteratively designs CDR loops to bind target pMHC complexes. Outputs designed TCR sequences with quality metrics including pAE scores and dock-RMSD.",
+  "capabilities": [
+    "Design T cell receptors (TCRs) for specific peptide-MHC targets",
+    "Uses AlphaFold docking and ProteinMPNN for TCR sequence design",
+    "Iteratively designs CDR loops to bind target pMHC complexes",
+    "Outputs designed TCR sequences with quality metrics including pAE scores and dock-RMSD"
+  ],
+  "api_type": "adapt",
+  "api_settings_example": {
+    "peptideSequence": "NLVPMVATV",
+    "mhcSequence": "GSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQRT",
+    "numDesigns": 10
+  },
+  "inputs": {
+    "peptideSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "Peptide sequence of the target peptide-MHC complex",
+      "example": "NLVPMVATV"
+    },
+    "mhcSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": true,
+      "description": "MHC protein amino acid sequence for the target complex",
+      "example": "GSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQRT"
+    },
+    "tcrAlphaSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Optional TCR alpha chain sequence to use as starting template for design"
+    },
+    "tcrBetaSequence": {
+      "type": "string",
+      "format": "amino_acid_sequence",
+      "required": false,
+      "description": "Optional TCR beta chain sequence to use as starting template for design"
+    },
+    "numDesigns": {
+      "type": "integer",
+      "required": false,
+      "default": 10,
+      "description": "Number of TCR designs to generate"
+    }
+  },
+  "outputs": {}
+}

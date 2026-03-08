@@ -1,0 +1,118 @@
+{
+  "name": "Chai-1",
+  "slug": "chai-1",
+  "category": "structure_prediction",
+  "tags": [
+    "Antibody",
+    "Peptide",
+    "Enzyme",
+    "Structure Prediction",
+    "Protein Protein Docking",
+    "Protein Ligand Docking"
+  ],
+  "description": "Predicts the 3D structure of proteins, rna, dna and small molecules. Handles covalent ligands and glycans, as well as restricting prediction based on distances between residues. Matches or outperforms AlphaFold3.",
+  "capabilities": [
+    "Predicts the 3D structure of proteins, rna, dna and small molecules",
+    "Handles covalent ligands and glycans, as well as restricting prediction based on distances between residues",
+    "Matches or outperforms AlphaFold3"
+  ],
+  "api_type": "chai-1",
+  "api_settings_example": {
+    "sequences": [
+      {
+        "entityType": "protein",
+        "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+      },
+      {
+        "entityType": "ligand",
+        "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+      }
+    ],
+    "numSamples": 1,
+    "useMSA": true
+  },
+  "inputs": {
+    "sequences": {
+      "type": "array",
+      "required": true,
+      "description": "Array of entity objects. Each entity has a type (protein, rna, dna, or ligand) and corresponding sequence or SMILES.",
+      "items": {
+        "entityType": {
+          "type": "string",
+          "options": [
+            "protein",
+            "rna",
+            "dna",
+            "ligand"
+          ],
+          "description": "Type of molecular entity"
+        },
+        "sequence": {
+          "type": "string",
+          "format": "amino_acid_sequence",
+          "description": "Amino acid sequence for protein, nucleotide sequence for RNA/DNA"
+        },
+        "smiles": {
+          "type": "string",
+          "format": "smiles",
+          "description": "SMILES string for ligand entities"
+        }
+      },
+      "example": [
+        {
+          "entityType": "protein",
+          "sequence": "MKFLILLFNILCLFPVLAADNHGVSMNAS"
+        },
+        {
+          "entityType": "ligand",
+          "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"
+        }
+      ]
+    },
+    "numSamples": {
+      "type": "integer",
+      "required": false,
+      "default": 1,
+      "description": "Number of structure predictions to return"
+    },
+    "numRecycles": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of recycling iterations for refinement"
+    },
+    "numDiffusionSteps": {
+      "type": "integer",
+      "required": false,
+      "description": "Number of diffusion steps, balancing accuracy with prediction time"
+    },
+    "useMSA": {
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "Whether to use multiple sequence alignment or run in single sequence mode"
+    },
+    "contactRestraints": {
+      "type": "array",
+      "required": false,
+      "description": "Contact restraints between two residues specifying maximum distances for epitope-guided docking",
+      "items": {
+        "chain1": "string",
+        "residue1": "integer",
+        "chain2": "string",
+        "residue2": "integer",
+        "maxDistance": "number"
+      }
+    },
+    "pocketRestraints": {
+      "type": "array",
+      "required": false,
+      "description": "Pocket restraints between a residue and a chain"
+    },
+    "covalentRestraints": {
+      "type": "array",
+      "required": false,
+      "description": "Covalent restraints between atoms"
+    }
+  },
+  "outputs": {}
+}
