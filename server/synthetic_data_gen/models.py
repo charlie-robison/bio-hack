@@ -113,6 +113,11 @@ class ExperimentSchema(BaseModel):
     relationships: list[str] = Field(default_factory=list)
     group_definitions: dict[str, str] = Field(default_factory=dict)
     notes: list[str] = Field(default_factory=list)
+    selected_model: dict[str, Any] | None = Field(
+        default=None,
+        description="The tamarin model selected for this experiment. Contains "
+        "name, slug, category, and the input spec the generated data must match.",
+    )
 
 
 class SyntheticRow(BaseModel):

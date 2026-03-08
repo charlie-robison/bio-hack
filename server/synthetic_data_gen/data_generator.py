@@ -59,6 +59,8 @@ VARIABLE RELATIONSHIPS TO MAINTAIN:
 
 {group_instructions}
 
+{model_instructions}
+
 IMPORTANT CONSTRAINTS:
 - Each row must be unique and realistic
 - Numeric values should follow the specified distributions
@@ -222,12 +224,15 @@ class DataGenerator:
                 f"EXPERIMENTAL GROUPS (distribute rows roughly evenly):\n{groups}"
             )
 
+        model_instructions = self._format_model_instructions(schema)
+
         prompt = GENERATION_USER_PROMPT.format(
             batch_size=batch_size,
             experiment_summary=schema.experiment_summary,
             columns_description=columns_desc,
             relationships=relationships,
             group_instructions=group_instructions,
+            model_instructions=model_instructions,
             start_index=start_index,
         )
 
@@ -270,6 +275,36 @@ class DataGenerator:
                 desc += f" constraints={col.constraints}"
             parts.append(desc)
         return "\n".join(parts)
+
+    def _format_model_instructions(self, schema: ExperimentSchema) -> str:
+        """
+        Build instructions telling the generator to format data for the
+        selected tamarin model's expected inputs.
+        """
+        if not schema.selected_model:
+            return ""
+
+        model = schema.selected_model
+        lines = [
+            f"TARGET MODEL: {model.get('name', 'Unknown')} ({model.get('slug', '')})",
+            f"Each generated row MUST be valid input for this model.",
+        ]
+
+        inputs = model.get("inputs", {})
+        if inputs:
+            lines.append("Required model input fields and their formats:")
+            for input_name, input_spec in inputs.items():
+                fmt = input_spec.get("format", input_spec.get("type", "unknown"))
+                desc = input_spec.get("description", "")
+                required = input_spec.get("required", False)
+                req_str = " (REQUIRED)" if required else " (optional)"
+                lines.append(f"  - {input_name}: format={fmt}{req_str} — {desc}")
+
+        lines.append(
+            "Ensure the 'data' object in each row contains these fields "
+            "with realistic, properly formatted values."
+        )
+        return "\n".join(lines)
 
     def _parse_batch_response(
         self,

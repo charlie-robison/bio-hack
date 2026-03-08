@@ -155,13 +155,11 @@ async def api_get_run_file(run_id: str, file_path: str):
 
 # ── Synthetic Data Generation endpoints (from branch) ──
 
-class GenerateFromRunRequest(BaseModel):
-    run_id: str
-    num_rows: int = Field(default=100, ge=1, le=5000)
-
-
 @app.post("/synthetic/from-pdf")
-def generate_from_pdf(request: GenerateFromRunRequest):
+def generate_from_pdf(
+    run_id: str = Form(...),
+    num_rows: int = Form(100),
+):
     """
     Generate synthetic experimental data from a previously uploaded PDF.
 
@@ -171,17 +169,21 @@ def generate_from_pdf(request: GenerateFromRunRequest):
 
     Saves synthetic_data.json into the run folder.
     """
-    run_folder = Path(__file__).parent / "fs" / "runs" / request.run_id
+    run_folder = Path(__file__).parent / "fs" / "runs" / run_id
     if not run_folder.exists():
-        raise HTTPException(status_code=404, detail=f"Run '{request.run_id}' not found")
+        raise HTTPException(status_code=404, detail=f"Run '{run_id}' not found")
 
     pdf_path = run_folder / "original.pdf"
     if not pdf_path.exists():
-        raise HTTPException(status_code=404, detail=f"No original.pdf in run '{request.run_id}'")
+        raise HTTPException(status_code=404, detail=f"No original.pdf in run '{run_id}'")
 
     try:
-        result = pipeline.run(str(pdf_path), num_rows=request.num_rows, run_folder_path=str(run_folder))
-        return _flatten_and_save(result, run_folder_path=str(run_folder))
+        result = pipeline.run(str(pdf_path), num_rows=num_rows, run_folder_path=str(run_folder))
+        data = _flatten_and_save(result, run_folder_path=str(run_folder))
+        response = {"data": data, "total_rows": len(data)}
+        if result.experiment_schema.selected_model:
+            response["selected_model"] = result.experiment_schema.selected_model
+        return response
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
