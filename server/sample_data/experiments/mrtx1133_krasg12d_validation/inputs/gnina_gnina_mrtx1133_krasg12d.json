@@ -1,0 +1,16 @@
+{
+  "jobName": "gnina_mrtx1133_krasg12d",
+  "type": "gnina",
+  "settings": {
+    "proteinFile": "predict_krasg12d_structure/best_model.pdb",
+    "ligandFile": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
+    "boxX": 35,
+    "boxY": 27,
+    "boxZ": 35,
+    "width": 20,
+    "height": 20,
+    "depth": 20,
+    "cnnScoring": "refinement",
+    "exhaustiveness": 32
+  }
+}

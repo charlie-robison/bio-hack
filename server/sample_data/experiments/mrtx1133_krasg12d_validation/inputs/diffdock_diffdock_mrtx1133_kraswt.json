@@ -1,0 +1,9 @@
+{
+  "jobName": "diffdock_mrtx1133_kraswt",
+  "type": "diffdock",
+  "settings": {
+    "proteinFile": "predict_kraswt_structure/best_model.pdb",
+    "ligandFormat": "SMILES",
+    "ligandSmiles": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl"
+  }
+}

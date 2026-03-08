@@ -1,0 +1,12 @@
+{
+  "jobName": "chai_krasg12d_mrtx1133_complex",
+  "type": "chai",
+  "settings": {
+    "inputFormat": "list",
+    "proteins": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLKTVKDSLWQTPKYQKLHMEHIRETVEGEVKDLIEKQKRKLEEIVNKEKQKLLNKMESEELFSSLENYIPNYNTSDDKIYPFL",
+    "ligands": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
+    "numSamples": 5,
+    "numRecycles": 3,
+    "useMSA": true
+  }
+}

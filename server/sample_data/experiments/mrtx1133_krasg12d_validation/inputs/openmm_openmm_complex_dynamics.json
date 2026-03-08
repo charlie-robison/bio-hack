@@ -1,0 +1,17 @@
+{
+  "jobName": "openmm_complex_dynamics",
+  "type": "openmm",
+  "settings": {
+    "systemType": "protein-ligand",
+    "pdbFile": "boltz_krasg12d_mrtx1133_complex/best_model.pdb",
+    "ligandFile": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
+    "ligandCharge": 0,
+    "minimizationSteps": "20000",
+    "equilibrationTime": 0.5,
+    "productionTime": 5,
+    "forceField": "ff19SB",
+    "timestep": "2",
+    "temperature": "298",
+    "pressure": "1"
+  }
+}

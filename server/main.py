@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import BackgroundTasks, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
@@ -27,6 +27,9 @@ pipeline = SyntheticDataPipeline(api_key=api_key) if api_key else None
 
 OUTPUT_DIR = Path(__file__).parent / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
+
+MODELS_DIR = Path(__file__).parent / "models"
+EXPERIMENTS_DIR = Path(__file__).parent / "sample_data" / "experiments"
 
 # CORS for frontend
 app.add_middleware(
@@ -71,7 +74,16 @@ def _flatten_and_save(result: GenerationResult, run_folder_path: str | None = No
 
 @app.get("/")
 def root():
-    return {"message": "BioFact API", "endpoints": ["/api/upload", "/api/runs", "/synthetic/from-pdf", "/alphafold/proteins", "/tamarind/models"]}
+    return {
+        "message": "BioFact API",
+        "endpoints": [
+            "/api/upload", "/api/runs",
+            "/synthetic/from-pdf",
+            "/alphafold/proteins",
+            "/tamarind/models",
+            "/experiments/run",
+        ],
+    }
 
 
 @app.get("/health")
@@ -397,36 +409,11 @@ Return ONLY valid JSON, no markdown fences."""
         os.unlink(tmp_path)
 
 
-<<<<<<< HEAD
-# ── Tamarind Bio Models & Validation Pipeline ────────────────────────────
-
-MODELS_DIR = Path(__file__).parent / "models"
-EXPERIMENTS_DIR = Path(__file__).parent / "sample_data" / "experiments"
-=======
-@app.get("/alphafold/results/kras-g12d")
-def get_kras_g12d_result():
-    """Get the KRAS G12D specific AF2 prediction result."""
-    return sample_loader.get_sample_output("kras_g12d_af2_result")
-
-
-@app.get("/alphafold/compare/kras-g12d")
-def get_kras_comparison():
-    """Get the pre-computed KRAS G12D paper comparison results."""
-    path = Path(__file__).parent / "sample_data" / "alphafold_outputs" / "kras_g12d_paper_comparison.json"
-    if not path.exists():
-        raise HTTPException(status_code=404, detail="KRAS G12D comparison not yet generated")
-    return json.loads(path.read_text())
-
-
-# ── Tamarind Bio Validation Pipeline ─────────────────────────────────────
-
-TAMARIND_DIR = Path(__file__).parent / "sample_data" / "tamarind"
->>>>>>> 74bc1f3 (inference)
+# ── Tamarind Bio Models & Experiments ────────────────────────────────────
 
 
 @app.get("/tamarind/models")
 def list_tamarind_models():
-<<<<<<< HEAD
     """List all available Tamarind Bio models from Kaushik's catalog."""
     index_path = MODELS_DIR / "index.json"
     if not index_path.exists():
@@ -449,7 +436,11 @@ def list_experiments():
     if not EXPERIMENTS_DIR.exists():
         return []
     return [
-        {"id": d.name, "has_pipeline": (d / "pipeline.json").exists(), "has_validation": (d / "validation.json").exists()}
+        {
+            "id": d.name,
+            "has_pipeline": (d / "pipeline.json").exists(),
+            "has_validation": (d / "validation.json").exists(),
+        }
         for d in sorted(EXPERIMENTS_DIR.iterdir()) if d.is_dir()
     ]
 
@@ -471,49 +462,19 @@ def list_experiment_inputs(experiment_id: str):
         return []
     return [
         {"file": f.name, "model_slug": json.loads(f.read_text()).get("model_slug")}
-=======
-    """List all available Tamarind Bio models."""
-    catalog = json.loads((TAMARIND_DIR / "models" / "catalog.json").read_text())
-    return catalog
-
-
-@app.get("/tamarind/pipeline/{pipeline_id}")
-def get_pipeline(pipeline_id: str):
-    """Get a validation pipeline definition."""
-    path = TAMARIND_DIR / "pipeline" / f"{pipeline_id}.json"
-    if not path.exists():
-        raise HTTPException(status_code=404, detail=f"Pipeline {pipeline_id} not found")
-    return json.loads(path.read_text())
-
-
-@app.get("/tamarind/inputs")
-def list_tamarind_inputs():
-    """List all sample inputs."""
-    inputs_dir = TAMARIND_DIR / "inputs"
-    return [
-        {"file": f.name, "model": json.loads(f.read_text()).get("model")}
->>>>>>> 74bc1f3 (inference)
         for f in sorted(inputs_dir.glob("*.json"))
     ]
 
 
-<<<<<<< HEAD
 @app.get("/tamarind/experiments/{experiment_id}/inputs/{filename}")
 def get_experiment_input(experiment_id: str, filename: str):
     """Get a specific experiment input."""
     path = EXPERIMENTS_DIR / experiment_id / "inputs" / filename
-=======
-@app.get("/tamarind/inputs/{filename}")
-def get_tamarind_input(filename: str):
-    """Get a specific sample input."""
-    path = TAMARIND_DIR / "inputs" / filename
->>>>>>> 74bc1f3 (inference)
     if not path.exists():
         raise HTTPException(status_code=404, detail="Input not found")
     return json.loads(path.read_text())
 
 
-<<<<<<< HEAD
 @app.get("/tamarind/experiments/{experiment_id}/outputs")
 def list_experiment_outputs(experiment_id: str):
     """List all outputs for an experiment."""
@@ -521,55 +482,204 @@ def list_experiment_outputs(experiment_id: str):
     if not outputs_dir.exists():
         return []
     return [
-        {"file": f.name, "model_slug": json.loads(f.read_text()).get("model_slug"), "status": json.loads(f.read_text()).get("status")}
-=======
-@app.get("/tamarind/outputs")
-def list_tamarind_outputs():
-    """List all sample outputs."""
-    outputs_dir = TAMARIND_DIR / "outputs"
-    return [
         {
             "file": f.name,
-            "model": json.loads(f.read_text()).get("model"),
+            "model_slug": json.loads(f.read_text()).get("model_slug"),
             "status": json.loads(f.read_text()).get("status"),
         }
->>>>>>> 74bc1f3 (inference)
         for f in sorted(outputs_dir.glob("*.json"))
     ]
 
 
-<<<<<<< HEAD
 @app.get("/tamarind/experiments/{experiment_id}/outputs/{filename}")
 def get_experiment_output(experiment_id: str, filename: str):
     """Get a specific experiment output."""
     path = EXPERIMENTS_DIR / experiment_id / "outputs" / filename
-=======
-@app.get("/tamarind/outputs/{filename}")
-def get_tamarind_output(filename: str):
-    """Get a specific sample output."""
-    path = TAMARIND_DIR / "outputs" / filename
->>>>>>> 74bc1f3 (inference)
     if not path.exists():
         raise HTTPException(status_code=404, detail="Output not found")
     return json.loads(path.read_text())
 
 
-<<<<<<< HEAD
 @app.get("/tamarind/experiments/{experiment_id}/validation")
 def get_experiment_validation(experiment_id: str):
     """Get the unified validation results for an experiment."""
     path = EXPERIMENTS_DIR / experiment_id / "validation.json"
     if not path.exists():
         raise HTTPException(status_code=404, detail=f"Validation for {experiment_id} not found")
-=======
-@app.get("/tamarind/validation/{validation_id}")
-def get_validation(validation_id: str):
-    """Get the unified validation comparison results."""
-    path = TAMARIND_DIR / "comparison" / f"{validation_id}.json"
-    if not path.exists():
-        raise HTTPException(status_code=404, detail="Validation not found")
->>>>>>> 74bc1f3 (inference)
     return json.loads(path.read_text())
+
+
+# ── Experiment Runner (Tamarind Bio Pipeline) ────────────────────────────
+
+# Track running experiments
+_running_experiments: dict[str, dict] = {}
+
+
+def _get_runner():
+    """Lazy-init the ExperimentRunner."""
+    from experiment_runner import ExperimentRunner
+    return ExperimentRunner(
+        anthropic_api_key=os.environ.get("ANTHROPIC_API_KEY"),
+        tamarind_api_key=os.environ.get("TAMARIND_API_KEY"),
+    )
+
+
+def _run_experiment_bg(run_id: str):
+    """Background task: run full Tamarind validation pipeline for a PDF run."""
+    logger = logging.getLogger(__name__)
+    _running_experiments[run_id] = {"status": "running", "stage": "parsing"}
+
+    try:
+        runner = _get_runner()
+        run_folder = Path(__file__).parent / "fs" / "runs" / run_id
+        pdf_path = run_folder / "original.pdf"
+
+        # Step 1: Parse
+        _running_experiments[run_id]["stage"] = "parsing"
+        paper_text = runner.parse_paper(str(pdf_path))
+
+        # Step 2: Plan
+        _running_experiments[run_id]["stage"] = "planning"
+        plan = runner.plan_experiment(paper_text)
+        experiment_id = plan.get("experiment_id", run_id)
+
+        experiment_dir = EXPERIMENTS_DIR / experiment_id
+        experiment_dir.mkdir(parents=True, exist_ok=True)
+        (experiment_dir / "paper_text.txt").write_text(paper_text[:50000])
+
+        _running_experiments[run_id]["experiment_id"] = experiment_id
+        _running_experiments[run_id]["plan"] = plan
+
+        # Step 3: Submit
+        _running_experiments[run_id]["stage"] = "submitting"
+        plan = runner.submit_experiment(plan, experiment_dir)
+
+        # Step 4: Poll
+        _running_experiments[run_id]["stage"] = "running_models"
+        plan = runner.poll_experiment(plan)
+
+        # Step 5: Download
+        _running_experiments[run_id]["stage"] = "downloading"
+        plan = runner.download_results(plan, experiment_dir)
+
+        # Step 6: Validate
+        _running_experiments[run_id]["stage"] = "validating"
+        validation = runner.validate_results(plan, paper_text, experiment_dir)
+
+        _running_experiments[run_id] = {
+            "status": "complete",
+            "stage": "done",
+            "experiment_id": experiment_id,
+            "validation_score": validation.get("overall_reliability_score"),
+            "plan": plan,
+        }
+        logger.info(f"Experiment {experiment_id} complete for run {run_id}")
+
+    except Exception as e:
+        logger.error(f"Experiment failed for run {run_id}: {e}")
+        _running_experiments[run_id] = {
+            "status": "failed",
+            "stage": "error",
+            "error": str(e),
+        }
+
+
+@app.post("/experiments/run")
+def run_experiment(run_id: str = Form(...), background_tasks: BackgroundTasks = None):
+    """
+    Run the full Tamarind Bio validation pipeline for a previously uploaded PDF.
+
+    Uses the same run_id from /api/upload. This:
+    1. Parses the PDF
+    2. Plans which Tamarind models to run (Claude Opus)
+    3. Generates inputs and submits jobs to Tamarind Bio
+    4. Polls for completion
+    5. Downloads results
+    6. Validates results against paper claims (Claude Opus)
+
+    Runs in the background. Poll /experiments/status/{run_id} for progress.
+    """
+    run_folder = Path(__file__).parent / "fs" / "runs" / run_id
+    if not run_folder.exists():
+        raise HTTPException(status_code=404, detail=f"Run '{run_id}' not found")
+
+    pdf_path = run_folder / "original.pdf"
+    if not pdf_path.exists():
+        raise HTTPException(status_code=404, detail=f"No original.pdf in run '{run_id}'")
+
+    if not os.environ.get("TAMARIND_API_KEY"):
+        raise HTTPException(status_code=500, detail="TAMARIND_API_KEY not configured")
+
+    if run_id in _running_experiments and _running_experiments[run_id].get("status") == "running":
+        return {"message": "Experiment already running", "status": _running_experiments[run_id]}
+
+    _running_experiments[run_id] = {"status": "starting"}
+    background_tasks.add_task(_run_experiment_bg, run_id)
+
+    return {"message": "Experiment started", "run_id": run_id, "poll_url": f"/experiments/status/{run_id}"}
+
+
+@app.get("/experiments/status/{run_id}")
+def get_experiment_status(run_id: str):
+    """Check the status of a running experiment."""
+    if run_id not in _running_experiments:
+        raise HTTPException(status_code=404, detail="No experiment found for this run_id")
+    return _running_experiments[run_id]
+
+
+@app.post("/experiments/plan")
+async def plan_experiment_only(file: UploadFile = File(...)):
+    """
+    Upload a PDF and get just the experiment plan (no Tamarind submission).
+    Useful for previewing what models will be run before committing.
+    """
+    if not file.filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="File must be a PDF")
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
+        content = await file.read()
+        tmp.write(content)
+        tmp_path = tmp.name
+
+    try:
+        runner = _get_runner()
+        plan = runner.plan_only(tmp_path)
+        return plan
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        os.unlink(tmp_path)
+
+
+@app.post("/experiments/run-from-pdf")
+async def run_experiment_from_upload(file: UploadFile = File(...), background_tasks: BackgroundTasks = None):
+    """
+    Upload a PDF and immediately start the full Tamarind validation pipeline.
+    Combines /api/upload + /experiments/run in one call.
+    """
+    if not file.filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="File must be a PDF")
+
+    if not os.environ.get("TAMARIND_API_KEY"):
+        raise HTTPException(status_code=500, detail="TAMARIND_API_KEY not configured")
+
+    # Upload and process
+    content = await file.read()
+    result = await process_pdf(file.filename, content)
+    run_id = result["run_id"]
+
+    # Start experiment in background
+    _running_experiments[run_id] = {"status": "starting"}
+    background_tasks.add_task(_run_experiment_bg, run_id)
+
+    return {
+        "message": "PDF uploaded and experiment started",
+        "run_id": run_id,
+        "poll_url": f"/experiments/status/{run_id}",
+    }
+
+
+# ── Helpers ──────────────────────────────────────────────────────────────
 
 
 def _read_pdf_text(path: str) -> str:

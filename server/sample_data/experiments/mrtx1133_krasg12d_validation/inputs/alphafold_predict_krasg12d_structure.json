@@ -1,0 +1,12 @@
+{
+  "jobName": "predict_krasg12d_structure",
+  "type": "alphafold",
+  "settings": {
+    "sequence": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLKTVKDSLWQTPKYQKLHMEHIRETVEGEVKDLIEKQKRKLEEIVNKEKQKLLNKMESEELFSSLENYIPNYNTSDDKIYPFL",
+    "numModels": "5",
+    "numRecycles": "3",
+    "useMSA": true,
+    "templateMode": "none",
+    "chooseBest": true
+  }
+}

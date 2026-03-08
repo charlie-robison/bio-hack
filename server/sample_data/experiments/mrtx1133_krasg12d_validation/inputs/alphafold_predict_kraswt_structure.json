@@ -1,0 +1,11 @@
+{
+  "jobName": "predict_kraswt_structure",
+  "type": "alphafold",
+  "settings": {
+    "sequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLKTVKDSLWQTPKYQKLHMEHIRETVEGEVKDLIEKQKRKLEEIVNKEKQKLLNKMESEELFSSLENYIPNYNTSDDKIYPFL",
+    "numModels": "1",
+    "numRecycles": "3",
+    "useMSA": true,
+    "chooseBest": true
+  }
+}

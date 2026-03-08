@@ -1,0 +1,15 @@
+{
+  "jobName": "boltz_krasg12d_mrtx1133_complex",
+  "type": "boltz",
+  "settings": {
+    "inputFormat": "list",
+    "proteins": "MTEYKLVVVGADGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLKTVKDSLWQTPKYQKLHMEHIRETVEGEVKDLIEKQKRKLEEIVNKEKQKLLNKMESEELFSSLENYIPNYNTSDDKIYPFL",
+    "addLigands": true,
+    "ligands": "C1CC(C1)NC(=O)C2=C(N=C(C=C2)NCC3=CC(=C(C=C3)F)F)Cl",
+    "numSamples": 5,
+    "numRecycles": 3,
+    "predictAffinity": true,
+    "binderChain": "B",
+    "chooseBest": true
+  }
+}
