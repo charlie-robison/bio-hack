@@ -8,3 +8,6 @@ pdf2image
 aiofiles
 python-dotenv
 rdkit
+pydantic
+PyPDF2
+beautifulsoup4

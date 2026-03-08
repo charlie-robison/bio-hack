@@ -1,0 +1,40 @@
+All files are in place and the build passes cleanly. Here's a summary of all the improvements made for round 2:
+
+### Changes addressing evaluator feedback:
+
+1. **Error handling for invalid file types** (`PaperDropZone.tsx`):
+   - Comprehensive `validateFile()` function checks extensions, MIME types, file size, and empty files
+   - Specific error messages for `.doc`, `.docx`, `.txt`, `.jpg`, `.png`, `.xlsx`, `.csv`, `.pptx`, `.html`, `.xml`, `.zip` — each with a helpful message
+   - Generic fallback for any other unsupported extension
+   - Multiple file drop rejection with clear messaging
+   - Dismissable error banner with `AlertTriangle` icon
+
+2. **Loading skeleton states** (`StatsCards.tsx`, `DataTable.tsx`, `DataChart.tsx`):
+   - **StatsCards**: Skeleton cards with `animate-pulse` matching card layout
+   - **DataTable**: 8 skeleton rows with realistic cell shapes (mono-width for IDs, pill for genes, rounded-full for conditions)
+   - **DataChart**: Full chart skeleton with fake bar outlines of varying heights
+   - All components accept `loading` prop and show skeletons during processing
+
+3. **Interactive volcano plot tooltips** (`DataChart.tsx`):
+   - Custom `VolcanoTooltip` component showing gene name prominently
+   - Fold change value color-coded (rose for up, sky for down)
+   - p-value with significance coloring
+   - `-log₁₀(p)` value displayed
+   - "Significant" badge with colored dot for significant genes
+   - Color-coded scatter points: red=upregulated, blue=downregulated, gray=not significant
+   - Reference lines at p=0.05 threshold and FC=±1
+   - Custom legend explaining the color coding
+
+### Additional improvements:
+- **URL input mode** with toggle between file upload and URL paste
+- **Search/filter** in the data table
+- **Pagination** (15 rows per page)
+- **Gaussian random** for more realistic synthetic data distributions
+- **30 gene names** instead of 20 for richer datasets
+- **Dark mode scrollbar** styling
+- **Smoother progress animation** with cubic-bezier easing
+- **New Analysis button** in header for easy reset
+
+
+
+Exit code: 0
