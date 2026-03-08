@@ -1,0 +1,69 @@
+{
+  "model": "diffdock",
+  "job_id": "td-diffdock-kras-001",
+  "status": "completed",
+  "runtime_seconds": 847,
+  "protein_name": "KRAS G12D",
+  "ligand_name": "MRTX1133",
+  "poses": [
+    {
+      "rank": 1,
+      "confidence_score": 0.87,
+      "binding_site": "Switch II pocket",
+      "key_contacts": [
+        {"residue": "ASP12", "type": "hydrogen_bond", "distance_angstrom": 2.8},
+        {"residue": "HIS95", "type": "hydrogen_bond", "distance_angstrom": 2.9},
+        {"residue": "ASP69", "type": "salt_bridge", "distance_angstrom": 3.1},
+        {"residue": "MET72", "type": "hydrophobic", "distance_angstrom": 3.6},
+        {"residue": "GLN61", "type": "hydrogen_bond", "distance_angstrom": 3.0},
+        {"residue": "GLU63", "type": "hydrogen_bond", "distance_angstrom": 2.7},
+        {"residue": "TYR96", "type": "pi_stacking", "distance_angstrom": 3.8},
+        {"residue": "ARG68", "type": "salt_bridge", "distance_angstrom": 3.3}
+      ],
+      "residues_within_4A": [10, 11, 12, 13, 14, 58, 59, 60, 61, 62, 63, 64, 67, 68, 69, 72, 95, 96, 99],
+      "switch_ii_contacts": 12,
+      "p_loop_contacts": 4,
+      "rmsd_to_pdb_7t47": 1.8,
+      "pose_file": "pose_rank1.sdf"
+    },
+    {
+      "rank": 2,
+      "confidence_score": 0.72,
+      "binding_site": "Switch II pocket",
+      "key_contacts": [
+        {"residue": "ASP12", "type": "hydrogen_bond", "distance_angstrom": 3.2},
+        {"residue": "ASP69", "type": "salt_bridge", "distance_angstrom": 3.4},
+        {"residue": "MET72", "type": "hydrophobic", "distance_angstrom": 3.5},
+        {"residue": "GLN61", "type": "hydrogen_bond", "distance_angstrom": 3.3}
+      ],
+      "residues_within_4A": [10, 11, 12, 58, 59, 60, 61, 63, 68, 69, 72, 95, 96],
+      "switch_ii_contacts": 9,
+      "p_loop_contacts": 3,
+      "rmsd_to_pdb_7t47": 2.4,
+      "pose_file": "pose_rank2.sdf"
+    },
+    {
+      "rank": 3,
+      "confidence_score": 0.58,
+      "binding_site": "Switch II pocket (partial)",
+      "key_contacts": [
+        {"residue": "MET72", "type": "hydrophobic", "distance_angstrom": 3.4},
+        {"residue": "GLU63", "type": "hydrogen_bond", "distance_angstrom": 3.1},
+        {"residue": "ARG68", "type": "salt_bridge", "distance_angstrom": 3.5}
+      ],
+      "residues_within_4A": [58, 60, 62, 63, 67, 68, 72, 95],
+      "switch_ii_contacts": 7,
+      "p_loop_contacts": 0,
+      "rmsd_to_pdb_7t47": 4.1,
+      "pose_file": "pose_rank3.sdf"
+    }
+  ],
+  "summary": {
+    "top_pose_in_switch_ii": true,
+    "consensus_binding_site": "Switch II pocket (residues 58-75)",
+    "poses_in_correct_site": 3,
+    "poses_total": 10,
+    "top_pose_rmsd_to_crystal": 1.8,
+    "verdict": "DiffDock places MRTX1133 in the Switch II pocket with high confidence (0.87). Top pose RMSD of 1.8 Å to PDB 7T47 crystal structure indicates good agreement with the paper's binding mode."
+  }
+}

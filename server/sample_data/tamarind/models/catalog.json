@@ -1,0 +1,105 @@
+{
+  "platform": "tamarind_bio",
+  "version": "2026.03",
+  "models": [
+    {
+      "id": "alphafold",
+      "name": "AlphaFold",
+      "category": "structure_prediction",
+      "description": "Predicts 3D protein structure from amino acid sequence. Gold standard for single-chain and multimer structure prediction.",
+      "input_types": ["protein_sequence", "fasta"],
+      "output_types": ["pdb", "confidence_metrics", "pae_matrix"],
+      "validates": ["protein_fold", "secondary_structure", "domain_architecture", "residue_confidence"],
+      "limitations": ["no_ligand_modeling", "no_binding_affinity", "no_dynamics", "single_static_structure"],
+      "url": "https://www.tamarind.bio/tools/alphafold"
+    },
+    {
+      "id": "boltz2",
+      "name": "Boltz-2",
+      "category": "structure_prediction",
+      "description": "All-atom structure prediction for protein-ligand, protein-protein, and protein-nucleic acid complexes with binding affinity estimation. AlphaFold3-level accuracy, 1000x more efficient than FEP.",
+      "input_types": ["protein_sequence", "ligand_smiles", "ligand_sdf", "ccd_code"],
+      "output_types": ["complex_pdb", "binding_affinity", "confidence_scores", "contact_map"],
+      "validates": ["binding_pose", "binding_affinity", "protein_ligand_contacts", "complex_structure"],
+      "limitations": ["may_miss_induced_fit", "affinity_is_estimated_not_experimental"],
+      "url": "https://www.tamarind.bio/tools/boltz"
+    },
+    {
+      "id": "diffdock",
+      "name": "DiffDock",
+      "category": "molecular_docking",
+      "description": "Diffusion-model-based molecular docking. Generates diverse binding poses with confidence scores. State-of-the-art for blind docking.",
+      "input_types": ["protein_pdb", "ligand_smiles", "ligand_sdf"],
+      "output_types": ["docked_poses", "confidence_scores", "rmsd_to_crystal"],
+      "validates": ["binding_site_location", "binding_pose", "ligand_orientation"],
+      "limitations": ["no_binding_affinity_score", "confidence_not_equal_to_affinity"],
+      "url": "https://www.tamarind.bio/tools/diffdock"
+    },
+    {
+      "id": "autodock_vina",
+      "name": "AutoDock Vina",
+      "category": "molecular_docking",
+      "description": "Physics-based molecular docking with scoring function. Predicts binding poses and estimates binding free energy. Widely validated in literature.",
+      "input_types": ["protein_pdb", "ligand_smiles", "ligand_sdf", "search_box"],
+      "output_types": ["docked_poses", "binding_energy_kcal", "ki_estimate"],
+      "validates": ["binding_pose", "binding_energy", "relative_affinity", "selectivity"],
+      "limitations": ["rigid_receptor_default", "scoring_function_approximate", "may_miss_allosteric_effects"],
+      "url": "https://www.tamarind.bio/tools/autodock-vina"
+    },
+    {
+      "id": "gnina",
+      "name": "GNINA",
+      "category": "molecular_docking",
+      "description": "Deep-learning-enhanced molecular docking. Combines CNN scoring with AutoDock Vina sampling. 73% top-pose accuracy in redocking vs 58% for Vina alone.",
+      "input_types": ["protein_pdb", "ligand_smiles", "ligand_sdf"],
+      "output_types": ["docked_poses", "cnn_score", "cnn_affinity", "vina_score"],
+      "validates": ["binding_pose", "binding_affinity", "pose_ranking"],
+      "limitations": ["training_data_bias", "large_flexible_ligands_challenging"],
+      "url": "https://www.tamarind.bio/tools/gnina"
+    },
+    {
+      "id": "gromacs",
+      "name": "GROMACS",
+      "category": "molecular_dynamics",
+      "description": "High-performance molecular dynamics simulation. Models protein conformational changes, ligand stability, and binding thermodynamics over time.",
+      "input_types": ["protein_pdb", "ligand_topology", "simulation_params"],
+      "output_types": ["trajectory", "rmsd_timeseries", "rmsf_per_residue", "binding_free_energy", "hydrogen_bonds"],
+      "validates": ["conformational_dynamics", "binding_stability", "induced_fit", "switch_region_flexibility", "protein_stability"],
+      "limitations": ["computationally_expensive", "force_field_dependent", "timescale_limited"],
+      "url": "https://app.tamarind.bio/tools/gromacs"
+    },
+    {
+      "id": "prodigy",
+      "name": "PRODIGY",
+      "category": "binding_energy",
+      "description": "Predicts binding affinity of protein-protein complexes from 3D structure. Uses interface contacts to estimate dissociation constant.",
+      "input_types": ["complex_pdb", "chain_ids"],
+      "output_types": ["delta_g", "kd_estimate", "interface_contacts", "charged_contacts"],
+      "validates": ["protein_protein_binding", "effector_interaction_disruption", "complex_stability"],
+      "limitations": ["protein_protein_only", "no_small_molecule", "static_structure_input"],
+      "url": "https://www.tamarind.bio/tools/prodigy"
+    },
+    {
+      "id": "chai1",
+      "name": "Chai-1",
+      "category": "structure_prediction",
+      "description": "All-atom structure prediction integrating paired attention with protein language model embeddings. Supports flexible loop and ligand modeling via atomic diffusion.",
+      "input_types": ["protein_sequence", "ligand_smiles", "nucleic_acid_sequence"],
+      "output_types": ["complex_pdb", "confidence_scores", "pae_matrix"],
+      "validates": ["protein_ligand_complex", "loop_conformations", "binding_pose"],
+      "limitations": ["newer_model_less_validated", "may_differ_from_experimental_poses"],
+      "url": "https://www.tamarind.bio/tools/chai-1"
+    },
+    {
+      "id": "esmfold",
+      "name": "ESMFold",
+      "category": "structure_prediction",
+      "description": "Fast single-sequence protein structure prediction using ESM-2 language model. No MSA required. Useful for rapid screening and comparison.",
+      "input_types": ["protein_sequence"],
+      "output_types": ["pdb", "plddt_per_residue", "ptm_score"],
+      "validates": ["protein_fold", "rapid_structure_check", "fold_comparison"],
+      "limitations": ["lower_accuracy_than_alphafold", "no_ligand", "no_multimer"],
+      "url": "https://app.tamarind.bio/tools/esmfold"
+    }
+  ]
+}

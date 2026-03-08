@@ -1,0 +1,35 @@
+{
+  "model": "esmfold",
+  "job_id": "td-esmfold-kras-001",
+  "status": "completed",
+  "runtime_seconds": 12,
+  "protein_name": "KRAS G12D",
+  "prediction": {
+    "mean_plddt": 85.2,
+    "ptm_score": 0.84,
+    "plddt_key_regions": {
+      "p_loop_10_17": 86.1,
+      "switch_i_30_40": 71.3,
+      "switch_ii_58_75": 63.8,
+      "g_domain_core": 91.2,
+      "c_terminal_150_169": 32.5
+    },
+    "secondary_structure": {
+      "helix_residues": 65,
+      "sheet_residues": 34,
+      "coil_residues": 70
+    },
+    "backbone_rmsd_to_alphafold": 1.1,
+    "pdb_file": "esmfold_kras_g12d.pdb"
+  },
+  "comparison_to_alphafold": {
+    "alphafold_mean_plddt": 89.7,
+    "esmfold_mean_plddt": 85.2,
+    "plddt_difference": 4.5,
+    "rmsd_angstrom": 1.1,
+    "agreement": "ESMFold and AlphaFold agree well on the overall KRAS G12D fold (RMSD 1.1 Å). Both identify Switch I/II as flexible and C-terminal as disordered. ESMFold is slightly less confident overall but reaches the same structural conclusions."
+  },
+  "summary": {
+    "verdict": "ESMFold independently confirms the KRAS G12D fold in 12 seconds (vs minutes for AlphaFold). The 1.1 Å backbone RMSD to AlphaFold validates structural consistency across prediction methods. Both models agree on Switch I/II flexibility — this is a real structural feature, not a prediction artifact."
+  }
+}

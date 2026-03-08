@@ -1,0 +1,29 @@
+{
+  "model": "autodock_vina",
+  "job_id": "td-vina-kras-001",
+  "protein": {
+    "pdb_file": "kras_g12d_model_1_relaxed.pdb",
+    "protein_id": "P01116_G12D",
+    "prepared_pdbqt": "kras_g12d_prepared.pdbqt"
+  },
+  "ligand": {
+    "name": "MRTX1133",
+    "smiles": "CC1=C(C=C(C=C1)C2=CC(=NC=C2C(F)(F)F)NC3=NC=C(C(=N3)NC4CC4)C(=O)NC5(CC5)C(=O)N6CCC(C6)O)F",
+    "prepared_pdbqt": "mrtx1133_prepared.pdbqt",
+    "num_rotatable_bonds": 8
+  },
+  "search_space": {
+    "center_x": 12.5,
+    "center_y": -3.2,
+    "center_z": 8.7,
+    "size_x": 25,
+    "size_y": 25,
+    "size_z": 25,
+    "description": "Centered on Switch II pocket (residues 58-75)"
+  },
+  "params": {
+    "exhaustiveness": 32,
+    "num_modes": 9,
+    "energy_range": 3
+  }
+}

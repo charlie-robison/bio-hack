@@ -1,0 +1,56 @@
+{
+  "model": "autodock_vina",
+  "job_id": "td-vina-kras-001",
+  "status": "completed",
+  "runtime_seconds": 1243,
+  "protein_name": "KRAS G12D",
+  "ligand_name": "MRTX1133",
+  "poses": [
+    {
+      "rank": 1,
+      "binding_energy_kcal_mol": -11.8,
+      "estimated_ki_nm": 2.2,
+      "rmsd_lower": 0.0,
+      "rmsd_upper": 0.0,
+      "binding_site": "Switch II pocket",
+      "key_contacts": ["ASP12", "GLN61", "GLU63", "ASP69", "MET72", "HIS95", "TYR96"],
+      "pose_file": "vina_pose_1.pdbqt"
+    },
+    {
+      "rank": 2,
+      "binding_energy_kcal_mol": -11.2,
+      "estimated_ki_nm": 5.9,
+      "rmsd_lower": 1.9,
+      "rmsd_upper": 3.2,
+      "binding_site": "Switch II pocket",
+      "key_contacts": ["ASP12", "GLN61", "ASP69", "MET72", "HIS95"],
+      "pose_file": "vina_pose_2.pdbqt"
+    },
+    {
+      "rank": 3,
+      "binding_energy_kcal_mol": -10.5,
+      "estimated_ki_nm": 19.8,
+      "rmsd_lower": 4.3,
+      "rmsd_upper": 6.1,
+      "binding_site": "allosteric site (off-target)",
+      "key_contacts": ["LYS16", "ASP119", "SER17"],
+      "pose_file": "vina_pose_3.pdbqt"
+    }
+  ],
+  "wt_comparison": {
+    "wt_best_binding_energy_kcal_mol": -8.3,
+    "wt_estimated_ki_nm": 820,
+    "g12d_best_binding_energy_kcal_mol": -11.8,
+    "g12d_estimated_ki_nm": 2.2,
+    "selectivity_ratio": 373,
+    "energy_difference_kcal_mol": 3.5,
+    "note": "Vina estimates ~370-fold selectivity for G12D over WT. Paper claims ~700-fold. Order of magnitude consistent; Vina may underestimate due to rigid receptor."
+  },
+  "summary": {
+    "best_binding_energy": -11.8,
+    "best_ki_estimate_nm": 2.2,
+    "paper_ic50_nm": 2.0,
+    "agreement": "Vina binding energy of -11.8 kcal/mol corresponds to Ki ~2.2 nM, closely matching the paper's IC50 < 2 nM. Selectivity ratio (370x) is within 2-fold of the paper's claim (700x).",
+    "verdict": "Strong quantitative agreement with the paper's binding affinity claims. Selectivity slightly underestimated, likely due to rigid receptor approximation."
+  }
+}

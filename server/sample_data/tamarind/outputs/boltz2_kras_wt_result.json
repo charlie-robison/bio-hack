@@ -1,0 +1,25 @@
+{
+  "model": "boltz2",
+  "job_id": "td-boltz2-kras-wt-001",
+  "status": "completed",
+  "runtime_seconds": 3105,
+  "protein_name": "KRAS WT",
+  "ligand_name": "MRTX1133",
+  "complex_prediction": {
+    "confidence_score": 0.51,
+    "protein_plddt_mean": 87.1,
+    "ligand_plddt_mean": 38.2,
+    "interface_pae_mean": 12.8,
+    "predicted_binding_affinity_pki": 6.05,
+    "predicted_ki_nm": 890,
+    "predicted_delta_g_kcal_mol": -8.3,
+    "contact_residues": [10, 11, 12, 58, 60, 72],
+    "hydrogen_bonds": [
+      {"protein_residue": "GLY12", "ligand_atom": "N3", "distance": 4.2}
+    ],
+    "switch_ii_buried_surface_area_A2": 185
+  },
+  "summary": {
+    "verdict": "MRTX1133 shows very poor binding to WT KRAS. Low ligand confidence (pLDDT 38.2), high interface PAE (12.8 Å), weak predicted affinity (Ki ~890 nM), and minimal Switch II burial (185 Å² vs 485 Å² for G12D). The absence of ASP12 eliminates a critical hydrogen bond anchor, confirming the structural basis for G12D selectivity."
+  }
+}

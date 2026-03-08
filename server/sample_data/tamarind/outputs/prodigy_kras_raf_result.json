@@ -1,0 +1,56 @@
+{
+  "model": "prodigy",
+  "job_id": "td-prodigy-kras-001",
+  "status": "completed",
+  "runtime_seconds": 45,
+  "runs": [
+    {
+      "label": "kras_g12d_apo_raf",
+      "description": "KRAS G12D (apo) + RAF RBD — baseline interaction",
+      "delta_g_kcal_mol": -12.3,
+      "kd_mol": 9.8e-10,
+      "kd_nm": 0.98,
+      "interface_contacts": {
+        "charged_charged": 6,
+        "charged_polar": 8,
+        "charged_apolar": 12,
+        "polar_polar": 4,
+        "polar_apolar": 15,
+        "apolar_apolar": 18,
+        "total": 63
+      },
+      "interface_residues_kras": ["E31", "D33", "I36", "E37", "D38", "S39", "Y40", "R41", "K42"],
+      "interface_residues_raf": ["R59", "Q66", "K84", "R89", "F130", "V131"],
+      "buried_surface_area_A2": 1245
+    },
+    {
+      "label": "kras_g12d_holo_raf",
+      "description": "KRAS G12D (MRTX1133-bound) + RAF RBD — disrupted interaction",
+      "delta_g_kcal_mol": -7.1,
+      "kd_mol": 6.2e-06,
+      "kd_nm": 6200,
+      "interface_contacts": {
+        "charged_charged": 2,
+        "charged_polar": 3,
+        "charged_apolar": 5,
+        "polar_polar": 2,
+        "polar_apolar": 6,
+        "apolar_apolar": 7,
+        "total": 25
+      },
+      "interface_residues_kras": ["E31", "D33", "S39"],
+      "interface_residues_raf": ["R59", "K84"],
+      "buried_surface_area_A2": 520
+    }
+  ],
+  "comparative_analysis": {
+    "delta_delta_g_kcal_mol": 5.2,
+    "kd_ratio": 6327,
+    "interface_contact_reduction_percent": 60,
+    "buried_surface_reduction_percent": 58,
+    "conclusion": "MRTX1133 binding reduces KRAS-RAF interface contacts by 60% and weakens binding by ~6300-fold. The drug-bound Switch I conformation displaces key interface residues (I36, E37, D38, Y40, R41, K42), directly blocking the RAF RBD binding surface."
+  },
+  "summary": {
+    "verdict": "PRODIGY confirms the paper's claim that MRTX1133 disrupts effector binding. KRAS-RAF interaction weakens from KD ~1 nM (apo) to KD ~6.2 μM (drug-bound) — a >6000-fold reduction. This is mechanistically consistent with the paper's reported IC50 of 9 nM for blocking RAF RBD interaction, as the conformational change induced by MRTX1133 eliminates most Switch I interface contacts."
+  }
+}

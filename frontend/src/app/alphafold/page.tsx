@@ -697,6 +697,7 @@ function ProdigyCard({ data }: { data: ProdigyResult }) {
   );
 }
 
+<<<<<<< HEAD
 function AgreementMatrix({ matrix }: { matrix: ModelAgreementMatrix }) {
   return (
     <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-4 space-y-3">
@@ -706,6 +707,116 @@ function AgreementMatrix({ matrix }: { matrix: ModelAgreementMatrix }) {
           <div key={key}>
             <div className="text-[10px] uppercase tracking-wider text-zinc-500 mb-1">
               {key.replace(/_/g, " ")}
+=======
+interface Comparison {
+  claim: string;
+  prediction_match?: string;
+  alphafold_evidence?: string;
+  agreement: string;
+  confidence: string;
+  explanation: string;
+}
+
+interface PaperComparison {
+  paper_title: string;
+  paper_journal?: string;
+  proteins_mentioned?: string[];
+  proteins_analyzed?: string[];
+  paper_claims: { claim: string; category: string; evidence_type: string; paper_section?: string }[];
+  comparisons: Comparison[];
+  overall_assessment: {
+    summary: string;
+    prediction_reliability?: string;
+    prediction_reliability_score?: number;
+    structural_agreement?: string;
+    key_agreements?: string[];
+    key_validated_claims?: string[];
+    key_discrepancies?: string[];
+    key_limitations?: string[];
+    binding_site_assessment?: string;
+    recommendations: string[];
+  };
+}
+
+function agreementColor(a: string) {
+  if (a === "agrees") return "#22c55e";
+  if (a === "partially_agrees") return "#eab308";
+  if (a === "disagrees") return "#ef4444";
+  return "#6b7280";
+}
+
+function ComparisonSection({ data }: { data: PaperComparison }) {
+  const assessment = data.overall_assessment;
+  const proteins = data.proteins_analyzed || data.proteins_mentioned || [];
+  const agreements = assessment.key_validated_claims || assessment.key_agreements || [];
+  const limitations = assessment.key_limitations || assessment.key_discrepancies || [];
+
+  const relScore = assessment.prediction_reliability_score;
+  const relLabel = assessment.prediction_reliability || (relScore && relScore >= 0.8 ? "high" : relScore && relScore >= 0.6 ? "medium" : "low");
+  const relColor = relLabel === "high" ? "#22c55e" : relLabel === "medium" ? "#eab308" : "#ef4444";
+
+  return (
+    <div className="border border-zinc-800 rounded-xl p-6 space-y-5">
+      <div>
+        <h2 className="text-xl font-semibold text-white">Paper vs Prediction Comparison</h2>
+        <p className="text-zinc-400 text-sm mt-1">{data.paper_title}</p>
+        {data.paper_journal && (
+          <p className="text-zinc-500 text-xs mt-0.5">{data.paper_journal}</p>
+        )}
+        <div className="flex gap-2 mt-2 flex-wrap">
+          {proteins.map((p) => (
+            <span key={p} className="text-xs bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded">
+              {p}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-4">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: relColor }} />
+          <span className="font-semibold text-white">
+            Prediction reliability: {relLabel}{relScore ? ` (${(relScore * 100).toFixed(0)}%)` : ""}
+          </span>
+        </div>
+        <p className="text-sm text-zinc-400">{assessment.summary}</p>
+        {assessment.structural_agreement && (
+          <p className="text-sm text-zinc-500 mt-2 italic">{assessment.structural_agreement}</p>
+        )}
+      </div>
+
+      {assessment.binding_site_assessment && (
+        <div className="rounded-lg bg-zinc-900/60 border border-zinc-800/60 p-4">
+          <h3 className="text-sm font-medium text-amber-400 mb-1">Binding Site Assessment</h3>
+          <p className="text-sm text-zinc-400">{assessment.binding_site_assessment}</p>
+        </div>
+      )}
+
+      <div>
+        <h3 className="text-sm font-medium text-zinc-300 mb-3">
+          Claim-by-Claim Analysis ({data.comparisons.length} comparisons)
+        </h3>
+        <div className="space-y-3">
+          {data.comparisons.map((c, i) => (
+            <div key={i} className="bg-zinc-900/50 rounded-lg p-4 border border-zinc-800/50">
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <p className="text-sm text-zinc-200 flex-1">{c.claim}</p>
+                <span
+                  className="text-xs px-2 py-0.5 rounded shrink-0 font-medium"
+                  style={{ backgroundColor: agreementColor(c.agreement) + "20", color: agreementColor(c.agreement) }}
+                >
+                  {c.agreement.replace(/_/g, " ")}
+                </span>
+              </div>
+              <p className="text-xs text-zinc-500 mb-1">
+                {c.prediction_match && (<>vs <span className="text-zinc-400">{c.prediction_match}</span> &middot; </>)}
+                confidence: {c.confidence}
+              </p>
+              {c.alphafold_evidence && (
+                <p className="text-xs text-zinc-500 mb-2 bg-zinc-800/50 p-2 rounded">{c.alphafold_evidence}</p>
+              )}
+              <p className="text-sm text-zinc-400">{c.explanation}</p>
+>>>>>>> 74bc1f3 (inference)
             </div>
             <div className="flex flex-wrap gap-2">
               {Object.entries(vals).map(([model, val]) => (
@@ -718,11 +829,72 @@ function AgreementMatrix({ matrix }: { matrix: ModelAgreementMatrix }) {
           </div>
         ))}
       </div>
+<<<<<<< HEAD
+=======
+
+      {(agreements.length > 0 || limitations.length > 0) && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {agreements.length > 0 && (
+            <div>
+              <h3 className="text-sm font-medium text-emerald-400 mb-2">
+                {data.overall_assessment.key_validated_claims ? "Validated Claims" : "Agreements"}
+              </h3>
+              <ul className="space-y-1 text-sm text-zinc-400">
+                {agreements.map((a, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="text-emerald-600 shrink-0">&bull;</span>
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {limitations.length > 0 && (
+            <div>
+              <h3 className="text-sm font-medium text-red-400 mb-2">
+                {data.overall_assessment.key_limitations ? "Limitations" : "Discrepancies"}
+              </h3>
+              <ul className="space-y-1 text-sm text-zinc-400">
+                {limitations.map((d, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="text-red-600 shrink-0">&bull;</span>
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
+
+      {assessment.recommendations.length > 0 && (
+        <div>
+          <h3 className="text-sm font-medium text-zinc-300 mb-2">Recommendations</h3>
+          <ul className="space-y-1 text-sm text-zinc-400">
+            {assessment.recommendations.map((r, i) => (
+              <li key={i} className="flex gap-2">
+                <span className="text-zinc-600 shrink-0">&rarr;</span>
+                <span>{r}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+>>>>>>> 74bc1f3 (inference)
     </div>
   );
 }
 
+<<<<<<< HEAD
 /* ── Main Page ────────────────────────────────────────────────────────── */
+=======
+export default function AlphaFoldAnalysis() {
+  const [af2Mono, setAf2Mono] = useState<AF2Result | null>(null);
+  const [af2Multi, setAf2Multi] = useState<AF2Result | null>(null);
+  const [af3, setAf3] = useState<AF3Result | null>(null);
+  const [krasResult, setKrasResult] = useState<AF2Result | null>(null);
+  const [error, setError] = useState<string | null>(null);
+>>>>>>> 74bc1f3 (inference)
 
 export default function AlphaFoldAnalysis() {
   const [validation, setValidation] = useState<ValidationData | null>(null);
@@ -738,6 +910,7 @@ export default function AlphaFoldAnalysis() {
   useEffect(() => {
     const base = `${API}/tamarind/experiments/kras_g12d`;
     Promise.all([
+<<<<<<< HEAD
       fetch(`${base}/validation`).then((r) => r.json()),
       fetch(`${base}/outputs/diffdock_result.json`).then((r) => r.json()),
       fetch(`${base}/outputs/autodock-vina_result.json`).then((r) => r.json()),
@@ -755,6 +928,20 @@ export default function AlphaFoldAnalysis() {
         setOpenmm(om);
         setProdigy(pr);
         setLoading(false);
+=======
+      fetch(`${API}/alphafold/results/sample`).then((r) => r.json()),
+      fetch(`${API}/alphafold/results/multimer`).then((r) => r.json()),
+      fetch(`${API}/alphafold/results/af3`).then((r) => r.json()),
+      fetch(`${API}/alphafold/results/kras-g12d`).then((r) => r.json()).catch(() => null),
+      fetch(`${API}/alphafold/compare/kras-g12d`).then((r) => r.json()).catch(() => null),
+    ])
+      .then(([mono, multi, af3Data, kras, krasComparison]) => {
+        setAf2Mono(mono);
+        setAf2Multi(multi);
+        setAf3(af3Data);
+        if (kras && !kras.detail) setKrasResult(kras);
+        if (krasComparison && !krasComparison.detail) setComparison(krasComparison);
+>>>>>>> 74bc1f3 (inference)
       })
       .catch((e) => {
         setError(e.message);
@@ -815,6 +1002,7 @@ export default function AlphaFoldAnalysis() {
           <AggregateBar agg={validation.aggregate_results} />
         </div>
 
+<<<<<<< HEAD
         {/* Claims */}
         <div className="space-y-2">
           <h2 className="text-lg font-semibold text-white">Claim-by-Claim Validation</h2>
@@ -828,6 +1016,132 @@ export default function AlphaFoldAnalysis() {
         {/* Model Results */}
         <div className="space-y-4">
           <h2 className="text-lg font-semibold text-white">Model Results</h2>
+=======
+        {/* KRAS G12D Findings Summary */}
+        {comparison && krasResult && (
+          <div className="border border-zinc-800 rounded-xl p-6 space-y-5 bg-zinc-900/30">
+            <div>
+              <h2 className="text-xl font-semibold text-white">KRAS G12D — Key Findings</h2>
+              <p className="text-zinc-500 text-sm mt-1">
+                AlphaFold 2 prediction vs. {comparison.paper_journal || "paper"}: <span className="italic">{comparison.paper_title}</span>
+              </p>
+            </div>
+
+            {/* Reliability score bar */}
+            {comparison.overall_assessment.prediction_reliability_score != null && (
+              <div>
+                <div className="flex items-center justify-between text-sm mb-1">
+                  <span className="text-zinc-400">Prediction Reliability</span>
+                  <span className="font-mono text-white">
+                    {(comparison.overall_assessment.prediction_reliability_score * 100).toFixed(0)}%
+                  </span>
+                </div>
+                <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all"
+                    style={{
+                      width: `${comparison.overall_assessment.prediction_reliability_score * 100}%`,
+                      backgroundColor: comparison.overall_assessment.prediction_reliability_score >= 0.8
+                        ? "#22c55e"
+                        : comparison.overall_assessment.prediction_reliability_score >= 0.6
+                        ? "#eab308"
+                        : "#ef4444",
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Agreement breakdown */}
+            <div>
+              <h3 className="text-sm font-medium text-zinc-300 mb-2">Agreement Breakdown</h3>
+              <div className="grid grid-cols-3 gap-3">
+                {(() => {
+                  const agrees = comparison.comparisons.filter(c => c.agreement === "agrees").length;
+                  const partial = comparison.comparisons.filter(c => c.agreement === "partially_agrees").length;
+                  const notComp = comparison.comparisons.filter(c => c.agreement === "not_comparable" || c.agreement === "disagrees").length;
+                  return (
+                    <>
+                      <div className="bg-zinc-800/60 rounded-lg p-3 text-center">
+                        <div className="text-2xl font-mono font-bold text-emerald-400">{agrees}</div>
+                        <div className="text-xs text-zinc-500 mt-1">Agrees</div>
+                      </div>
+                      <div className="bg-zinc-800/60 rounded-lg p-3 text-center">
+                        <div className="text-2xl font-mono font-bold text-amber-400">{partial}</div>
+                        <div className="text-xs text-zinc-500 mt-1">Partially Agrees</div>
+                      </div>
+                      <div className="bg-zinc-800/60 rounded-lg p-3 text-center">
+                        <div className="text-2xl font-mono font-bold text-zinc-500">{notComp}</div>
+                        <div className="text-xs text-zinc-500 mt-1">Not Comparable</div>
+                      </div>
+                    </>
+                  );
+                })()}
+              </div>
+            </div>
+
+            {/* Key metrics from the AF2 prediction */}
+            <div>
+              <h3 className="text-sm font-medium text-zinc-300 mb-2">AF2 Prediction Metrics</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <Stat label="Mean pLDDT" value={krasResult.models[0].mean_plddt} />
+                <Stat label="pTM Score" value={krasResult.models[0].ptm_score} />
+                <Stat label="Mean PAE" value={`${krasResult.models[0].pae_matrix_summary.mean_pae} \u00C5`} />
+                <Stat label="Claims Analyzed" value={comparison.comparisons.length} />
+              </div>
+            </div>
+
+            {/* Written findings */}
+            <div className="space-y-3">
+              <div>
+                <h3 className="text-sm font-medium text-emerald-400 mb-1">What AlphaFold Validates</h3>
+                <p className="text-sm text-zinc-400">
+                  AF2 strongly confirms the canonical KRAS G12D fold with a well-defined P-loop at the G12D mutation site (pLDDT ~88).
+                  Switch I (residues 30-40) and Switch II (residues 58-75) show intrinsic conformational flexibility (pLDDT 62-76),
+                  consistent with the paper&apos;s claim that MRTX1133 exploits switch region plasticity to trap KRAS in an effector-incompatible conformation.
+                  The Switch II pocket is structurally plausible as a druggable surface for non-covalent inhibition.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium text-amber-400 mb-1">Partial Support</h3>
+                <p className="text-sm text-zinc-400">
+                  AF2 supports the structural framework for MRTX1133 binding but cannot directly validate binding affinity (KD ~0.2 pM),
+                  IC50 values, or the 700-fold selectivity over wild-type KRAS. The nucleotide-state-dependent conformations
+                  (GDP vs. GMPPCP) are consistent with AF2&apos;s elevated uncertainty in switch regions, but AF2 generates a single
+                  ligand-free model and cannot resolve state-specific pocket geometries.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium text-zinc-500 mb-1">Beyond AF2&apos;s Scope</h3>
+                <p className="text-sm text-zinc-400">
+                  Crystallographic metrics (resolution, B-factors, electron density), quantitative selectivity, cellular signaling
+                  inhibition (pERK, pS6, p4EBP1), and in vivo tumor regression data cannot be assessed by AF2 monomer predictions.
+                  These require experimental validation or complementary computational methods (molecular docking, MD simulations, AF-Multimer).
+                </p>
+              </div>
+            </div>
+
+            {/* C-terminal note */}
+            <div className="rounded-lg bg-zinc-800/40 border border-zinc-800/60 px-4 py-3">
+              <p className="text-xs text-zinc-500">
+                <span className="text-zinc-400 font-medium">Note:</span> The C-terminal hypervariable region (residues 150-169)
+                shows pLDDT dropping below 50, consistent with known intrinsic disorder in the membrane-proximal region.
+                This does not affect the drug-binding analysis as MRTX1133 targets the G-domain core.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* KRAS G12D AF2 detailed results */}
+        {krasResult && <AF2Section data={krasResult} title={`${krasResult.protein.name} — AF2 (KRAS G12D)`} />}
+        {/* Full claim-by-claim comparison */}
+        {comparison && <ComparisonSection data={comparison} />}
+
+        {/* Generic sample predictions */}
+        {af2Mono && <AF2Section data={af2Mono} title={`${af2Mono.protein.name} — AF2 Monomer`} />}
+        {af2Multi && <AF2Section data={af2Multi} title={`${af2Multi.protein.name} — AF2 Multimer`} />}
+        {af3 && <AF3Section data={af3} />}
+>>>>>>> 74bc1f3 (inference)
 
           {/* Docking row */}
           <div>

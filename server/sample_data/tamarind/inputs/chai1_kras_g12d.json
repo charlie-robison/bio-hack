@@ -1,0 +1,18 @@
+{
+  "model": "chai1",
+  "job_id": "td-chai1-kras-001",
+  "protein": {
+    "sequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSSNGDIPAIRISKK",
+    "name": "KRAS G12D",
+    "protein_id": "P01116_G12D"
+  },
+  "ligand": {
+    "name": "MRTX1133",
+    "smiles": "CC1=C(C=C(C=C1)C2=CC(=NC=C2C(F)(F)F)NC3=NC=C(C(=N3)NC4CC4)C(=O)NC5(CC5)C(=O)N6CCC(C6)O)F"
+  },
+  "params": {
+    "num_trunk_recycles": 3,
+    "num_diffusion_timesteps": 200,
+    "seed": 42
+  }
+}

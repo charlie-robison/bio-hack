@@ -1,0 +1,42 @@
+{
+  "protein_id": "P01116_G12D",
+  "name": "KRAS G12D mutant",
+  "organism": "Homo sapiens",
+  "gene_name": "KRAS",
+  "uniprot_id": "P01116",
+  "pdb_ids": ["7T47", "6GJ8", "6USX", "4DSO"],
+  "sequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSSNGDIPAIRISKK",
+  "sequence_length": 169,
+  "mutation": {
+    "position": 12,
+    "wild_type": "G",
+    "mutant": "D",
+    "description": "Glycine to Aspartate at position 12. Most common KRAS mutation, found in ~34% of pancreatic cancers."
+  },
+  "chains": [
+    {
+      "chain_id": "A",
+      "name": "GTPase KRas (G12D)",
+      "sequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSSNGDIPAIRISKK",
+      "start_residue": 1,
+      "end_residue": 169
+    }
+  ],
+  "description": "KRAS4B with oncogenic G12D mutation. Key drug target for MRTX1133. The G12D mutation impairs GTPase activity, locking KRAS in the active GTP-bound state and driving constitutive activation of RAF/MEK/ERK and PI3K/AKT signaling. Crystal structure with MRTX1133 inhibitor available (PDB: 7T47).",
+  "molecular_weight_da": 21656,
+  "known_structures": {
+    "experimental_method": "X-ray crystallography",
+    "best_resolution_angstrom": 1.45,
+    "fold_type": "alpha/beta (G-domain, Rossmann-like)"
+  },
+  "drug_binding": {
+    "inhibitor": "MRTX1133",
+    "binding_site": "Switch II pocket",
+    "kd_pm": 0.2,
+    "ic50_nm": 2,
+    "selectivity_vs_wt": 700,
+    "mechanism": "Non-covalent, binds both GDP and GTP-bound states, induces conformational change in Switch I/II that blocks effector binding"
+  },
+  "tags": ["oncogene", "GTPase", "drug-target", "MRTX1133", "PDAC", "switch-II-pocket", "G12D-mutant"],
+  "fasta": ">KRAS_G12D_HUMAN GTPase KRas G12D mutant\nMTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSsNGDIPAIRISKK"
+}

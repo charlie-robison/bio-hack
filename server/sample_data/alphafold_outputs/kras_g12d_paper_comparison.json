@@ -1,0 +1,209 @@
+{
+  "paper_title": "Anti-tumor efficacy of a potent and selective G12D inhibitor non-covalent KRAS",
+  "paper_journal": "Nature Medicine",
+  "proteins_analyzed": [
+    "KRAS G12D",
+    "KRAS WT",
+    "RAF RBD",
+    "SOS1",
+    "PI3K",
+    "EGFR",
+    "ERK1/2",
+    "S6",
+    "4EBP1"
+  ],
+  "paper_claims": [
+    {
+      "claim": "MRTX1133 binds the GDP-bound inactive form of KRAS G12D with very high affinity in the switch II pocket, with biochemical IC50 < 2 nM and SPR KD ~0.2 pM.",
+      "category": "binding",
+      "evidence_type": "biochemical",
+      "paper_section": "Results - MRTX1133 is a potent and selective KRASG12D inhibitor"
+    },
+    {
+      "claim": "MRTX1133 shows approximately 700-fold selectivity for GDP-bound KRAS G12D over GDP-bound KRAS WT by SPR.",
+      "category": "selectivity",
+      "evidence_type": "biochemical",
+      "paper_section": "Results - MRTX1133 is a potent and selective KRASG12D inhibitor"
+    },
+    {
+      "claim": "MRTX1133 also inhibits the active form of KRAS G12D, blocking RAF RBD interaction with GMPPNP/GMPPCP-loaded KRAS G12D with IC50 of 9 nM.",
+      "category": "mechanism",
+      "evidence_type": "biochemical",
+      "paper_section": "Results - MRTX1133 is a potent and selective KRASG12D inhibitor"
+    },
+    {
+      "claim": "X-ray co-crystal structures of KRAS G12D with MRTX1133 and either GDP or GMPPCP support inhibitor potency in both inactive and active nucleotide states.",
+      "category": "structure",
+      "evidence_type": "crystallography",
+      "paper_section": "Results - MRTX1133 is a potent and selective KRASG12D inhibitor"
+    },
+    {
+      "claim": "Binding of MRTX1133 induces conformational changes in switch I and switch II, producing a conformation incompatible with downstream effector binding.",
+      "category": "mechanism",
+      "evidence_type": "crystallography",
+      "paper_section": "Results - MRTX1133 is a potent and selective KRASG12D inhibitor"
+    },
+    {
+      "claim": "The resulting MRTX1133-bound conformation is observed in both GDP- and GMPPCP-bound KRAS G12D structures, suggesting nucleotide-state-independent disruption of effector-competent surfaces.",
+      "category": "mechanism",
+      "evidence_type": "crystallography",
+      "paper_section": "Results - MRTX1133 is a potent and selective KRASG12D inhibitor"
+    },
+    {
+      "claim": "The switch II pocket is a feasible binding surface for mutant-selective KRAS inhibition beyond KRAS G12C.",
+      "category": "binding",
+      "evidence_type": "crystallography",
+      "paper_section": "Introduction and Results"
+    },
+    {
+      "claim": "The G12D mutation in the P-loop can be selectively targeted by a non-covalent inhibitor despite the absence of a reactive cysteine.",
+      "category": "mechanism",
+      "evidence_type": "biochemical",
+      "paper_section": "Introduction and Results"
+    },
+    {
+      "claim": "MRTX1133 inhibits KRAS-dependent signaling in KRAS G12D mutant cells, including pERK, pS6, p4EBP1 and DUSP4/6 responses.",
+      "category": "efficacy",
+      "evidence_type": "cellular",
+      "paper_section": "Results - MRTX1133 is a potent and selective KRASG12D inhibitor"
+    },
+    {
+      "claim": "MRTX1133 causes marked tumor regression in multiple KRAS G12D xenograft models, especially pancreatic cancer models.",
+      "category": "efficacy",
+      "evidence_type": "in_vivo",
+      "paper_section": "Results - MRTX1133 demonstrates inhibition of KRAS-dependent signaling and tumor regression in xenograft models; MRTX1133 elicits distinct tumor response patterns in KRASG12D mutant PDAC and CRC models"
+    },
+    {
+      "claim": "The active and inactive KRAS G12D co-complex structures indicate that MRTX1133 blocks effector interactions by remodeling switch regions rather than relying on covalent chemistry.",
+      "category": "mechanism",
+      "evidence_type": "crystallography",
+      "paper_section": "Results - MRTX1133 is a potent and selective KRASG12D inhibitor"
+    },
+    {
+      "claim": "The paper presents a crystal structure of KRAS G12D co-complexed with MRTX1133 and GMPPCP (PDB 7T47), with electron density supporting ligand and Mg\u00b7GMPPCP placement.",
+      "category": "structure",
+      "evidence_type": "crystallography",
+      "paper_section": "Figure 1c"
+    }
+  ],
+  "comparisons": [
+    {
+      "claim": "MRTX1133 binds the GDP-bound inactive form of KRAS G12D with very high affinity in the switch II pocket, with biochemical IC50 < 2 nM and SPR KD ~0.2 pM.",
+      "alphafold_evidence": "AF2 predicts the canonical KRAS G-domain fold with a well-formed P-loop and a recognizable switch II region spanning residues 58-75. Mean pLDDT is 89.7 overall, but switch II confidence is lower, roughly in the 62-76 range, and PAE is elevated in this region, indicating conformational mobility. AF2 does not include ligand-bound states or explicit pocket energetics.",
+      "agreement": "partially_agrees",
+      "confidence": "medium",
+      "explanation": "AF2 supports the existence of the structural framework needed for a switch II pocket because the KRAS core fold is predicted with high confidence and the switch II segment is present in the expected location. However, the exact high-affinity binding mode, subnanomolar-to-picomolar potency, and GDP-state-specific pocket geometry cannot be validated from a ligand-free monomer prediction. The lower confidence in residues 58-75 is actually consistent with a flexible region that can be remodeled into a druggable pocket, but AF2 alone cannot prove the reported affinity."
+    },
+    {
+      "claim": "MRTX1133 shows approximately 700-fold selectivity for GDP-bound KRAS G12D over GDP-bound KRAS WT by SPR.",
+      "alphafold_evidence": "AF2 prediction is only provided for KRAS G12D and not for a matched WT model under identical conditions. Residue 12 in the G12D model is predicted with high confidence, with the P-loop region residues 10-17 generally above 88 pLDDT.",
+      "agreement": "not_comparable",
+      "confidence": "low",
+      "explanation": "AF2 can localize Asp12 confidently within the P-loop and therefore supports that the mutation is structurally well-defined in the model. But selectivity is a thermodynamic and chemical recognition property requiring direct comparison of mutant and WT structures, side-chain interactions, solvent effects, and ligand-bound conformations. A monomeric AF2 model without ligand cannot validate a 700-fold selectivity claim."
+    },
+    {
+      "claim": "MRTX1133 also inhibits the active form of KRAS G12D, blocking RAF RBD interaction with GMPPNP/GMPPCP-loaded KRAS G12D with IC50 of 9 nM.",
+      "alphafold_evidence": "AF2 predicts the overall KRAS fold and places switch I at residues 30-40 and switch II at residues 58-75, the known effector-interaction regions. Both regions show reduced confidence relative to the core, with switch I dropping into the ~74-88 range and switch II into the ~62-76 range in the provided model.",
+      "agreement": "partially_agrees",
+      "confidence": "medium",
+      "explanation": "AF2 supports the structural identity of the effector-binding regions involved in RAF recognition, so it is compatible with the paper's mechanism that perturbing these regions could block RAF RBD binding. However, AF2 does not model the active GMPPCP-bound state explicitly, does not include RAF, and cannot quantify inhibition of the KRAS-RAF interaction. Thus it supports the plausibility of the structural mechanism but not the biochemical potency."
+    },
+    {
+      "claim": "X-ray co-crystal structures of KRAS G12D with MRTX1133 and either GDP or GMPPCP support inhibitor potency in both inactive and active nucleotide states.",
+      "alphafold_evidence": "AF2 produces a single-sequence monomer model without nucleotide or ligand and does not distinguish GDP- versus GTP-analog-bound ensembles. The model notes specifically that switch I and switch II have elevated PAE reflecting flexibility between GDP and GTP-bound states.",
+      "agreement": "partially_agrees",
+      "confidence": "medium",
+      "explanation": "AF2 strongly supports that KRAS G12D has a stable conserved G-domain scaffold capable of adopting different switch conformations. The elevated uncertainty in switch regions is consistent with nucleotide-state-dependent rearrangements described in the paper. But AF2 cannot directly validate the existence of both experimentally observed co-complexes or their state-specific ligand interactions."
+    },
+    {
+      "claim": "Binding of MRTX1133 induces conformational changes in switch I and switch II, producing a conformation incompatible with downstream effector binding.",
+      "alphafold_evidence": "Switch I (30-40) and switch II (58-75) are the least confident structured regions in the AF2 model, with lower pLDDT and elevated PAE compared with the KRAS core. This indicates intrinsic conformational plasticity in exactly the regions the paper says are remodeled by ligand binding.",
+      "agreement": "agrees",
+      "confidence": "high",
+      "explanation": "AF2 does not show the drug-induced conformation itself, but it strongly supports the prerequisite for such a mechanism: switch I and switch II are flexible and less geometrically constrained than the rest of the G-domain. The model's confidence pattern is highly consistent with experimentally observed switch remodeling upon ligand binding. Because these regions mediate effector recognition, AF2 indirectly supports the claim that conformational trapping here could abolish effector competence."
+    },
+    {
+      "claim": "The resulting MRTX1133-bound conformation is observed in both GDP- and GMPPCP-bound KRAS G12D structures, suggesting nucleotide-state-independent disruption of effector-competent surfaces.",
+      "alphafold_evidence": "AF2 predicts one dominant monomeric fold and flags switch regions as flexible rather than fixed. It does not generate separate nucleotide-state ensembles or ligand-induced conformers.",
+      "agreement": "partially_agrees",
+      "confidence": "medium",
+      "explanation": "The AF2 model is compatible with the idea that the same protein scaffold can support multiple switch conformations across nucleotide states. The elevated uncertainty in switch I/II is consistent with a ligand being able to impose a common trapped conformation in both GDP and GMPPCP contexts. Still, AF2 cannot directly demonstrate nucleotide-state independence because it lacks explicit nucleotide and ligand modeling."
+    },
+    {
+      "claim": "The switch II pocket is a feasible binding surface for mutant-selective KRAS inhibition beyond KRAS G12C.",
+      "alphafold_evidence": "AF2 identifies switch II as a real structural element in the expected location, but with lower confidence and higher PAE than the rigid core, implying local malleability. The overall G-domain is highly reliable, with 52% of residues in the very high confidence band and mean PAE of 3.8.",
+      "agreement": "agrees",
+      "confidence": "high",
+      "explanation": "AF2 supports the structural plausibility of a druggable switch II region because it predicts a stable KRAS scaffold surrounding a flexible switch II segment. This is exactly the kind of architecture often associated with inducible pockets. While AF2 cannot prove druggability or selectivity, it is fully consistent with the paper's claim that switch II can serve as a binding surface for non-covalent inhibitors."
+    },
+    {
+      "claim": "The G12D mutation in the P-loop can be selectively targeted by a non-covalent inhibitor despite the absence of a reactive cysteine.",
+      "alphafold_evidence": "The P-loop region 10-17 is predicted with high confidence, and residue 12 itself has pLDDT about 88.2. This places Asp12 in a well-defined local structural context adjacent to the nucleotide-binding region.",
+      "agreement": "partially_agrees",
+      "confidence": "medium",
+      "explanation": "AF2 supports that the G12D substitution is structurally meaningful and sits in a confidently modeled P-loop environment that could influence local electrostatics and ligand recognition. However, AF2 cannot establish that this mutation is sufficient for selective non-covalent recognition, nor can it quantify how Asp12 contributes to binding energy. It supports structural plausibility but not the medicinal chemistry conclusion."
+    },
+    {
+      "claim": "MRTX1133 inhibits KRAS-dependent signaling in KRAS G12D mutant cells, including pERK, pS6, p4EBP1 and DUSP4/6 responses.",
+      "alphafold_evidence": "AF2 only predicts KRAS G12D monomer structure and does not model signaling networks, phosphorylation states, or cellular pathway feedback.",
+      "agreement": "not_comparable",
+      "confidence": "low",
+      "explanation": "These are cellular pharmacology claims outside the scope of AF2. The model can support that KRAS has the expected effector-interaction architecture, but it cannot validate downstream pathway inhibition, adaptive feedback, or cell viability effects."
+    },
+    {
+      "claim": "The active and inactive KRAS G12D co-complex structures indicate that MRTX1133 blocks effector interactions by remodeling switch regions rather than relying on covalent chemistry.",
+      "alphafold_evidence": "AF2 predicts flexible switch I/II regions and a stable noncovalent protein scaffold, with no cysteine at position 12 and no covalent chemistry represented. The model is consistent with a non-covalent conformational trapping mechanism.",
+      "agreement": "agrees",
+      "confidence": "high",
+      "explanation": "AF2 supports the general structural logic of a non-covalent mechanism because the switch regions are flexible enough to be trapped in an alternative conformation, and the G12D mutation lacks the reactive cysteine exploited in G12C inhibitors. Although AF2 cannot observe the trapped state directly, its confidence landscape strongly matches the paper's proposed mechanism of allosteric remodeling rather than covalent attachment."
+    },
+    {
+      "claim": "The paper presents a crystal structure of KRAS G12D co-complexed with MRTX1133 and GMPPCP (PDB 7T47), with electron density supporting ligand and Mg\u00b7GMPPCP placement.",
+      "alphafold_evidence": "AF2 does not generate electron density, crystallographic maps, resolution statistics, B-factors, or ligand occupancy information.",
+      "agreement": "not_comparable",
+      "confidence": "high",
+      "explanation": "This is a direct crystallographic observation and cannot be tested by AF2. AF2 can only provide a structural hypothesis for the protein backbone and side chains, not experimental density or validation metrics."
+    },
+    {
+      "claim": "MRTX1133 disrupts effector protein interactions involving RAF and likely other switch-dependent partners such as SOS and PI3K by altering switch I/II surfaces.",
+      "alphafold_evidence": "AF2 places switch I and switch II in the canonical effector-interaction zones and marks them as flexible. These regions are known to mediate interactions with RAF and contribute to interfaces with SOS1 and PI3K-related signaling assemblies, but AF2 does not model complexes here.",
+      "agreement": "partially_agrees",
+      "confidence": "medium",
+      "explanation": "AF2 supports the structural premise that remodeling switch I/II would alter the major interaction surfaces used by effectors and regulators. This is especially credible for RAF, whose binding depends strongly on switch I. However, AF2 cannot directly validate disruption of specific complexes with SOS1 or PI3K because no multimeric or ligand-bound models are provided."
+    },
+    {
+      "claim": "Any structural metrics such as crystallographic resolution, B-factors, or RMSD support the co-complex interpretation.",
+      "alphafold_evidence": "The supplied protein metadata notes known experimental structures with best resolution 1.45 \u00c5, but AF2 itself provides pLDDT and PAE rather than crystallographic resolution, B-factors, or RMSD to experimental structures.",
+      "agreement": "not_comparable",
+      "confidence": "high",
+      "explanation": "AF2 confidence metrics are not equivalent to crystallographic refinement statistics. It can indicate which regions are likely reliable or flexible, but it cannot confirm B-factors, electron density quality, or RMSD values unless an explicit structural superposition to experimental coordinates is performed."
+    }
+  ],
+  "overall_assessment": {
+    "summary": "AlphaFold 2 strongly supports the paper's broad structural framework for KRAS G12D: a well-folded G-domain with a high-confidence P-loop and conformationally flexible switch I and switch II regions. That pattern is highly consistent with the crystallographic claim that MRTX1133 binds in the switch II pocket and induces switch remodeling that blocks effector binding. However, AF2 cannot directly validate ligand pose, nucleotide-state-specific conformations, binding affinity, selectivity magnitude, or crystallographic metrics because it is a ligand-free monomer prediction. Overall, AF2 supports the plausibility of the paper's structural mechanism but not its quantitative biochemical or pharmacologic claims.",
+    "prediction_reliability_score": 0.79,
+    "structural_agreement": "Good agreement for the overall KRAS G12D fold, P-loop placement, and intrinsic flexibility of switch I/II; limited direct comparability for ligand-bound conformations and quantitative binding claims.",
+    "key_validated_claims": [
+      "KRAS G12D adopts the expected canonical KRAS G-domain fold.",
+      "The P-loop containing residue 12 is structurally well defined in the mutant protein.",
+      "Switch I and switch II are intrinsically flexible regions capable of conformational remodeling.",
+      "The switch II region is a plausible allosteric/druggable surface for non-covalent inhibitor engagement.",
+      "A non-covalent mechanism based on conformational trapping of switch regions is structurally plausible."
+    ],
+    "key_limitations": [
+      "AF2 does not model MRTX1133, GDP, GMPPCP, Mg2+, or explicit ligand-induced pocket formation.",
+      "AF2 cannot distinguish active versus inactive nucleotide states in a validated experimental sense.",
+      "AF2 cannot quantify KD, IC50, or mutant-versus-WT selectivity.",
+      "AF2 cannot validate electron density, crystallographic resolution, B-factors, or RMSD without external structural comparison.",
+      "AF2 monomer predictions cannot directly assess disruption of RAF, SOS, or PI3K complexes."
+    ],
+    "binding_site_assessment": "The switch II pocket region is predicted with moderate local confidence because residues 58-75 have reduced pLDDT and elevated PAE relative to the KRAS core. This is not a weakness for the paper's model; rather, it is consistent with an inducible allosteric pocket whose geometry depends on nucleotide state and ligand binding. The surrounding G-domain scaffold is high confidence, so AF2 supports a stable structural context around a flexible, remodelable switch II binding site.",
+    "recommendations": [
+      "Perform direct structural superposition of AF2 KRAS G12D against PDB 7T47 and the GDP-bound co-complex to quantify backbone agreement and switch-region deviations.",
+      "Generate matched AF2 or AF-Multimer models for KRAS WT and KRAS G12D to compare local P-loop and switch II environments around residue 12.",
+      "Use molecular docking or induced-fit simulations of MRTX1133 into experimental and AF2-derived KRAS G12D structures to assess pocket compatibility.",
+      "Run molecular dynamics with GDP- and GTP-analog-bound KRAS G12D to evaluate switch I/II ensemble behavior and inducible pocket formation.",
+      "Model KRAS G12D complexes with RAF RBD and SOS1 to test whether the MRTX1133-bound switch conformations sterically or energetically disrupt partner binding."
+    ]
+  }
+}

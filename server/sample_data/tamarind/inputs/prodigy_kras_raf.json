@@ -1,0 +1,27 @@
+{
+  "model": "prodigy",
+  "job_id": "td-prodigy-kras-001",
+  "runs": [
+    {
+      "label": "kras_g12d_apo_raf",
+      "description": "KRAS G12D (apo) complexed with RAF RBD — baseline interaction",
+      "complex_pdb": "kras_g12d_raf_rbd_complex.pdb",
+      "chain_1": "A",
+      "chain_2": "B",
+      "chain_1_name": "KRAS G12D (apo)",
+      "chain_2_name": "RAF RBD"
+    },
+    {
+      "label": "kras_g12d_holo_raf",
+      "description": "KRAS G12D (MRTX1133-bound) complexed with RAF RBD — disrupted interaction",
+      "complex_pdb": "kras_g12d_mrtx1133_raf_rbd_complex.pdb",
+      "chain_1": "A",
+      "chain_2": "B",
+      "chain_1_name": "KRAS G12D (MRTX1133-bound)",
+      "chain_2_name": "RAF RBD"
+    }
+  ],
+  "params": {
+    "temperature_k": 310
+  }
+}

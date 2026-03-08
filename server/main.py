@@ -397,14 +397,36 @@ Return ONLY valid JSON, no markdown fences."""
         os.unlink(tmp_path)
 
 
+<<<<<<< HEAD
 # ── Tamarind Bio Models & Validation Pipeline ────────────────────────────
 
 MODELS_DIR = Path(__file__).parent / "models"
 EXPERIMENTS_DIR = Path(__file__).parent / "sample_data" / "experiments"
+=======
+@app.get("/alphafold/results/kras-g12d")
+def get_kras_g12d_result():
+    """Get the KRAS G12D specific AF2 prediction result."""
+    return sample_loader.get_sample_output("kras_g12d_af2_result")
+
+
+@app.get("/alphafold/compare/kras-g12d")
+def get_kras_comparison():
+    """Get the pre-computed KRAS G12D paper comparison results."""
+    path = Path(__file__).parent / "sample_data" / "alphafold_outputs" / "kras_g12d_paper_comparison.json"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="KRAS G12D comparison not yet generated")
+    return json.loads(path.read_text())
+
+
+# ── Tamarind Bio Validation Pipeline ─────────────────────────────────────
+
+TAMARIND_DIR = Path(__file__).parent / "sample_data" / "tamarind"
+>>>>>>> 74bc1f3 (inference)
 
 
 @app.get("/tamarind/models")
 def list_tamarind_models():
+<<<<<<< HEAD
     """List all available Tamarind Bio models from Kaushik's catalog."""
     index_path = MODELS_DIR / "index.json"
     if not index_path.exists():
@@ -449,19 +471,49 @@ def list_experiment_inputs(experiment_id: str):
         return []
     return [
         {"file": f.name, "model_slug": json.loads(f.read_text()).get("model_slug")}
+=======
+    """List all available Tamarind Bio models."""
+    catalog = json.loads((TAMARIND_DIR / "models" / "catalog.json").read_text())
+    return catalog
+
+
+@app.get("/tamarind/pipeline/{pipeline_id}")
+def get_pipeline(pipeline_id: str):
+    """Get a validation pipeline definition."""
+    path = TAMARIND_DIR / "pipeline" / f"{pipeline_id}.json"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail=f"Pipeline {pipeline_id} not found")
+    return json.loads(path.read_text())
+
+
+@app.get("/tamarind/inputs")
+def list_tamarind_inputs():
+    """List all sample inputs."""
+    inputs_dir = TAMARIND_DIR / "inputs"
+    return [
+        {"file": f.name, "model": json.loads(f.read_text()).get("model")}
+>>>>>>> 74bc1f3 (inference)
         for f in sorted(inputs_dir.glob("*.json"))
     ]
 
 
+<<<<<<< HEAD
 @app.get("/tamarind/experiments/{experiment_id}/inputs/{filename}")
 def get_experiment_input(experiment_id: str, filename: str):
     """Get a specific experiment input."""
     path = EXPERIMENTS_DIR / experiment_id / "inputs" / filename
+=======
+@app.get("/tamarind/inputs/{filename}")
+def get_tamarind_input(filename: str):
+    """Get a specific sample input."""
+    path = TAMARIND_DIR / "inputs" / filename
+>>>>>>> 74bc1f3 (inference)
     if not path.exists():
         raise HTTPException(status_code=404, detail="Input not found")
     return json.loads(path.read_text())
 
 
+<<<<<<< HEAD
 @app.get("/tamarind/experiments/{experiment_id}/outputs")
 def list_experiment_outputs(experiment_id: str):
     """List all outputs for an experiment."""
@@ -470,25 +522,53 @@ def list_experiment_outputs(experiment_id: str):
         return []
     return [
         {"file": f.name, "model_slug": json.loads(f.read_text()).get("model_slug"), "status": json.loads(f.read_text()).get("status")}
+=======
+@app.get("/tamarind/outputs")
+def list_tamarind_outputs():
+    """List all sample outputs."""
+    outputs_dir = TAMARIND_DIR / "outputs"
+    return [
+        {
+            "file": f.name,
+            "model": json.loads(f.read_text()).get("model"),
+            "status": json.loads(f.read_text()).get("status"),
+        }
+>>>>>>> 74bc1f3 (inference)
         for f in sorted(outputs_dir.glob("*.json"))
     ]
 
 
+<<<<<<< HEAD
 @app.get("/tamarind/experiments/{experiment_id}/outputs/{filename}")
 def get_experiment_output(experiment_id: str, filename: str):
     """Get a specific experiment output."""
     path = EXPERIMENTS_DIR / experiment_id / "outputs" / filename
+=======
+@app.get("/tamarind/outputs/{filename}")
+def get_tamarind_output(filename: str):
+    """Get a specific sample output."""
+    path = TAMARIND_DIR / "outputs" / filename
+>>>>>>> 74bc1f3 (inference)
     if not path.exists():
         raise HTTPException(status_code=404, detail="Output not found")
     return json.loads(path.read_text())
 
 
+<<<<<<< HEAD
 @app.get("/tamarind/experiments/{experiment_id}/validation")
 def get_experiment_validation(experiment_id: str):
     """Get the unified validation results for an experiment."""
     path = EXPERIMENTS_DIR / experiment_id / "validation.json"
     if not path.exists():
         raise HTTPException(status_code=404, detail=f"Validation for {experiment_id} not found")
+=======
+@app.get("/tamarind/validation/{validation_id}")
+def get_validation(validation_id: str):
+    """Get the unified validation comparison results."""
+    path = TAMARIND_DIR / "comparison" / f"{validation_id}.json"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Validation not found")
+>>>>>>> 74bc1f3 (inference)
     return json.loads(path.read_text())
 
 

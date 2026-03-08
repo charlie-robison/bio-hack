@@ -1,0 +1,136 @@
+{
+  "model": "gromacs",
+  "job_id": "td-gromacs-kras-001",
+  "status": "completed",
+  "runtime_seconds": 86400,
+  "protein_name": "KRAS G12D",
+  "simulations": [
+    {
+      "label": "apo_gdp",
+      "description": "KRAS G12D + GDP, no drug",
+      "simulation_time_ns": 100,
+      "total_frames": 10000,
+      "backbone_rmsd": {
+        "mean_angstrom": 2.1,
+        "std_angstrom": 0.4,
+        "equilibrated_after_ns": 12
+      },
+      "switch_i_rmsd": {
+        "mean_angstrom": 3.8,
+        "std_angstrom": 1.2,
+        "max_angstrom": 7.5,
+        "note": "Switch I is highly mobile in apo state — samples open and closed conformations"
+      },
+      "switch_ii_rmsd": {
+        "mean_angstrom": 4.2,
+        "std_angstrom": 1.5,
+        "max_angstrom": 8.1,
+        "note": "Switch II shows large fluctuations — pocket opens and closes dynamically"
+      },
+      "rmsf_key_regions": {
+        "p_loop_10_17": 0.9,
+        "switch_i_30_40": 2.8,
+        "switch_ii_58_75": 3.4,
+        "core_helix_alpha3": 0.6
+      },
+      "radius_of_gyration_mean_nm": 1.68,
+      "hydrogen_bonds_mean": 112
+    },
+    {
+      "label": "holo_gdp",
+      "description": "KRAS G12D + GDP + MRTX1133",
+      "simulation_time_ns": 100,
+      "total_frames": 10000,
+      "backbone_rmsd": {
+        "mean_angstrom": 1.6,
+        "std_angstrom": 0.3,
+        "equilibrated_after_ns": 8
+      },
+      "switch_i_rmsd": {
+        "mean_angstrom": 1.9,
+        "std_angstrom": 0.5,
+        "max_angstrom": 3.2,
+        "note": "Switch I stabilized by drug binding — much less mobile than apo"
+      },
+      "switch_ii_rmsd": {
+        "mean_angstrom": 1.4,
+        "std_angstrom": 0.3,
+        "max_angstrom": 2.5,
+        "note": "Switch II rigidified by MRTX1133 — locked in closed conformation"
+      },
+      "rmsf_key_regions": {
+        "p_loop_10_17": 0.7,
+        "switch_i_30_40": 1.1,
+        "switch_ii_58_75": 0.8,
+        "core_helix_alpha3": 0.5
+      },
+      "radius_of_gyration_mean_nm": 1.65,
+      "hydrogen_bonds_mean": 118,
+      "ligand_rmsd_mean_angstrom": 1.2,
+      "ligand_contacts_stable": true,
+      "binding_pocket_volume_A3": {
+        "mean": 342,
+        "std": 28,
+        "note": "Pocket volume stable throughout simulation — drug remains bound"
+      }
+    },
+    {
+      "label": "holo_gtp",
+      "description": "KRAS G12D + GMPPCP + MRTX1133",
+      "simulation_time_ns": 100,
+      "total_frames": 10000,
+      "backbone_rmsd": {
+        "mean_angstrom": 1.7,
+        "std_angstrom": 0.3,
+        "equilibrated_after_ns": 10
+      },
+      "switch_i_rmsd": {
+        "mean_angstrom": 2.0,
+        "std_angstrom": 0.6,
+        "max_angstrom": 3.5,
+        "note": "Switch I stabilized similarly to GDP-bound holo state"
+      },
+      "switch_ii_rmsd": {
+        "mean_angstrom": 1.5,
+        "std_angstrom": 0.4,
+        "max_angstrom": 2.8,
+        "note": "Switch II rigidified — MRTX1133 stabilizes similar conformation regardless of nucleotide"
+      },
+      "rmsf_key_regions": {
+        "p_loop_10_17": 0.8,
+        "switch_i_30_40": 1.2,
+        "switch_ii_58_75": 0.9,
+        "core_helix_alpha3": 0.5
+      },
+      "radius_of_gyration_mean_nm": 1.66,
+      "hydrogen_bonds_mean": 116,
+      "ligand_rmsd_mean_angstrom": 1.3,
+      "ligand_contacts_stable": true
+    }
+  ],
+  "comparative_analysis": {
+    "switch_ii_stabilization": {
+      "apo_rmsf": 3.4,
+      "holo_gdp_rmsf": 0.8,
+      "holo_gtp_rmsf": 0.9,
+      "fold_reduction": 4.0,
+      "conclusion": "MRTX1133 reduces Switch II flexibility by ~4-fold, consistent with the paper's claim of conformational trapping"
+    },
+    "switch_i_stabilization": {
+      "apo_rmsf": 2.8,
+      "holo_gdp_rmsf": 1.1,
+      "holo_gtp_rmsf": 1.2,
+      "fold_reduction": 2.4,
+      "conclusion": "Switch I is also stabilized (~2.4-fold), supporting the claim that drug binding affects both switch regions"
+    },
+    "nucleotide_independence": {
+      "gdp_switch_ii_rmsf": 0.8,
+      "gtp_switch_ii_rmsf": 0.9,
+      "difference": 0.1,
+      "conclusion": "Near-identical Switch II rigidification in GDP and GTP states — strongly supports the paper's claim of nucleotide-state-independent conformational trapping"
+    }
+  },
+  "summary": {
+    "verdict": "GROMACS simulations strongly validate the paper's conformational trapping mechanism. MRTX1133 reduces Switch II flexibility by 4-fold and Switch I by 2.4-fold. The drug-bound conformation is nearly identical in GDP and GMPPCP states, directly confirming the paper's key mechanistic claim that MRTX1133 works through nucleotide-state-independent switch remodeling."
+  }
+}

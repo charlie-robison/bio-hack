@@ -1,0 +1,51 @@
+{
+  "model": "gromacs",
+  "job_id": "td-gromacs-kras-001",
+  "simulations": [
+    {
+      "label": "apo_gdp",
+      "description": "KRAS G12D with GDP, no MRTX1133 — baseline dynamics",
+      "protein_pdb": "kras_g12d_model_1_relaxed.pdb",
+      "cofactor": "GDP",
+      "ligand": null
+    },
+    {
+      "label": "holo_gdp",
+      "description": "KRAS G12D with GDP + MRTX1133 — drug-bound inactive state",
+      "protein_pdb": "kras_g12d_model_1_relaxed.pdb",
+      "cofactor": "GDP",
+      "ligand": "MRTX1133"
+    },
+    {
+      "label": "holo_gtp",
+      "description": "KRAS G12D with GMPPCP + MRTX1133 — drug-bound active state",
+      "protein_pdb": "kras_g12d_model_1_relaxed.pdb",
+      "cofactor": "GMPPCP",
+      "ligand": "MRTX1133"
+    }
+  ],
+  "params": {
+    "force_field": "amber99sb-ildn",
+    "water_model": "tip3p",
+    "box_type": "dodecahedron",
+    "box_distance_nm": 1.2,
+    "ions": "0.15M NaCl",
+    "temperature_k": 310,
+    "pressure_bar": 1,
+    "simulation_time_ns": 100,
+    "timestep_fs": 2,
+    "output_frequency_ps": 10,
+    "minimization_steps": 50000,
+    "equilibration_npt_ns": 1,
+    "equilibration_nvt_ns": 1
+  },
+  "analysis_requested": [
+    "rmsd_backbone",
+    "rmsf_per_residue",
+    "radius_of_gyration",
+    "hydrogen_bonds",
+    "switch_i_rmsd",
+    "switch_ii_rmsd",
+    "binding_pocket_volume"
+  ]
+}

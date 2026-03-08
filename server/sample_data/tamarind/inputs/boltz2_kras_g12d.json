@@ -1,0 +1,24 @@
+{
+  "model": "boltz2",
+  "job_id": "td-boltz2-kras-001",
+  "protein": {
+    "sequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSSNGDIPAIRISKK",
+    "name": "KRAS G12D",
+    "protein_id": "P01116_G12D"
+  },
+  "ligand": {
+    "name": "MRTX1133",
+    "smiles": "CC1=C(C=C(C=C1)C2=CC(=NC=C2C(F)(F)F)NC3=NC=C(C(=N3)NC4CC4)C(=O)NC5(CC5)C(=O)N6CCC(C6)O)F",
+    "ccd_code": null
+  },
+  "params": {
+    "num_seeds": 5,
+    "predict_affinity": true,
+    "recycling_steps": 3
+  },
+  "comparison_run": {
+    "description": "Run same model with WT KRAS for selectivity comparison",
+    "wt_sequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSSNGDIPAIRISKK",
+    "wt_note": "Position 12: D→G (revert to glycine for wild-type)"
+  }
+}

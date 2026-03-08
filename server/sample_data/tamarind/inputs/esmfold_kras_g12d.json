@@ -1,0 +1,12 @@
+{
+  "model": "esmfold",
+  "job_id": "td-esmfold-kras-001",
+  "protein": {
+    "sequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDNYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHQRQETKFEQEKAKTFLVDIASGEYSDRAQQHIVDALRQQDELPCLTSDDPESRAEKQASSSNGDIPAIRISKK",
+    "name": "KRAS G12D",
+    "protein_id": "P01116_G12D"
+  },
+  "params": {
+    "num_recycles": 4
+  }
+}
