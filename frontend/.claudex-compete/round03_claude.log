@@ -1,0 +1,36 @@
+Build compiles successfully with no errors. Here's a summary of all improvements made for round 3:
+
+### Changes based on evaluator feedback:
+
+1. **Export functionality (CSV/PNG/SVG/JSON)**
+   - Chart exports: PNG and SVG download via dropdown menu in `DataChart.tsx`
+   - Table exports: CSV and JSON download via dropdown menu in `DataTable.tsx`
+   - CSV now includes confidence interval columns (stdError, ciLow, ciHigh)
+
+2. **URL validation feedback**
+   - Real-time validation as user types in `PaperDropZone.tsx`
+   - Green checkmark icon for valid URLs, amber warning for invalid
+   - Source auto-detection (arXiv, bioRxiv, medRxiv, PubMed, DOI, Nature, Science, Cell, PLOS) with labeled badges
+   - Helpful messages like "Add https:// prefix" or "arXiv paper detected"
+   - Analyze button disabled until URL is valid
+
+3. **Confidence intervals / error bars**
+   - New `errorbar` chart view in `DataChart.tsx` with 95% CI error bars
+   - Toggle to show/hide CI on the chart
+   - Custom tooltip showing mean ± SE and CI info
+   - `SyntheticDataRow` type extended with `stdError`, `ciLow`, `ciHigh`
+   - Data generator produces realistic standard errors and 95% CIs
+   - Table shows CI range `[low, high]` per row
+
+4. **Additional polish**
+   - 6 stat cards (added down-regulated count and avg expression)
+   - Process time indicator after analysis completes
+   - Success checkmark icon on completion
+   - Feature highlights on landing page
+   - Enhanced pagination with First/Last buttons and row range display
+   - Footer with version info
+   - Memoized chart data computation for performance
+
+
+
+Exit code: 0

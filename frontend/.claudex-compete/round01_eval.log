@@ -1,0 +1,11 @@
+```json
+{
+  "winner": "A",
+  "score_a": 88,
+  "score_b": 80,
+  "reason": "Version A demonstrates stronger domain fit with biology-specific features (volcano plot, p-values, fold changes, gene expression bar charts) that are directly relevant to scientific research papers, plus more polished UX with glassmorphism, CSV export, sortable tables, and dark mode. Version B is clean and well-structured but uses a custom SVG chart that is less expressive than Recharts, and the visualization is more generic.",
+  "feedback_a": "Add error handling for invalid file types beyond just PDFs, and consider adding a loading skeleton state for the table/chart while data generates rather than just a progress bar. The volcano plot could benefit from interactive tooltips showing gene names on hover.",
+  "feedback_b": "The custom SVG TrendChart is functional but limited compared to a proper charting library — consider adopting Recharts or similar to support more chart types (scatter/volcano plots are essential for biology research). Also, the Manrope/Space Grotesk font additions in layout.tsx add unnecessary complexity without a clear visual benefit over the existing Geist setup."
+}
+```
+
