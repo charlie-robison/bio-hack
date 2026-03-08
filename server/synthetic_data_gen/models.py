@@ -62,6 +62,18 @@ class DataColumn(BaseModel):
     column_type: ColumnType
     unit: str | None = None
     distribution: Distribution | None = None
+
+    @field_validator("distribution", mode="before")
+    @classmethod
+    def coerce_invalid_distribution(cls, v):
+        """Coerce invalid distribution values (e.g. 'categorical') to None."""
+        if v is None:
+            return None
+        try:
+            return Distribution(v)
+        except ValueError:
+            return None
+
     min_value: float | None = None
     max_value: float | None = None
     mean: float | None = None
