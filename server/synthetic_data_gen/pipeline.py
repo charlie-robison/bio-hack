@@ -129,6 +129,7 @@ class SyntheticDataPipeline:
         self,
         paper_path: str,
         num_rows: int = 100,
+        run_folder_path: str | None = None,
     ) -> GenerationResult:
         """
         Run the full pipeline: parse paper → extract schema → generate data.
@@ -136,6 +137,9 @@ class SyntheticDataPipeline:
         Args:
             paper_path: Path to the research paper (PDF, TXT, or MD).
             num_rows: Number of synthetic data rows to generate.
+            run_folder_path: Optional path to a run folder (fs/runs/{run_id})
+                whose contents (e.g. content.md) will be provided as extra
+                context to the schema extractor.
 
         Returns:
             GenerationResult containing the schema and all generated rows.
@@ -147,7 +151,7 @@ class SyntheticDataPipeline:
         logger.info(f"Parsed paper: {len(paper_text)} characters")
 
         # Step 1b: Extract experiment schema (Opus)
-        schema = self.extractor.extract(paper_text)
+        schema = self.extractor.extract(paper_text, run_folder_path=run_folder_path)
         logger.info(
             f"Extracted schema: {schema.title} "
             f"({len(schema.columns)} columns)"

@@ -162,15 +162,28 @@ async def api_get_run_file(run_id: str, file_path: str):
 async def generate_from_pdf(
     file: UploadFile = File(...),
     num_rows: int = Form(default=100),
+    run_id: str = Form(default=None),
 ):
     """
     Upload a research paper PDF and generate synthetic experimental data.
 
     Step 1: Opus parses the PDF and extracts the experiment schema.
     Step 2: Sonnet generates synthetic data rows from the schema.
+
+    Optionally pass a run_id from a previous /api/upload to give the
+    schema extractor access to the parsed run folder (content.md, images, etc.).
     """
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="File must be a PDF")
+
+    # Resolve the run folder path if a run_id was provided
+    run_folder_path = None
+    if run_id:
+        candidate = Path(__file__).parent / "fs" / "runs" / run_id
+        if candidate.exists():
+            run_folder_path = str(candidate)
+        else:
+            raise HTTPException(status_code=404, detail=f"Run '{run_id}' not found")
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
         content = await file.read()
@@ -178,7 +191,7 @@ async def generate_from_pdf(
         tmp_path = tmp.name
 
     try:
-        result = pipeline.run(tmp_path, num_rows=num_rows)
+        result = pipeline.run(tmp_path, num_rows=num_rows, run_folder_path=run_folder_path)
         return _flatten_and_save(result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
