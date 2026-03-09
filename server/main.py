@@ -555,15 +555,20 @@ def _run_experiment_bg(run_id: str):
         pdf_path = run_folder / "original.pdf"
 
         # Step 1: Parse
+        print(f"[{run_id}] Step 1/7: Parsing PDF...")
         _running_experiments[run_id]["stage"] = "parsing"
         paper_text = runner.parse_paper(str(pdf_path))
+        print(f"[{run_id}] Step 1/7: Parsing complete ({len(paper_text)} chars extracted)")
 
         # Step 2: Generate synthetic data (saves to fs/runs/{run_id}/data/)
+        print(f"[{run_id}] Step 2/7: Generating synthetic data...")
         _running_experiments[run_id]["stage"] = "generating"
         gen_result = pipeline.run(str(pdf_path), num_rows=10, run_folder_path=str(run_folder))
         _flatten_and_save(gen_result, run_folder_path=str(run_folder))
+        print(f"[{run_id}] Step 2/7: Synthetic data generated ({len(gen_result.rows)} rows)")
 
         # Step 3: Build jobs from synthetic data (direct column-to-tool mapping)
+        print(f"[{run_id}] Step 3/7: Building experiment plan from synthetic data...")
         _running_experiments[run_id]["stage"] = "planning"
         synthetic_result = runner.load_synthetic_data(run_id)
         experiment_id = f"exp_{run_id[:8]}"
@@ -576,23 +581,32 @@ def _run_experiment_bg(run_id: str):
 
         _running_experiments[run_id]["experiment_id"] = experiment_id
         _running_experiments[run_id]["plan"] = plan
+        print(f"[{run_id}] Step 3/7: Plan built (experiment_id={experiment_id})")
 
         # Step 4: Submit
+        print(f"[{run_id}] Step 4/7: Submitting jobs to Tamarind Bio...")
         _running_experiments[run_id]["stage"] = "submitting"
         plan = runner.submit_experiment(plan, experiment_dir)
+        print(f"[{run_id}] Step 4/7: Jobs submitted")
 
         # Step 5: Poll
+        print(f"[{run_id}] Step 5/7: Polling for model results...")
         _running_experiments[run_id]["stage"] = "running_models"
         plan = runner.poll_experiment(plan)
+        print(f"[{run_id}] Step 5/7: All models complete")
 
         # Step 6: Download
+        print(f"[{run_id}] Step 6/7: Downloading results...")
         _running_experiments[run_id]["stage"] = "downloading"
         plan = runner.download_results(plan, experiment_dir)
+        print(f"[{run_id}] Step 6/7: Results downloaded")
 
         # Step 7: Validate
+        print(f"[{run_id}] Step 7/7: Validating results against paper claims...")
         _running_experiments[run_id]["stage"] = "validating"
         synthetic_data_str = json.dumps(synthetic_result.get("data", []), indent=2)
         validation = runner.validate_results(plan, paper_text, experiment_dir, synthetic_data_str)
+        print(f"[{run_id}] Step 7/7: Validation complete (score={validation.get('overall_reliability_score')})")
 
         _running_experiments[run_id] = {
             "status": "complete",
@@ -601,6 +615,7 @@ def _run_experiment_bg(run_id: str):
             "validation_score": validation.get("overall_reliability_score"),
             "plan": plan,
         }
+        print(f"[{run_id}] Pipeline finished successfully (experiment_id={experiment_id})")
         logger.info(f"Experiment {experiment_id} complete for run {run_id}")
 
     except Exception as e:
@@ -613,38 +628,41 @@ def _run_experiment_bg(run_id: str):
 
 
 @app.post("/experiments/run")
-def run_experiment(run_id: str = Form(...), background_tasks: BackgroundTasks = None):
+async def run_experiment(file: UploadFile = File(...), background_tasks: BackgroundTasks = None):
     """
-    Run the full Tamarind Bio validation pipeline for a previously uploaded PDF.
+    Upload a PDF and run the full Tamarind Bio validation pipeline.
 
-    Uses the same run_id from /api/upload. This:
-    1. Parses the PDF
-    2. Plans which Tamarind models to run (Claude Opus)
-    3. Generates inputs and submits jobs to Tamarind Bio
-    4. Polls for completion
-    5. Downloads results
-    6. Validates results against paper claims (Claude Opus)
+    1. Uploads and processes the PDF (same as /api/upload)
+    2. Parses the PDF
+    3. Plans which Tamarind models to run (Claude Opus)
+    4. Generates inputs and submits jobs to Tamarind Bio
+    5. Polls for completion
+    6. Downloads results
+    7. Validates results against paper claims (Claude Opus)
 
     Runs in the background. Poll /experiments/status/{run_id} for progress.
     """
-    run_folder = Path(__file__).parent / "fs" / "runs" / run_id
-    if not run_folder.exists():
-        raise HTTPException(status_code=404, detail=f"Run '{run_id}' not found")
-
-    pdf_path = run_folder / "original.pdf"
-    if not pdf_path.exists():
-        raise HTTPException(status_code=404, detail=f"No original.pdf in run '{run_id}'")
+    if not file.filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="File must be a PDF")
 
     if not os.environ.get("TAMARIND_API_KEY"):
         raise HTTPException(status_code=500, detail="TAMARIND_API_KEY not configured")
 
+    print(f"[experiments/run] Uploading and processing PDF: {file.filename}")
+    content = await file.read()
+    result = await process_pdf(file.filename, content)
+    run_id = result["run_id"]
+    print(f"[experiments/run] PDF processed, run_id={run_id}")
+
     if run_id in _running_experiments and _running_experiments[run_id].get("status") == "running":
+        print(f"[experiments/run] Experiment already running for run_id={run_id}")
         return {"message": "Experiment already running", "status": _running_experiments[run_id]}
 
     _running_experiments[run_id] = {"status": "starting"}
     background_tasks.add_task(_run_experiment_bg, run_id)
+    print(f"[experiments/run] Background pipeline started for run_id={run_id}")
 
-    return {"message": "Experiment started", "run_id": run_id, "poll_url": f"/experiments/status/{run_id}"}
+    return {"message": "PDF uploaded and experiment started", "run_id": run_id, "poll_url": f"/experiments/status/{run_id}"}
 
 
 @app.get("/experiments/status/{run_id}")
