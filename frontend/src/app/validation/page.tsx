@@ -144,7 +144,7 @@ function ClaimCard({ claim, models }: { claim: ValidatedClaim; models: TamarindM
 
   return (
     <div
-      className="bg-zinc-900/60 border border-zinc-800/60 rounded-lg overflow-hidden cursor-pointer transition-colors hover:border-zinc-700"
+      className="glass rounded-lg overflow-hidden cursor-pointer transition-colors hover:border-zinc-700"
       onClick={() => setOpen(!open)}
     >
       <div className="p-4">
@@ -361,7 +361,7 @@ export default function ValidationPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-red-400 p-8">
+      <div className="min-h-screen text-red-400 p-8">
         <p>Failed to load: {error}</p>
         <p className="text-zinc-500 text-sm mt-2">Make sure the API is running on {API}</p>
       </div>
@@ -370,8 +370,11 @@ export default function ValidationPage() {
 
   if (!validation) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
-        <div className="text-zinc-500">Loading validation results...</div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 border-2 border-zinc-600 border-t-cyan-500 rounded-full animate-spin" />
+          <div className="text-zinc-500 text-sm">Loading validation results...</div>
+        </div>
       </div>
     );
   }
@@ -380,16 +383,14 @@ export default function ValidationPage() {
   const verdict = validation.final_verdict;
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <div className="max-w-5xl mx-auto px-6 py-10 space-y-8">
+    <div className="min-h-screen relative">
+      <div className="fixed inset-0 bg-grid pointer-events-none" />
+      <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-emerald-500/[0.02] rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="relative max-w-5xl mx-auto px-8 py-10 space-y-8">
         {/* Header */}
-        <div className="flex items-start justify-between gap-6">
+        <div className="flex items-start justify-between gap-6 animate-fade-in">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <a href="/" className="text-zinc-600 hover:text-zinc-400 text-sm transition-colors">&larr; Home</a>
-              <span className="text-zinc-800">/</span>
-              <a href="/alphafold" className="text-zinc-600 hover:text-zinc-400 text-sm transition-colors">AlphaFold</a>
-            </div>
             <h1 className="text-2xl font-bold text-white">Paper Validation Report</h1>
             <p className="text-zinc-400 text-sm mt-1">{validation.paper_title}</p>
             <p className="text-zinc-600 text-xs mt-0.5">{validation.paper_journal}</p>
@@ -418,7 +419,7 @@ export default function ValidationPage() {
         </div>
 
         {/* Verdict */}
-        <div className="rounded-xl bg-zinc-900/50 border border-zinc-800 p-5 space-y-3">
+        <div className="glass rounded-xl glow-cyan p-5 space-y-3">
           <div className="flex items-center gap-2">
             <span
               className="w-2.5 h-2.5 rounded-full"
@@ -469,7 +470,7 @@ export default function ValidationPage() {
         </div>
 
         {/* Model Agreement */}
-        <div className="border border-zinc-800 rounded-xl p-5">
+        <div className="glass rounded-xl p-5">
           <h2 className="text-sm font-medium text-zinc-300 mb-4">Cross-Model Agreement</h2>
           <AgreementMatrix matrix={validation.model_agreement_matrix} />
         </div>

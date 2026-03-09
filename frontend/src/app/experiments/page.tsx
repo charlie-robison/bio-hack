@@ -186,7 +186,7 @@ function PlanView({ plan }: { plan: ExperimentPlan }) {
   return (
     <div className="space-y-5 animate-in">
       {/* Paper header */}
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+      <div className="glass rounded-xl p-5">
         <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-600 mb-1.5">
           Experiment Plan
         </div>
@@ -304,7 +304,7 @@ function ResultsBanner({
   const color = pct >= 85 ? "#22c55e" : pct >= 70 ? "#eab308" : "#ef4444";
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+    <div className="glass rounded-xl p-5">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-[10px] uppercase tracking-[0.2em] text-emerald-600 mb-1">
@@ -533,20 +533,11 @@ export default function ExperimentsPage() {
   const hasFile = !!fileName;
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      {/* Subtle grid background */}
-      <div
-        className="fixed inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(6,182,212,0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(6,182,212,0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: "40px 40px",
-        }}
-      />
+    <div className="min-h-screen relative">
+      <div className="fixed inset-0 bg-grid pointer-events-none" />
+      <div className="fixed top-0 left-1/2 w-[500px] h-[500px] bg-cyan-500/[0.02] rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative max-w-4xl mx-auto px-6 py-10 space-y-6">
+      <div className="relative max-w-4xl mx-auto px-8 py-10 space-y-6">
         {/* Header */}
         <div className="flex items-end justify-between">
           <div>

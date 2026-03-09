@@ -334,7 +334,7 @@ function VerdictBanner({ verdict }: { verdict: FinalVerdict }) {
         : "#eab308";
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/80 p-5 space-y-4">
+    <div className="glass rounded-xl glow-cyan p-5 space-y-4">
       <div className="flex items-start justify-between gap-4">
         <ReliabilityGauge score={verdict.reliability_score} />
         <span
@@ -384,7 +384,7 @@ function ClaimCard({ claim, index }: { claim: Claim; index: number }) {
   const rc = resultColor(claim.result);
 
   return (
-    <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 overflow-hidden">
+    <div className="glass rounded-lg overflow-hidden">
       <button
         className="w-full text-left p-4 flex items-start gap-3 hover:bg-zinc-800/30 transition-colors"
         onClick={() => setExpanded(!expanded)}
@@ -503,7 +503,7 @@ function AggregateBar({ agg }: { agg: AggregateResults }) {
 
 function DiffDockCard({ data }: { data: DiffDockResult }) {
   return (
-    <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-4 space-y-3">
+    <div className="glass rounded-lg p-4 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ModelPill slug="diffdock" />
@@ -563,7 +563,7 @@ function DiffDockCard({ data }: { data: DiffDockResult }) {
 
 function VinaCard({ data }: { data: VinaResult }) {
   return (
-    <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-4 space-y-3">
+    <div className="glass rounded-lg p-4 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ModelPill slug="autodock-vina" />
@@ -598,7 +598,7 @@ function VinaCard({ data }: { data: VinaResult }) {
 
 function GninaCard({ data }: { data: GninaResult }) {
   return (
-    <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-4 space-y-3">
+    <div className="glass rounded-lg p-4 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ModelPill slug="gnina" />
@@ -659,7 +659,7 @@ function GninaCard({ data }: { data: GninaResult }) {
 function Boltz2Card({ data }: { data: Boltz2Result }) {
   const cp = data.complex_prediction;
   return (
-    <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-4 space-y-3">
+    <div className="glass rounded-lg p-4 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ModelPill slug="boltz-2" />
@@ -739,7 +739,7 @@ function Boltz2Card({ data }: { data: Boltz2Result }) {
 function OpenMMCard({ data }: { data: OpenMMResult }) {
   const ca = data.comparative_analysis;
   return (
-    <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-4 space-y-3">
+    <div className="glass rounded-lg p-4 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ModelPill slug="openmm-md" />
@@ -822,7 +822,7 @@ function OpenMMCard({ data }: { data: OpenMMResult }) {
 function ProdigyCard({ data }: { data: ProdigyResult }) {
   const ca = data.comparative_analysis;
   return (
-    <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-4 space-y-3">
+    <div className="glass rounded-lg p-4 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ModelPill slug="prodigy" />
@@ -904,7 +904,7 @@ function ProdigyCard({ data }: { data: ProdigyResult }) {
 
 function AgreementMatrix({ matrix }: { matrix: ModelAgreementMatrix }) {
   return (
-    <div className="rounded-lg border border-zinc-800/60 bg-zinc-900/40 p-4 space-y-3">
+    <div className="glass rounded-lg p-4 space-y-3">
       <h3 className="text-sm font-medium text-zinc-300">
         Cross-Model Agreement
       </h3>
@@ -978,7 +978,7 @@ export default function AlphaFoldAnalysis() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-red-400 p-8">
+      <div className="min-h-screen text-red-400 p-8">
         <p>Failed to load experiment data: {error}</p>
         <p className="text-zinc-500 text-sm mt-2">
           Make sure the API is running on {API}
@@ -989,7 +989,7 @@ export default function AlphaFoldAnalysis() {
 
   if (loading || !validation) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-8 h-8 border-2 border-zinc-600 border-t-zinc-200 rounded-full animate-spin mx-auto mb-3" />
           <p className="text-zinc-500 text-sm">
@@ -1001,12 +1001,15 @@ export default function AlphaFoldAnalysis() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <div className="max-w-5xl mx-auto px-6 py-10 space-y-8">
+    <div className="min-h-screen relative">
+      <div className="fixed inset-0 bg-grid pointer-events-none" />
+      <div className="fixed top-0 right-0 w-[500px] h-[500px] bg-blue-500/[0.02] rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="relative max-w-5xl mx-auto px-8 py-10 space-y-8">
         {/* Header */}
-        <div>
+        <div className="animate-fade-in">
           <div className="flex items-center gap-2 text-zinc-500 text-xs mb-2">
-            <span>KRAS G12D / MRTX1133</span>
+            <span className="text-cyan-600 font-medium">KRAS G12D / MRTX1133</span>
             <span>&middot;</span>
             <span>{validation.paper_journal}</span>
             <span>&middot;</span>
