@@ -1,0 +1,18 @@
+2026-03-08 21:54:38,070 Running colabfold 1.5.5 (066260179251626a47ab02baa044c48fd293a6d7)
+2026-03-08 21:54:38,531 Running on GPU
+2026-03-08 21:54:38,739 Calculating extra pTM is not supported for single chain prediction, skipping it.
+2026-03-08 21:54:38,740 Found 8 citations for tools or databases
+2026-03-08 21:54:49,579 WARNING: Found 20 models in out/templates/7kyz.cif. The first model will be used as a template.
+2026-03-08 21:54:53,275 WARNING: Found 10 models in out/templates/2mse.cif. The first model will be used as a template.
+2026-03-08 21:54:56,834 WARNING: Found 10 models in out/templates/6ccx.cif. The first model will be used as a template.
+2026-03-08 21:55:01,073 Query 1/1: kraswt_alphafold (length 189)
+2026-03-08 21:55:06,000 Sequence 0 found templates: ['6ws2_D', '7tlk_B', '7tlk_A', '1jah_A', '6fa1_E', '7t1f_A', '6bp1_A', '6ws2_A', '5vp7_A', '5vp7_F', '6fa1_B', '4ql3_A', '7a1x_A', '1jai_A', '7c41_A', '7c41_A', '7c41_A', '7c41_A', '3rrz_A', '6mqt_H']
+2026-03-08 21:55:07,930 Setting max_seq=512, max_extra_seq=5120
+2026-03-08 21:55:57,168 alphafold2_ptm_model_1_seed_000 recycle=0 pLDDT=86.8 pTM=0.829
+2026-03-08 21:56:10,707 alphafold2_ptm_model_1_seed_000 recycle=1 pLDDT=87.4 pTM=0.833 tol=1.04
+2026-03-08 21:56:24,285 alphafold2_ptm_model_1_seed_000 recycle=2 pLDDT=87.1 pTM=0.831 tol=0.774
+2026-03-08 21:56:37,892 alphafold2_ptm_model_1_seed_000 recycle=3 pLDDT=86.9 pTM=0.826 tol=0.32
+2026-03-08 21:56:37,892 alphafold2_ptm_model_1_seed_000 took 79.2s (3 recycles)
+2026-03-08 21:56:37,945 reranking models by 'plddt' metric
+2026-03-08 21:56:37,946 rank_001_alphafold2_ptm_model_1_seed_000 pLDDT=86.9 pTM=0.826
+2026-03-08 21:56:38,360 Done

@@ -11,10 +11,13 @@
       "WebFetch(domain:support.levitate.bio)",
       "Bash(python:*)",
       "Bash(/Users/jasonhenkel/Desktop/bio-hackathon/bio-hack/rdkit-mcp-server/venv/bin/python:*)",
-      "Bash(lsof:*)"
+      "Bash(lsof:*)",
+      "Bash(npx shadcn@latest init:*)",
+      "Bash(npx shadcn@latest add:*)"
     ],
     "additionalDirectories": [
-      "/Users/jasonhenkel/.claude"
+      "/Users/jasonhenkel/.claude",
+      "/Users/jasonhenkel/Desktop/bio-hackathon/bio-hack/frontend/src/app/results"
     ]
   }
 }

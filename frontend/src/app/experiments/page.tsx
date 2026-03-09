@@ -6,6 +6,13 @@ const API = "http://localhost:8080";
 
 /* ── Types ────────────────────────────────────────────────────────────── */
 
+interface LogEntry {
+  timestamp: number;
+  level: string;
+  stage: string;
+  message: string;
+}
+
 type Phase =
   | "idle"
   | "uploading"
@@ -293,6 +300,131 @@ function PlanView({ plan }: { plan: ExperimentPlan }) {
   );
 }
 
+function LogViewer({ runId }: { runId: string }) {
+  const [logs, setLogs] = useState<LogEntry[]>([]);
+  const logEndRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!runId) return;
+
+    const eventSource = new EventSource(`${API}/experiments/logs/${runId}`);
+
+    eventSource.onmessage = (event) => {
+      try {
+        const entry = JSON.parse(event.data);
+        if (entry.type === "complete") {
+          eventSource.close();
+          return;
+        }
+        setLogs((prev) => [...prev, entry]);
+      } catch {
+        // Ignore parse errors
+      }
+    };
+
+    eventSource.onerror = () => {
+      eventSource.close();
+    };
+
+    return () => {
+      eventSource.close();
+    };
+  }, [runId]);
+
+  // Auto-scroll to bottom
+  useEffect(() => {
+    logEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [logs]);
+
+  const levelColor = (level: string) => {
+    switch (level) {
+      case "error":
+        return "text-red-400";
+      case "warn":
+        return "text-amber-400";
+      case "success":
+        return "text-emerald-400";
+      default:
+        return "text-zinc-400";
+    }
+  };
+
+  const stageColor = (stage: string) => {
+    const colors: Record<string, string> = {
+      init: "#6366f1",
+      save: "#8b5cf6",
+      pdf_to_images: "#3b82f6",
+      pdfimages: "#06b6d4",
+      llamaparse: "#10b981",
+      complete: "#22c55e",
+      error: "#ef4444",
+    };
+    return colors[stage] || "#71717a";
+  };
+
+  if (logs.length === 0) {
+    return (
+      <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-4">
+        <div className="flex items-center gap-2 text-xs text-zinc-500">
+          <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+          Waiting for logs...
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-xl border border-zinc-800 bg-zinc-950/80 overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-800 bg-zinc-900/50">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-1">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+          </div>
+          <span className="text-[10px] text-zinc-500 font-mono ml-2">
+            processing logs
+          </span>
+        </div>
+        <span className="text-[10px] text-zinc-600 font-mono">
+          {logs.length} entries
+        </span>
+      </div>
+      <div
+        ref={containerRef}
+        className="max-h-64 overflow-y-auto p-3 font-mono text-xs space-y-1"
+      >
+        {logs.map((log, i) => (
+          <div key={i} className="flex gap-2 leading-relaxed">
+            <span className="text-zinc-600 shrink-0 w-16">
+              {new Date(log.timestamp * 1000).toLocaleTimeString("en-US", {
+                hour12: false,
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+              })}
+            </span>
+            {log.stage && (
+              <span
+                className="shrink-0 px-1.5 py-0.5 rounded text-[9px] font-semibold uppercase tracking-wide"
+                style={{
+                  backgroundColor: stageColor(log.stage) + "20",
+                  color: stageColor(log.stage),
+                }}
+              >
+                {log.stage}
+              </span>
+            )}
+            <span className={levelColor(log.level)}>{log.message}</span>
+          </div>
+        ))}
+        <div ref={logEndRef} />
+      </div>
+    </div>
+  );
+}
+
 function ResultsBanner({
   score,
   experimentId,
@@ -318,7 +450,7 @@ function ResultsBanner({
           </div>
         </div>
         <a
-          href={`/alphafold`}
+          href={`/results/${experimentId}`}
           className="text-xs px-3 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 transition-colors"
         >
           View Full Report &rarr;
@@ -560,14 +692,22 @@ export default function ExperimentsPage() {
               Upload a paper. Validate its claims with computational models.
             </p>
           </div>
-          {phase !== "idle" && (
-            <button
-              onClick={reset}
-              className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors px-3 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700"
+          <div className="flex items-center gap-2">
+            <a
+              href="/structure-viewer"
+              className="text-xs text-cyan-500 hover:text-cyan-400 transition-colors px-3 py-1.5 rounded-lg border border-cyan-800/50 hover:border-cyan-700/50 bg-cyan-500/5"
             >
-              New Experiment
-            </button>
-          )}
+              View Test Structure
+            </a>
+            {phase !== "idle" && (
+              <button
+                onClick={reset}
+                className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors px-3 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700"
+              >
+                New Experiment
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Pipeline tracker */}
@@ -586,6 +726,9 @@ export default function ExperimentsPage() {
             )}
           </div>
         )}
+
+        {/* Live logs */}
+        {runId && isRunning && <LogViewer runId={runId} />}
 
         {/* Upload area (shown when idle or file selected but not running) */}
         {(phase === "idle" || phase === "plan_ready" || phase === "planning") &&
@@ -748,7 +891,7 @@ function ExistingExperiments() {
         {experiments.map((exp) => (
           <a
             key={exp.id}
-            href={`/alphafold`}
+            href={`/results/${exp.id}`}
             className="flex items-center justify-between p-3 rounded-lg bg-zinc-800/30 hover:bg-zinc-800/50 transition-colors group"
           >
             <div className="flex items-center gap-3">

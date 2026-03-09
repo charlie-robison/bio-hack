@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BioFact - Computational Fact-Checking for Drug Discovery</title>
+    <meta
+      name="description"
+      content="BioFact is a computational fact-checker for drug discovery papers, validating claims against evidence, datasets, and cited methods."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="logo" href="#" aria-label="BioFact home">
+          <span class="logo-mark" aria-hidden="true">BF</span>
+          BioFact
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#cta">Get access</a>
+        </nav>
+        <button class="ghost-button" type="button">Request demo</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Computational verification layer for biomedicine</p>
+            <h1>Fact-check drug discovery papers at machine speed.</h1>
+            <p class="lead">
+              BioFact reads the full text, extracts claims, and validates them against
+              datasets, protocols, and cited results. Reduce rework, surface weak
+              evidence, and prioritize experiments with confidence.
+            </p>
+            <div class="hero-actions">
+              <button class="primary-button" type="button">Start a trial</button>
+              <button class="secondary-button" type="button">See sample report</button>
+            </div>
+            <div class="hero-metrics">
+              <div>
+                <p class="metric">89%</p>
+                <p class="metric-label">claim coverage per paper</p>
+              </div>
+              <div>
+                <p class="metric">3x</p>
+                <p class="metric-label">faster evidence triage</p>
+              </div>
+              <div>
+                <p class="metric">24h</p>
+                <p class="metric-label">turnaround for long-form reports</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-panel" aria-hidden="true">
+            <div class="panel-header">
+              <span>BioFact Report</span>
+              <span class="status">Validated</span>
+            </div>
+            <div class="panel-body">
+              <div class="panel-row">
+                <div>
+                  <p class="panel-label">Claim cluster</p>
+                  <p class="panel-value">EGFR inhibitor efficacy</p>
+                </div>
+                <span class="chip chip-green">strong evidence</span>
+              </div>
+              <div class="panel-row">
+                <div>
+                  <p class="panel-label">Top contradiction</p>
+                  <p class="panel-value">Mouse cohort not matched to cell line</p>
+                </div>
+                <span class="chip chip-amber">needs review</span>
+              </div>
+              <div class="panel-row">
+                <div>
+                  <p class="panel-label">Evidence map</p>
+                  <p class="panel-value">12 datasets + 8 citations</p>
+                </div>
+                <span class="chip chip-blue">linked</span>
+              </div>
+              <div class="spark">
+                <div class="spark-bar"></div>
+                <div class="spark-bar"></div>
+                <div class="spark-bar"></div>
+                <div class="spark-bar"></div>
+                <div class="spark-bar"></div>
+                <div class="spark-bar"></div>
+              </div>
+              <p class="panel-footnote">Auto-generated from 42-page manuscript.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Built for discovery teams</p>
+            <h2>From noisy literature to decision-ready evidence.</h2>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Claim extraction + normalization</h3>
+              <p>
+                BioFact identifies key statements and maps them to standardized
+                entities, biomarkers, and protocols across the literature.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Evidence strength scoring</h3>
+              <p>
+                Quantify reproducibility with a composite score built from statistical
+                power, cohort size, and method alignment.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Dataset cross-checks</h3>
+              <p>
+                Automatically match claims to public datasets, internal assays, and
+                prior experiments to highlight gaps or conflicts.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Red flag alerts</h3>
+              <p>
+                Detect inconsistencies like missing controls, implausible effect sizes,
+                or unverified compound provenance.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Collaborative review</h3>
+              <p>
+                Share structured reports, annotate evidence, and track decisions with a
+                clean audit trail for every paper.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Exportable insight packs</h3>
+              <p>
+                Deliver findings to leadership in one click: slides, executive summaries,
+                and model-ready evidence tables.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow" id="workflow">
+        <div class="container workflow-grid">
+          <div>
+            <p class="eyebrow">How it works</p>
+            <h2>Evidence you can act on in a single day.</h2>
+            <p class="lead">
+              Upload a paper, select the scientific focus, and BioFact does the rest.
+              Every claim is traced, weighted, and visualized for fast decisions.
+            </p>
+          </div>
+          <div class="workflow-steps">
+            <div class="step">
+              <span class="step-number">01</span>
+              <div>
+                <h3>Ingest and map</h3>
+                <p>
+                  Full-text extraction with entity resolution to create a normalized
+                  claim graph.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">02</span>
+              <div>
+                <h3>Validate and score</h3>
+                <p>
+                  Compare against datasets, citations, and internal data to assign
+                  confidence.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">03</span>
+              <div>
+                <h3>Review and decide</h3>
+                <p>
+                  Receive a collaborative report that highlights what to trust, test,
+                  and ignore.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="cta">
+        <div class="container cta-card">
+          <div>
+            <p class="eyebrow">Ready for evidence-first discovery?</p>
+            <h2>Bring BioFact to your next literature review.</h2>
+            <p>
+              Join biopharma teams accelerating target validation with reproducible,
+              computationally verified evidence.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <button class="primary-button" type="button">Book a demo</button>
+            <button class="ghost-button" type="button">Download overview</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>BioFact &copy; 2025. Evidence for every experiment.</p>
+        <div class="footer-links">
+          <a href="#">Security</a>
+          <a href="#">Data use</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

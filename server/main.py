@@ -1,18 +1,22 @@
+import asyncio
 import json
 import logging
 import os
 import tempfile
+import time
+from collections import defaultdict
+from typing import Generator
 from dotenv import load_dotenv
 
 load_dotenv()
 
 from fastapi import BackgroundTasks, FastAPI, File, Form, HTTPException, UploadFile
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
 from pydantic import BaseModel, Field
 
-from pdf_processor import process_pdf, get_run, list_runs
+from pdf_processor import process_pdf, get_run, list_runs, get_logs, subscribe_logs, unsubscribe_logs, emit_log
 from synthetic_data_gen.models import ExperimentSchema, GenerationResult
 from synthetic_data_gen.pipeline import SyntheticDataPipeline
 from synthetic_data_gen.sample_data_loader import SampleDataLoader
@@ -686,6 +690,9 @@ async def run_experiment_from_upload(file: UploadFile = File(...), background_ta
     """
     Upload a PDF and immediately start the full Tamarind validation pipeline.
     Combines /api/upload + /experiments/run in one call.
+
+    Returns run_id immediately so frontend can connect to SSE for logs.
+    Processing happens in background.
     """
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="File must be a PDF")
@@ -693,20 +700,206 @@ async def run_experiment_from_upload(file: UploadFile = File(...), background_ta
     if not os.environ.get("TAMARIND_API_KEY"):
         raise HTTPException(status_code=500, detail="TAMARIND_API_KEY not configured")
 
-    # Upload and process
+    # Read file content
     content = await file.read()
-    result = await process_pdf(file.filename, content)
-    run_id = result["run_id"]
+    filename = file.filename
 
-    # Start experiment in background
-    _running_experiments[run_id] = {"status": "starting"}
-    background_tasks.add_task(_run_experiment_bg, run_id)
+    # Create run directory and save PDF immediately (so we have run_id to return)
+    from pdf_processor import create_run, save_pdf
+    run_id, run_path = create_run(filename)
+    save_pdf(run_path, content)
+
+    # Mark as starting
+    _running_experiments[run_id] = {"status": "starting", "stage": "init"}
+
+    # Start ALL processing in background (including PDF parsing)
+    background_tasks.add_task(_run_full_pipeline_bg, run_id, str(run_path), content, filename)
 
     return {
         "message": "PDF uploaded and experiment started",
         "run_id": run_id,
         "poll_url": f"/experiments/status/{run_id}",
     }
+
+
+def _run_full_pipeline_bg(run_id: str, run_path_str: str, pdf_bytes: bytes, filename: str):
+    """Background task: run PDF processing + full Tamarind pipeline."""
+    import asyncio
+    from pdf_processor import (
+        convert_pdf_to_images, extract_embedded_images,
+        save_metadata, emit_log
+    )
+
+    logger = logging.getLogger(__name__)
+    run_path = Path(run_path_str)
+
+    _running_experiments[run_id] = {"status": "running", "stage": "parsing"}
+
+    try:
+        # Step 1: PDF Processing (what process_pdf normally does)
+        emit_log(run_id, f"Starting PDF processing for: {filename}", stage="init")
+        emit_log(run_id, f"Run ID: {run_id}", stage="init")
+        emit_log(run_id, f"PDF saved ({len(pdf_bytes) / 1024:.1f} KB)", level="success", stage="save")
+
+        # Convert to images
+        page_images = convert_pdf_to_images(run_path, run_id)
+
+        # Extract embedded images
+        extracted_images = extract_embedded_images(run_path, run_id)
+
+        # Run LlamaParse (need to run async in sync context)
+        async def run_llama():
+            from pdf_processor import run_llamaparse
+            return await run_llamaparse(pdf_bytes, run_id)
+
+        markdown = asyncio.run(run_llama())
+        content_path = run_path / "content.md"
+        content_path.write_text(markdown)
+        emit_log(run_id, "Markdown content saved to disk", stage="save")
+
+        # Save metadata
+        save_metadata(
+            run_path,
+            filename,
+            page_count=len(page_images),
+            extracted_image_count=len(extracted_images)
+        )
+
+        emit_log(run_id, "PDF processing complete!", level="success", stage="complete")
+        emit_log(run_id, f"Summary: {len(page_images)} pages, {len(extracted_images)} images, {len(markdown)} chars", stage="complete")
+
+        # Now continue with the Tamarind experiment pipeline
+        _running_experiments[run_id]["stage"] = "generating"
+        emit_log(run_id, "Starting synthetic data generation...", stage="generating")
+
+        runner = _get_runner()
+
+        # Step 2: Generate synthetic data
+        gen_result = pipeline.run(str(run_path / "original.pdf"), num_rows=10, run_folder_path=str(run_path))
+        _flatten_and_save(gen_result, run_folder_path=str(run_path))
+        emit_log(run_id, "Synthetic data generated", level="success", stage="generating")
+
+        # Step 3: Build jobs
+        _running_experiments[run_id]["stage"] = "planning"
+        emit_log(run_id, "Planning model jobs...", stage="planning")
+        synthetic_result = runner.load_synthetic_data(run_id)
+        experiment_id = f"exp_{run_id[:8]}"
+        plan = runner.build_jobs_from_data(synthetic_result, experiment_id)
+
+        experiment_dir = EXPERIMENTS_DIR / experiment_id
+        experiment_dir.mkdir(parents=True, exist_ok=True)
+        paper_text = markdown[:50000]
+        (experiment_dir / "paper_text.txt").write_text(paper_text)
+        (experiment_dir / "run_id.txt").write_text(run_id)
+
+        _running_experiments[run_id]["experiment_id"] = experiment_id
+        _running_experiments[run_id]["plan"] = plan
+        emit_log(run_id, f"Created experiment {experiment_id}", level="success", stage="planning")
+
+        # Step 4: Submit
+        _running_experiments[run_id]["stage"] = "submitting"
+        emit_log(run_id, "Submitting jobs to Tamarind Bio...", stage="submitting")
+        plan = runner.submit_experiment(plan, experiment_dir)
+        emit_log(run_id, "Jobs submitted", level="success", stage="submitting")
+
+        # Step 5: Poll
+        _running_experiments[run_id]["stage"] = "running_models"
+        emit_log(run_id, "Running models on Tamarind Bio...", stage="running_models")
+        plan = runner.poll_experiment(plan)
+        emit_log(run_id, "Models complete", level="success", stage="running_models")
+
+        # Step 6: Download
+        _running_experiments[run_id]["stage"] = "downloading"
+        emit_log(run_id, "Downloading results...", stage="downloading")
+        plan = runner.download_results(plan, experiment_dir)
+        emit_log(run_id, "Results downloaded", level="success", stage="downloading")
+
+        # Step 7: Validate
+        _running_experiments[run_id]["stage"] = "validating"
+        emit_log(run_id, "Validating results against paper claims...", stage="validating")
+        synthetic_data_str = json.dumps(synthetic_result.get("data", []), indent=2)
+        validation = runner.validate_results(plan, paper_text, experiment_dir, synthetic_data_str)
+        emit_log(run_id, f"Validation complete: {validation.get('overall_reliability_score', 0)*100:.0f}% reliability", level="success", stage="validating")
+
+        _running_experiments[run_id] = {
+            "status": "complete",
+            "stage": "done",
+            "experiment_id": experiment_id,
+            "validation_score": validation.get("overall_reliability_score"),
+            "plan": plan,
+        }
+        emit_log(run_id, "Experiment complete!", level="success", stage="complete")
+        logger.info(f"Experiment {experiment_id} complete for run {run_id}")
+
+    except Exception as e:
+        logger.error(f"Pipeline failed for run {run_id}: {e}")
+        emit_log(run_id, f"Pipeline failed: {str(e)}", level="error", stage="error")
+        _running_experiments[run_id] = {
+            "status": "failed",
+            "stage": "error",
+            "error": str(e),
+        }
+
+
+# ── Log Streaming (SSE) ──────────────────────────────────────────────────
+
+
+@app.get("/experiments/logs/{run_id}")
+async def stream_logs(run_id: str):
+    """
+    Stream logs for a run via Server-Sent Events (SSE).
+    Connect to this endpoint to receive real-time log updates.
+    """
+    async def event_generator():
+        import queue
+        log_queue = queue.Queue()
+
+        def on_log(entry):
+            log_queue.put(entry)
+
+        # Send existing logs first
+        for entry in get_logs(run_id):
+            yield f"data: {json.dumps(entry)}\n\n"
+
+        # Subscribe to new logs
+        subscribe_logs(run_id, on_log)
+
+        idle_count = 0
+        max_idle = 600  # 5 minutes max
+
+        try:
+            while idle_count < max_idle:
+                try:
+                    # Check for new logs (non-blocking with timeout)
+                    entry = log_queue.get(timeout=0.5)
+                    yield f"data: {json.dumps(entry)}\n\n"
+                    idle_count = 0  # Reset on activity
+                except queue.Empty:
+                    idle_count += 1
+                    # Send keepalive every ~5 seconds
+                    if idle_count % 10 == 0:
+                        yield ": keepalive\n\n"
+
+                # Check if run is complete
+                status = _running_experiments.get(run_id, {})
+                if status.get("status") in ("complete", "failed"):
+                    # Send final status and close
+                    yield f"data: {json.dumps({'type': 'complete', 'status': status.get('status')})}\n\n"
+                    break
+
+                await asyncio.sleep(0.1)
+        finally:
+            unsubscribe_logs(run_id, on_log)
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────
@@ -720,3 +913,103 @@ def _read_pdf_text(path: str) -> str:
         return "\n".join(page.extract_text() or "" for page in reader.pages)
     except Exception:
         return ""
+
+
+# ── Example Output Data (AlphaFold test data) ─────────────────────────────
+
+EXAMPLE_OUTPUT_DIR = Path(__file__).parent.parent / "example-output"
+
+
+@app.get("/example-output/structure")
+def get_example_structure():
+    """
+    Get the example AlphaFold structure prediction data.
+    Returns pLDDT scores, metrics, config, and template info.
+    """
+    if not EXAMPLE_OUTPUT_DIR.exists():
+        raise HTTPException(status_code=404, detail="Example output directory not found")
+
+    result = {
+        "protein_name": "KRAS Wild Type",
+        "model_type": "alphafold2_ptm",
+    }
+
+    # Load metrics
+    metrics_path = EXAMPLE_OUTPUT_DIR / "metrics.csv"
+    if metrics_path.exists():
+        import csv
+        with open(metrics_path) as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                result["metrics"] = {
+                    "avg_plddt": float(row.get("Avg pLDDT", 0)),
+                    "max_pae": float(row.get("Max PAE", 0)),
+                    "mean_pae": float(row.get("Mean PAE", 0)),
+                    "ptm": float(row.get("pTM", 0)),
+                    "model": row.get("Model", "1"),
+                    "rank": row.get("Rank", "001"),
+                    "sequence": row.get("Sequence", ""),
+                    "max_plddt": float(row.get("A_max_plddt", 0)),
+                }
+                break
+
+    # Load config
+    config_path = EXAMPLE_OUTPUT_DIR / "config.json"
+    if config_path.exists():
+        result["config"] = json.loads(config_path.read_text())
+
+    # Load template domains
+    template_path = EXAMPLE_OUTPUT_DIR / "kraswt_alphafold_template_domain_names.json"
+    if template_path.exists():
+        result["templates"] = json.loads(template_path.read_text())
+
+    # Load pLDDT scores (from the scores file)
+    scores_path = EXAMPLE_OUTPUT_DIR / "kraswt_alphafold_scores_rank_001_alphafold2_ptm_model_1_seed_000.json"
+    if scores_path.exists():
+        scores_data = json.loads(scores_path.read_text())
+        result["plddt"] = scores_data.get("plddt", [])
+        result["max_pae"] = scores_data.get("max_pae", 0)
+
+    return result
+
+
+@app.get("/example-output/pae")
+def get_example_pae():
+    """
+    Get the PAE (Predicted Aligned Error) matrix.
+    Returns a downsampled version for visualization.
+    """
+    pae_path = EXAMPLE_OUTPUT_DIR / "kraswt_alphafold_predicted_aligned_error_v1.json"
+    if not pae_path.exists():
+        raise HTTPException(status_code=404, detail="PAE file not found")
+
+    data = json.loads(pae_path.read_text())
+    pae_matrix = data.get("predicted_aligned_error", [])
+
+    # Downsample for visualization (take every Nth element)
+    size = len(pae_matrix)
+    step = max(1, size // 50)  # Max 50x50 for UI
+    downsampled = []
+    for i in range(0, size, step):
+        row = []
+        for j in range(0, size, step):
+            if i < len(pae_matrix) and j < len(pae_matrix[i]):
+                row.append(pae_matrix[i][j])
+        if row:
+            downsampled.append(row)
+
+    return {
+        "pae": downsampled,
+        "original_size": size,
+        "downsampled_size": len(downsampled),
+        "max_error": data.get("max_predicted_aligned_error", 31.75),
+    }
+
+
+@app.get("/example-output/pdb")
+def get_example_pdb():
+    """Get the PDB file content."""
+    pdb_path = EXAMPLE_OUTPUT_DIR / "kraswt_alphafold_unrelaxed_rank_001_alphafold2_ptm_model_1_seed_000.pdb"
+    if not pdb_path.exists():
+        raise HTTPException(status_code=404, detail="PDB file not found")
+    return FileResponse(pdb_path, media_type="chemical/x-pdb", filename="kraswt_alphafold.pdb")

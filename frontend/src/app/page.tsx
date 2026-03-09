@@ -91,9 +91,25 @@ export default function Home() {
     <div className="min-h-screen bg-zinc-950 text-zinc-100 p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">BioFact</h1>
-          <p className="text-zinc-400">PDF Processing Pipeline</p>
+        <div className="mb-8 flex items-start justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-white mb-2">BioFact</h1>
+            <p className="text-zinc-400">PDF Processing Pipeline</p>
+          </div>
+          <div className="flex gap-3">
+            <a
+              href="/experiments"
+              className="text-sm px-4 py-2 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 transition-colors border border-cyan-500/20"
+            >
+              Experiments
+            </a>
+            <a
+              href="/structure-viewer"
+              className="text-sm px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-colors border border-emerald-500/20"
+            >
+              Structure Viewer
+            </a>
+          </div>
         </div>
 
         {/* Dropzone */}
