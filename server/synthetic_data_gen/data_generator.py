@@ -239,8 +239,10 @@ class DataGenerator:
                 lines.append(f"  - {input_name}: format={fmt}{req_str} — {desc}")
 
         lines.append(
-            "Ensure the 'data' object in each row contains these fields "
-            "with realistic, properly formatted values."
+            "CRITICAL: Every row's 'data' object MUST contain these required input "
+            "fields with realistic, properly formatted values. The column names must "
+            "match EXACTLY (e.g. 'sequence' not 'protein_sequence'). Without these "
+            "fields the data cannot be submitted to the model."
         )
         return "\n".join(lines)
 

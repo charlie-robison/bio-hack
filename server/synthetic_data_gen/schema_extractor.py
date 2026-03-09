@@ -63,8 +63,11 @@ molecules, etc.) and match it to the model's specialty.
 
 When defining columns:
 - The columns MUST include all required inputs for the selected model, using \
-the exact input names and formats the model expects.
-- Additional experiment-specific columns from the paper can be included too.
+the EXACT input field names the model expects (e.g. if the model input is \
+called "sequence", the column name must be "sequence" — not "protein_sequence" \
+or any variation). This is critical for the pipeline to work.
+- These model-input columns must come FIRST in the columns array.
+- Additional experiment-specific columns from the paper can be included after.
 - For file-type inputs (e.g., PDB files), represent them as text columns \
 containing file paths or content identifiers.
 
@@ -166,12 +169,16 @@ Return a JSON object with this exact structure:
     }}
 }}
 
-CRITICAL: The "columns" array must include columns that directly correspond to \
-the selected model's required inputs. For example, if the model expects a \
-"sequence" input of format "amino_acid_sequence", one of your columns must be \
-named "sequence" with column_type "text" and constraints noting it must be a \
-valid amino acid sequence. This ensures every generated row can be fed directly \
-into the selected model.
+CRITICAL — MANDATORY COLUMN NAMING RULES:
+1. Look at the selected model's "inputs" section in its model detail.
+2. For EVERY required input, you MUST add a column whose "name" is the EXACT \
+input field name (e.g. if the model expects "sequence", the column name must be \
+literally "sequence" — NOT "protein_sequence", NOT "amino_acid_seq", just "sequence").
+3. These model-input columns MUST appear FIRST in the columns array.
+4. You may add additional experiment-specific columns from the paper AFTER the \
+model-input columns.
+5. If you do not include the model's required input columns with their exact \
+names, the pipeline will fail. This is the most important rule.
 
 RESEARCH PAPER:
 {paper_text}\
@@ -194,7 +201,7 @@ class SchemaExtractor:
         self.model = model
         self._models_dir = models_dir
         self._model_index = load_model_index(models_dir)
-        self._model_index_text = format_index_for_prompt(self._model_index)
+        self._model_index_text = format_index_for_prompt(self._model_index, models_dir)
 
     def extract(self, paper_text: str, run_folder_path: str | None = None) -> ExperimentSchema:
         logger.info(f"Extracting schema using {self.model}")
@@ -247,7 +254,8 @@ class SchemaExtractor:
                 schema.selected_model["name"] = full_model.get("name", slug)
                 schema.selected_model["category"] = full_model.get("category", "")
                 schema.selected_model["inputs"] = full_model.get("inputs", {})
-                schema.selected_model["api_type"] = full_model.get("api_type", "")
+                schema.selected_model["api_type"] = full_model.get("api_type", slug)
+                schema.selected_model["api_settings_example"] = full_model.get("api_settings_example", {})
                 logger.info(f"Enriched selected model: {full_model.get('name')} ({slug})")
             else:
                 logger.warning(f"Could not load full model.json for slug: {slug}")

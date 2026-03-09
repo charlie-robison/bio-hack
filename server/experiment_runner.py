@@ -180,11 +180,77 @@ class ExperimentRunner:
 
     # ── Build jobs directly from synthetic data ──────────────────────
 
+    def _build_tool_config_from_model(self, selected_model: dict, columns: set) -> tuple[str, dict] | None:
+        """
+        Dynamically build a tool config from the selected_model metadata.
+        Returns (api_type, config_dict) or None if required inputs aren't in columns
+        or if the model requires file uploads.
+
+        Uses api_settings_example to determine actual API field names (which may
+        differ from the inputs keys in model.json).
+        """
+        slug = selected_model.get("slug", "")
+        api_type = selected_model.get("api_type", slug)
+        inputs = selected_model.get("inputs", {})
+        api_example = selected_model.get("api_settings_example", {})
+        if not slug or not inputs:
+            return None
+
+        # Reject models that require file-type inputs — synthetic tabular data
+        # can't satisfy these.
+        required_columns = []
+        for input_name, input_spec in inputs.items():
+            if input_spec.get("required", False):
+                if input_spec.get("type") == "file":
+                    logger.warning(
+                        f"Selected model '{slug}' requires file input '{input_name}' — "
+                        f"cannot be used with tabular synthetic data."
+                    )
+                    return None
+                required_columns.append(input_name)
+
+        # Build settings_map: synthetic data column name → actual API field name.
+        # The api_settings_example shows the real API field names. We match
+        # input names to api_example keys by finding corresponding entries.
+        settings_map = {}
+        api_example_keys = set(api_example.keys())
+
+        for input_name, input_spec in inputs.items():
+            if input_spec.get("type") == "file":
+                continue
+            # If this input name is also in api_settings_example, use it directly
+            if input_name in api_example_keys:
+                settings_map[input_name] = input_name
+            else:
+                # The API uses a different field name than model.json inputs.
+                # Skip — we don't have a reliable mapping for this field.
+                logger.debug(
+                    f"Input '{input_name}' not in api_settings_example, skipping"
+                )
+
+        # Check if the data has the required columns
+        if not all(col in columns for col in required_columns):
+            logger.warning(
+                f"Selected model '{slug}' requires columns {required_columns} "
+                f"but data has {columns}"
+            )
+            return None
+
+        config = {
+            "required_columns": required_columns,
+            "settings_map": settings_map,
+            "defaults": {},
+        }
+        return api_type, config
+
     def build_jobs_from_data(self, synthetic_result: dict, experiment_id: str) -> dict:
         """
         Directly map synthetic data rows to Tamarind jobs.
         No Claude planning — just look at which columns are available
         and submit to matching tools.
+
+        Uses selected_model from schema extraction when available,
+        falling back to the hardcoded TOOL_COLUMN_MAP.
         """
         rows = synthetic_result.get("data", [])
         if not rows:
@@ -192,40 +258,81 @@ class ExperimentRunner:
 
         columns = set(rows[0].keys())
         schema = synthetic_result.get("schema", {})
+        selected_model = synthetic_result.get("selected_model") or schema.get("selected_model")
 
-        # Determine which tools we can use based on available columns
+        # Try to use the selected model first (dynamic mapping)
         usable_tools = []
-        for tool_name, config in TOOL_COLUMN_MAP.items():
-            if all(col in columns for col in config["required_columns"]):
-                usable_tools.append(tool_name)
+        dynamic_configs = {}
+
+        if selected_model and selected_model.get("slug"):
+            result = self._build_tool_config_from_model(selected_model, columns)
+            if result:
+                slug, config = result
+                usable_tools.append(slug)
+                dynamic_configs[slug] = config
+                logger.info(f"Using selected model '{slug}' with dynamic column mapping")
+            else:
+                logger.info(
+                    f"Selected model '{selected_model['slug']}' not usable, "
+                    f"falling back to TOOL_COLUMN_MAP."
+                )
+
+        # Fall back to hardcoded TOOL_COLUMN_MAP
+        if not usable_tools:
+            for tool_name, config in TOOL_COLUMN_MAP.items():
+                if all(col in columns for col in config["required_columns"]):
+                    usable_tools.append(tool_name)
 
         if not usable_tools:
-            raise ValueError(f"No Tamarind tools match available columns: {columns}")
+            model_hint = ""
+            if selected_model:
+                slug = selected_model.get("slug", "unknown")
+                inputs = selected_model.get("inputs", {})
+                required = [k for k, v in inputs.items() if v.get("required")]
+                model_hint = (
+                    f" Selected model '{slug}' requires columns {required}."
+                    f" The synthetic data must include these column names."
+                )
+            raise ValueError(
+                f"No Tamarind tools match available columns: {columns}.{model_hint}"
+            )
 
         logger.info(f"Available columns: {columns}")
         logger.info(f"Usable tools: {usable_tools}")
 
-        # Build jobs: one job per unique sequence per tool
+        # Merge dynamic configs into lookup
+        tool_configs = {**TOOL_COLUMN_MAP, **dynamic_configs}
+
+        # Build jobs: one job per unique primary-input value per tool
         jobs = []
-        seen_sequences = {}  # track unique sequences to avoid duplicate jobs
+        seen_inputs = {}  # track unique inputs to avoid duplicate jobs
 
         for row in rows:
-            seq = row.get("sequence", "")
-            if not seq or not isinstance(seq, str) or len(seq) < 10:
+            # Determine the primary input column for deduplication
+            primary_col = None
+            primary_val = None
+            for tool_name in usable_tools:
+                config = tool_configs[tool_name]
+                if config["required_columns"]:
+                    primary_col = config["required_columns"][0]
+                    primary_val = row.get(primary_col, "")
+                    break
+
+            if not primary_val or not isinstance(primary_val, str) or len(str(primary_val)) < 3:
                 continue
 
-            # Skip if we already have a job for this sequence
-            seq_key = seq[:50]  # use first 50 chars as key
-            if seq_key in seen_sequences:
+            # Skip if we already have a job for this primary input
+            input_key = str(primary_val)[:50]
+            if input_key in seen_inputs:
                 continue
-            seen_sequences[seq_key] = row
+            seen_inputs[input_key] = row
 
             row_idx = row.get("row_index", len(jobs))
             group = row.get("group", "")
             label = group or f"row{row_idx}"
 
             for tool_name in usable_tools:
-                config = TOOL_COLUMN_MAP[tool_name]
+                config = tool_configs[tool_name]
                 settings = dict(config["defaults"])
 
                 # Map columns to settings
@@ -267,7 +374,7 @@ class ExperimentRunner:
             ],
         }
 
-        logger.info(f"Built {len(jobs)} jobs from {len(seen_sequences)} unique sequences using tools: {usable_tools}")
+        logger.info(f"Built {len(jobs)} jobs from {len(seen_inputs)} unique inputs using tools: {usable_tools}")
         return plan
 
     # ── Submit jobs ──────────────────────────────────────────────────
@@ -293,6 +400,10 @@ class ExperimentRunner:
                 }, indent=2))
 
                 try:
+                    logger.info(
+                        f"Submitting {job_name}: type={tool_type}, "
+                        f"settings_keys={list(settings.keys())}"
+                    )
                     result = self.tamarind.submit_job(job_name, tool_type, settings)
                     job["submission_status"] = "submitted"
                     job["submission_response"] = result
@@ -300,7 +411,7 @@ class ExperimentRunner:
                 except Exception as e:
                     job["submission_status"] = "failed"
                     job["submission_error"] = str(e)
-                    logger.error(f"Failed to submit {job_name}: {e}")
+                    logger.error(f"Failed to submit {job_name} (type={tool_type}): {e}")
 
         (experiment_dir / "pipeline.json").write_text(json.dumps(plan, indent=2))
         return plan
